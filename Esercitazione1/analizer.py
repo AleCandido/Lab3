@@ -988,11 +988,11 @@ def fit(directory, file, a_unit, b_unit, f, p0, titolo="", Xlab="", Ylab="", Xfu
 	
 	if table==True:
 		with open(dir+"tabelle\\"+"tab_"+file+".txt", "w") as text_file:
-			text_file.write("\\begin{table}[h]\n\centering\n\\begin{tabular}{c|c}\n")
+			text_file.write("begin{tabular}{c|c}\n")
 			text_file.write("%s & %s \\\\ \\hline\n" % (Xtab, Ytab))
 			for i in range (len(X1)):
 				text_file.write("%s & %s \\\\\n" % (xe(X1[i], dX1[i], "$\pm$"),xe(Y1[i], dY1[i], "$\pm$")))
-			text_file.write("\\end{tabular}\n\\caption{%s}\n\\end{table}\n" % caption)
+			text_file.write("\\end{tabular}\n\\caption{%s}\n" % caption)
 			text_file.close()
 	print("_________________________________________________________")
 	

@@ -1,5 +1,3 @@
-\begin{table}[h]
-\centering
 \begin{tabular}{c|c}
 Tensione $V_{in}$ [$V$] & Tensione $V_{out}$ [$V$] \\ \hline
 0.1942 $\pm$ 0.0011 & 0.0895 $\pm$ 0.0005 \\
@@ -14,5 +12,3 @@ Tensione $V_{in}$ [$V$] & Tensione $V_{out}$ [$V$] \\ \hline
 9.12 $\pm$ 0.06 & 4.19 $\pm$ 0.03 \\
 10.06 $\pm$ 0.06 & 4.62 $\pm$ 0.03 \\
 \end{tabular}
-\caption{}
-\end{table}
