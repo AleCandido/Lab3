@@ -12,7 +12,6 @@ Ah, ho scritto un po' di relazione, e ti ho trovato l'ambiente per la gestione d
 * Un prototipo lo trovi già nella nostra relazione, per ogni cosa che ti venga in mente penso che il seguente pdf possa risolvere.
 <br/> http://www.guit.sssup.it/downloads/fig_tut.pdf
 <br/> (purtroppo il sito di guit è ospitato dai sant'annini...)
-
 Leggi frequentemente questo Readme quando vai a scrivere la relazione, e leggi le note che lascio dentro la relazione.
 
 P.S.: ho una cartella con un po' di pdf su alcuni pacchetti di tex, se vuoi te la condivido, ma non è niente di eccezionale
