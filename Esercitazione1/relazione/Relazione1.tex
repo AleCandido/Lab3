@@ -1,0 +1,84 @@
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\geometry{a4paper}
+
+\usepackage{booktabs} % for much better looking tables
+\usepackage{verbatim}
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single 
+
+\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
+\pagestyle{fancy} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{0pt} % customise the layout...
+\lhead{}\chead{}\rhead{}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+
+%%% SECTION TITLE APPEARANCE
+\usepackage{sectsty}
+%\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
+% (This matches ConTeXt defaults)
+
+\title{Esercitazione 1: Misure di tensione, corrente, tempi, frequenze}
+\author{Gruppo bE \\ Alessandro Candido, Roberto Ribatti}
+\date{\today} 
+
+\begin{document}
+\maketitle
+
+\section{Scopo e strumentazione}
+Lo scopo dell'esercitazione è di impratichirsi con la strumentazione disponibile in laboratorio. Abbiamo usato multimetro, oscilloscopio, alimentatore da banco e generatore di funzioni d'onda.
+
+\section{Misure di tensione e corrente}
+
+\subsection{Partitore di tensione $\sim1\text{k}\Omega$}
+Si è costruito il partitore di tensione illustrato nella scheda (Figura 1) usando due resistenze $R_1 = 976 \pm 9~\Omega$ e $R_2 = 974 \pm 9 ~\Omega$.
+Si è variata la tensione dell'alimentatore tra $0~V$ e $10~V$ e volta per volta si è misurata con il multimetro digitale la tensione erogata dall'alimentatore $V_{in}$ e ai capi della resistenza $R2$, $V_{out}$. Gli errori sono stati ottenuti usando le indicazioni del manuale del multimetro.
+Il rapporto atteso tra le due tensioni è $1/(1+(R_1/R_2))=0.499 \pm 0.005$. 
+I risultati della misura sono qui di seguito riportati:
+
+\input{../tabelle/tab_1KOhm.txt}
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.6]{../grafici/fit_1KOhm.pdf}
+	\caption{Partitore di tensione.\label{f:par1}}
+\end{figure}
+Come atteso il rapporto tra le tensioni è costante, ovvero la relazione che lega $V_{out}$ e $V_{in}$ è lineare.
+Abbiamo eseguito un fit lineare numerico che tenesse conto degli errori su entrambi gli assi poiché gli errori sono confrontabili. I risultati del fit sono: $V_{out}/V_{in}=0.5009 \pm 0.0016$, e un valore pari a $(0.2\pm 0.8) mV$ del'intercetta. Abbiamo ottenuto  $\chi^2/\text{ndof}= 1.16/9$.
+
+Il valore del $\chi^2$ è lontano dal valor medio della distribuzione, probabilmente perché le incertezze del tester digitale sono sovrastimate. La misura tuttavia è da confrontare con quella prevista a partire dalla misura delle resistenze, e risulta compatibile entro gli errori. Inoltre per l'intercetta si ha una misura di $0$.
+
+\subsection{Partitore di tensione $\sim4\text{M}\Omega$}
+Si sono usate adesso resistenze $R_3=4.87 \pm 7 ~M\Omega$ e $R_4=3.70 \pm 6 ~M\Omega$ e si è proceduto alla stessa misura del punto precedente. In questo caso la relazione è lineare, ma non col coefficiente atteso se l'impedenza di ingresso del multimetro fosse trascurabile. Questa infatti da manuale ammonta a $10 ~ \text{M}\Omega$ , ed è confrontabile con le resistenze in gioco.
+
+\input{../tabelle/tab_4MOhm.txt}
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.6]{../grafici/fit_4MOhm.pdf}
+	\caption{Partitore di tensione.\label{f:par2}}
+\end{figure}
+
+Il fit è stato eseguito come al punto precedente e i valori ottenuti sono $V_{out}/V_{in} = 0.4600 \pm 0.0015$ e per l'intercetta $0.2 \pm 0.8 mV$. Si è ottenuto inoltre $\chi^2 / \text{ndof} = 1.94 / 9$.
+
+Perciò sia per quanto riguarda l'intercetta che il $\chi^2$ si applicano le stesse considerazioni del punto precedente. Per quanto riguarda la pendenza della retta ci saremmo attesi un valore pari a  $1/(1+(R_1/R_2))=0.568 \pm 0.004$, che evidentemente non è compatibile con quanto risulta dal fit. Il motivo di ciò è, come detto sopra, l'impedenza d'ingresso del tester digitale.
+
+Considerando l'impedenza del tester si ottiene per la pendenza $\frac{1}{1 + R_1 (1/R_2 + 1/R_T)}$, dove si è indicato con $R_T$ la resistenza interna del tester. Invertendo la formula si trova $R_T = 11.6 \pm 0.8 \text{M}\Omega$.
+
+\subsection{Partitore di corrente}
+
+
+\section{Uso dell'oscilloscopio}
+
+\section{Misure di frequenza e tempo}
+
+\section{Trigger dell'oscilloscopio}
+
+\section{Conclusioni e commenti finali}
+
+\end{document}
