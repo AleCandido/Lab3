@@ -44,11 +44,13 @@ Il rapporto atteso tra le due tensioni è $1/(1+(R_1/R_2))=0.499 \pm 0.005$.
 I risultati della misura sono qui di seguito riportati:
 
 \input{../tabelle/tab_1KOhm.txt}
-\begin{figure}
+\begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.6]{../grafici/fit_1KOhm.pdf}
-	\caption{Partitore di tensione.\label{f:par1}}
+	\caption{Partitore di tensione.}
+	\label{f:par1}
 \end{figure}
+
 Come atteso il rapporto tra le tensioni è costante, ovvero la relazione che lega $V_{out}$ e $V_{in}$ è lineare.
 Abbiamo eseguito un fit lineare numerico che tenesse conto degli errori su entrambi gli assi poiché gli errori sono confrontabili. I risultati del fit sono: $V_{out}/V_{in}=0.5009 \pm 0.0016$, e un valore pari a $(0.2\pm 0.8) mV$ del'intercetta. Abbiamo ottenuto  $\chi^2/\text{ndof}= 1.16/9$.
 
@@ -58,10 +60,11 @@ Il valore del $\chi^2$ è lontano dal valor medio della distribuzione, probabilm
 Si sono usate adesso resistenze $R_3=4.87 \pm 7 ~M\Omega$ e $R_4=3.70 \pm 6 ~M\Omega$ e si è proceduto alla stessa misura del punto precedente. In questo caso la relazione è lineare, ma non col coefficiente atteso se l'impedenza di ingresso del multimetro fosse trascurabile. Questa infatti da manuale ammonta a $10 ~ \text{M}\Omega$ , ed è confrontabile con le resistenze in gioco.
 
 \input{../tabelle/tab_4MOhm.txt}
-\begin{figure}
+\begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.6]{../grafici/fit_4MOhm.pdf}
-	\caption{Partitore di tensione.\label{f:par2}}
+	\caption{Partitore di tensione.}
+	\label{f:par2}
 \end{figure}
 
 Il fit è stato eseguito come al punto precedente e i valori ottenuti sono $V_{out}/V_{in} = 0.4600 \pm 0.0015$ e per l'intercetta $0.2 \pm 0.8 mV$. Si è ottenuto inoltre $\chi^2 / \text{ndof} = 1.94 / 9$.
@@ -78,6 +81,21 @@ Considerando l'impedenza del tester si ottiene per la pendenza $\frac{1}{1 + R_1
 \section{Misure di frequenza e tempo}
 
 \section{Trigger dell'oscilloscopio}
+Si è osservato il segnale di pulse del generatore di forme d'onda, confrontandolo sia con un'onda quadra che con una sinusoide, entrambe prodotte dallo stesso generatore.
+La relazione fra il segnale di sincronizzazione e la portante dell'onda osservata è uno sfasamento di mezzo periodo, come appare evidente nel caso dell'onda quadra, e si verifica anche per la sinusoide identificando lo stato alto del pulse con il fronte di salita della sinusoide e il basso con la discesa.
+
+I segnali osservati sono riportati in \figurename{\ref{f:pulse}}.
+	
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.6]{../Oscilloscopio/trig_pulse_square.jpg}
+	\includegraphics[scale=0.6]{../Oscilloscopio/trig_pulse_sin.jpg}
+	\caption{Segnale di pulse a confronto con un'onda quadra e una sinusoide}
+	\label{f:pulse}
+\end{figure}
+
+Si è dunque eseguita l'ultima parte dell'esercitazione, visualizzando un'onda quadra prodotta dal generatore a una frequenza di $~900 \text{kHz}$.
+Così come si osserva dalle immagini è evidente che il tempo impiegato dai fronti di salita e discesa è non nullo, anche se al genratore è stata richiesta un'onda quadra. I valori misurati sono $t_{raise} = (64.0 \pm )~\text{n}s$ e $t_{fall} = (64.0 \pm )~\text{n}s$, cioè uguali entro l'errore. 
 
 \section{Conclusioni e commenti finali}
 
