@@ -97,34 +97,47 @@ Il fit è stato eseguito come al punto precedente e i valori ottenuti sono $V_{o
 I risultati delle misure sono stati: una tensione $V = 19.74 \pm 0.12~ V$ e intensità di corrente $I_1=49 \pm 1 ~\mu A$ e $I_2 = 129 \pm 2 ~ \mu A$. 
 
 Trattandosi di un partitore di corrente le correnti previste sono:
-\begin{align}
-I_1 &= \frac{V}{R_{tot}}\frac{R_2}{R_1+R_2}
-I_1 &= \frac{V}{R_{tot}}\frac{R_1}{R_1+R_2}
-\end{align}
+\begin{align*}
+I_1 &= \frac{V}{R_{tot}}\frac{R_2}{R_1+R_2} \\
+I_2 &= \frac{V}{R_{tot}}\frac{R_1}{R_1+R_2}
+\end{align*}
 dove $V/R_{tot}$ è la corrente totale. In questo caso $R_{tot} = R_3 + R_1//R_2$ (con $R_1//R_2$ indico il parallelo di $R_1$ e $R_2$) e con ottima approssimazione $I_{tot}=V/R_3$ poichè $R_3 >> R1//R2 \sim 160 ~\ohm$.
+
 Perciò le correnti attese sono $I_1 = 54.9 \pm 1.6 ~\mu A$ e $I_2 = 139 \pm 4~ \mu A$.
 
-\paragraph{Conclusioni} Le misure ottenute sono compatibili con i risultati attesi solo entro $2 \sigma$. 
+\paragraph{Conclusioni} Le misure ottenute non sono strettamente compatibili con i risultati attesi entro l'errore, ma lo sono entro $2 \sigma$. Probabilmente ciò è dovuto all'impedenza d'ingresso dell'oscilloscopio. 
 % Se avessi una stima statistica della parent distribution (media e deviazione standard sotto l'ipotesi di gaussianità) allora, fregandomene dell'errore sulla 'seconda' misura potrei verificare a quanti \sigma sta dalla media.
 % Avendo due misure con errore o due stime statistiche diverse non ho la più pallida idea di come confrontarle e su che base dire che sono compatibili
-
 
 \section{Uso dell'oscilloscopio}
 È stato realizzato nuovamente il circuito al punto 2.c della scheda e questa volta si è proceduto alle misure di tensione con l'oscilloscopio. In maniera simile al punto precedente possiamo determinare l'impedenza di ingresso dell'oscilloscopio.
 
-Le resistenze in uso sono $R1_=3.83 \pm 6~\text{M}\ohm$ e  $R1_=3.95 \pm 6~\text{M}\ohm$.
+Le resistenze in uso sono $R_1 = 3.83 \pm 6~\text{M}\ohm$ e  $R_2 = 3.95 \pm 6~\text{M}\ohm$.
 
 Le misure effettuate sono: $V_{in}=19.6 \pm 0.6 ~V$ e $V_{out}= 3.36 \pm 0.11 ~ V$, con errori calcolati a partire dalle specifiche del manuale. L'impedenza di ingresso dell'oscilloscopio determinata come prima è $R_T=1.0 \pm 0.1 ~ \text{M}\ohm$, che è in perfetto accordo con l'impedenza indicata dal manuale di $1.00 \pm 0.02 ~\text{M} \ohm$.
 
-Nell'ambito di questa misura si è confrontato come richiesto le funzioni DC e AC dell'oscilloscopio, costatando come aspettato che in AC si legge un segnale che non si discosta dalla massa, mancando in questo segnale componenti armoniche.
+Nell'ambito di questa misura si è confrontato come richiesto le funzioni DC e AC dell'oscilloscopio, constatando come aspettato che in AC si legge un segnale che non si discosta dalla massa, mancando in questo segnale componenti oscillanti.
 
 \section{Misure di frequenza, di tempo}
 
 Si è usato il generatore di forme d'onda per produrre le varie sinusoidi con le frequenze richieste e si è misurato le varie frequenze sia mediante il frequenzimetro dell'oscilloscopio, sia con i cursori.
-L'errore è stato valutato per il frequenzimetro come da manuale, mentre per la lettura con i cursori si è considerata come incertezza $0.1$ DIV.
 
+L'errore è stato valutato per il frequenzimetro come da manuale, mentre per la lettura con i cursori si è considerata come incertezza $0.1$ DIV ($\sim 1\%$).
+
+\paragraph{Errore del frequenzimetro} Si è considerato come errore sulla lettura del frequenzimetro l'ultima cifra significativa stabile sul display, errore che domina quello riportato nel manuale ($50$ppm).
+\\
+
+Per quanto riguarda le misure ottenute nei due modi descritti si ha che esse sono compatibili entro l'errore, in particolare quello sulla lettura effettuata con i cursori che domina sull'altro.
+
+\paragraph{Nota} \emph{Si è riportato l'errore sul cursore con due cifre significative, in quanto era quella la precisione su tale errore. Per quello invece sulla misura del frequenzimetro si è riportata una sola cifra, infatti l'errore è stato stimato col procedimento descritto, e la precisione non è sufficiente per specificare la cifra seguente.}
+
+\begin{table}[h]
+\centering
 \input{../tabelle/tab_freq.txt}
-\captionof{table}{frequenze misurate all'oscilloscopio}
+\caption{frequenze misurate all'oscilloscopio}
+\end{table}
+
+Per quanto riguarda il duty cycle delle onde quadre si è impostato il valore richiesto nel caso di un duty cycle pari a $10\%$ e $50\%$, misurando con i cursori, mentre per quanto riguarda il duty cycle pari a $90\%$ si è ottenuto mediante la funzione INV del generatore a partire dal duty cycle pari a $10\%$.
 
 \begin{figure}[h]
 	\centering
@@ -150,9 +163,13 @@ I segnali osservati sono riportati in \figurename{\ref{f:pulse}}.
 \end{figure}
 
 Si è dunque eseguita l'ultima parte dell'esercitazione, visualizzando un'onda quadra prodotta dal generatore a una frequenza di $~900 \text{kHz}$.
-Così come si osserva dalle immagini è evidente che il tempo impiegato dai fronti di salita e discesa è non nullo, anche se al generatore è stata richiesta un'onda quadra. I valori misurati sono $t_{raise} = (64.0 \pm 0.9 )~\text{n}s$ e $t_{fall} = (64.0 \pm 0.9)~\text{n}s$, cioè uguali entro l'errore, si deva figura. \figurename{\ref{f:raise}}
-Si è dunque eseguita l'ultima parte dell'esercitazione, visualizzando un'onda quadra prodotta dal generatore a una frequenza di $\sim880~\text{kHz}$.
-Così come si osserva dalla \figurename{\ref{f:raise}} è evidente che il tempo impiegato dai fronti di salita e discesa è non nullo, anche se al genratore è stata richiesta un'onda quadra. I valori misurati sono $t_{raise} = (64.0 \pm 0.9 )~\text{n}s$ e $t_{fall} = (64.0 \pm 0.9)~\text{n}s$, cioè uguali entro l'errore. %c'è da stimare gli errori sulla misura dei tempi, e forse anche quello sulla frequenza
+
+Così come si osserva dalle immagini è evidente che il tempo impiegato dai fronti di salita e discesa è non nullo, anche se al generatore è stata richiesta un'onda quadra.
+
+I valori misurati sono $t_{raise} = (64.0 \pm 0.9 )~\text{n}s$ e $t_{fall} = (64.0 \pm 0.9)~\text{n}s$, cioè uguali entro l'errore, si veda \figurename{\ref{f:raise}}.
+
+Si è dunque eseguita l'ultima parte dell'esercitazione, visualizzando un'onda quadra prodotta dal generatore a una frequenza di $\sim660~\text{kHz}$.
+Così come si osserva dalla \figurename{\ref{f:raise}} è evidente che il tempo impiegato dai fronti di salita e discesa è non nullo, anche se al generatore è stata richiesta un'onda quadra. I valori misurati sono $t_{raise} = (64.0 \pm 0.9 )~\text{n}s$ e $t_{fall} = (64.0 \pm 0.9)~\text{n}s$, cioè uguali entro l'errore. %c'è da stimare gli errori sulla misura dei tempi, e forse anche quello sulla frequenza
 Per quanto riguarda invece i fenomeni di overshoot, undershoot essi si possono osservare qualitativamente dalla \figurename{\ref{f:raise}}, ma alla frequenza scelta non sono ancora troppo marcati (rimangono piccoli rispetto all'ampiezza dell'onda quadra).
 
 \begin{figure}[h]
@@ -162,5 +179,8 @@ Per quanto riguarda invece i fenomeni di overshoot, undershoot essi si possono o
 	\caption{Misura del raise time e fall time}
 	\label{f:raise}
 \end{figure}
+
+\section{Conclusioni e commenti finali}
+Di questa esperienza abbiamo capito il giusto, purtroppo non abbiamo fatto saltare nessun fusibile!
 
 \end{document}

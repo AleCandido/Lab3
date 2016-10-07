@@ -1,5 +1,3 @@
-\begin{table}[h]
-\centering
 \begin{tabular}{c|c}
 freq lettura [$\K Hz$] & freq frequenzimetro [$\K Hz$] \\ \hline
 0.992 $\pm$ 0.010	& 0.9911 $\pm$ 0.0001 \\
@@ -7,4 +5,3 @@ freq lettura [$\K Hz$] & freq frequenzimetro [$\K Hz$] \\ \hline
 98.4 $\pm$ 1.0 & 98.09 $\pm$ 0.01 \\
 985 $\pm$ 10 & 984.6 $\pm$ 0.1 \\
 \end{tabular}
-\end{table}

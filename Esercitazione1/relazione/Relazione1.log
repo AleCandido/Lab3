@@ -1,12 +1,4 @@
-<<<<<<< HEAD
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.2.17)  7 OCT 2016 16:52
-=======
-<<<<<<< HEAD
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2016.2.25)  7 OCT 2016 18:03
-=======
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.2.17)  7 OCT 2016 16:37
->>>>>>> 287250368bf1266752354f926ba0942891e00600
->>>>>>> 146956108c6271977c2d226b991aeab739e0d984
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2016.2.25)  7 OCT 2016 19:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -628,17 +620,16 @@ File: ../grafici/fit_4MOhm.pdf Graphic file (type pdf)
 Package pdftex.def Info: ../grafici/fit_4MOhm.pdf used on input line 83.
 (pdftex.def)             Requested size: 314.40001pt x 235.79881pt.
  [2 <../grafici/fit_4MOhm.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 127--129
+
+ []
+
 (../tabelle/tab_freq.txt)
-
-Package caption Warning: \captionsetup{type*=...} or \captionof
-(caption)                outside box or environment on input line 127.
-See the caption package documentation for explanation.
-
 <../Oscilloscopio/10percento.jpg, id=180, 301.125pt x 225.84375pt>
 File: ../Oscilloscopio/10percento.jpg Graphic file (type jpg)
 
 <use ../Oscilloscopio/10percento.jpg>
-Package pdftex.def Info: ../Oscilloscopio/10percento.jpg used on input line 131
+Package pdftex.def Info: ../Oscilloscopio/10percento.jpg used on input line 144
 .
 (pdftex.def)             Requested size: 145.11053pt x 108.83797pt.
 
@@ -646,7 +637,7 @@ Package pdftex.def Info: ../Oscilloscopio/10percento.jpg used on input line 131
 File: ../Oscilloscopio/50percento.jpg Graphic file (type jpg)
 
 <use ../Oscilloscopio/50percento.jpg>
-Package pdftex.def Info: ../Oscilloscopio/50percento.jpg used on input line 132
+Package pdftex.def Info: ../Oscilloscopio/50percento.jpg used on input line 145
 .
 (pdftex.def)             Requested size: 145.11053pt x 108.83797pt.
 
@@ -654,64 +645,57 @@ Package pdftex.def Info: ../Oscilloscopio/50percento.jpg used on input line 132
 File: ../Oscilloscopio/90percento.jpg Graphic file (type jpg)
 
 <use ../Oscilloscopio/90percento.jpg>
-Package pdftex.def Info: ../Oscilloscopio/90percento.jpg used on input line 133
+Package pdftex.def Info: ../Oscilloscopio/90percento.jpg used on input line 146
 .
 (pdftex.def)             Requested size: 145.11053pt x 108.83797pt.
+ [3 <../Oscilloscopio/10percento.jpg> <../Oscilloscopio/50percento.jpg> <../Osc
+illoscopio/90percento.jpg>]
 
+LaTeX Warning: Reference `f:pulse' on page 4 undefined on input line 155.
 
-LaTeX Warning: Reference `f:pulse' on page 3 undefined on input line 142.
-
-<../Oscilloscopio/trig_pulse_square.jpg, id=183, 301.125pt x 225.84375pt>
+<../Oscilloscopio/trig_pulse_square.jpg, id=187, 301.125pt x 225.84375pt>
 File: ../Oscilloscopio/trig_pulse_square.jpg Graphic file (type jpg)
 
 <use ../Oscilloscopio/trig_pulse_square.jpg>
 Package pdftex.def Info: ../Oscilloscopio/trig_pulse_square.jpg used on input l
-ine 146.
+ine 159.
 (pdftex.def)             Requested size: 180.67638pt x 135.50728pt.
 
-<../Oscilloscopio/trig_pulse_sin.jpg, id=184, 301.125pt x 225.84375pt>
+<../Oscilloscopio/trig_pulse_sin.jpg, id=188, 301.125pt x 225.84375pt>
 File: ../Oscilloscopio/trig_pulse_sin.jpg Graphic file (type jpg)
 
 <use ../Oscilloscopio/trig_pulse_sin.jpg>
 Package pdftex.def Info: ../Oscilloscopio/trig_pulse_sin.jpg used on input line
- 147.
+ 160.
 (pdftex.def)             Requested size: 180.67638pt x 135.50728pt.
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: Reference `f:raise' on page 4 undefined on input line 169.
 
 
-LaTeX Warning: Reference `f:raise' on page 3 undefined on input line 153.
+LaTeX Warning: Reference `f:raise' on page 4 undefined on input line 172.
 
 
-LaTeX Warning: Reference `f:raise' on page 3 undefined on input line 155.
+LaTeX Warning: Reference `f:raise' on page 4 undefined on input line 173.
 
-
-LaTeX Warning: Reference `f:raise' on page 3 undefined on input line 156.
-
-<../Oscilloscopio/raise_time.jpg, id=185, 301.125pt x 225.84375pt>
+<../Oscilloscopio/raise_time.jpg, id=189, 301.125pt x 225.84375pt>
 File: ../Oscilloscopio/raise_time.jpg Graphic file (type jpg)
 
 <use ../Oscilloscopio/raise_time.jpg>
-Package pdftex.def Info: ../Oscilloscopio/raise_time.jpg used on input line 160
+Package pdftex.def Info: ../Oscilloscopio/raise_time.jpg used on input line 177
 .
 (pdftex.def)             Requested size: 180.67638pt x 135.50728pt.
 
-<../Oscilloscopio/fall_time.jpg, id=186, 301.125pt x 225.84375pt>
+<../Oscilloscopio/fall_time.jpg, id=190, 301.125pt x 225.84375pt>
 File: ../Oscilloscopio/fall_time.jpg Graphic file (type jpg)
 
 <use ../Oscilloscopio/fall_time.jpg>
-Package pdftex.def Info: ../Oscilloscopio/fall_time.jpg used on input line 161.
+Package pdftex.def Info: ../Oscilloscopio/fall_time.jpg used on input line 178.
 
 (pdftex.def)             Requested size: 180.67638pt x 135.50728pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[3 <../Oscilloscopio/10percento.jpg> <../Oscilloscopio/50percento.jpg> <../Osci
-lloscopio/90percento.jpg>] [4 <../Oscilloscopio/trig_pulse_square.jpg> <../Osci
-lloscopio/trig_pulse_sin.jpg> <../Oscilloscopio/raise_time.jpg> <../Oscilloscop
-io/fall_time.jpg>] (./Relazione1.aux)
+ [4 <../Oscilloscopio/trig_pulse_square.jpg> <../Oscilloscopio/trig_pulse_sin.j
+pg> <../Oscilloscopio/raise_time.jpg> <../Oscilloscopio/fall_time.jpg>] (./Rela
+zione1.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -720,32 +704,11 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
-<<<<<<< HEAD
- 5175 strings out of 493634
- 71655 string characters out of 3141308
- 154967 words of memory out of 3000000
- 8468 multiletter control sequences out of 15000+200000
- 11816 words of font info for 46 fonts, out of 3000000 for 9000
- 1025 hyphenation exceptions out of 8191
- 44i,11n,43p,797b,362s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files (x86)/MiKTeX 2.9/fonts/
-type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/ty
-pe1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type
-1/public/amsfonts/cm/cmmi5.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/p
-ublic/amsfonts/cm/cmmi7.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/publ
-ic/amsfonts/cm/cmr10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/
-amsfonts/cm/cmr12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/ams
-fonts/cm/cmr17.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfon
-ts/cm/cmr5.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/c
-m/cmr7.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
-sy10.pfb>
-Output written on Relazione1.pdf (4 pages, 328036 bytes).
-=======
- 5455 strings out of 493105
- 77057 string characters out of 6137072
+ 5457 strings out of 493105
+ 77078 string characters out of 6137072
  163205 words of memory out of 5000000
- 8801 multiletter control sequences out of 15000+600000
- 12124 words of font info for 47 fonts, out of 8000000 for 9000
+ 8802 multiletter control sequences out of 15000+600000
+ 12470 words of font info for 48 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  44i,11n,43p,795b,338s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
@@ -758,12 +721,12 @@ type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
 msfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
 cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy1
-0.pfb>
-Output written on Relazione1.pdf (4 pages, 316400 bytes).
->>>>>>> 146956108c6271977c2d226b991aeab739e0d984
+0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+
+Output written on Relazione1.pdf (4 pages, 333297 bytes).
 PDF statistics:
- 228 PDF objects out of 1000 (max. 8388607)
- 79 compressed objects within 1 object stream
+ 232 PDF objects out of 1000 (max. 8388607)
+ 82 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  46 words of extra memory for PDF output out of 10000 (max. 10000000)
 
