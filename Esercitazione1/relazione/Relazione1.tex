@@ -23,6 +23,7 @@
 \newcommand\ohm{\Omega}
 \newcommand\K{\text{k}}
 \newcommand\M{\text{M}}
+\newcommand\m{\text{m}}
 
 %%% SECTION TITLE APPEARANCE
 \usepackage{sectsty}
@@ -42,7 +43,7 @@ Lo scopo dell'esercitazione è di impratichirsi con la strumentazione disponibil
 \section{Misure di tensione e corrente}
 
 \subsection{Partitore di tensione $\sim1 \K \ohm$}
-Si è costruito il partitore di tensione illustrato nella scheda (Figura 1) usando due resistenze $R_1 = 976 \pm 9~\ohm$ e $R_2 = 974 \pm 9 ~\ohm$.
+Si è costruito il partitore di tensione illustrato nella scheda (al punto 2.b) usando due resistenze $R_1 = 976 \pm 9~\ohm$ e $R_2 = 974 \pm 9 ~\ohm$.
 Si è variata la tensione dell'alimentatore tra $0~V$ e $10~V$ e volta per volta si è misurata con il multimetro digitale la tensione erogata dall'alimentatore $V_{in}$ e ai capi della resistenza $R2$, $V_{out}$. Gli errori sono stati ottenuti usando le indicazioni del manuale del multimetro.
 Il rapporto atteso tra le due tensioni è $1/(1+(R_1/R_2))=0.499 \pm 0.005$. 
 I risultati della misura sono qui di seguito riportati:
@@ -52,50 +53,60 @@ I risultati della misura sono qui di seguito riportati:
 	\begin{minipage}[h]{0.35\textwidth}
 	\centering
 	\input{../tabelle/tab_1KOhm.txt}
-	\captionof{table}{Partitore di tensione, resistenza $\sim 1\K\ohm$}
+	\captionof{table}{Dati raccolti}
 	\end{minipage}%
 	\begin{minipage}[h]{0.65\textwidth}
 	\centering
 	\includegraphics[width=1\textwidth]{../grafici/fit_1KOhm.pdf}
-	\caption{Partitore di tensione, resistenza $\sim 1\K\ohm$}
+	\caption{Grafico delle misure e del fit}
 	\end{minipage}
 \end{figure}
 
 
 Come atteso il rapporto tra le tensioni è costante, ovvero la relazione che lega $V_{out}$ e $V_{in}$ è lineare.
-Abbiamo eseguito un fit lineare numerico che tenesse conto degli errori su entrambi gli assi poiché gli errori sono confrontabili. I risultati del fit sono: $V_{out}/V_{in}=0.5009 \pm 0.0016$, e un valore pari a $(0.2\pm 0.8) mV$ del'intercetta. Abbiamo ottenuto  $\chi^2/\text{ndof}= 1.16/9$.
+Abbiamo eseguito un fit lineare numerico che tenesse conto degli errori su entrambi gli assi poiché gli errori sono confrontabili. I risultati del fit sono: $V_{out}/V_{in}=0.5009 \pm 0.0016$, e un valore pari a $0.2 \pm 0.8 ~ \m V$ del'intercetta. Abbiamo ottenuto  $\chi^2/\text{ndof}= 1.16/9$.
 
-Il valore del $\chi^2$ è lontano dal valor medio della distribuzione, probabilmente perché le incertezze del tester digitale sono sovrastimate. La misura tuttavia è da confrontare con quella prevista a partire dalla misura delle resistenze, e risulta compatibile entro gli errori. Inoltre per l'intercetta si ha una misura di $0$.
+\paragraph{Conclusioni} Il valore del $\chi^2$ è lontano dal valor medio della distribuzione, probabilmente perché le incertezze del tester digitale sono sovrastimate. La misura tuttavia è da confrontare con quella prevista a partire dalla misura delle resistenze, e risulta compatibile entro gli errori. Inoltre per l'intercetta si ha una misura di $0$.
 
 \subsection{Partitore di tensione $\sim4\M\ohm$}
-Si sono usate adesso resistenze $R_1=4.87 \pm 0.07 ~\M\ohm a$ e $R_2=3.70 \pm 0.06 ~\M\ohm$ e si è proceduto alla stessa misura del punto precedente. In questo caso la relazione è lineare, ma non col coefficiente atteso se l'impedenza di ingresso del multimetro fosse trascurabile. Questa infatti da manuale ammonta a $10 ~ \M\ohm$ , ed è confrontabile con le resistenze in gioco.
+Si sono usate adesso resistenze $R_1=4.87 \pm 0.07 ~\M\ohm$ e $R_2=3.70 \pm 0.06 ~\M\ohm$ e si è proceduto alla stessa misura del punto precedente. La relazione è lineare, ma non col coefficiente atteso se l'impedenza di ingresso del multimetro fosse trascurabile. Questa infatti da manuale ammonta a $10 ~ \M\ohm$, ed è confrontabile con le resistenze in gioco.
 
 \begin{figure}[h]
 \centering
 	\begin{minipage}[h]{0.35\textwidth}
 		\centering
 		\input{../tabelle/tab_4MOhm.txt}
-		\captionof{table}{Partitore di tensione, resistenza $\sim 4\M\ohm$}
+		\captionof{table}{Dati raccolti}
 	\end{minipage}%
 	\begin{minipage}[h]{0.65\textwidth}
 		\centering
 		\includegraphics[width=1\textwidth]{../grafici/fit_4MOhm.pdf}
-		\caption{Partitore di tensione, resistenza $\sim 4\M\ohm$}
+		\caption{Grafico delle misure e del fit}
 	\end{minipage}
 \end{figure}
 
-Il fit è stato eseguito come al punto precedente e i valori ottenuti sono $V_{out}/V_{in} = 0.4600 \pm 0.0015$ e per l'intercetta $0.2 \pm 0.8 mV$. Si è ottenuto inoltre $\chi^2 / \text{ndof} = 1.94 / 9$.
+Il fit è stato eseguito come al punto precedente e i valori ottenuti sono $V_{out}/V_{in} = 0.4600 \pm 0.0015$ e per l'intercetta $0.2 \pm 0.8 ~ \m V$. Si è ottenuto inoltre $\chi^2 / \text{ndof} = 1.94 / 9$.
 
-Perciò sia per quanto riguarda l'intercetta che il $\chi^2$ si applicano le stesse considerazioni del punto precedente. Per quanto riguarda la pendenza della retta ci saremmo attesi un valore pari a  $1/(1+(R_1/R_2))=0.568 \pm 0.004$, che evidentemente non è compatibile con quanto risulta dal fit. Il motivo di ciò è, come detto sopra, l'impedenza d'ingresso del tester digitale.
+\paragraph{Conclusioni} Perciò sia per quanto riguarda l'intercetta che il $\chi^2$ si applicano le stesse considerazioni del punto precedente. Per quanto riguarda la pendenza della retta ci saremmo attesi un valore pari a  $1/(1+(R_1/R_2))=0.568 \pm 0.004$, che evidentemente non è compatibile con quanto risulta dal fit. Il motivo di ciò è, come detto sopra, l'impedenza d'ingresso del tester digitale.
 
-Considerando l'impedenza del tester si ottiene per la pendenza $\frac{1}{1 + R_1 (1/R_2 + 1/R_T)}$, dove si è indicato con $R_T$ la resistenza interna del tester. Invertendo la formula e propagando l'errore si trova $R_T = 9.0 \pm 0.7 \M\ohm$.
+\paragraph{Impedenza d'ingresso}Considerando l'impedenza del tester si ottiene per la pendenza $\frac{1}{1 + R_1 (1/R_2 + 1/R_T)}$, dove si è indicato con $R_T$ la resistenza interna del tester. Invertendo la formula e propagando l'errore si trova $R_T = 9.0 \pm 0.7 ~ \M\ohm$.
 
 \subsection{Partitore di corrente}
-È stato realizzato il partitore di tensione illustrato nella scheda (Figura 3) con resistenze di valori: $R1=217 \pm 3 ~\ohm$, $R2=549 \pm 6 ~ \ohm$ e $R3=100.0 \pm 0.8 ~\K\ohm$. Si è proceduto alla misura di tensione di alimentazione e intensità di corrente passante per le resistenze $R1$ e $R2$ attraverso il multimetro digitale.
+È stato realizzato il partitore di tensione illustrato nella scheda (al punto 2.e) con resistenze di valori: $R1=217 \pm 3 ~\ohm$, $R2=549 \pm 6 ~ \ohm$ e $R3=100.0 \pm 0.8 ~\K\ohm$. Si è proceduto a misurare l'intensità di corrente passante per le resistenze $R1$ e $R2$ e la tensione di alimentazione, per mezzo del multimetro digitale.
 
-I risultati delle misure sono stati: una tensione $V = 19.74 \pm 0.12~ V$ e intensità di corrente $I_1=49 \pm 1 ~\mu A$ e $I_2 = 129 \pm 2 ~ \mu A$. Trattandosi di un partitore di corrente le correnti previste sono $I_1 = V/R_{tot}*R_2/(R_1+R_2)$ e $I_1 = V/R_{tot}*R_1/(R_1+R_2)$, dove $V/R_{tot}$ è la corrente totale. In questo caso $R_{tot} = R_3 + R_1//R_2$ (con $R_1//R_2$ indico il parallelo di $R_1$ e $R_2$) e con ottima approssimazione $I_tot=V/R_3$ poichè $R_3 >> R1//R2 \sim 160 ~\ohm$.
+I risultati delle misure sono stati: una tensione $V = 19.74 \pm 0.12~ V$ e intensità di corrente $I_1=49 \pm 1 ~\mu A$ e $I_2 = 129 \pm 2 ~ \mu A$. 
 
-Segue che le correnti attese sono $I_1 = 54.9 \pm 1.6 ~\mu A$ e $I_2 = 139 \pm 4~ \mu A$, risultati compatibili solo entro $2 \sigma$. ??
+Trattandosi di un partitore di corrente le correnti previste sono:
+\begin{align}
+I_1 &= \frac{V}{R_{tot}}\frac{R_2}{R_1+R_2}
+I_1 &= \frac{V}{R_{tot}}\frac{R_1}{R_1+R_2}
+\end{align}
+dove $V/R_{tot}$ è la corrente totale. In questo caso $R_{tot} = R_3 + R_1//R_2$ (con $R_1//R_2$ indico il parallelo di $R_1$ e $R_2$) e con ottima approssimazione $I_{tot}=V/R_3$ poichè $R_3 >> R1//R2 \sim 160 ~\ohm$.
+Perciò le correnti attese sono $I_1 = 54.9 \pm 1.6 ~\mu A$ e $I_2 = 139 \pm 4~ \mu A$.
+
+\paragraph{Conclusioni} Le misure ottenute sono compatibili con i risultati attesi solo entro $2 \sigma$. 
+% Se avessi una stima statistica della parent distribution (media e deviazione standard sotto l'ipotesi di gaussianità) allora, fregandomene dell'errore sulla 'seconda' misura potrei verificare a quanti \sigma sta dalla media.
+% Avendo due misure con errore o due stime statistiche diverse non ho la più pallida idea di come confrontarle e su che base dire che sono compatibili
 
 
 \section{Uso dell'oscilloscopio}
@@ -108,6 +119,9 @@ Le misure effettuate sono: $V_{in}=19.6 \pm 0.6 ~V$ e $V_{out}= 3.36 \pm 0.11 ~ 
 Nell'ambito di questa misura si è confrontato come richiesto le funzioni DC e AC dell'oscilloscopio, costatando come aspettato che in AC si legge un segnale che non si discosta dalla massa, mancando in questo segnale componenti armoniche.
 
 \section{Misure di frequenza, di tempo}
+
+Si è usato il generatore di forme d'onda per produrre le varie sinusoidi con le frequenze richieste e si è misurato le varie frequenze sia mediante il frequenzimetro dell'oscilloscopio, sia con i cursori.
+L'errore è stato valutato per il frequenzimetro come da manuale, mentre per la lettura con i cursori si è considerata come incertezza $0.1$ DIV.
 
 \input{../tabelle/tab_freq.txt}
 \captionof{table}{frequenze misurate all'oscilloscopio}
@@ -148,8 +162,5 @@ Per quanto riguarda invece i fenomeni di overshoot, undershoot essi si possono o
 	\caption{Misura del raise time e fall time}
 	\label{f:raise}
 \end{figure}
-
-\section{Conclusioni e commenti finali}
-Stronzate varie ed eventuali
 
 \end{document}
