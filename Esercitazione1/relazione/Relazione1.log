@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.2.17)  7 OCT 2016 15:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.2.17)  7 OCT 2016 16:34
 entering extended mode
 **./Relazione1.tex
 (Relazione1.tex
@@ -746,10 +746,10 @@ illoscopio/90percento.jpg> <../Oscilloscopio/trig_pulse_square.jpg> <../Oscillo
 scopio/trig_pulse_sin.jpg>] [4 <../Oscilloscopio/raise_time.jpg> <../Oscillosco
 pio/fall_time.jpg>] (Relazione1.aux) ) 
 Here is how much of TeX's memory you used:
- 5177 strings out of 493634
- 71663 string characters out of 3141308
- 154969 words of memory out of 3000000
- 8470 multiletter control sequences out of 15000+200000
+ 5175 strings out of 493634
+ 71655 string characters out of 3141308
+ 154967 words of memory out of 3000000
+ 8468 multiletter control sequences out of 15000+200000
  11816 words of font info for 46 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
  44i,11n,43p,797b,362s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -764,7 +764,7 @@ fonts/cm/cmr17.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfon
 ts/cm/cmr5.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/c
 m/cmr7.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
 sy10.pfb>
-Output written on Relazione1.pdf (4 pages, 327600 bytes).
+Output written on Relazione1.pdf (4 pages, 327344 bytes).
 PDF statistics:
  222 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

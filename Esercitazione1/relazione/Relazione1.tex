@@ -21,8 +21,8 @@
 \lfoot{}\cfoot{\thepage}\rfoot{}
 
 \newcommand\ohm{\Omega}
-\newcommand\kohm{\text{k}\Omega}
-\newcommand\Mohm{\text{M}\Omega}
+\newcommand\K{\text{k}}
+\newcommand\M{\text{M}}
 
 %%% SECTION TITLE APPEARANCE
 \usepackage{sectsty}
@@ -41,8 +41,8 @@ Lo scopo dell'esercitazione è di impratichirsi con la strumentazione disponibil
 
 \section{Misure di tensione e corrente}
 
-\subsection{Partitore di tensione $\sim1\text{k}\Omega$}
-Si è costruito il partitore di tensione illustrato nella scheda (Figura 1) usando due resistenze $R_1 = 976 \pm 9~\Omega$ e $R_2 = 974 \pm 9 ~\Omega$.
+\subsection{Partitore di tensione $\sim1 \K \ohm$}
+Si è costruito il partitore di tensione illustrato nella scheda (Figura 1) usando due resistenze $R_1 = 976 \pm 9~\ohm$ e $R_2 = 974 \pm 9 ~\ohm$.
 Si è variata la tensione dell'alimentatore tra $0~V$ e $10~V$ e volta per volta si è misurata con il multimetro digitale la tensione erogata dall'alimentatore $V_{in}$ e ai capi della resistenza $R2$, $V_{out}$. Gli errori sono stati ottenuti usando le indicazioni del manuale del multimetro.
 Il rapporto atteso tra le due tensioni è $1/(1+(R_1/R_2))=0.499 \pm 0.005$. 
 I risultati della misura sono qui di seguito riportati:
@@ -52,12 +52,12 @@ I risultati della misura sono qui di seguito riportati:
 	\begin{minipage}[h]{0.35\textwidth}
 	\centering
 	\input{../tabelle/tab_1KOhm.txt}
-	\captionof{table}{Partitore di tensione, resistenza $\sim 1k\Omega$}
+	\captionof{table}{Partitore di tensione, resistenza $\sim 1\K\ohm$}
 	\end{minipage}%
 	\begin{minipage}[h]{0.65\textwidth}
 	\centering
 	\includegraphics[width=1\textwidth]{../grafici/fit_1KOhm.pdf}
-	\caption{Partitore di tensione, resistenza $\sim 1k\Omega$}
+	\caption{Partitore di tensione, resistenza $\sim 1\K\ohm$}
 	\end{minipage}
 \end{figure}
 
@@ -67,20 +67,20 @@ Abbiamo eseguito un fit lineare numerico che tenesse conto degli errori su entra
 
 Il valore del $\chi^2$ è lontano dal valor medio della distribuzione, probabilmente perché le incertezze del tester digitale sono sovrastimate. La misura tuttavia è da confrontare con quella prevista a partire dalla misura delle resistenze, e risulta compatibile entro gli errori. Inoltre per l'intercetta si ha una misura di $0$.
 
-\subsection{Partitore di tensione $\sim4\text{M}\Omega$}
-Si sono usate adesso resistenze $R_1=4.87 \pm 0.07 ~\Mohm a$ e $R_2=3.70 \pm 0.06 ~\Mohm$ e si è proceduto alla stessa misura del punto precedente. In questo caso la relazione è lineare, ma non col coefficiente atteso se l'impedenza di ingresso del multimetro fosse trascurabile. Questa infatti da manuale ammonta a $10 ~ \text{M}\Omega$ , ed è confrontabile con le resistenze in gioco.
+\subsection{Partitore di tensione $\sim4\M\ohm$}
+Si sono usate adesso resistenze $R_1=4.87 \pm 0.07 ~\M\ohm a$ e $R_2=3.70 \pm 0.06 ~\M\ohm$ e si è proceduto alla stessa misura del punto precedente. In questo caso la relazione è lineare, ma non col coefficiente atteso se l'impedenza di ingresso del multimetro fosse trascurabile. Questa infatti da manuale ammonta a $10 ~ \M\ohm$ , ed è confrontabile con le resistenze in gioco.
 
 \begin{figure}[h]
 \centering
 	\begin{minipage}[h]{0.35\textwidth}
 		\centering
 		\input{../tabelle/tab_4MOhm.txt}
-		\captionof{table}{Partitore di tensione, resistenza $\sim 4\Mohm$}
+		\captionof{table}{Partitore di tensione, resistenza $\sim 4\M\ohm$}
 	\end{minipage}%
 	\begin{minipage}[h]{0.65\textwidth}
 		\centering
 		\includegraphics[width=1\textwidth]{../grafici/fit_4MOhm.pdf}
-		\caption{Partitore di tensione, resistenza $\sim 4\Mohm$}
+		\caption{Partitore di tensione, resistenza $\sim 4\M\ohm$}
 	\end{minipage}
 \end{figure}
 
@@ -88,12 +88,12 @@ Il fit è stato eseguito come al punto precedente e i valori ottenuti sono $V_{o
 
 Perciò sia per quanto riguarda l'intercetta che il $\chi^2$ si applicano le stesse considerazioni del punto precedente. Per quanto riguarda la pendenza della retta ci saremmo attesi un valore pari a  $1/(1+(R_1/R_2))=0.568 \pm 0.004$, che evidentemente non è compatibile con quanto risulta dal fit. Il motivo di ciò è, come detto sopra, l'impedenza d'ingresso del tester digitale.
 
-Considerando l'impedenza del tester si ottiene per la pendenza $\frac{1}{1 + R_1 (1/R_2 + 1/R_T)}$, dove si è indicato con $R_T$ la resistenza interna del tester. Invertendo la formula e propagando l'errore si trova $R_T = 9.0 \pm 0.7 \text{M}\Omega$.
+Considerando l'impedenza del tester si ottiene per la pendenza $\frac{1}{1 + R_1 (1/R_2 + 1/R_T)}$, dove si è indicato con $R_T$ la resistenza interna del tester. Invertendo la formula e propagando l'errore si trova $R_T = 9.0 \pm 0.7 \M\ohm$.
 
 \subsection{Partitore di corrente}
-È stato realizzato il partitore di tensione illustrato nella scheda (Figura 3) con resistenze di valori: $R1=217 \pm 3 ~\Omega$, $R2=549 \pm 6 ~ \Omega$ e $R3=100.0 \pm 0.8 ~\text{k}\Omega$. Si è proceduto alla misura di tensione di alimentazione e intensità di corrente passante per le resistenze $R1$ e $R2$ attraverso il multimetro digitale.
+È stato realizzato il partitore di tensione illustrato nella scheda (Figura 3) con resistenze di valori: $R1=217 \pm 3 ~\ohm$, $R2=549 \pm 6 ~ \ohm$ e $R3=100.0 \pm 0.8 ~\K\ohm$. Si è proceduto alla misura di tensione di alimentazione e intensità di corrente passante per le resistenze $R1$ e $R2$ attraverso il multimetro digitale.
 
-I risultati delle misure sono stati: una tensione $V = 19.74 \pm 0.12~ V$ e intensità di corrente $I_1=49 \pm 1 ~\mu A$ e $I_2 = 129 \pm 2 ~ \mu A$. Trattandosi di un partitore di corrente le correnti previste sono $I_1 = V/R_{tot}*R_2/(R_1+R_2)$ e $I_1 = V/R_{tot}*R_1/(R_1+R_2)$, dove $V/R_{tot}$ è la corrente totale. In questo caso $R_{tot} = R_3 + R_1//R_2$ (con $R_1//R_2$ indico il parallelo di $R_1$ e $R_2$) e con ottima approssimazione $I_tot=V/R_3$ poichè $R_3 >> R1//R2 \sim 160 ~\Omega$.
+I risultati delle misure sono stati: una tensione $V = 19.74 \pm 0.12~ V$ e intensità di corrente $I_1=49 \pm 1 ~\mu A$ e $I_2 = 129 \pm 2 ~ \mu A$. Trattandosi di un partitore di corrente le correnti previste sono $I_1 = V/R_{tot}*R_2/(R_1+R_2)$ e $I_1 = V/R_{tot}*R_1/(R_1+R_2)$, dove $V/R_{tot}$ è la corrente totale. In questo caso $R_{tot} = R_3 + R_1//R_2$ (con $R_1//R_2$ indico il parallelo di $R_1$ e $R_2$) e con ottima approssimazione $I_tot=V/R_3$ poichè $R_3 >> R1//R2 \sim 160 ~\ohm$.
 
 Segue che le correnti attese sono $I_1 = 54.9 \pm 1.6 ~\mu A$ e $I_2 = 139 \pm 4~ \mu A$, risultati compatibili solo entro $2 \sigma$. ??
 
@@ -101,9 +101,9 @@ Segue che le correnti attese sono $I_1 = 54.9 \pm 1.6 ~\mu A$ e $I_2 = 139 \pm 4
 \section{Uso dell'oscilloscopio}
 È stato realizzato nuovamente il circuito al punto 2.c della scheda e questa volta si è proceduto alle misure di tensione con l'oscilloscopio. In maniera simile al punto precedente possiamo determinare l'impedenza di ingresso dell'oscilloscopio.
 
-Le resistenze in uso sono $R1_=3.83 \pm 6~\text{M}\Omega$ e  $R1_=3.95 \pm 6~\text{M}\Omega$.
+Le resistenze in uso sono $R1_=3.83 \pm 6~\text{M}\ohm$ e  $R1_=3.95 \pm 6~\text{M}\ohm$.
 
-Le misure effettuate sono: $V_{in}=19.6 \pm 0.6 ~V$ e $V_{out}= 3.36 \pm 0.11 ~ V$, con errori calcolati a partire dalle specifiche del manuale. L'impedenza di ingresso dell'oscilloscopio determinata come prima è $R_T=1.0 \pm 0.1 ~ \text{M}\Omega$, che è in perfetto accordo con l'impedenza indicata dal manuale di $1.00 \pm 0.02 ~\text{M} \Omega$.
+Le misure effettuate sono: $V_{in}=19.6 \pm 0.6 ~V$ e $V_{out}= 3.36 \pm 0.11 ~ V$, con errori calcolati a partire dalle specifiche del manuale. L'impedenza di ingresso dell'oscilloscopio determinata come prima è $R_T=1.0 \pm 0.1 ~ \text{M}\ohm$, che è in perfetto accordo con l'impedenza indicata dal manuale di $1.00 \pm 0.02 ~\text{M} \ohm$.
 
 Nell'ambito di questa misura si è confrontato come richiesto le funzioni DC e AC dell'oscilloscopio, costatando come aspettato che in AC si legge un segnale che non si discosta dalla massa, mancando in questo segnale componenti armoniche.
 
@@ -136,9 +136,9 @@ I segnali osservati sono riportati in \figurename{\ref{f:pulse}}.
 \end{figure}
 
 Si è dunque eseguita l'ultima parte dell'esercitazione, visualizzando un'onda quadra prodotta dal generatore a una frequenza di $~900 \text{kHz}$.
-Così come si osserva dalle immagini è evidente che il tempo impiegato dai fronti di salita e discesa è non nullo, anche se al genratore è stata richiesta un'onda quadra. I valori misurati sono $t_{raise} = (64.0 \pm )~\text{n}s$ e $t_{fall} = (64.0 \pm )~\text{n}s$, cioè uguali entro l'errore, si deva figura. \figurename{\ref{f:raise}}
+Così come si osserva dalle immagini è evidente che il tempo impiegato dai fronti di salita e discesa è non nullo, anche se al generatore è stata richiesta un'onda quadra. I valori misurati sono $t_{raise} = (64.0 \pm 0.9 )~\text{n}s$ e $t_{fall} = (64.0 \pm 0.9)~\text{n}s$, cioè uguali entro l'errore, si deva figura. \figurename{\ref{f:raise}}
 Si è dunque eseguita l'ultima parte dell'esercitazione, visualizzando un'onda quadra prodotta dal generatore a una frequenza di $\sim880~\text{kHz}$.
-Così come si osserva dalla \figurename{\ref{f:raise}} è evidente che il tempo impiegato dai fronti di salita e discesa è non nullo, anche se al genratore è stata richiesta un'onda quadra. I valori misurati sono $t_{raise} = (64.0 \pm )~\text{n}s$ e $t_{fall} = (64.0 \pm 0.9)~\text{n}s$, cioè uguali entro l'errore. %c'è da stimare gli errori sulla misura dei tempi, e forse anche quello sulla frequenza
+Così come si osserva dalla \figurename{\ref{f:raise}} è evidente che il tempo impiegato dai fronti di salita e discesa è non nullo, anche se al genratore è stata richiesta un'onda quadra. I valori misurati sono $t_{raise} = (64.0 \pm 0.9 )~\text{n}s$ e $t_{fall} = (64.0 \pm 0.9)~\text{n}s$, cioè uguali entro l'errore. %c'è da stimare gli errori sulla misura dei tempi, e forse anche quello sulla frequenza
 Per quanto riguarda invece i fenomeni di overshoot, undershoot essi si possono osservare qualitativamente dalla \figurename{\ref{f:raise}}, ma alla frequenza scelta non sono ancora troppo marcati (rimangono piccoli rispetto all'ampiezza dell'onda quadra).
 
 \begin{figure}[h]
