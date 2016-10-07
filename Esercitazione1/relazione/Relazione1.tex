@@ -45,17 +45,16 @@ I risultati della misura sono qui di seguito riportati:
 
 \begin{figure}[h]
 \centering
-\begin{minipage}[b]{.6\textwidth}
-	\centering
-	\includegraphics[scale=.5\textwidthwidth]{../grafici/fit_1KOhm.pdf}
-	\caption{Partitore di tensione.}
-	\label{f:par1}
-\end{minipage}\hfill
-\begin{minipage}[b]{.35\textwidth}
+	\begin{minipage}[h]{0.35\textwidth}
 	\centering
 	\input{../tabelle/tab_1KOhm.txt}
-	\captionof{table}{Didascalia della tabella}\label{...}
-\end{minipage}\hspace*{\fill}
+	\captionof{table}{Partitore di tensione, resistenza $\sim 1k\Omega$}
+	\end{minipage}%
+	\begin{minipage}[h]{0.65\textwidth}
+	\centering
+	\includegraphics[width=1\textwidth]{../grafici/fit_1KOhm.pdf}
+	\caption{Partitore di tensione, resistenza $\sim 1k\Omega$}
+	\end{minipage}
 \end{figure}
 
 
@@ -65,220 +64,64 @@ Abbiamo eseguito un fit lineare numerico che tenesse conto degli errori su entra
 Il valore del $\chi^2$ è lontano dal valor medio della distribuzione, probabilmente perché le incertezze del tester digitale sono sovrastimate. La misura tuttavia è da confrontare con quella prevista a partire dalla misura delle resistenze, e risulta compatibile entro gli errori. Inoltre per l'intercetta si ha una misura di $0$.
 
 \subsection{Partitore di tensione $\sim4\text{M}\Omega$}
-Si sono usate adesso resistenze $R_3=4.87 \pm 7 ~M\Omega$ e $R_4=3.70 \pm 6 ~M\Omega$ e si è proceduto alla stessa misura del punto precedente. In questo caso la relazione è lineare, ma non col coefficiente atteso se l'impedenza di ingresso del multimetro fosse trascurabile. Questa infatti da manuale ammonta a $10 ~ \text{M}\Omega$ , ed è confrontabile con le resistenze in gioco.
+Si sono usate adesso resistenze $R_3=4.87 \pm 0.07 ~M\Omega$ e $R_4=3.70 \pm 0.06 ~M\Omega$ e si è proceduto alla stessa misura del punto precedente. In questo caso la relazione è lineare, ma non col coefficiente atteso se l'impedenza di ingresso del multimetro fosse trascurabile. Questa infatti da manuale ammonta a $10 ~ \text{M}\Omega$ , ed è confrontabile con le resistenze in gioco.
 
 \begin{figure}[h]
 \centering
-\begin{minipage}[b]{.6\textwidth}
-	\centering
-	\includegraphics[scale=.5\textwidthwidth]{../grafici/fit_4MOhm.pdf}
-	\caption{Partitore di tensione.}
-	\label{f:par2}
-\end{minipage}\hfill
-\begin{minipage}[b]{.35\textwidth}
-	\centering
-	\input{../tabelle/tab_4MOhm.txt}
-	\captionof{table}{Didascalia della tabella}\label{...}
-\end{minipage}\hspace*{\fill}
+	\begin{minipage}[h]{0.35\textwidth}
+		\centering
+		\input{../tabelle/tab_4MOhm.txt}
+		\captionof{table}{Partitore di tensione, resistenza $\sim 4M\Omega$}
+	\end{minipage}%
+	\begin{minipage}[h]{0.65\textwidth}
+		\centering
+		\includegraphics[width=1\textwidth]{../grafici/fit_4MOhm.pdf}
+		\caption{Partitore di tensione, resistenza $\sim 4M\Omega$}
+	\end{minipage}
 \end{figure}
 
 Il fit è stato eseguito come al punto precedente e i valori ottenuti sono $V_{out}/V_{in} = 0.4600 \pm 0.0015$ e per l'intercetta $0.2 \pm 0.8 mV$. Si è ottenuto inoltre $\chi^2 / \text{ndof} = 1.94 / 9$.
 
 Perciò sia per quanto riguarda l'intercetta che il $\chi^2$ si applicano le stesse considerazioni del punto precedente. Per quanto riguarda la pendenza della retta ci saremmo attesi un valore pari a  $1/(1+(R_1/R_2))=0.568 \pm 0.004$, che evidentemente non è compatibile con quanto risulta dal fit. Il motivo di ciò è, come detto sopra, l'impedenza d'ingresso del tester digitale.
 
-Considerando l'impedenza del tester si ottiene per la pendenza $\frac{1}{1 + R_1 (1/R_2 + 1/R_T)}$, dove si è indicato con $R_T$ la resistenza interna del tester. Invertendo la formula si trova $R_T = 11.6 \pm 0.8 \text{M}\Omega$.
+Considerando l'impedenza del tester si ottiene per la pendenza $\frac{1}{1 + R_1 (1/R_2 + 1/R_T)}$, dove si è indicato con $R_T$ la resistenza interna del tester. Invertendo la formula e propagando l'errore si trova $R_T = 9.0 \pm 0.7 \text{M}\Omega$.
 
 \subsection{Partitore di corrente}
+È stato realizzato il partitore di tensione illustrato nella scheda (Figura 3) con resistenze di valori: $R1=217 \pm 3 ~\Omega$, $R2=549 \pm 6 ~ \Omega$ e $R3=100.0 \pm 0.8 ~\text{k}\Omega$. Si è proceduto alla misura di tensione di alimentazione e intensità di corrente passante per le resistenze $R1$ e $R2$ attraverso il multimetro digitale.
+
+I risultati delle misure sono stati: una tensione $V = 19.74 \pm 0.12~ V$ e intensità di corrente $I_1=49 \pm 1 ~\mu A$ e $I_2 = 129 \pm 2 ~ \mu A$. Trattandosi di un partitore di corrente le correnti previste sono $I_1 = V/R_{tot}*R_2/(R_1+R_2)$ e $I_1 = V/R_{tot}*R_1/(R_1+R_2)$, dove $V/R_{tot}$ è la corrente totale. In questo caso $R_{tot} = R_3 + R_1//R_2$ (con $R_1//R_2$ indico il parallelo di $R_1$ e $R_2$) e con ottima approssimazione $I_tot=V/R_3$ poichè $R_3 >> R1//R2 \sim 160 ~\Omega$.
+
+Segue che le correnti attese sono $I_1 = 54.9 \pm 1.6 ~\mu A$ e $I_2 = 139 \pm 4~ \mu A$, risultati compatibili solo entro $2 \sigma$. ??
 
 
 \section{Uso dell'oscilloscopio}
+È stato realizzato nuovamente il circuito al punto 2.c della scheda e questa volta si è proceduto alle misure di tensione con l'oscilloscopio. In maniera simile al punto precedente possiamo determinare l'impedenza di ingresso dell'oscilloscopio.
 
-\section{Misure di frequenza e tempo}
+Le resistenze in uso sono $R1_=3.83 \pm 6~\text{M}\Omega$ e  $R1_=3.95 \pm 6~\text{M}\Omega$.
 
-\section{Trigger dell'oscilloscopio}\documentclass[10pt,a4paper]{article}
+Le misure effettuate sono: $V_{in}=19.6 \pm 0.6 ~V$ e $V_{out}= 3.36 \pm 0.11 ~ V$, con errori calcolati a partire dalle specifiche del manuale. L'impedenza di ingresso dell'oscilloscopio determinata come prima è $R_T=1.0 \pm 0.1 ~ \text{M}\Omega$, che è in perfetto accordo con l'impedenza indicata dal manuale di $1.00 \pm 0.02 ~\text{M} \Omega$.
 
-\usepackage[utf8]{inputenc}
-\usepackage[italian]{babel}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{graphicx}
+Nell'ambito di questa misura si è confrontato come richiesto le funzioni DC e AC dell'oscilloscopio, costatando come aspettato che in AC si legge un segnale che non si discosta dalla massa, mancando in questo segnale componenti armoniche.
 
-\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
-\geometry{a4paper}
+\section{Misure di frequenza, di tempo}
+\input{../tabelle/tab_freq.txt}
+\captionof{table}{frequenze misurate all'oscilloscopio}
 
-\usepackage{booktabs} % for much better looking tables
-\usepackage{verbatim}
-\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single 
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.5]{../Oscilloscopio/10percento.jpg}
+	\includegraphics[scale=0.5]{../Oscilloscopio/50percento.jpg}
+	\includegraphics[scale=0.5]{../Oscilloscopio/90percento.jpg}
+	\caption{Duty cycle del 10\%, 50\% e 90\% rispettivamente}
+	\label{f:duty}
+\end{figure}
 
-\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
-\pagestyle{fancy} % options: empty , plain , fancy
-\renewcommand{\headrulewidth}{0pt} % customise the layout...
-\lhead{}\chead{}\rhead{}
-\lfoot{}\cfoot{\thepage}\rfoot{}
-
-%%% SECTION TITLE APPEARANCE
-\usepackage{sectsty}
-%\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
-% (This matches ConTeXt defaults)
-
-\title{Esercitazione 1: Misure di tensione, corrente, tempi, frequenze}
-\author{Gruppo bE \\ Alessandro Candido, Roberto Ribatti}
-\date{\today} 
-
-\begin{document}
-	\maketitle
-	
-	\section{Scopo e strumentazione}
-	Lo scopo dell'esercitazione è di impratichirsi con la strumentazione disponibile in laboratorio. Abbiamo usato multimetro, oscilloscopio, alimentatore da banco e generatore di funzioni d'onda.
-	
-	\section{Misure di tensione e corrente}
-	
-	\subsection{Partitore di tensione $\sim1\text{k}\Omega$}
-	Si è costruito il partitore di tensione illustrato nella scheda (Figura 1) usando due resistenze $R_1 = 976 \pm 9~\Omega$ e $R_2 = 974 \pm 9 ~\Omega$.
-	Si è variata la tensione dell'alimentatore tra $0~V$ e $10~V$ e volta per volta si è misurata con il multimetro digitale la tensione erogata dall'alimentatore $V_{in}$ e ai capi della resistenza $R2$, $V_{out}$. Gli errori sono stati ottenuti usando le indicazioni del manuale del multimetro.
-	Il rapporto atteso tra le due tensioni è $1/(1+(R_1/R_2))=0.499 \pm 0.005$. 
-	I risultati della misura sono qui di seguito riportati:
-	
-	\begin{figure}[h]
-		\centering
-		\begin{minipage}[b]{.6\textwidth}
-			\centering
-			<<<<<<< HEAD
-			\begin{minipage}[h]{0.35\textwidth}
-				\centering
-				\input{../tabelle/tab_1KOhm.txt}
-				\captionof{table}{Partitore di tensione, resistenza $\sim 1k\Omega$}
-			\end{minipage}%
-			\begin{minipage}[h]{0.65\textwidth}
-				\centering
-				\includegraphics[width=1\textwidth]{../grafici/fit_1KOhm.pdf}
-				\caption{Partitore di tensione, resistenza $\sim 1k\Omega$}
-			\end{minipage}
-			=======
-			\includegraphics[scale=.5\textwidthwidth]{../grafici/fit_1KOhm.pdf}
-			\caption{Partitore di tensione.}
-			\label{f:par1}
-		\end{minipage}\hfill
-		\begin{minipage}[b]{.35\textwidth}
-			\centering
-			\input{../tabelle/tab_1KOhm.txt}
-			\captionof{table}{Didascalia della tabella}\label{...}
-		\end{minipage}\hspace*{\fill}
-		>>>>>>> 605f5089119a46f916a1b09dd53fa4b46bb9110e
-	\end{figure}
-	
-	
-	Come atteso il rapporto tra le tensioni è costante, ovvero la relazione che lega $V_{out}$ e $V_{in}$ è lineare.
-	Abbiamo eseguito un fit lineare numerico che tenesse conto degli errori su entrambi gli assi poiché gli errori sono confrontabili. I risultati del fit sono: $V_{out}/V_{in}=0.5009 \pm 0.0016$, e un valore pari a $(0.2\pm 0.8) mV$ del'intercetta. Abbiamo ottenuto  $\chi^2/\text{ndof}= 1.16/9$.
-	
-	Il valore del $\chi^2$ è lontano dal valor medio della distribuzione, probabilmente perché le incertezze del tester digitale sono sovrastimate. La misura tuttavia è da confrontare con quella prevista a partire dalla misura delle resistenze, e risulta compatibile entro gli errori. Inoltre per l'intercetta si ha una misura di $0$.
-	
-	\subsection{Partitore di tensione $\sim4\text{M}\Omega$}
-	Si sono usate adesso resistenze $R_3=4.87 \pm 0.07 ~M\Omega$ e $R_4=3.70 \pm 0.06 ~M\Omega$ e si è proceduto alla stessa misura del punto precedente. In questo caso la relazione è lineare, ma non col coefficiente atteso se l'impedenza di ingresso del multimetro fosse trascurabile. Questa infatti da manuale ammonta a $10 ~ \text{M}\Omega$ , ed è confrontabile con le resistenze in gioco.
-	
-	\begin{figure}[h]
-		\centering
-		\begin{minipage}[b]{.6\textwidth}
-			\centering
-			<<<<<<< HEAD
-			\begin{minipage}[h]{0.35\textwidth}
-				\centering
-				\input{../tabelle/tab_4MOhm.txt}
-				\captionof{table}{Partitore di tensione, resistenza $\sim 4M\Omega$}
-			\end{minipage}%
-			\begin{minipage}[h]{0.65\textwidth}
-				\centering
-				\includegraphics[width=1\textwidth]{../grafici/fit_4MOhm.pdf}
-				\caption{Partitore di tensione, resistenza $\sim 4M\Omega$}
-			\end{minipage}
-			=======
-			\includegraphics[scale=.5\textwidthwidth]{../grafici/fit_4MOhm.pdf}
-			\caption{Partitore di tensione.}
-			\label{f:par2}
-		\end{minipage}\hfill
-		\begin{minipage}[b]{.35\textwidth}
-			\centering
-			\input{../tabelle/tab_4MOhm.txt}
-			\captionof{table}{Didascalia della tabella}\label{...}
-		\end{minipage}\hspace*{\fill}
-		>>>>>>> 605f5089119a46f916a1b09dd53fa4b46bb9110e
-	\end{figure}
-	
-	Il fit è stato eseguito come al punto precedente e i valori ottenuti sono $V_{out}/V_{in} = 0.4600 \pm 0.0015$ e per l'intercetta $0.2 \pm 0.8 mV$. Si è ottenuto inoltre $\chi^2 / \text{ndof} = 1.94 / 9$.
-	
-	Perciò sia per quanto riguarda l'intercetta che il $\chi^2$ si applicano le stesse considerazioni del punto precedente. Per quanto riguarda la pendenza della retta ci saremmo attesi un valore pari a  $1/(1+(R_1/R_2))=0.568 \pm 0.004$, che evidentemente non è compatibile con quanto risulta dal fit. Il motivo di ciò è, come detto sopra, l'impedenza d'ingresso del tester digitale.
-	
-	Considerando l'impedenza del tester si ottiene per la pendenza $\frac{1}{1 + R_1 (1/R_2 + 1/R_T)}$, dove si è indicato con $R_T$ la resistenza interna del tester. Invertendo la formula e propagando l'errore si trova $R_T = 9.0 \pm 0.7 \text{M}\Omega$.
-	
-	\subsection{Partitore di corrente}
-	È stato realizzato il partitore di tensione illustrato nella scheda (Figura 3) con resistenze di valori: $R1=217 \pm 3 ~\Omega$, $R2=549 \pm 6 ~ \Omega$ e $R3=100.0 \pm 0.8 ~\text{k}\Omega$. Si è proceduto alla misura di tensione di alimentazione e intensità di corrente passante per le resistenze $R1$ e $R2$ attraverso il multimetro digitale.
-	
-	I risultati delle misure sono stati: una tensione $V = 19.74 \pm 0.12~ V$ e intensità di corrente $I_1=49 \pm 1 ~\mu A$ e $I_2 = 129 \pm 2 ~ \mu A$. Trattandosi di un partitore di corrente le correnti previste sono $I_1 = V/R_{tot}*R_2/(R_1+R_2)$ e $I_1 = V/R_{tot}*R_1/(R_1+R_2)$, dove $V/R_{tot}$ è la corrente totale. In questo caso $R_{tot} = R_3 + R_1//R_2$ (con $R_1//R_2$ indico il parallelo di $R_1$ e $R_2$) e con ottima approssimazione $I_tot=V/R_3$ poichè $R_3 >> R1//R2 \sim 160 ~\Omega$.
-	
-	Segue che le correnti attese sono $I_1 = 54.9 \pm 1.6 ~\mu A$ e $I_2 = 139 \pm 4~ \mu A$, risultati compatibili solo entro $2 \sigma$. ??
-	
-	
-	\section{Uso dell'oscilloscopio}
-	È stato realizzato nuovamente il circuito al punto 2.c della scheda e questa volta si è proceduto alle misure di tensione con l'oscilloscopio. In maniera simile al punto precedente possiamo determinare l'impedenza di ingresso dell'oscilloscopio.
-	
-	Le resistenze in uso sono $R1_=3.83 \pm 6~\text{M}\Omega$ e  $R1_=3.95 \pm 6~\text{M}\Omega$.
-	
-	Le misure effettuate sono: $V_{in}=19.6 \pm 0.6 ~V$ e $V_{out}= 3.36 \pm 0.11 ~ V$, con errori calcolati a partire dalle specifiche del manuale. L'impedenza di ingresso dell'oscilloscopio determinata come prima è $R_T=1.0 \pm 0.1 ~ \text{M}\Omega$, che è in perfetto accordo con l'impedenza indicata dal manuale di $1.00 \pm 0.02 ~\text{M} \Omega$.
-	
-	Nell'ambito di questa misura si è confrontato come richiesto le funzioni DC e AC dell'oscilloscopio, costatando come aspettato che in AC si legge un segnale che non si discosta dalla massa, mancando in questo segnale componenti armoniche.
-	
-	\section{Misure di frequenza, di tempo}
-	\input{../tabelle/tab_freq.txt}
-	\captionof{table}{frequenze misurate all'oscilloscopio}
-	
-	\begin{figure}[h]
-		\centering
-		\includegraphics[scale=0.5]{../Oscilloscopio/10percento.jpg}
-		\includegraphics[scale=0.5]{../Oscilloscopio/50percento.jpg}
-		\includegraphics[scale=0.5]{../Oscilloscopio/90percento.jpg}
-		\caption{Duty cycle del 10\%, 50\% e 90\% rispettivamente}
-		\label{f:duty}
-	\end{figure}
-	
-	\section{Trigger dell'oscilloscopio}
-	Si è osservato il segnale di pulse del generatore di forme d'onda, confrontandolo sia con un'onda quadra che con una sinusoide, entrambe prodotte dallo stesso generatore.
-	La relazione fra il segnale di sincronizzazione e la portante dell'onda osservata è uno sfasamento di mezzo periodo, come appare evidente nel caso dell'onda quadra, e si verifica anche per la sinusoide identificando lo stato alto del pulse con il fronte di salita della sinusoide e il basso con la discesa.
-	
-	I segnali osservati sono riportati in \figurename{\ref{f:pulse}}.
-	
-	\begin{figure}[h]
-		\centering
-		\includegraphics[scale=0.6]{../Oscilloscopio/trig_pulse_square.jpg}
-		\includegraphics[scale=0.6]{../Oscilloscopio/trig_pulse_sin.jpg}
-		\caption{Segnale di pulse a confronto con un'onda quadra e una sinusoide}
-		\label{f:pulse}
-	\end{figure}
-	
-	Si è dunque eseguita l'ultima parte dell'esercitazione, visualizzando un'onda quadra prodotta dal generatore a una frequenza di $~900 \text{kHz}$.
-	Così come si osserva dalle immagini è evidente che il tempo impiegato dai fronti di salita e discesa è non nullo, anche se al genratore è stata richiesta un'onda quadra. I valori misurati sono $t_{raise} = (64.0 \pm )~\text{n}s$ e $t_{fall} = (64.0 \pm )~\text{n}s$, cioè uguali entro l'errore, si deva figura. \figurename{\ref{f:raise}}
-	Si è dunque eseguita l'ultima parte dell'esercitazione, visualizzando un'onda quadra prodotta dal generatore a una frequenza di $\sim880~\text{kHz}$.
-	Così come si osserva dalla \figurename{\ref{sqmhz}} è evidente che il tempo impiegato dai fronti di salita e discesa è non nullo, anche se al genratore è stata richiesta un'onda quadra. I valori misurati sono $t_{raise} = (64.0 \pm )~\text{n}s$ e $t_{fall} = (64.0 \pm )~\text{n}s$, cioè uguali entro l'errore. %c'è da stimare gli errori sulla misura dei tempi, e forse anche quello sulla frequenza
-	Per quanto riguarda invece i fenomeni di overshoot, undershoot essi si possono osservare qualitativamente dalla \figurename{\ref{sqmhz}}, ma alla frequenza scelta non sono ancora troppo marcati (rimangono piccoli rispetto all'ampiezza dell'onda quadra).
-	%ci siamo scordati il duty cicle attivo, e dunque non era al 50%; quindi o lo nascondiamo sotto il tappeto, magari addirittura tagliando l'immagine, oppure lo dichiariamo
-	
-	\begin{figure}[h]
-		\centering
-		\includegraphics[scale=0.6]{../Oscilloscopio/raise_time.jpg}
-		\includegraphics[scale=0.6]{../Oscilloscopio/fall_time.jpg}
-		\caption{Misura del raise time e fall time}
-		\label{f:raise}
-	\end{figure}
-	
-	\section{Conclusioni e commenti finali}
-	Stronzate varie ed eventuali
-	
-\end{document}
+\section{Trigger dell'oscilloscopio}
 Si è osservato il segnale di pulse del generatore di forme d'onda, confrontandolo sia con un'onda quadra che con una sinusoide, entrambe prodotte dallo stesso generatore.
 La relazione fra il segnale di sincronizzazione e la portante dell'onda osservata è uno sfasamento di mezzo periodo, come appare evidente nel caso dell'onda quadra, e si verifica anche per la sinusoide identificando lo stato alto del pulse con il fronte di salita della sinusoide e il basso con la discesa.
 
 I segnali osservati sono riportati in \figurename{\ref{f:pulse}}.
-	
+
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.6]{../Oscilloscopio/trig_pulse_square.jpg}
@@ -287,19 +130,21 @@ I segnali osservati sono riportati in \figurename{\ref{f:pulse}}.
 	\label{f:pulse}
 \end{figure}
 
+Si è dunque eseguita l'ultima parte dell'esercitazione, visualizzando un'onda quadra prodotta dal generatore a una frequenza di $~900 \text{kHz}$.
+Così come si osserva dalle immagini è evidente che il tempo impiegato dai fronti di salita e discesa è non nullo, anche se al genratore è stata richiesta un'onda quadra. I valori misurati sono $t_{raise} = (64.0 \pm )~\text{n}s$ e $t_{fall} = (64.0 \pm )~\text{n}s$, cioè uguali entro l'errore, si deva figura. \figurename{\ref{f:raise}}
 Si è dunque eseguita l'ultima parte dell'esercitazione, visualizzando un'onda quadra prodotta dal generatore a una frequenza di $\sim880~\text{kHz}$.
 Così come si osserva dalla \figurename{\ref{sqmhz}} è evidente che il tempo impiegato dai fronti di salita e discesa è non nullo, anche se al genratore è stata richiesta un'onda quadra. I valori misurati sono $t_{raise} = (64.0 \pm )~\text{n}s$ e $t_{fall} = (64.0 \pm )~\text{n}s$, cioè uguali entro l'errore. %c'è da stimare gli errori sulla misura dei tempi, e forse anche quello sulla frequenza
 Per quanto riguarda invece i fenomeni di overshoot, undershoot essi si possono osservare qualitativamente dalla \figurename{\ref{sqmhz}}, ma alla frequenza scelta non sono ancora troppo marcati (rimangono piccoli rispetto all'ampiezza dell'onda quadra).
-%ci siamo scordati il duty cicle attivo, e dunque non era al 50%; quindi o lo nascondiamo sotto il tappeto, magari addirittura tagliando l'immagine, oppure lo dichiariamo
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.6]{../Oscilloscopio/raise_time.jpg}
 	\includegraphics[scale=0.6]{../Oscilloscopio/fall_time.jpg}
-	\caption{Fronti di salita e di discesa dell'onda quadra}
-	\label{f:sqmhz}
+	\caption{Misura del raise time e fall time}
+	\label{f:raise}
 \end{figure}
 
 \section{Conclusioni e commenti finali}
+Stronzate varie ed eventuali
 
 \end{document}
