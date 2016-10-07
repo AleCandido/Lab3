@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.2.17)  7 OCT 2016 14:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.2.17)  7 OCT 2016 15:12
 entering extended mode
 **./Relazione1.tex
 (Relazione1.tex
@@ -561,20 +561,20 @@ les
 (Relazione1.aux)
 \openout1 = `Relazione1.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Info: Redefining \it@ocap on input line 32.
-LaTeX Info: Redefining \it@ccap on input line 32.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Info: Redefining \it@ocap on input line 36.
+LaTeX Info: Redefining \it@ccap on input line 36.
 
 
 File italian.ldf warning: 
@@ -582,7 +582,7 @@ italian.ldf    With OT1 encoding guillemets are poorly faked
 italian.ldf    Use T1 encoding
 italian.ldf    or specify a font with command \CaporaliFrom
 italian.ldf    See the documentation concerning the babel-italian typesetting 
-italian.ldf    on input line 32.
+italian.ldf    on input line 36.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -635,22 +635,22 @@ italian.ldf    on input line 32.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Try loading font information for U+msa on input line 33.
+LaTeX Font Info:    Try loading font information for U+msa on input line 37.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 33.
+LaTeX Font Info:    Try loading font information for U+msb on input line 37.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 (../tabelle/tab_1KOhm.txt)
-Overfull \hbox (3.61644pt too wide) in paragraph at lines 1--51
+Overfull \hbox (3.61644pt too wide) in paragraph at lines 1--55
  [][] 
  []
 
 
-Underfull \hbox (badness 4108) in paragraph at lines 51--51
+Underfull \hbox (badness 4108) in paragraph at lines 55--55
 []\OT1/cmr/m/n/10 Tabella 1: |Par-ti-to-re di ten-sio-ne,
  []
 
@@ -658,18 +658,18 @@ Underfull \hbox (badness 4108) in paragraph at lines 51--51
 File: ../grafici/fit_1KOhm.pdf Graphic file (type pdf)
 
 <use ../grafici/fit_1KOhm.pdf>
-Package pdftex.def Info: ../grafici/fit_1KOhm.pdf used on input line 55.
+Package pdftex.def Info: ../grafici/fit_1KOhm.pdf used on input line 59.
 (pdftex.def)             Requested size: 314.40001pt x 235.79881pt.
  [1
 
 {C:/Users/Roberto/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <../grafic
 i/fit_1KOhm.pdf>] (../tabelle/tab_4MOhm.txt)
-Overfull \hbox (3.61644pt too wide) in paragraph at lines 1--74
+Overfull \hbox (3.61644pt too wide) in paragraph at lines 1--78
  [][] 
  []
 
 
-Underfull \hbox (badness 4108) in paragraph at lines 74--74
+Underfull \hbox (badness 4108) in paragraph at lines 78--78
 []\OT1/cmr/m/n/10 Tabella 2: |Par-ti-to-re di ten-sio-ne,
  []
 
@@ -677,45 +677,45 @@ Underfull \hbox (badness 4108) in paragraph at lines 74--74
 File: ../grafici/fit_4MOhm.pdf Graphic file (type pdf)
 
 <use ../grafici/fit_4MOhm.pdf>
-Package pdftex.def Info: ../grafici/fit_4MOhm.pdf used on input line 78.
+Package pdftex.def Info: ../grafici/fit_4MOhm.pdf used on input line 82.
 (pdftex.def)             Requested size: 314.40001pt x 235.79881pt.
  [2 <../grafici/fit_4MOhm.pdf>]
 (../tabelle/tab_freq.txt)
 
 Package caption Warning: \captionsetup{type*=...} or \captionof
-(caption)                outside box or environment on input line 108.
+(caption)                outside box or environment on input line 113.
 See the caption package documentation for explanation.
 
 <../Oscilloscopio/10percento.jpg, id=178, 301.125pt x 225.84375pt>
 File: ../Oscilloscopio/10percento.jpg Graphic file (type jpg)
 
 <use ../Oscilloscopio/10percento.jpg>
-Package pdftex.def Info: ../Oscilloscopio/10percento.jpg used on input line 112
+Package pdftex.def Info: ../Oscilloscopio/10percento.jpg used on input line 117
 .
-(pdftex.def)             Requested size: 150.56212pt x 112.92159pt.
+(pdftex.def)             Requested size: 145.11053pt x 108.83797pt.
 
 <../Oscilloscopio/50percento.jpg, id=179, 301.125pt x 225.84375pt>
 File: ../Oscilloscopio/50percento.jpg Graphic file (type jpg)
 
 <use ../Oscilloscopio/50percento.jpg>
-Package pdftex.def Info: ../Oscilloscopio/50percento.jpg used on input line 113
+Package pdftex.def Info: ../Oscilloscopio/50percento.jpg used on input line 118
 .
-(pdftex.def)             Requested size: 150.56212pt x 112.92159pt.
+(pdftex.def)             Requested size: 145.11053pt x 108.83797pt.
 
 <../Oscilloscopio/90percento.jpg, id=180, 301.125pt x 225.84375pt>
 File: ../Oscilloscopio/90percento.jpg Graphic file (type jpg)
 
 <use ../Oscilloscopio/90percento.jpg>
-Package pdftex.def Info: ../Oscilloscopio/90percento.jpg used on input line 114
+Package pdftex.def Info: ../Oscilloscopio/90percento.jpg used on input line 119
 .
-(pdftex.def)             Requested size: 150.56212pt x 112.92159pt.
+(pdftex.def)             Requested size: 145.11053pt x 108.83797pt.
 
 <../Oscilloscopio/trig_pulse_square.jpg, id=181, 301.125pt x 225.84375pt>
 File: ../Oscilloscopio/trig_pulse_square.jpg Graphic file (type jpg)
 
 <use ../Oscilloscopio/trig_pulse_square.jpg>
 Package pdftex.def Info: ../Oscilloscopio/trig_pulse_square.jpg used on input l
-ine 127.
+ine 132.
 (pdftex.def)             Requested size: 180.67638pt x 135.50728pt.
 
 <../Oscilloscopio/trig_pulse_sin.jpg, id=182, 301.125pt x 225.84375pt>
@@ -723,61 +723,50 @@ File: ../Oscilloscopio/trig_pulse_sin.jpg Graphic file (type jpg)
 
 <use ../Oscilloscopio/trig_pulse_sin.jpg>
 Package pdftex.def Info: ../Oscilloscopio/trig_pulse_sin.jpg used on input line
- 128.
+ 133.
 (pdftex.def)             Requested size: 180.67638pt x 135.50728pt.
 
-
-LaTeX Warning: Reference `sqmhz' on page 3 undefined on input line 136.
-
-
-LaTeX Warning: Reference `sqmhz' on page 3 undefined on input line 137.
-
-[3 <../Oscilloscopio/10percento.jpg> <../Oscilloscopio/50percento.jpg> <../Osci
-lloscopio/90percento.jpg> <../Oscilloscopio/trig_pulse_square.jpg> <../Oscillos
-copio/trig_pulse_sin.jpg>]
-<../Oscilloscopio/raise_time.jpg, id=187, 301.125pt x 225.84375pt>
+<../Oscilloscopio/raise_time.jpg, id=183, 301.125pt x 225.84375pt>
 File: ../Oscilloscopio/raise_time.jpg Graphic file (type jpg)
 
 <use ../Oscilloscopio/raise_time.jpg>
-Package pdftex.def Info: ../Oscilloscopio/raise_time.jpg used on input line 141
+Package pdftex.def Info: ../Oscilloscopio/raise_time.jpg used on input line 146
 .
 (pdftex.def)             Requested size: 180.67638pt x 135.50728pt.
 
-<../Oscilloscopio/fall_time.jpg, id=188, 301.125pt x 225.84375pt>
+<../Oscilloscopio/fall_time.jpg, id=184, 301.125pt x 225.84375pt>
 File: ../Oscilloscopio/fall_time.jpg Graphic file (type jpg)
 
 <use ../Oscilloscopio/fall_time.jpg>
-Package pdftex.def Info: ../Oscilloscopio/fall_time.jpg used on input line 142.
+Package pdftex.def Info: ../Oscilloscopio/fall_time.jpg used on input line 147.
 
 (pdftex.def)             Requested size: 180.67638pt x 135.50728pt.
- [4 <../Oscilloscopio/raise_time.jpg> <../Oscilloscopio/fall_time.jpg>] (Relazi
-one1.aux)
-
-LaTeX Warning: There were undefined references.
-
- ) 
+ [3 <../Oscilloscopio/10percento.jpg> <../Oscilloscopio/50percento.jpg> <../Osc
+illoscopio/90percento.jpg> <../Oscilloscopio/trig_pulse_square.jpg> <../Oscillo
+scopio/trig_pulse_sin.jpg>] [4 <../Oscilloscopio/raise_time.jpg> <../Oscillosco
+pio/fall_time.jpg>] (Relazione1.aux) ) 
 Here is how much of TeX's memory you used:
  5177 strings out of 493634
- 71680 string characters out of 3141308
- 154952 words of memory out of 3000000
- 8469 multiletter control sequences out of 15000+200000
- 12124 words of font info for 47 fonts, out of 3000000 for 9000
+ 71663 string characters out of 3141308
+ 154969 words of memory out of 3000000
+ 8470 multiletter control sequences out of 15000+200000
+ 11816 words of font info for 46 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 44i,11n,43p,797b,342s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
-<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C
-:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/
-Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Pro
-gram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Progra
-m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program F
-iles (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program File
-s (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files (
-x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Program Files (x86)
-/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files (x86)/MiK
-TeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on Relazione1.pdf (4 pages, 337044 bytes).
+ 44i,11n,43p,797b,362s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files (x86)/MiKTeX 2.9/fonts/
+type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/ty
+pe1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmmi5.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/p
+ublic/amsfonts/cm/cmmi7.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/publ
+ic/amsfonts/cm/cmr10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/
+amsfonts/cm/cmr12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/ams
+fonts/cm/cmr17.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfon
+ts/cm/cmr5.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/c
+m/cmr7.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
+sy10.pfb>
+Output written on Relazione1.pdf (4 pages, 327600 bytes).
 PDF statistics:
- 226 PDF objects out of 1000 (max. 8388607)
+ 222 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  46 words of extra memory for PDF output out of 10000 (max. 10000000)
 

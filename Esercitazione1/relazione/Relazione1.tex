@@ -20,6 +20,10 @@
 \lhead{}\chead{}\rhead{}
 \lfoot{}\cfoot{\thepage}\rfoot{}
 
+\newcommand\ohm{\Omega}
+\newcommand\kohm{\text{k}\Omega}
+\newcommand\Mohm{\text{M}\Omega}
+
 %%% SECTION TITLE APPEARANCE
 \usepackage{sectsty}
 %\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
@@ -64,19 +68,19 @@ Abbiamo eseguito un fit lineare numerico che tenesse conto degli errori su entra
 Il valore del $\chi^2$ è lontano dal valor medio della distribuzione, probabilmente perché le incertezze del tester digitale sono sovrastimate. La misura tuttavia è da confrontare con quella prevista a partire dalla misura delle resistenze, e risulta compatibile entro gli errori. Inoltre per l'intercetta si ha una misura di $0$.
 
 \subsection{Partitore di tensione $\sim4\text{M}\Omega$}
-Si sono usate adesso resistenze $R_3=4.87 \pm 0.07 ~M\Omega$ e $R_4=3.70 \pm 0.06 ~M\Omega$ e si è proceduto alla stessa misura del punto precedente. In questo caso la relazione è lineare, ma non col coefficiente atteso se l'impedenza di ingresso del multimetro fosse trascurabile. Questa infatti da manuale ammonta a $10 ~ \text{M}\Omega$ , ed è confrontabile con le resistenze in gioco.
+Si sono usate adesso resistenze $R_1=4.87 \pm 0.07 ~\Mohm a$ e $R_2=3.70 \pm 0.06 ~\Mohm$ e si è proceduto alla stessa misura del punto precedente. In questo caso la relazione è lineare, ma non col coefficiente atteso se l'impedenza di ingresso del multimetro fosse trascurabile. Questa infatti da manuale ammonta a $10 ~ \text{M}\Omega$ , ed è confrontabile con le resistenze in gioco.
 
 \begin{figure}[h]
 \centering
 	\begin{minipage}[h]{0.35\textwidth}
 		\centering
 		\input{../tabelle/tab_4MOhm.txt}
-		\captionof{table}{Partitore di tensione, resistenza $\sim 4M\Omega$}
+		\captionof{table}{Partitore di tensione, resistenza $\sim 4\Mohm$}
 	\end{minipage}%
 	\begin{minipage}[h]{0.65\textwidth}
 		\centering
 		\includegraphics[width=1\textwidth]{../grafici/fit_4MOhm.pdf}
-		\caption{Partitore di tensione, resistenza $\sim 4M\Omega$}
+		\caption{Partitore di tensione, resistenza $\sim 4\Mohm$}
 	\end{minipage}
 \end{figure}
 
@@ -104,14 +108,15 @@ Le misure effettuate sono: $V_{in}=19.6 \pm 0.6 ~V$ e $V_{out}= 3.36 \pm 0.11 ~ 
 Nell'ambito di questa misura si è confrontato come richiesto le funzioni DC e AC dell'oscilloscopio, costatando come aspettato che in AC si legge un segnale che non si discosta dalla massa, mancando in questo segnale componenti armoniche.
 
 \section{Misure di frequenza, di tempo}
+
 \input{../tabelle/tab_freq.txt}
 \captionof{table}{frequenze misurate all'oscilloscopio}
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.5]{../Oscilloscopio/10percento.jpg}
-	\includegraphics[scale=0.5]{../Oscilloscopio/50percento.jpg}
-	\includegraphics[scale=0.5]{../Oscilloscopio/90percento.jpg}
+	\includegraphics[width=0.3\textwidth]{../Oscilloscopio/10percento.jpg}
+	\includegraphics[width=0.3\textwidth]{../Oscilloscopio/50percento.jpg}
+	\includegraphics[width=0.3\textwidth]{../Oscilloscopio/90percento.jpg}
 	\caption{Duty cycle del 10\%, 50\% e 90\% rispettivamente}
 	\label{f:duty}
 \end{figure}
@@ -133,8 +138,8 @@ I segnali osservati sono riportati in \figurename{\ref{f:pulse}}.
 Si è dunque eseguita l'ultima parte dell'esercitazione, visualizzando un'onda quadra prodotta dal generatore a una frequenza di $~900 \text{kHz}$.
 Così come si osserva dalle immagini è evidente che il tempo impiegato dai fronti di salita e discesa è non nullo, anche se al genratore è stata richiesta un'onda quadra. I valori misurati sono $t_{raise} = (64.0 \pm )~\text{n}s$ e $t_{fall} = (64.0 \pm )~\text{n}s$, cioè uguali entro l'errore, si deva figura. \figurename{\ref{f:raise}}
 Si è dunque eseguita l'ultima parte dell'esercitazione, visualizzando un'onda quadra prodotta dal generatore a una frequenza di $\sim880~\text{kHz}$.
-Così come si osserva dalla \figurename{\ref{sqmhz}} è evidente che il tempo impiegato dai fronti di salita e discesa è non nullo, anche se al genratore è stata richiesta un'onda quadra. I valori misurati sono $t_{raise} = (64.0 \pm )~\text{n}s$ e $t_{fall} = (64.0 \pm )~\text{n}s$, cioè uguali entro l'errore. %c'è da stimare gli errori sulla misura dei tempi, e forse anche quello sulla frequenza
-Per quanto riguarda invece i fenomeni di overshoot, undershoot essi si possono osservare qualitativamente dalla \figurename{\ref{sqmhz}}, ma alla frequenza scelta non sono ancora troppo marcati (rimangono piccoli rispetto all'ampiezza dell'onda quadra).
+Così come si osserva dalla \figurename{\ref{f:raise}} è evidente che il tempo impiegato dai fronti di salita e discesa è non nullo, anche se al genratore è stata richiesta un'onda quadra. I valori misurati sono $t_{raise} = (64.0 \pm )~\text{n}s$ e $t_{fall} = (64.0 \pm 0.9)~\text{n}s$, cioè uguali entro l'errore. %c'è da stimare gli errori sulla misura dei tempi, e forse anche quello sulla frequenza
+Per quanto riguarda invece i fenomeni di overshoot, undershoot essi si possono osservare qualitativamente dalla \figurename{\ref{f:raise}}, ma alla frequenza scelta non sono ancora troppo marcati (rimangono piccoli rispetto all'ampiezza dell'onda quadra).
 
 \begin{figure}[h]
 	\centering
