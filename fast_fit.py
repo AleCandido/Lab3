@@ -1,5 +1,6 @@
 from pylab import *
-
+sys.path = sys.path +["C:\\Users\\Roberto\\Documents\\GitHub\\Lab3"]
+from analizer import *
 ###########################################################################
 
 dir=""
@@ -27,7 +28,7 @@ titolo=""
 Xlab=""
 Ylab=""
 
-fit(dir,file,xunit,yunit,f,p0,titolo,Xlab,Ylab,,Xfun,Yfun,Xerr,Yerr,preplot="true",scarti="true",tabella="true")
+fit(dir,file,xunit,yunit,f,p0,titolo,Xlab,Ylab,Xfun,Yfun,Xerr,Yerr,preplot="true",scarti="true",tabella="true")
 
 ###########################################################################
 

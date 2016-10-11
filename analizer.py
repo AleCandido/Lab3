@@ -839,7 +839,7 @@ def Yerror(a,b,a_err,b_err): #propagazione errore sulle Y
 
 
 #Load txt
-def fit(directory, file, a_unit, b_unit, f, p0, titolo="", Xlab="", Ylab="", Xfun=Xfunction, Yfun=Yfunction, Xerr=Xerror, Yerr=Yerror, preplot=False, Xscale="linear",Yscale="linear",scarti=False,table=False,Xtab=Xlab, Ytab=Ylab, caption=""):
+def fit(directory, file, a_unit, b_unit, f, p0, titolo="", Xlab="", Ylab="", Xfun=Xfunction, Yfun=Yfunction, Xerr=Xerror, Yerr=Yerror, preplot=False, Xscale="linear",Yscale="linear",scarti=False,table=False,Xtab=Xlab, Ytab=Ylab):
 	
 	"""
 	Esegue fit dei dati grezzi, plotta il grafico relativo, restituisce i risultati del fit.
@@ -891,8 +891,6 @@ def fit(directory, file, a_unit, b_unit, f, p0, titolo="", Xlab="", Ylab="", Xfu
 			Intestazione della prima colonna della tabella, di default è l'etichetta dell'asse X del plot
 		Ytab : stringa, optional
 			Intestazione della seconda colonna della tabella, di default è l'etichetta dell'asse Y del plot
-		caption : stringa, optional
-			caption della tabella, di default è vuoto
 			
 		Returns
 		-------
@@ -930,7 +928,6 @@ def fit(directory, file, a_unit, b_unit, f, p0, titolo="", Xlab="", Ylab="", Xfu
 	#Fit
 	par, cov = fit_generic_xyerr2(f,X,Y,dX,dY,p0)
 	#par, cov = fit_generic_xyerr(f,df,X,Y,dX,dY,p0,absolute_sigma="")
-	
 	#par, cov = curve_fit(doppio_polaroid,X,Y,dY,p0,absolute_sigma="True")
 	
 	
@@ -987,12 +984,12 @@ def fit(directory, file, a_unit, b_unit, f, p0, titolo="", Xlab="", Ylab="", Xfu
 	print("covarianza normalizzata=\n",normcov)
 	
 	if table==True:
-		with open(dir+"tabelle\\"+"tab_"+file+".txt", "w") as text_file:
+		with open(directory+"tabelle\\tab_"+file+".txt", "w") as text_file:
 			text_file.write("begin{tabular}{c|c}\n")
 			text_file.write("%s & %s \\\\ \\hline\n" % (Xtab, Ytab))
 			for i in range (len(X1)):
 				text_file.write("%s & %s \\\\\n" % (xe(X1[i], dX1[i], "$\pm$"),xe(Y1[i], dY1[i], "$\pm$")))
-			text_file.write("\\end{tabular}\n\\caption{%s}\n" % caption)
+			text_file.write("\\end{tabular}")
 			text_file.close()
 	print("_________________________________________________________")
 	
