@@ -1,0 +1,68 @@
+1)  Progettazione passa-basso
+
+R1 = 15.1
+C = 47e-6
+R_carico = 96.4e3
+
+2) Misure di frequenza
+
+a.Bode plot
+Le tensioni sono in volt
+
+Hz		Vin(picco-picco)	Vout(picco-picco)
+9.71		20.6			16.8
+19.2		19.8			18.2
+40.6		17.2			16.4
+78.1		12.8			11.8
+155		8.60			6.80
+319		6.56			3.68
+642		5.88			2.04
+1.20e3		5.68			1.36
+2.00e3		5.60			1.09
+2.45e3		5.60			1.05
+4.87e3		5.56			0.976
+8.18e3		5.64			0.960
+15.7e3		5.60			0.940
+19.9e3		5.60			0.930
+
+b. Frequenza di taglio
+	i. 208 \pm 5 Hz
+	ii.
+	iii.
+
+3) 
+
+1)  Progettazione passa-basso
+
+R1 = 976
+C = 1e-6
+R_carico = 96.4e3
+
+2) Misure di frequenza
+
+a.Bode plot
+Le tensioni sono in volt
+
+Hz		Vin(picco-picco)	Vout(picco-picco)
+10.5		20.8			21.0
+19.5		20.8			20.8
+39.3		20.8			20.6
+76.7		20.8			19.4
+156		20.4			16.4
+322		20.0			10.8
+631		20.0			6.16
+1.20e3		19.8			3.50
+1.98e3		19.8			2.16
+3.71e3		20.2			1.22
+7.60e3		20.2			0.640
+15.6e3		20.2			0.360
+19.9e3		20.2			0.264
+
+b. Frequenza di taglio
+	i. 208 \pm 5 Hz
+	ii.
+	iii.
+
+3) t_salita = 1.620e-3 s
+
+
