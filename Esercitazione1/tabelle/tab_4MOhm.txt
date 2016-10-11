@@ -1,5 +1,5 @@
-\begin{tabular}{c|c}
-Tensione $V_{in}$ [$V$] & Tensione $V_{out}$ [$V$] \\ \hline
+begin{tabular}{c|c}
+ &  \\ \hline
 0.1942 $\pm$ 0.0011 & 0.0895 $\pm$ 0.0005 \\
 0.998 $\pm$ 0.006 & 0.458 $\pm$ 0.003 \\
 1.986 $\pm$ 0.011 & 0.913 $\pm$ 0.006 \\

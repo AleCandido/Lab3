@@ -775,55 +775,6 @@ def xep(x, e, pm='+-'):
 	"""
 	return _util_format_vect(x, e, pm, True)
 
-###################################################################################
-
-def carica_condensatore(T, V, RC):
-	return V*(1-exp(-T/RC))
-
-def scarica_condensatore(T, V, RC):
-	return V*(exp(-T/RC))
-
-#f_t = 1/(2*pi*RC)
-
-def ampiezza_passabasso(V, f, f_t):
-	return V/sqrt(1+(f/f_t)**2)
-
-def ampiezza_passaalto(V, f, f_t):
-	return V/sqrt(1+(f_t/f)**2)
-
-def fase_passabasso(f, f_t):
-	return arctan(-f/f_t)
-	
-def fase_passaalto(f, f_t):
-	return arctan(f_t/f)
-	
-def diodo_I(I_s, nV_0):
-	return I_s*(exp(V/nV_0)-1)
-	
-def early_Ic(beta, I_b, V_ce, V_early):
-	return beta*I_b*(1+V_ce/V_early)
-
-#tau= 2L/r
-#f_0=1/2*pi*sqrt(LC)
-
-def rlc(T, V, f_0, phi, tau):
-	return V*exp(-T/tau)*cos(2*pi*f_0*T+phi)
-	
-def polaroid(X, a, b, c):
-	return a*(cos(X-b))**2+c
-
-def dpolaroid(X,a,b,c):
-	return 2*a*sin(X-b)*cos(X-b)
-
-def doppio_polaroid(X, a, b, c, d):
-	return a*(cos(X-b))**2*(cos(X-b-c))**2+d
-	
-def d_doppio_polaroid(X,a,b,c,d):
-	return 2*a*sin(X-b)*cos(X-b)*(cos(X-c))**2+2*a*sin(X-c)*cos(X-c)*(cos(X-b))**2
-	
-def power_trasnf(V, R1, R2, alpha):
-	return V**2/2*(R2/alpha**2)/(R1+R2/alpha**2)**2
-
 ####################################################################################################################################
 ####################################################################################################################################
 
@@ -837,6 +788,8 @@ def Xerror(a,b,a_err,b_err): #propagazione errore sulle X
 def Yerror(a,b,a_err,b_err): #propagazione errore sulle Y
 	return b_err
 
+Xlab=""
+Ylab=""
 
 #Load txt
 def fit(directory, file, a_unit, b_unit, f, p0, titolo="", Xlab="", Ylab="", Xfun=Xfunction, Yfun=Yfunction, Xerr=Xerror, Yerr=Yerror, preplot=False, Xscale="linear",Yscale="linear",scarti=False,table=False,Xtab=Xlab, Ytab=Ylab):
