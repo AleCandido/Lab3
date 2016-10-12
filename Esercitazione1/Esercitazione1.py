@@ -1,6 +1,6 @@
 from pylab import *
 sys.path = sys.path +["C:\\Users\\Roberto\\Documents\\GitHub\\Lab3"]
-from analizer import *
+from analyzer import *
 
 ###########################################################################
 
@@ -12,14 +12,12 @@ def f(x, a, b): #funzione da fittare
 
 p0=[1,1] #parametri iniziali
 
-xunit="volt"
-yunit="volt"
+unit=["volt"],["volt"]
 
 titolo="Grafico $V_{in}$ vs $V_{out}$ per resistenze $\sim 1 K \Omega$"
 Xlab="Tensione $V_{in}$ [$V$]"
 Ylab="Tensione $V_{out}$ [$V$]"
-
-fit(dir,file,xunit,yunit,f,p0,titolo,Xlab,Ylab,table=True,scarti=True)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,table=True,scarti=True)
 
 ##########################################################################
 
@@ -38,4 +36,4 @@ titolo="Grafico $V_{in}$ vs $V_{out}$ per resistenze $\sim 4 M \Omega$"
 Xlab="Tensione $V_{in}$ [$V$]"
 Ylab="Tensione $V_{out}$ [$V$]"
 
-fit(directory,file,xunit,yunit,f,p0,titolo,Xlab,Ylab,table=True,scarti=True)
+fit(dir,file,xunit,yunit,f,p0,titolo,Xlab,Ylab,table=True,scarti=True)

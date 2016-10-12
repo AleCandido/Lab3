@@ -1,34 +1,35 @@
 from pylab import *
 sys.path = sys.path +["C:\\Users\\Roberto\\Documents\\GitHub\\Lab3"]
-from analizer import *
+from analyzer import *
 ###########################################################################
 
-dir=""
-file=""
+dir="C:\\Users\\Roberto\\Documents\\GitHub\\Lab3\\Esercitazione2\\"
+file="Bode_Lowpass_800ohm"
 
-def f(x, a, b): #funzione da fittare
-    return a+b*x
+def f(x, a):
+    return 1/sqrt(1+(x/a)**2)
 
-p0=[1,1]
+p0=[200]
 
-def Xfun(a,b): #formula per il calcolo della X dalle colonne (a,b) del file in input
-    return a
-def Yfun(a,b): #idem per la Y
-    return b
+def Xfun(a):
+    return a[0]
+def Yfun(a):
+    return a[2]/a[1]
     
-def Xerr(a,b,a_err,b_err): #propagazione errore sulle X
-    return a_err
-def Yerr(a,b,a_err,b_err): #propagazione errore sulle Y
-    return b_err
+def Xerr(a,a_err):
+    return a_err[0]
+def Yerr(a,a_err):
+    return (a[2]/a[1])*0.02
 
-xunit=""
-yunit=""
+unit=["volt","volt","volt"]
 
-titolo=""
-Xlab=""
-Ylab=""
+titolo="Diagramma di Bode"
+Xlab="Frequenza [Hz]"
+Ylab="Ampiezza"
 
-fit(dir,file,xunit,yunit,f,p0,titolo,Xlab,Ylab,Xfun,Yfun,Xerr,Yerr,preplot=True,scarti=True,tabella=True)
+tab=["Frequenza [Hz]","Tensione in ingresso [V]","Tensione in uscita"]
+
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,Xfun,Yfun,Xerr,Yerr,preplot=True,scarti=True,table=True,Xscale="log",Yscale="log",tab=tab)
 
 ###########################################################################
 
