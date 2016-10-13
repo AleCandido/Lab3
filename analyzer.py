@@ -3,7 +3,7 @@ from pylab import *
 from scipy.optimize import curve_fit
 import math
 import scipy.stats
-from uncertainties import unumpy
+import uncertainties
 
 # ********************** IMPORTS ***************************
 
