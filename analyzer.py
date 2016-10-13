@@ -3,6 +3,7 @@ from pylab import *
 from scipy.optimize import curve_fit
 import math
 import scipy.stats
+from uncertainties import unumpy
 
 # ********************** IMPORTS ***************************
 
@@ -778,19 +779,11 @@ def xep(x, e, pm='+-'):
 ####################################################################################################################################
 ####################################################################################################################################
 
-def Xfunction(a): #formula per il calcolo della X dalle colonne del file in input
-	return a[0]
-def Yfunction(a): #idem per la Y
-	return a[1]
-	
-def Xerror(a,a_err): #propagazione errore sulle X
-	return a_err[0]
-def Yerror(a,a_err): #propagazione errore sulle Y
-	return a_err[1]
-
+def XYfunction(a): #formula per il calcolo della X dalle colonne del file in input
+	return a[0], a[1]
 
 #Load txt
-def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", Xfun=Xfunction, Yfun=Yfunction, Xerr=Xerror, Yerr=Yerror, preplot=False, Xscale="linear",Yscale="linear",scarti=False,table=False,tab=[""]):
+def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunction, preplot=False, Xscale="linear",Yscale="linear",scarti=False,table=False,tab=[""]):
 	
 	"""
 	Ho modificato la funzione ma non mi va di modificare l'help
@@ -849,16 +842,27 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", Xfun=Xfuncti
 	"""
 	
 	columns = loadtxt(directory+"data\\"+file+".txt", unpack = True)
-	
-	X=Xfun(columns)
-	Y=Yfun(columns)
+
 	dcolumns = zeros((len(columns),len(columns[0])))
 	for i in range(len(columns)):
-		dcolumns[i]=mme(columns[i],units[i])
-		
-	dX=Xerr(columns,dcolumns)
-	dY=Yerr(columns,dcolumns)
-
+		if units[i]=="volt_osc":
+			dcolumns[i]=columns[i]*0.035
+		elif units[i]=="tempo_osc":
+			dcolumns[i]=columns[i]*0.01
+		else:
+			dcolumns[i]=mme(columns[i],units[i])
+	
+	entries = unumpy.uarray(columns,dcolumns)
+	
+	X_err = XYfun(entries)[0]
+	Y_err = XYfun(entries)[1]
+	
+	X=unumpy.nominal_values(X_err)
+	Y=unumpy.nominal_values(Y_err)
+	dX=unumpy.std_devs(X_err)
+	dY=unumpy.std_devs(Y_err)
+	
+	
 	if preplot==True :
 		figure(file+"_3")
 		clf();

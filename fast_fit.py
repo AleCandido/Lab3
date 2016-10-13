@@ -1,34 +1,29 @@
 from pylab import *
-sys.path = sys.path +["C:\\Users\\Roberto\\Documents\\GitHub\\Lab3"]
-from analizer import *
+path = "C:\\Users\\Roberto\\Documents\\GitHub\\Lab3\\"
+sys.path = sys.path + [path]
+from analyzer import *
 ###########################################################################
 
-dir=""
+dir=path+""
 file=""
 
-def f(x, a, b): #funzione da fittare
+def f(x, a, b):
     return a+b*x
 
 p0=[1,1]
 
-def Xfun(a,b): #formula per il calcolo della X dalle colonne (a,b) del file in input
-    return a
-def Yfun(a,b): #idem per la Y
-    return b
-    
-def Xerr(a,b,a_err,b_err): #propagazione errore sulle X
-    return a_err
-def Yerr(a,b,a_err,b_err): #propagazione errore sulle Y
-    return b_err
+def XYfun(a):
+    return a[0],a[1]
 
-xunit=""
-yunit=""
+unit=["",""]
 
 titolo=""
 Xlab=""
 Ylab=""
 
-fit(dir,file,xunit,yunit,f,p0,titolo,Xlab,Ylab,Xfun,Yfun,Xerr,Yerr,preplot="true",scarti="true",tabella="true")
+tab=["",""]
+
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,preplot="true",scarti="true",tabella="true",tab=tab)
 
 ###########################################################################
 
