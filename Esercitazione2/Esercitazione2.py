@@ -1,11 +1,14 @@
 from pylab import *
-#path = "C:\\Users\\Roberto\\Documents\\GitHub\\Lab3\\"
-path = "C:\\Users\\Studenti\\Desktop\\Lab3\\"
+path = "C:\\Users\\Roberto\\Documents\\GitHub\\Lab3\\"
+#path = "C:\\Users\\Studenti\\Desktop\\Lab3\\"
 sys.path = sys.path + [path]
 from analyzer import *
+dir= path + "Esercitazione2\\"
+
 ###########################################################################
 
-dir= path + "Esercitazione2\\"
+#PASSA BASSO DA DIMENSIONARE#
+
 file="Bode_Lowpass_800ohm"
 
 def f(x, a):
@@ -24,11 +27,59 @@ Ylab="Ampiezza"
 
 tab=["Frequenza [Hz]","Tensione in ingresso [V]","Tensione in uscita"]
 
-fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,scarti=True,table=True,Xscale="log",Yscale="log",tab=tab)
+#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,scarti=True,table=True,Xscale="log",Yscale="log",tab=tab)
 
 ###########################################################################
 
-dir= path + "Esercitazione2\\"
+#PASSA BASSO RETTA 1#
+
+file="retta_lowpass_1"
+
+def f(x, a,b):
+    return a*x+b
+
+p0=[1,1]
+
+def XYfun(a):
+    return unumpy.log(a[0]), unumpy.log(a[2]/a[1])
+
+unit=["tempo_osc","volt_osc","volt_osc"]
+
+titolo="Passa basso - fit lineare"
+Xlab="Frequenza [Hz]"
+Ylab="Ampiezza"
+
+tab=["Frequenza [Hz]","Tensione in ingresso [V]","Tensione in uscita"]
+
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,scarti=True)
+
+###########################################################################
+
+#PASSA BASSO RETTA 2#
+
+file="retta_lowpass_2"
+
+def f(x, a,b):
+    return a*x+b
+
+p0=[1,1]
+
+def XYfun(a):
+    return unumpy.log(a[0]), unumpy.log(a[2]/a[1])
+
+unit=["tempo_osc","volt_osc","volt_osc"]
+
+titolo="Passa basso - fit lineare"
+Xlab="Frequenza [Hz]"
+Ylab="Ampiezza"
+
+tab=["Frequenza [Hz]","Tensione in ingresso [V]","Tensione in uscita"]
+
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,scarti=True)
+###########################################################################
+
+#PASSA BASSO FAST#
+
 file="Fast_fit_lowpass"
 
 def f(x, a):
@@ -47,11 +98,12 @@ Ylab="Ampiezza"
 
 tab=["Frequenza [Hz]","Tensione in ingresso [V]","Tensione in uscita"]
 
-fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,scarti=True,table=True,Xscale="log",Yscale="log",tab=tab)
+#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,scarti=True,table=True,Xscale="log",Yscale="log",tab=tab)
 
 ###########################################################################
 
-dir= path + "Esercitazione2\\"
+#PASSA ALTO FAST#
+
 file="Fast_fit_highpass"
 
 def f(x, a):
@@ -70,11 +122,12 @@ Ylab="Ampiezza"
 
 tab=["Frequenza [Hz]","Tensione in ingresso [V]","Tensione in uscita"]
 
-fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,scarti=True,table=True,Xscale="log",Yscale="log",tab=tab)
+#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,scarti=True,table=True,Xscale="log",Yscale="log",tab=tab)
 
 ###########################################################################
 
-dir= path + "Esercitazione2\\"
+#PASSA BANDA#
+
 file="passabanda"
 
 def f(x, a,b,c):
@@ -93,4 +146,4 @@ Ylab="Ampiezza"
 
 tab=["Frequenza [Hz]","Tensione in ingresso [V]","Tensione in uscita"]
 
-fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,scarti=True,table=True,Xscale="log",Yscale="log",tab=tab)
+#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,scarti=True,table=True,Xscale="log",Yscale="log",tab=tab)
