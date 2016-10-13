@@ -21,25 +21,50 @@
 \lfoot{}\cfoot{\thepage}\rfoot{}
 
 \newcommand\ohm{\Omega}
-\newcommand\K{\text{k}}
-\newcommand\M{\text{M}}
-\newcommand\m{\text{m}}
+\newcommand\Hz{\text{Hz}}
+\newcommand\dB{\text{dB}}
+\newcommand\K{\text{~k}}
+\newcommand\M{\text{~M}}
+\newcommand\m{\text{~m}}
 
 %%% SECTION TITLE APPEARANCE
 \usepackage{sectsty}
 %\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
 % (This matches ConTeXt defaults)
 
-\title{Esercitazione 1: Misure di tensione, corrente, tempi, frequenze}
-\author{Gruppo bE \\ Alessandro Candido, Roberto Ribatti}
+\title{Esercitazione 2: Circuito RC - Filtri passivi}
+\author{Gruppo BE \\ Alessandro Candido, Roberto Ribatti}
 \date{\today} 
 
 \begin{document}
 \maketitle
 
 \section{Scopo e strumentazione}
+Lo scopo dell'esperienza è:
+\begin{itemize}
+\item verificare il comportamento in frequenza dei filtri RC posti singolarmente e a cascata (l'uscita dell'uno connessa con l'ingresso dell'altro);
+\item dimensionare opportunamente un filtro passa-basso al fine di migliorare il rapporto segnale rumore in un caso dato.
+\end{itemize}
 
-\section{stocazzo}
+In particolare per quanto riguarda il primo punto si è analizzato un filtro passa-basso e una configurazione a cascata, in cui il primo stadio era un passa-basso e il secondo un passa-alto. Per il secondo punto si aveva un segnale a $2\K\Hz$ e il rumore a $20\K\Hz$, e si considerava un carico a valle di $\sim 100\K\ohm$.
 
+La strumentazione usata è quella presente sul banco di lavoro.
+%così suona altamente poco riproducibile, ma dobbiamo trovare una formula per evitare di ripetere ogni volta l'elenco stupido di oscilloscopio, alimentatore, etc.
+
+\section{Filtro passa-basso}
+
+\subsection{Dimensionamento}
+Si è dimensionato il circuito tenendo conto dei seguenti criteri:
+\begin{itemize}
+\item massimizzare il rapporto segnale-rumore;
+\item ottenere un segnale abbastanza intenso.
+\end{itemize}
+Cercare di preservare l'intensità del segnale in ingresso è motivato dal fatto che, se il segnale venisse troppo attenuato dal filtro, gli strumenti per misurarlo introdurrebbero essi stessi un rumore non trascurabile, o comunque sarebbero non trascurabili altri tipi di contributi.
+
+A questo fine si è fissata la frequenza di taglio a $200~\Hz$, infatti minore è la frequenza di taglio maggiore è il rapporto segnale rumore, per cui si otterrebbe un rapporto massimo per una frequenza di taglio nulla. Ma in questo modo si attenuerebbe eccessivamente il segnale, non rispettando il secondo criterio.
+
+A $200~\Hz$ infatti il guadagno è $\sim -20~\dB$ per il segnale, per cui un segnale in ingresso di $\sim 20V$ (come quello fornito dal generatore di forme d'onda) viene attenuato a $\sim 2V$. In questo modo non l'errore introdotto dalla lettura sull'oscilloscopio non è troppo influenzato dal fondo che si osserva in assenza di segnale, la cui intensità stimata è pari a $\sim 2\m V$, quindi lo $0.1\%$ del segnale in uscita.
+
+Per cui si è scelto per il filtro la resistenza $R = $ e il condensatore $C = $. La resistenza è stata scelta anche in modo tale da rendere poco influente la caduta di potenziale sull'impedenza di uscita del generatore. 
 
 \end{document}

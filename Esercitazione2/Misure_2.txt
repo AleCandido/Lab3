@@ -65,4 +65,3 @@ b. Frequenza di taglio
 
 3) t_salita = 1.620e-3 s
 
-
