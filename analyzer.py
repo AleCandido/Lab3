@@ -887,8 +887,10 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 	errorbar(X,Y,dY,dX, fmt=",",ecolor="black",capsize=0.5)
 	xlabel(Xlab)
 	ylabel(Ylab)
-	
-	l=linspace(min(X),max(X),1000)
+	if Xscale=="log":
+		l=logspace(log10(min(X)),log10(max(X)),1000)
+	else:
+		l=linspace(min(X),max(X),1000)
 	plot(l,f(l,*par),"red")
 	savefig(directory+"grafici\\fit_"+file+".pdf")
 	savefig(directory+"grafici\\fit_"+file+".png")
