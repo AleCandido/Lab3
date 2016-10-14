@@ -27,7 +27,7 @@ Ylab="Ampiezza"
 
 tab=["Frequenza [Hz]","Tensione in ingresso [V]","Tensione in uscita"]
 
-#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,scarti=True,table=True,Xscale="log",Yscale="log",tab=tab)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,scarti=True,table=True,Xscale="log",Yscale="log",tab=tab)
 
 ###########################################################################
 
@@ -98,7 +98,7 @@ Ylab="Ampiezza"
 
 tab=["Frequenza [Hz]","Tensione in ingresso [V]","Tensione in uscita"]
 
-#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,scarti=True,table=True,Xscale="log",Yscale="log",tab=tab)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,scarti=True,table=True,Xscale="log",Yscale="log",tab=tab)
 
 ###########################################################################
 
@@ -122,7 +122,7 @@ Ylab="Ampiezza"
 
 tab=["Frequenza [Hz]","Tensione in ingresso [V]","Tensione in uscita"]
 
-#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,scarti=True,table=True,Xscale="log",Yscale="log",tab=tab)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,scarti=True,table=True,Xscale="log",Yscale="log",tab=tab)
 
 ###########################################################################
 
@@ -146,4 +146,4 @@ Ylab="Ampiezza"
 
 tab=["Frequenza [Hz]","Tensione in ingresso [V]","Tensione in uscita"]
 
-#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,scarti=True,table=True,Xscale="log",Yscale="log",tab=tab)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,scarti=True,table=True,Xscale="log",Yscale="log",tab=tab)
