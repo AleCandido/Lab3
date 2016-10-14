@@ -893,7 +893,7 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 	errorbar(X,Y,dY,dX, fmt=",",ecolor="black",capsize=0.5)
 	xlabel(Xlab)
 	ylabel(Ylab)
-	xlima = xlimp/100
+	xlima = array(xlimp)/100
 	if Xscale=="log":
 		l=logspace(log10(min(X))*xlima[0],log10(max(X)*xlima[1]),1000)
 	else:

@@ -23,20 +23,20 @@ def XYfun(a):
 
 unit=["tempo_osc","volt_osc","volt_osc"]
 
-titolo="Diagramma di Bode"
+titolo="Diagramma di Bode - passa basso"
 Xlab="Frequenza [Hz]"
 Ylab="Ampiezza"
 
-tab=["Frequenza [Hz]","Tensione in ingresso [V]","Tensione in uscita"]
+tab=["Frequenza [Hz]","Tensione in ingresso [$V$]","Tensione in uscita [$V$]"]
 
-fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,scarti=True,table=True,Xscale="log",Yscale="log",tab=tab)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,table=True,Xscale="log",Yscale="log",tab=tab)
 
 ###########################################################################
 
 #PASSA BASSO RETTA 1#
 
 file="retta_lowpass_1"
-
+fig="rette"
 def f(x, a,b):
     return a*x+b
 
@@ -47,20 +47,21 @@ def XYfun(a):
 
 unit=["tempo_osc","volt_osc","volt_osc"]
 
+
 titolo="Passa basso - fit lineare"
-Xlab="Frequenza [Hz]"
-Ylab="Ampiezza"
+Xlab="log(Frequenza) [log(Hz)]"
+Ylab="log(Ampiezza)"
 
-tab=["Frequenza [Hz]","Tensione in ingresso [V]","Tensione in uscita"]
+tab=["Frequenza [Hz]","Tensione in ingresso [V]","Tensione in uscita [V]"]
 
-#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,scarti=True)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,fig=fig,xlimp=[80,130])
 
 ###########################################################################
 
 #PASSA BASSO RETTA 2#
 
 file="retta_lowpass_2"
-
+fig="rette"
 def f(x, a,b):
     return a*x+b
 
@@ -72,12 +73,13 @@ def XYfun(a):
 unit=["tempo_osc","volt_osc","volt_osc"]
 
 titolo="Passa basso - fit lineare"
-Xlab="Frequenza [Hz]"
-Ylab="Ampiezza"
+Xlab="log(Frequenza) [log(Hz)]"
+Ylab="log(Ampiezza)"
 
-tab=["Frequenza [Hz]","Tensione in ingresso [V]","Tensione in uscita"]
+tab=["Frequenza [Hz]","Tensione in ingresso [V]","Tensione in uscita [V]"]
 
-#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,scarti=True)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,fig=fig,xlimp=[80,105])
+
 ###########################################################################
 
 #PASSA BASSO FAST#
@@ -94,13 +96,13 @@ def XYfun(a):
 
 unit=["tempo_osc","volt_osc","volt_osc"]
 
-titolo="Diagramma di Bode"
+titolo="Diagramma di Bode - passa basso"
 Xlab="Frequenza [Hz]"
 Ylab="Ampiezza"
 
-tab=["Frequenza [Hz]","Tensione in ingresso [V]","Tensione in uscita"]
+tab=["Frequenza [Hz]","Tensione in ingresso [V]","Tensione in uscita [V]"]
 
-fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,scarti=True,table=True,Xscale="log",Yscale="log",tab=tab)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,table=True,Xscale="log",Yscale="log",tab=tab)
 
 ###########################################################################
 
@@ -118,13 +120,13 @@ def XYfun(a):
 
 unit=["tempo_osc","volt_osc","volt_osc"]
 
-titolo="Diagramma di Bode"
+titolo="Diagramma di Bode - passa alto"
 Xlab="Frequenza [Hz]"
 Ylab="Ampiezza"
 
-tab=["Frequenza [Hz]","Tensione in ingresso [V]","Tensione in uscita"]
+tab=["Frequenza [Hz]","Tensione in ingresso [V]","Tensione in uscita [V]"]
 
-fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,scarti=True,table=True,Xscale="log",Yscale="log",tab=tab)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,table=True,Xscale="log",Yscale="log",tab=tab)
 
 ###########################################################################
 
@@ -148,7 +150,7 @@ Ylab="Ampiezza"
 
 tab=["Frequenza [Hz]","Tensione in ingresso [V]","Tensione in uscita"]
 
-#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,scarti=True,table=True,Xscale="log",Yscale="log",tab=tab)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,table=True,Xscale="log",Yscale="log",tab=tab)
 
 ###########################################################################
 
@@ -173,9 +175,8 @@ Ylab="Ampiezza"
 
 xlimp1=array([90.,105.])
 
-tab=["Frequenza [Hz]","Tensione in ingresso [V]","Tensione in uscita"]
 
-fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,scarti=True,fig=figura,xlimp=xlimp1)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,fig=figura,xlimp=xlimp1)
 
 ###########################################################################
 
@@ -200,9 +201,8 @@ Ylab="Ampiezza"
 
 xlimp2=array([90.,110.])
 
-tab=["Frequenza [Hz]","Tensione in ingresso [V]","Tensione in uscita"]
 
-fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,scarti=True,fig=figura,xlimp=xlimp2)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,fig=figura,xlimp=xlimp2)
 
 ###########################################################################
 
@@ -227,6 +227,5 @@ Ylab="Ampiezza"
 
 xlimp3=array([100.,105.])
 
-tab=["Frequenza [Hz]","Tensione in ingresso [V]","Tensione in uscita"]
 
-fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,scarti=True,fig=figura, xlimp=xlimp3)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,fig=figura, xlimp=xlimp3)
