@@ -59,12 +59,12 @@ Cercare di preservare l'intensità del segnale in ingresso è motivato dal fatto
 
 A questo fine si è fissata la frequenza di taglio a $200~\unit{\hertz}$, infatti minore è la frequenza di taglio maggiore è il rapporto segnale rumore, per cui si otterrebbe un rapporto massimo per una frequenza di taglio nulla. Ma in questo modo si attenuerebbe eccessivamente il segnale, non rispettando il secondo criterio.
 
-A $200~\unit{\hertz}$ infatti il guadagno è $\sim -20~\unit{\deci\bel}$ per il segnale, per cui un segnale in ingresso di $\sim 20~\unit{\volt}$ (come quello fornito dal generatore di forme d'onda) viene attenuato a $\sim 2~\unit{\volt}$. In questo modo non l'errore introdotto dalla lettura sull'oscilloscopio non è troppo influenzato dal fondo che si osserva in assenza di segnale, la cui intensità stimata è pari a $\sim 2~\unit{\milli\volt}$, quindi lo $0.1\%$ del segnale in uscita.
+A $200~\unit{\hertz}$ infatti il guadagno è $\sim -20~\unit{\deci\bell}$ per il segnale, per cui un segnale in ingresso di $\sim 20~\unit{\volt}$ (come quello fornito dal generatore di forme d'onda) viene attenuato a $\sim 2~\unit{\volt}$. In questo modo non l'errore introdotto dalla lettura sull'oscilloscopio non è troppo influenzato dal fondo che si osserva in assenza di segnale, la cui intensità stimata è pari a $\sim 2~\unit{\milli\volt}$, quindi lo $0.1\%$ del segnale in uscita.
 
 Per cui si è scelto per il filtro la resistenza $R = $ e il condensatore $C = $. La resistenza è stata scelta anche in modo tale da rendere poco influente la caduta di potenziale sull'impedenza di uscita del generatore. 
 
 \subsection{Risposta in frequenza}
-Dalla teoria sappiamo che il guadagno del filtro passa basso è $|A_v|=1/\sqrt{1+(f/f_0)^2}$ doce $f_0 = 1/(2 \pi RC)$ è detta frequenza di taglio. Nel nostro caso $f_0 =$ A questa frequenza il filtro RC ha un guadagno di $-3 \dB$.
+Dalla teoria sappiamo che il guadagno del filtro passa basso è $|A_v|=1/\sqrt{1+(f/f_0)^2}$ doce $f_0 = 1/(2 \pi RC)$ è detta frequenza di taglio. Nel nostro caso $f_0 = 200 \pm 20 \ohm$ (dove l'incertezza è quasi totalmente determinata dal condensatore). A questa frequenza il filtro RC ha un guadagno di $-3 \dB$.
 
 Un modo veloce per misurare sperimentalmente questa frequenza è quindi quello di variare la frequenza con continuità fino a trovare  un rapporto $V_{out}/V_{in}$ pari a $1/\sqrt{(2)}$ (ovvero $-3\dB$). La misura effettuata in questo modo ha 
 
