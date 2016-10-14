@@ -171,9 +171,11 @@ titolo="Passa banda - fit lineare"
 Xlab="Frequenza [Hz]"
 Ylab="Ampiezza"
 
+xlimp1=array([90.,105.])
+
 tab=["Frequenza [Hz]","Tensione in ingresso [V]","Tensione in uscita"]
 
-fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,scarti=True,fig=figura)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,scarti=True,fig=figura,xlimp=xlimp1)
 
 ###########################################################################
 
@@ -196,9 +198,11 @@ titolo="Passa banda - fit lineare"
 Xlab="Frequenza [Hz]"
 Ylab="Ampiezza"
 
+xlimp2=array([90.,110.])
+
 tab=["Frequenza [Hz]","Tensione in ingresso [V]","Tensione in uscita"]
 
-fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,scarti=True,fig=figura)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,scarti=True,fig=figura,xlimp=xlimp2)
 
 ###########################################################################
 
@@ -221,6 +225,8 @@ titolo="Passa banda - fit lineare"
 Xlab="Frequenza [Hz]"
 Ylab="Ampiezza"
 
+xlimp3=array([100.,105.])
+
 tab=["Frequenza [Hz]","Tensione in ingresso [V]","Tensione in uscita"]
 
-fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,scarti=True,fig=figura)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,scarti=True,fig=figura, xlimp=xlimp3)
