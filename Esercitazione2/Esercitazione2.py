@@ -1,7 +1,7 @@
 from pylab import *
-#path = "C:\\Users\\Roberto\\Documents\\GitHub\\Lab3\\"
+path = "C:\\Users\\Roberto\\Documents\\GitHub\\Lab3\\"
 #path = "C:\\Users\\Studenti\\Desktop\\Lab3\\"
-path = "/home/alessandro/Documents/Università/3°anno/Laboratorio3/Lab3/"
+#path = "/home/alessandro/Documents/Università/3°anno/Laboratorio3/Lab3/"
 sys.path = sys.path + [path]
 from analyzer import *
 import uncertainties
@@ -29,7 +29,7 @@ Ylab="Ampiezza"
 
 tab=["Frequenza [Hz]","Tensione in ingresso [V]","Tensione in uscita"]
 
-#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,scarti=True,table=True,Xscale="log",Yscale="log",tab=tab)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,scarti=True,table=True,Xscale="log",Yscale="log",tab=tab)
 
 ###########################################################################
 
@@ -100,7 +100,7 @@ Ylab="Ampiezza"
 
 tab=["Frequenza [Hz]","Tensione in ingresso [V]","Tensione in uscita"]
 
-#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,scarti=True,table=True,Xscale="log",Yscale="log",tab=tab)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,scarti=True,table=True,Xscale="log",Yscale="log",tab=tab)
 
 ###########################################################################
 
@@ -124,7 +124,7 @@ Ylab="Ampiezza"
 
 tab=["Frequenza [Hz]","Tensione in ingresso [V]","Tensione in uscita"]
 
-#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,scarti=True,table=True,Xscale="log",Yscale="log",tab=tab)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,scarti=True,table=True,Xscale="log",Yscale="log",tab=tab)
 
 ###########################################################################
 
@@ -158,7 +158,7 @@ file="passabandar1"
 figura="passabandar"
 
 def f(x, a,b):
-	return a*x + b
+    return a*x + b
 
 p0 = [1,1]
 
@@ -185,7 +185,7 @@ file="passabandar2"
 figura="passabandar"
 
 def f(x, a,b):
-	return a*x + b
+    return a*x + b
 
 p0 = [1,1]
 
@@ -212,7 +212,7 @@ file="passabandar3"
 figura="passabandar"
 
 def f(x, a,b):
-	return a*x + b
+    return a*x + b
 
 p0 = [1,1]
 

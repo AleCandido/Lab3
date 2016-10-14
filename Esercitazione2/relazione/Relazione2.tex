@@ -64,6 +64,31 @@ A $\unit{200}{\hertz}$ infatti il guadagno è $\sim \unit{-20}{\deci\bel}$ per i
 Per cui si è scelto per il filtro la resistenza $R = $ e il condensatore $C = $. La resistenza è stata scelta anche in modo tale da rendere poco influente la caduta di potenziale sull'impedenza di uscita del generatore. 
 
 \subsection{Risposta in frequenza}
+Dalla teoria sappiamo che il guadagno del filtro passa basso è $|A_v|=1/\sqrt{1+(f/f_0)^2}$ doce $f_0 = 1/(2 \pi RC)$ è detta frequenza di taglio. A questa frequenza il filtro RC ha un guadagno di $\unit{-3}{\deci\bel}$.
+
+Nel nostro caso apartire dal valore misurato di $R$ e dal valore nominale del condensatore $C$, il valore atteso è $f_0 = \unit{200 \pm 20}{\ohm}$ (dove l'incertezza è quasi totalmente determinata dal condensatore).
+\\\\
+Un modo veloce per misurare sperimentalmente questa frequenza è quindi quello di variare la frequenza con continuità fino a trovare  un rapporto $V_{out}/V_{in}$ pari a $1/\sqrt{(2)}$ (ovvero $\unit{-3}{\deci\bel}$). La misura effettuata in questo modo ha prodotto una stima di $f_1 =\unit{208 \pm 10}{\ohm}$.
+\\\\
+Un'altro modo per misurare la frequenza di taglio è eseguire due fit lineari a bassa ed alta frequenza (rispetto a $f_0$ attesa). Calcolando il punto di intersezione e la relativa incertezza (tenendo debitamente conto della covazianza associata alle misure prodotte dai fit) si otterrà la frequenza cercata. I risultati dei fit sono stati: 
+\begin{itemize}
+	\item prima retta (risposta a bassa frequenza):	 $a=\unit{-0.04 \pm 0.03}{log{\hertz^{-1}}}$ e	 $b=0.11 \pm 0.11$, rispettivamente coefficiente angolare e intercetta.
+	\item seconda retta (risposta ad alta frequenza):	 $c=\unit{-0.908 \pm 0.016}{log{\hertz^{-1}}}$ e	 $d=4.68\pm 0.13$, rispettivamente coefficiente angolare e intercetta.
+\end{itemize}
+Il calcolo dell'intersezione produce $f_2 =\unit{ 193 \pm 16}{\hertz}$.
+\\\\
+La frequenza di taglio può anche essere ottenuta direttamente attraverso il fit della funzione di trasferimento $|A_v|$. Le misure effettuate sono riportate di seguito (insieme a quelle eseguite per il punto precedente).
+
+\begin{figure}[h!]
+	\centering
+		\input{../tabelle/tab_Bode_Lowpass_800ohm.txt}
+		\captionof{table}{Dati raccolti}
+		\centering
+		\includegraphics[width=1\textwidth]{../grafici/fit_Bode_Lowpass_800ohm.pdf}
+		\caption{Grafico delle misure e del fit}
+\end{figure}
+
+La frequenza di taglio fittata è $f_3 = \unit{229 \pm 4}{\hertz}$
 
 \subsection{Risposta al gradino}
 Si è misurata il tempo di carica del condensatore nel circuito in esame, dando come ingresso una funzione a gradino, ottenuta con un'onda quadra di bassa frequenza.\footnote{Se il periodo è abbastanza lungo si può assumere che il condensatore si carichi e si scarichi completamente.}
@@ -85,8 +110,45 @@ Il valore ottenuto per il tempo di salita del segnale (tra il 10\% e il 90\% del
 
 \subsection{I stadio: passa-basso}
 
-\subsection{II stadio: passa-alto}
+Si è montato il filtro passa basso come richiesto con una restistenza $R_1 = \unit{3.25 \pm 0.04}{\kilo\ohm}$ (misurata con il multimetro) e un condensatore $C_1=\unit{10 \pm 1}{\nano\farad}$ (valore nominale).
 
+Si è verificato che il filtro seguisse l'andamento generale previsto e che avesse guadagno $\sim 1$ a frequenza $<<f_0$, dove $f_0$ è la frequenza di taglio (in questo caso $f_0 = \unit{4.9 \pm 0.5}{\kilo\hertz}$).
+
+Si è misurata la frequenza di taglio sia cercando la frequenza per cui il guadagno fosse $\unit{-3}{\deci\bel}$ che eseguendo un veloce fit della funzione di trasferimento.
+I risultati sono stati:
+\begin{itemize}
+	\item $f_0 = \unit{4.2 \pm 0.1}{\kilo\hertz}$ con il primo metodo,
+	\item $f_0 = \unit{5.10 \pm 0.14}{\kilo\hertz}$ con il secondo metodo.
+\end{itemize}
+I dati raccolti e il grafico del fit sono qui riportati:
+
+\begin{figure}[h!]
+	\centering
+	\input{../tabelle/tab_Fast_fit_Lowpass.txt}
+	\captionof{table}{Dati raccolti}
+	\centering
+	\includegraphics[width=1\textwidth]{../grafici/fit_Fast_fit_Lowpass.pdf}
+	\caption{Grafico delle misure e del fit}
+\end{figure}
+
+\subsection{II stadio: passa-alto}
+Per il passa alto si è proceduto nella stessa maniera. Si sono usate $R_2=\unit{3.23 \pm 0.4}{\kilo\ohm}$ e $C=\unit{100 \pm 10}{\nano\farad}$.
+In questo caso i risultati delle misure sono stati:
+\begin{itemize}
+	\item $f_0 = \unit{517 \pm 10}{\kilo\hertz}$ con il primo metodo,
+	\item $f_0 = \unit{499 \pm 13}{\kilo\hertz}$ con il secondo metodo.
+\end{itemize}
+
+I dati raccolti e il grafico del fit sono qui riportati:
+
+\begin{figure}[h!]
+	\centering
+	\input{../tabelle/tab_Fast_fit_highpass.txt}
+	\captionof{table}{Dati raccolti}
+	\centering
+	\includegraphics[width=1\textwidth]{../grafici/fit_Fast_fit_highpass.pdf}
+	\caption{Grafico delle misure e del fit}
+\end{figure}
 \subsection{Configurazione a cascata}
 
 \paragraph{Scelta di $R1$ e $R2$} Si poteva scegliere $R1$ e $R2$ in modo che il rapporto fra i due fosse approssimativamente nullo, ad esempio scegliendo $R1$ più piccolo oppure $R2$ più grande.
