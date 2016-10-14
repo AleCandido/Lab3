@@ -4,6 +4,7 @@ from scipy.optimize import curve_fit
 import math
 import scipy.stats
 import uncertainties
+from uncertainties import unumpy
 
 # ********************** IMPORTS ***************************
 
@@ -22,7 +23,7 @@ def _check_finite(array): # asarray_chkfinite is absent in old numpies
 def curve_fit_patched(f, xdata, ydata, p0=None, sigma=None, absolute_sigma=False, check_finite=True, **kw):
 	"""
 		Same as curve_fit, but add absolute_sigma and check_finite if scipy is old.
-		If the keryword argument force_patch=True is given, the patch is used anyway.
+		If the keyword argument force_patch=True is given, the patch is used anyway.
 	"""
 	from scipy.optimize import curve_fit
 	force_patch = kw.pop('force_patch', False)
@@ -783,7 +784,7 @@ def XYfunction(a): #formula per il calcolo della X dalle colonne del file in inp
 	return a[0], a[1]
 
 #Load txt
-def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunction, preplot=False, Xscale="linear",Yscale="linear",scarti=False,table=False,tab=[""]):
+def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunction, preplot=False, Xscale="linear",Yscale="linear",scarti=False,table=False,tab=[""], fig="^^"):
 	
 	"""
 	Ho modificato la funzione ma non mi va di modificare l'help
@@ -836,12 +837,17 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 			Intestazione della prima colonna della tabella, di default è l'etichetta dell'asse X del plot
 		Ytab : stringa, optional
 			Intestazione della seconda colonna della tabella, di default è l'etichetta dell'asse Y del plot
+		fig : stringa, optional
+			nome della figura, utile per sovrapporre grafici di fit diversi
 			
 		Returns
 		-------
 	"""
+
+	if fig=="^^":
+		fig=file
 	
-	columns = loadtxt(directory+"data\\"+file+".txt", unpack = True)
+	columns = loadtxt(directory+"data/"+file+".txt", unpack = True)
 
 	dcolumns = zeros((len(columns),len(columns[0])))
 	for i in range(len(columns)):
@@ -864,8 +870,7 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 	
 	
 	if preplot==True :
-		figure(file+"_3")
-		clf();
+		figure(fig+"_3")
 		if Xscale=="log":
 			xscale("log")
 		if Yscale=="log":
@@ -877,8 +882,8 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 
 	#Plotto il grafico con il fit e gli scarti
 	
-	figure(file+"_1")
-	clf();
+	figure(fig+"_1")
+	
 	title(titolo)
 	if Xscale=="log":
 		xscale("log")
@@ -892,20 +897,19 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 	else:
 		l=linspace(min(X),max(X),1000)
 	plot(l,f(l,*par),"red")
-	savefig(directory+"grafici\\fit_"+file+".pdf")
-	savefig(directory+"grafici\\fit_"+file+".png")
+	savefig(directory+"grafici/fit_"+fig+".pdf")
+	savefig(directory+"grafici/fit_"+fig+".png")
 	
 	if scarti==True:
-		figure(file+"_2")
-		clf();
+		figure(fig+"_2")
 		title("Scarti normalizzati")
 		xlabel(Xlab) #
 		ylabel("Scarti normalizzati")
 		if Xscale=="log":
 			xscale("log")
 		plot(X, (Y-f(X,*par))/dY, ".", color="blue")
-		savefig(directory+"grafici\\scarti_"+file+".pdf")
-		savefig(directory+"grafici\\scarti_"+file+".png")
+		savefig(directory+"grafici/scarti_"+fig+".pdf")
+		savefig(directory+"grafici/scarti_"+fig+".png")
 	
 	
 	#Calcolo chi, errori e normalizzo la matrice di cov
@@ -931,7 +935,7 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 	
 	#Salvo la tabella formattata latex
 	if table==True:
-		with open(directory+"tabelle\\tab_"+file+".txt", "w") as text_file:
+		with open(directory+"tabelle/tab_"+file+".txt", "w") as text_file:
 			text_file.write("begin{tabular}{c")
 			for z in range (1,len(columns)):
 				text_file.write("|c")
