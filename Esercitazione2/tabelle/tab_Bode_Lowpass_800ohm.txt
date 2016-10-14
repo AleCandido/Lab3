@@ -1,5 +1,9 @@
 \begin{tabular}{c|c|c} 
+<<<<<<< HEAD
 Frequenza [Hz] & Tensione in ingresso [$V$] & Tensione in uscita [$V$]\\
+=======
+Frequenza [Hz] & Tensione in ingresso [V] & Tensione in uscita\\
+>>>>>>> 1c788b20ae04f1f9135a8fc043b9f02caadfd033
 10.50 $\pm$ 0.10 & 20.8 $\pm$ 0.7 & 21.0 $\pm$ 0.7\\
 19.50 $\pm$ 0.20 & 20.8 $\pm$ 0.7 & 20.8 $\pm$ 0.7\\
 39.3 $\pm$ 0.4 & 20.8 $\pm$ 0.7 & 20.6 $\pm$ 0.7\\
