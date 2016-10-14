@@ -1,9 +1,11 @@
 from pylab import *
 path = "C:\\Users\\Roberto\\Documents\\GitHub\\Lab3\\"
 #path = "C:\\Users\\Studenti\\Desktop\\Lab3\\"
+#path = "/home/alessandro/Documents/Università/3°anno/Laboratorio3/Lab3/"
 sys.path = sys.path + [path]
 from analyzer import *
-dir= path + "Esercitazione2\\"
+import uncertainties
+dir= path + "Esercitazione2/"
 
 ###########################################################################
 
@@ -51,7 +53,7 @@ Ylab="Ampiezza"
 
 tab=["Frequenza [Hz]","Tensione in ingresso [V]","Tensione in uscita"]
 
-fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,scarti=True)
+#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,scarti=True)
 
 ###########################################################################
 
@@ -75,7 +77,7 @@ Ylab="Ampiezza"
 
 tab=["Frequenza [Hz]","Tensione in ingresso [V]","Tensione in uscita"]
 
-fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,scarti=True)
+#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,scarti=True)
 ###########################################################################
 
 #PASSA BASSO FAST#
@@ -146,4 +148,79 @@ Ylab="Ampiezza"
 
 tab=["Frequenza [Hz]","Tensione in ingresso [V]","Tensione in uscita"]
 
-fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,scarti=True,table=True,Xscale="log",Yscale="log",tab=tab)
+#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,scarti=True,table=True,Xscale="log",Yscale="log",tab=tab)
+
+###########################################################################
+
+#PASSA BANDA RETTA 1#
+
+file="passabandar1"
+figura="passabandar"
+
+def f(x, a,b):
+    return a*x + b
+
+p0 = [1,1]
+
+def XYfun(a):
+    return unumpy.log(a[0]), unumpy.log(a[2]/a[1])
+
+unit=["tempo_osc","volt_osc","volt_osc"]
+
+titolo="Passa banda - fit lineare"
+Xlab="Frequenza [Hz]"
+Ylab="Ampiezza"
+
+tab=["Frequenza [Hz]","Tensione in ingresso [V]","Tensione in uscita"]
+
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,scarti=True,fig=figura)
+
+###########################################################################
+
+#PASSA BANDA RETTA 2#
+
+file="passabandar2"
+figura="passabandar"
+
+def f(x, a,b):
+    return a*x + b
+
+p0 = [1,1]
+
+def XYfun(a):
+    return unumpy.log(a[0]), unumpy.log(a[2]/a[1])
+
+unit=["tempo_osc","volt_osc","volt_osc"]
+
+titolo="Passa banda - fit lineare"
+Xlab="Frequenza [Hz]"
+Ylab="Ampiezza"
+
+tab=["Frequenza [Hz]","Tensione in ingresso [V]","Tensione in uscita"]
+
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,scarti=True,fig=figura)
+
+###########################################################################
+
+#PASSA BANDA RETTA 3#
+
+file="passabandar3"
+figura="passabandar"
+
+def f(x, a,b):
+    return a*x + b
+
+p0 = [1,1]
+
+def XYfun(a):
+    return unumpy.log(a[0]), unumpy.log(a[2]/a[1])
+
+unit=["tempo_osc","volt_osc","volt_osc"]
+
+titolo="Passa banda - fit lineare"
+Xlab="Frequenza [Hz]"
+Ylab="Ampiezza"
+
+tab=["Frequenza [Hz]","Tensione in ingresso [V]","Tensione in uscita"]
+
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,scarti=True,fig=figura)
