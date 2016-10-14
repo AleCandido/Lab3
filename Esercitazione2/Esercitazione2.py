@@ -1,7 +1,7 @@
 from pylab import *
-path = "C:\\Users\\Roberto\\Documents\\GitHub\\Lab3\\"
+#path = "C:\\Users\\Roberto\\Documents\\GitHub\\Lab3\\"
 #path = "C:\\Users\\Studenti\\Desktop\\Lab3\\"
-#path = "/home/alessandro/Documents/Università/3°anno/Laboratorio3/Lab3/"
+path = "/home/alessandro/Documents/Università/3°anno/Laboratorio3/Lab3/"
 sys.path = sys.path + [path]
 from analyzer import *
 import uncertainties
@@ -171,7 +171,7 @@ titolo="Passa banda - fit lineare"
 Xlab="Frequenza [Hz]"
 Ylab="Ampiezza"
 
-xlimp1=array([90.,105.])
+xlimp1=array([90.,115.])
 
 tab=["Frequenza [Hz]","Tensione in ingresso [V]","Tensione in uscita"]
 
@@ -198,7 +198,7 @@ titolo="Passa banda - fit lineare"
 Xlab="Frequenza [Hz]"
 Ylab="Ampiezza"
 
-xlimp2=array([90.,110.])
+xlimp2=array([80.,110.])
 
 tab=["Frequenza [Hz]","Tensione in ingresso [V]","Tensione in uscita"]
 
@@ -225,7 +225,7 @@ titolo="Passa banda - fit lineare"
 Xlab="Frequenza [Hz]"
 Ylab="Ampiezza"
 
-xlimp3=array([100.,105.])
+xlimp3=array([95.,105.])
 
 tab=["Frequenza [Hz]","Tensione in ingresso [V]","Tensione in uscita"]
 
