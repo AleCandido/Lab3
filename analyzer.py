@@ -648,7 +648,7 @@ def util_format(x, e, pm='+-', percent=False):
 	if not percent or float(sx) == 0:
 		return "%s %s %s" % (sx, pm, se)
 	else:
-		ep = abs(e) / x * 100.0
+		ep = abs(e) / abs(x) * 100.0
 		eps = "%.*g" % (2 if ep < 100.0 else 3, ep)
 		return "%s %s %s (%s %%)" % (sx, pm, se, eps)
 
@@ -784,7 +784,7 @@ def XYfunction(a): #formula per il calcolo della X dalle colonne del file in inp
 	return a[0], a[1]
 
 #Load txt
-def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunction, preplot=False, Xscale="linear",Yscale="linear",scarti=False,table=False,tab=[""], fig="^^"):
+def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunction, preplot=False, Xscale="linear",Yscale="linear", xlimp = array([100.,100.]),scarti=False,table=False,tab=[""], fig="^^"):
 	
 	"""
 	Ho modificato la funzione ma non mi va di modificare l'help
@@ -829,6 +829,8 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 			cambia la scala dell'asse X nei plot, di default linear
 		Yscale : linear / log, optional
 			cambia la scala dell'asse Y nei plot, di default linear
+		xlimp : array di 2 elementi
+			cambia l'estensione della curva di fit in percentuale, rispetto all'estensione dei punti misurati
 		scarti : boolean, optional
 			stampa e salva il plot degli scarti normalizzati
 		table : boolean, optional
@@ -843,9 +845,6 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 		Returns
 		-------
 	"""
-
-	if fig=="^^":
-		fig=file
 	
 	columns = loadtxt(directory+"data/"+file+".txt", unpack = True)
 
@@ -867,7 +866,9 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 	Y=unumpy.nominal_values(Y_err)
 	dX=unumpy.std_devs(X_err)
 	dY=unumpy.std_devs(Y_err)
-	
+
+	if fig=="^^":
+		fig=file
 	
 	if preplot==True :
 		figure(fig+"_3")
@@ -892,10 +893,11 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 	errorbar(X,Y,dY,dX, fmt=",",ecolor="black",capsize=0.5)
 	xlabel(Xlab)
 	ylabel(Ylab)
+	xlima = xlimp/100
 	if Xscale=="log":
-		l=logspace(log10(min(X)),log10(max(X)),1000)
+		l=logspace(log10(min(X))*xlima[0],log10(max(X)*xlima[1]),1000)
 	else:
-		l=linspace(min(X),max(X),1000)
+		l=linspace(min(X)*xlima[0],max(X)*xlima[1],1000)
 	plot(l,f(l,*par),"red")
 	savefig(directory+"grafici/fit_"+fig+".pdf")
 	savefig(directory+"grafici/fit_"+fig+".png")
@@ -927,7 +929,7 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 	#Stampo i risultati, il chi e la matrice di cov
 	print("\nFIT RESULT %s\n" % file)
 	for i in range(len(par)):
-		print("p%s = %s" % (i,xep(par[i],sigma[i])))
+		print("p%s = %s" % (i,xep(par[i],sigma[i],",")))
 	
 	print("\nchi / ndof =",chi,"/",len(X)-len(par))
 	if len(par)>1 :
@@ -936,7 +938,7 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 	#Salvo la tabella formattata latex
 	if table==True:
 		with open(directory+"tabelle/tab_"+file+".txt", "w") as text_file:
-			text_file.write("begin{tabular}{c")
+			text_file.write("\\begin{tabular}{c")
 			for z in range (1,len(columns)):
 				text_file.write("|c")
 			text_file.write("} \n")
