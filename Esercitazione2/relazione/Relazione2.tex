@@ -20,17 +20,13 @@
 \lhead{}\chead{}\rhead{}
 \lfoot{}\cfoot{\thepage}\rfoot{}
 
-\newcommand\ohm{\Omega}
-\newcommand\Hz{\text{Hz}}
-\newcommand\dB{\text{dB}}
-\newcommand\K{\text{~k}}
-\newcommand\M{\text{~M}}
-\newcommand\m{\text{~m}}
-
 %%% SECTION TITLE APPEARANCE
 \usepackage{sectsty}
 %\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
 % (This matches ConTeXt defaults)
+
+% pacchetti che mi piacciono
+\usepackage[cdot, thickqspace]{SIunits}
 
 \title{Esercitazione 2: Circuito RC - Filtri passivi}
 \author{Gruppo BE \\ Alessandro Candido, Roberto Ribatti}
@@ -46,7 +42,7 @@ Lo scopo dell'esperienza è:
 \item dimensionare opportunamente un filtro passa-basso al fine di migliorare il rapporto segnale rumore in un caso dato.
 \end{itemize}
 
-In particolare per quanto riguarda il primo punto si è analizzato un filtro passa-basso e una configurazione a cascata, in cui il primo stadio era un passa-basso e il secondo un passa-alto. Per il secondo punto si aveva un segnale a $2\K\Hz$ e il rumore a $20\K\Hz$, e si considerava un carico a valle di $\sim 100\K\ohm$.
+In particolare per quanto riguarda il primo punto si è analizzato un filtro passa-basso e una configurazione a cascata, in cui il primo stadio era un passa-basso e il secondo un passa-alto. Per il secondo punto si aveva un segnale a $2~\unit{\kilo\hertz}$ e il rumore a $20~\unit{\kilo\hertz}$, e si considerava un carico a valle di $\sim 100~\unit{\kilo\ohm}$.
 
 La strumentazione usata è quella presente sul banco di lavoro.
 %così suona altamente poco riproducibile, ma dobbiamo trovare una formula per evitare di ripetere ogni volta l'elenco stupido di oscilloscopio, alimentatore, etc.
@@ -61,9 +57,9 @@ Si è dimensionato il circuito tenendo conto dei seguenti criteri:
 \end{itemize}
 Cercare di preservare l'intensità del segnale in ingresso è motivato dal fatto che, se il segnale venisse troppo attenuato dal filtro, gli strumenti per misurarlo introdurrebbero essi stessi un rumore non trascurabile, o comunque sarebbero non trascurabili altri tipi di contributi.
 
-A questo fine si è fissata la frequenza di taglio a $200~\Hz$, infatti minore è la frequenza di taglio maggiore è il rapporto segnale rumore, per cui si otterrebbe un rapporto massimo per una frequenza di taglio nulla. Ma in questo modo si attenuerebbe eccessivamente il segnale, non rispettando il secondo criterio.
+A questo fine si è fissata la frequenza di taglio a $200~\unit{\hertz}$, infatti minore è la frequenza di taglio maggiore è il rapporto segnale rumore, per cui si otterrebbe un rapporto massimo per una frequenza di taglio nulla. Ma in questo modo si attenuerebbe eccessivamente il segnale, non rispettando il secondo criterio.
 
-A $200~\Hz$ infatti il guadagno è $\sim -20~\dB$ per il segnale, per cui un segnale in ingresso di $\sim 20V$ (come quello fornito dal generatore di forme d'onda) viene attenuato a $\sim 2V$. In questo modo non l'errore introdotto dalla lettura sull'oscilloscopio non è troppo influenzato dal fondo che si osserva in assenza di segnale, la cui intensità stimata è pari a $\sim 2\m V$, quindi lo $0.1\%$ del segnale in uscita.
+A $200~\unit{\hertz}$ infatti il guadagno è $\sim -20~\unit{\deci\bel}$ per il segnale, per cui un segnale in ingresso di $\sim 20~\unit{\volt}$ (come quello fornito dal generatore di forme d'onda) viene attenuato a $\sim 2~\unit{\volt}$. In questo modo non l'errore introdotto dalla lettura sull'oscilloscopio non è troppo influenzato dal fondo che si osserva in assenza di segnale, la cui intensità stimata è pari a $\sim 2~\unit{\milli\volt}$, quindi lo $0.1\%$ del segnale in uscita.
 
 Per cui si è scelto per il filtro la resistenza $R = $ e il condensatore $C = $. La resistenza è stata scelta anche in modo tale da rendere poco influente la caduta di potenziale sull'impedenza di uscita del generatore. 
 
@@ -73,6 +69,15 @@ Dalla teoria sappiamo che il guadagno del filtro passa basso è $|A_v|=1/\sqrt{1
 Un modo veloce per misurare sperimentalmente questa frequenza è quindi quello di variare la frequenza con continuità fino a trovare  un rapporto $V_{out}/V_{in}$ pari a $1/\sqrt{(2)}$ (ovvero $-3\dB$). La misura effettuata in questo modo ha 
 
 \subsection{Risposta al gradino}
+Si è misurata il tempo di carica del condensatore nel circuito in esame, dando come ingresso una funzione a gradino, ottenuta con un'onda quadra di bassa frequenza.\footnote{Se il periodo è abbastanza lungo si può assumere che il condensatore si carichi e si scarichi completamente.}
+
+\begin{figure}[h]
+	\includegraphics[width=0.5\textwidth]{../oscilloscopio/raise_time.jpg}
+	\caption{Tempo di carica del condensatore}
+	\label{fig:raise}
+\end{figure}
+
+Il valore ottenuto per il tempo di salita del segnale (tra il 10\% e il 90\% del massimo) è $1.620~\unit{\milli\second}$
 
 \subsection{Temp:domande teoriche}
 %nome temporaneo, decidiamo poi insieme
