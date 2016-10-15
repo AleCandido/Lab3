@@ -12,4 +12,4 @@
 *.loe
 *.ai
 Makefile
-_pycache_
+_pycache_/
