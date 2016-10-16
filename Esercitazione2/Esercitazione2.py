@@ -1,7 +1,7 @@
 from pylab import *
-#path = "C:\\Users\\Roberto\\Documents\\GitHub\\Lab3\\"
+path = "C:\\Users\\Roberto\\Documents\\GitHub\\Lab3\\"
 #path = "C:\\Users\\Studenti\\Desktop\\Lab3\\"
-path = "/home/alessandro/Documents/Università/3°anno/Laboratorio3/Lab3/"
+#path = "/home/alessandro/Documents/Università/3°anno/Laboratorio3/Lab3/"
 sys.path = sys.path + [path]
 from analyzer import *
 import uncertainties
@@ -43,14 +43,14 @@ def f(x, a,b):
 p0=[1,1]
 
 def XYfun(a):
-    return unumpy.log(a[0]), unumpy.log(a[2]/a[1])
+    return unumpy.log10(a[0]), 20* unumpy.log10(a[2]/a[1])
 
 unit=["tempo_osc","volt_osc","volt_osc"]
 
 
 titolo="Passa basso - fit lineare"
-Xlab="log(Frequenza) [log(Hz)]"
-Ylab="log(Ampiezza)"
+Xlab="Frequenza [decadi]"
+Ylab="Ampiezza [dB]"
 
 tab=["Frequenza [Hz]","Tensione in ingresso [V]","Tensione in uscita [V]"]
 
@@ -68,13 +68,13 @@ def f(x, a,b):
 p0=[1,1]
 
 def XYfun(a):
-    return unumpy.log(a[0]), unumpy.log(a[2]/a[1])
+    return unumpy.log10(a[0]), 20*unumpy.log10(a[2]/a[1])
 
 unit=["tempo_osc","volt_osc","volt_osc"]
 
 titolo="Passa basso - fit lineare"
-Xlab="log(Frequenza) [log(Hz)]"
-Ylab="log(Ampiezza)"
+Xlab="Frequenza [decadi]"
+Ylab="Ampiezza [dB]"
 
 tab=["Frequenza [Hz]","Tensione in ingresso [V]","Tensione in uscita [V]"]
 
@@ -165,13 +165,13 @@ def f(x, a,b):
 p0 = [1,1]
 
 def XYfun(a):
-    return unumpy.log(a[0]), unumpy.log(a[2]/a[1])
+    return unumpy.log10(a[0]), 20 * unumpy.log10(a[2]/a[1])
 
 unit=["tempo_osc","volt_osc","volt_osc"]
 
 titolo="Passa banda - fit lineare"
-Xlab="Frequenza [Hz]"
-Ylab="Ampiezza"
+Xlab="Frequenza [decadi]"
+Ylab="Ampiezza [dB]"
 
 xlimp1=array([90.,115.])
 
@@ -191,13 +191,13 @@ def f(x, a,b):
 p0 = [1,1]
 
 def XYfun(a):
-    return unumpy.log(a[0]), unumpy.log(a[2]/a[1])
+    return unumpy.log10(a[0]), 20*unumpy.log10(a[2]/a[1])
 
 unit=["tempo_osc","volt_osc","volt_osc"]
 
 titolo="Passa banda - fit lineare"
-Xlab="Frequenza [Hz]"
-Ylab="Ampiezza"
+Xlab="Frequenza [decadi]"
+Ylab="Ampiezza [dB]"
 
 xlimp2=array([80.,110.])
 
@@ -217,13 +217,13 @@ def f(x, a,b):
 p0 = [1,1]
 
 def XYfun(a):
-    return unumpy.log(a[0]), unumpy.log(a[2]/a[1])
+    return unumpy.log10(a[0]), 20 * unumpy.log10(a[2]/a[1])
 
 unit=["tempo_osc","volt_osc","volt_osc"]
 
 titolo="Passa banda - fit lineare"
-Xlab="Frequenza [Hz]"
-Ylab="Ampiezza"
+Xlab="Frequenza [decadi]"
+Ylab="Ampiezza [dB]"
 
 xlimp3=array([95.,105.])
 

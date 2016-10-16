@@ -76,34 +76,37 @@ Nel nostro caso a partire dal valore misurato di $R$ e dal valore nominale del c
 
 \paragraph{} Un'altro modo per misurare la frequenza di taglio è eseguire due fit lineari a bassa ed alta frequenza (rispetto a $f_0$ attesa). Calcolando il punto di intersezione e la relativa incertezza (tenendo debitamente conto della covazianza associata alle misure prodotte dai fit) si otterrà la frequenza cercata. I risultati dei fit sono stati: 
 \begin{itemize}
-	\item prima retta (risposta a bassa frequenza):	 $a=\unit{-0.7 \pm 0.7}{\deci\bel/decade}$,  $b=\unit{2.1 \pm 2.3}{\deci\bel}$ e $c_{ab} = -0.976$, rispettivamente coefficiente angolare, intercetta e coefficiente di correlazione.
+	\item prima retta (risposta a bassa frequenza):	 $a=\unit{-0.7 \pm 0.7}{\deci\bel/decade}$,  $b=\unit{2.1 \pm 2.3}{\deci\bel}$ e $c_{ab} = -0.976$, rispettivamente coefficiente angolare, intercetta e coefficiente di correlazione,
 	\item seconda retta (risposta ad alta frequenza):	 $c=\unit{-18.2 \pm 0.3}{\deci\bel/decade}$ , $d=\unit{93.6 \pm 2.6}{\deci\bel}$ e $c_{cd} = -0.989$, rispettivamente coefficiente angolare, intercetta e coefficiente di correlazione.
 \end{itemize}
 L'andamento è quello previsto: la prima retta ha coefficiente angolare e intercetta entrambi compatibili con $0$, come atteso, e la seconda retta ha un'inclinazione di $\sim \unit{-20}{\deci\bel / decade}$.
 
 Il calcolo dell'intersezione produce $f_2 =\unit{ 193 \pm 16}{\hertz}$.
 Il grafico dell'intersezione delle rette fittate è riportato di seguito.
-\begin{figure}[h]
+\begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.7\textwidth]{../grafici/fit_rette.pdf}
+	\includegraphics[width=0.6\textwidth]{../grafici/fit_rette.pdf}
 	\caption{Grafico dell'intersezione delle rette}
 \end{figure}
 
 \paragraph{} La frequenza di taglio può anche essere ottenuta direttamente attraverso il fit della funzione di trasferimento $|A_v|$. Le misure effettuate sono riportate di seguito (insieme a quelle eseguite per il punto precedente).
 
-
 \begin{figure}[h!]
 	\centering
-		\input{../tabelle/tab_Bode_Lowpass_800ohm.txt}
-		\captionof{table}{Dati raccolti}
-\end{figure}
-\begin{figure}[h]
+\begin{minipage}[h!]{0.49\textwidth}
+	\centering
+	\resizebox{\textwidth}{!}{
+		\input{../tabelle/tab_Bode_Lowpass_800ohm.txt}}
+	\captionof{table}{Dati raccolti del passa basso}
+\end{minipage}
+\begin{minipage}[h!]{0.49\textwidth}
 		\centering
-		\includegraphics[width=0.8\textwidth]{../grafici/fit_Bode_Lowpass_800ohm.pdf}
-		\caption{Grafico delle misure e del fit}
+		\includegraphics[width=\textwidth]{../grafici/fit_Bode_Lowpass_800ohm.pdf}
+		\caption{Misure e fit del passa basso}
+\end{minipage}
 \end{figure}
 
-La frequenza di taglio fittata è $f_3 = \unit{229 \pm 4}{\hertz}$
+La frequenza di taglio fittata è $f_3 = \unit{229 \pm 4}{\hertz}$.
 
 \subsection{Risposta al gradino}
 Si è misurato il tempo di carica del condensatore nel circuito in esame, dando in ingresso una funzione a gradino, ottenuta con un'onda quadra di bassa frequenza.\footnote{Se il periodo è abbastanza lungo si può assumere che il condensatore si carichi e si scarichi completamente.}
@@ -143,54 +146,75 @@ I risultati sono stati:
 	\item $f_0 = \unit{4.2 \pm 0.1}{\kilo\hertz}$ con il primo metodo,
 	\item $f_0 = \unit{5.10 \pm 0.14}{\kilo\hertz}$ con il secondo metodo.
 \end{itemize}
-I dati raccolti e il grafico del fit sono qui riportati:
-
-\begin{figure}[h!]
-	\centering
-	\input{../tabelle/tab_Fast_fit_lowpass.txt}
-	\captionof{table}{Dati raccolti}
-\end{figure}
-
-\begin{figure}{h!}
-	\centering
-	\includegraphics[width=0.8\textwidth]{../grafici/fit_Fast_fit_lowpass.pdf}
-	\caption{Grafico delle misure e del fit}
-\end{figure}
 
 \subsection{II stadio: passa-alto}
 Per il passa alto si è proceduto nella stessa maniera del punto precedente. Si sono usate $R_2=\unit{3.23 \pm 0.4}{\kilo\ohm}$ e $C=\unit{100 \pm 10}{\nano\farad}$.
 In questo caso i risultati delle misure sono stati:
 \begin{itemize}
-	\item $f_0 = \unit{517 \pm 10}{\kilo\hertz}$ con il primo metodo,
-	\item $f_0 = \unit{499 \pm 13}{\kilo\hertz}$ con il secondo metodo.
+	\item $f_1 = \unit{517 \pm 10}{\kilo\hertz}$ con il primo metodo,
+	\item $f_1 = \unit{499 \pm 13}{\kilo\hertz}$ con il secondo metodo.
 \end{itemize}
 
-I dati raccolti e il grafico del fit sono qui riportati:
+I dati raccolti e i grafici dei fit sono qui riportati:
 
 \begin{figure}[h!]
 	\centering
-	\input{../tabelle/tab_Fast_fit_highpass.txt}
-	\captionof{table}{Dati raccolti}
+	\begin{minipage}[c]{0.49\textwidth}
+		\resizebox{\textwidth}{!}{
+			\input{../tabelle/tab_Fast_fit_lowpass.txt}}
+		\captionof{table}{Dati raccolti passa basso}
+	\end{minipage}
+\begin{minipage}[c]{0.49\textwidth}
+	\resizebox{\textwidth}{!}{
+		\input{../tabelle/tab_Fast_fit_highpass.txt}}
+	\captionof{table}{Dati raccolti passa alto}
+\end{minipage}
 \end{figure}
-	
+
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.8\textwidth]{../grafici/fit_Fast_fit_highpass.pdf}
-	\caption{Grafico delle misure e del fit}
+	\begin{minipage}[c]{0.5\textwidth}
+		\centering
+		\includegraphics[width=1\textwidth]{../grafici/fit_Fast_fit_lowpass.pdf}
+		\caption{Misure e fit passa basso}
+	\end{minipage}%
+	\begin{minipage}[c]{0.5\textwidth}
+		\centering
+		\includegraphics[width=1\textwidth]{../grafici/fit_Fast_fit_highpass.pdf}
+		\caption{Misure e fit passa alto}
+	\end{minipage}
 \end{figure}
+
 \subsection{Configurazione a cascata}
+Si è proceduto a mettere in cascata i due filtri prima analizzati per ottenere un filtro passa banda.
 
-\paragraph{Frequenze di taglio} Le frequenze di taglio misurate attraverso l'intersezione delle rette di fit sono $f_l = \unit{270 \pm 22}{\hertz}$ e $f_l = \unit{8.5 \pm 0.5}{\kilo\hertz}$.
+Si è analizzato il circuito in 3 bande: bassa frequenza, alta frequenza e centro banda (rispetto alle frequenze $f_0$ e $f_1$) e in queste zone si è proceduto ad un fit lineare. Si sono quindi ottenute le frequenze di taglio attraverso il calcolo delle intersezioni delle rette così ottenute\footnote{L'errore su questa misura è stato ricavato, ovviamente, tenendo conto della correlazione tra i parametri risultato dei fit}.
 
+I risultati dei fit sono stati: (nell'ordine coefficiente angolare, intercetta e coefficiente di correlazione)
+\begin{itemize}
+	\item prima retta (bassa frequenza): $a=\unit{18.9 \pm 0.5}{\deci\bel/decade}$,  $b=\unit{-52.6 \pm 0.8}{\deci\bel}$ e $c_{ab} =  -0.968$, 
+	\item seconda retta (centro banda):	$c=\unit{-0.1 \pm 0.6}{\deci\bel/decade}$, $d=\unit{-6.3 \pm 1.9}{\deci\bel}$ e $c_{cd} = -0.996$,
+	\item terza retta (alta frequenza):	$e=\unit{-18.54 \pm 0.24}{\deci\bel/decade}$, $f=\unit{66.0 \pm 1.2}{\deci\bel}$ e $c_{ef} =-0.991$.
+\end{itemize}
+Il guadagno di centro banda è il parametro $d$ fittato.
+
+Le frequenze di taglio misurate attraverso l'intersezione delle rette di fit sono $f_l = \unit{270 \pm 22}{\hertz}$ e $f_h = \unit{8.5 \pm 0.5}{\kilo\hertz}$.
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.8\textwidth]{../grafici/fit_passabandar.pdf}
-	\caption{Grafico del guadagno del filtro passa-banda, fittato con rette}
-\end{figura}
-
-\paragraph{Guadagno di centro banda} Il guadagno di centro banda, misurato con lo stesso fit usato per individuare le frequenze di taglio, è pari a $A_0 = \unit{-0.007 \pm 0.029}{\deci\bel}$.
+	\resizebox{0.6\textwidth}{!}{
+	\input{../tabelle/tab_passabanda.txt}}
+	\caption{Dati raccolti del filtro passa-banda}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\textwidth]{../grafici/fit_passabandar.pdf}
+	\caption{Misure e fit del filtro passa-banda}
+\end{figure}
 
 \paragraph{Spiegazione}
+Le frequenze ottenute non sono compatibili con quelle misurate sui due filtri presi singolarmente, il motivo è da ricercare nel fatto che il guadagno del passa banda costruito non è il semplice prodotto dei guadagni dei singoli circuiti ma bisogna tener conto delle impedenze di uscita $Z_{out}$ del bassa basso e di ingresso $Z_{in}$ del passa alto. Questo particolare potrebbe essere trascurato nel caso in cui $Z_{out} << Z_{in}$, ma non in questo caso in cui sono confrontabili (in particolare uguali).
+
+La teoria ci dice che in questo preciso caso ($R_1 \sim R_2$) la frequenza di taglio superiore verrà raddoppiata e quella inferiore dimezzata, come in effetti si osserva, e il guadagno massimo (ovvero quello misurato nella banda centrale) si dovrebbe attestare a $\sim \unit{-6}{\deci\bel}$ e anche questo è verificato ($d=\unit{-6.3 \pm 1.9}{\deci\bel}$).
 
 \paragraph{Scelta di $R1$ e $R2$} Si poteva scegliere $R1$ e $R2$ in modo che il rapporto fra i due fosse approssimativamente nullo, ad esempio scegliendo $R1$ più piccolo oppure $R2$ più grande.
 Infatti il guadagno complessivo può essere scritta come il prodotto dei guadagni dei due stadi per un fattore moltiplicativo. Se $A_1, A_2$ sono i guadagni del primo e del secondo stadio, allora:
@@ -198,6 +222,4 @@ Infatti il guadagno complessivo può essere scritta come il prodotto dei guadagn
 A_{tot} = A_1 A_2 \frac{1}{1 + \frac{R_1}{R_2} A_1 A_2}
 \end{equation*}
 
-
-%sui nomi possiamo sempre discutere dopo, per ora sono nomi significativi, se poi per correttezza o estetica vuoi cmabiarli decidiamo insieme
 \end{document}
