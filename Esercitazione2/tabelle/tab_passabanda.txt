@@ -1,5 +1,6 @@
 \begin{tabular}{c|c|c} 
 Frequenza [Hz] & Tensione in ingresso [V] & Tensione in uscita\\
+\hline
 10.70 $\pm$ 0.11 & 21.0 $\pm$ 0.7 & 0.440 $\pm$ 0.015\\
 19.50 $\pm$ 0.20 & 21.0 $\pm$ 0.7 & 0.840 $\pm$ 0.029\\
 39.3 $\pm$ 0.4 & 21.0 $\pm$ 0.7 & 1.64 $\pm$ 0.06\\
