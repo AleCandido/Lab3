@@ -946,7 +946,7 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 			text_file.write("%s" % tab[0])
 			for z in range (1,len(columns)):
 				text_file.write(" & %s" % tab[z])
-			text_file.write("\\\\\n")
+			text_file.write("\\\\\n\hline\n")
 			for i in range (len(columns[0])):
 				text_file.write("%s" % xe(columns[0][i], dcolumns[0][i], "$\pm$"))
 				for j in range (1,len(columns)):

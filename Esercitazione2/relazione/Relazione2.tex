@@ -71,23 +71,25 @@ Inoltre si è verificato che il condensatore scelto avesse un'impedenza trascura
 Dalla teoria sappiamo che il guadagno del filtro passa basso è $|A_v|=1/\sqrt{1+(f/f_0)^2}$ dove $f_0 = 1/(2 \pi RC)$ è detta frequenza di taglio. A questa frequenza il filtro RC ha un guadagno di $\unit{-3}{\deci\bel}$.
 
 Nel nostro caso a partire dal valore misurato di $R$ e dal valore nominale del condensatore $C$, il valore atteso è $f_0 = \unit{200 \pm 20}{\hertz}$ (dove l'incertezza è quasi totalmente determinata dal condensatore).
-\\\\
-Un modo veloce per misurare sperimentalmente questa grandezza è quindi quello di variare la frequenza con continuità fino a trovare  un rapporto $V_{out}/V_{in}$ pari a $1/\sqrt{(2)}$ (ovvero $\unit{-3}{\deci\bel}$). La misura effettuata in questo modo ha prodotto una stima di $f_1 =\unit{208 \pm 10}{\hertz}$.
-\\\\
-Un'altro modo per misurare la frequenza di taglio è eseguire due fit lineari a bassa ed alta frequenza (rispetto a $f_0$ attesa). Calcolando il punto di intersezione e la relativa incertezza (tenendo debitamente conto della covazianza associata alle misure prodotte dai fit) si otterrà la frequenza cercata. I risultati dei fit sono stati: 
+
+\paragraph{} Un modo veloce per misurare sperimentalmente questa grandezza è quindi quello di variare la frequenza con continuità fino a trovare  un rapporto $V_{out}/V_{in}$ pari a $1/\sqrt{(2)}$ (ovvero $\unit{-3}{\deci\bel}$). La misura effettuata in questo modo ha prodotto una stima di $f_1 =\unit{208 \pm 10}{\hertz}$.
+
+\paragraph{} Un'altro modo per misurare la frequenza di taglio è eseguire due fit lineari a bassa ed alta frequenza (rispetto a $f_0$ attesa). Calcolando il punto di intersezione e la relativa incertezza (tenendo debitamente conto della covazianza associata alle misure prodotte dai fit) si otterrà la frequenza cercata. I risultati dei fit sono stati: 
 \begin{itemize}
-	\item prima retta (risposta a bassa frequenza):	 $a=\unit{-0.04 \pm 0.03}{log{\hertz^{-1}}}$ e	 $b=0.11 \pm 0.11$, rispettivamente coefficiente angolare e intercetta.
-	\item seconda retta (risposta ad alta frequenza):	 $c=\unit{-0.908 \pm 0.016}{log{\hertz^{-1}}}$ e	 $d=4.68\pm 0.13$, rispettivamente coefficiente angolare e intercetta.
+	\item prima retta (risposta a bassa frequenza):	 $a=\unit{-0.7 \pm 0.7}{\deci\bel/decade}$ e	 $b=\unit{2.1 \pm 2.3}{\deci\bel}$, rispettivamente coefficiente angolare e intercetta.
+	\item seconda retta (risposta ad alta frequenza):	 $c=\unit{-18.2 \pm 0.3}{\deci\bel/decade}$ e	 $d=\unit{93.6 \pm 2.6}{\deci\bel}$, rispettivamente coefficiente angolare e intercetta.
 \end{itemize}
 Il calcolo dell'intersezione produce $f_2 =\unit{ 193 \pm 16}{\hertz}$.
+
 Il grafico dell'intersezione delle rette fittate è riportato di seguito.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.8\textwidth]{../grafici/fit_rette.pdf}
 	\caption{Grafico delle misure e del fit}
 \end{figure}
-\\\\
-La frequenza di taglio può anche essere ottenuta direttamente attraverso il fit della funzione di trasferimento $|A_v|$. Le misure effettuate sono riportate di seguito (insieme a quelle eseguite per il punto precedente).
+
+\paragraph{} La frequenza di taglio può anche essere ottenuta direttamente attraverso il fit della funzione di trasferimento $|A_v|$. Le misure effettuate sono riportate di seguito (insieme a quelle eseguite per il punto precedente).
+
 
 \begin{figure}[h!]
 	\centering
@@ -113,16 +115,24 @@ Si è misurato il tempo di carica del condensatore nel circuito in esame, dando 
 \end{figure}
 
 Il valore ottenuto per il tempo di salita del segnale (tra il 10\% e il 90\% del massimo) è $\unit{1.62 \pm 0.06}{\milli\second}$, corrispondente ad una frequenza di $f_4 = \unit{216 \pm 7}{\hertz}$
-%bisogna decidere come stimare l'errore sulla misura del tempo, io userei l'incertezza dei cursori, anche se in realtà mi par di ricordare che la tacca fosse 0.02 ms, mentre per certo 0.1DIV = 0.05 ms, le ho sommate in quadratura
 
-\subsection{Temp:domande teoriche}
-%nome temporaneo, decidiamo poi insieme
+\subsection{Domande}
+
+\paragraph{Impedenza d'ingresso} L'impedenza d'ingresso è $Z_{in} = R + Z_c(\omega) = R + 1/i\omega C$, quindi:
+\begin{itemize}
+\item a bassa frequenza l'impedenza diverge;
+\item alla frequenza di taglio $Z_{in} = R(1-i)$;
+\item ad alta frequenza l'impedenza tende a $R$.
+\end{itemize}
+
+\paragraph{Resistenza di carico} L'effetto dell'inserimento di una resistenza di carico è cambiare l'impedenza equivalente del parallelo col condensatore (che in assenza di carico è data dal solo condensatore). In particolare in modulo l'impedenza del parallelo diminuisce, aggiungendo inoltre una parte reale, indipendente dalla frequenza, e quindi modifica i comportamenti asintotici.
+Inserendo un carico di $\unit{10}{\kilo\ohm}$ il contributo della resistenza nell'impedenza del parallelo aumenterebbe, e quindi andrebbe tenuto di conto anche a frequenze più basse rispetto al caso con $\unit{100}{\kilo\ohm}$ (ovviamente più basse di circa un fattore $10$).
 
 \section{Filtro passa-banda}
 
 \subsection{I stadio: passa-basso}
 
-Si è montato il filtro passa basso come richiesto con una restistenza $R_1 = \unit{3.25 \pm 0.04}{\kilo\ohm}$ (misurata con il multimetro) e un condensatore $C_1=\unit{10 \pm 1}{\nano\farad}$ (valore nominale).
+Si è montato il filtro passa basso come richiesto con una resistenza $R_1 = \unit{3.25 \pm 0.04}{\kilo\ohm}$ (misurata con il multimetro) e un condensatore $C_1=\unit{10 \pm 1}{\nano\farad}$ (valore nominale).
 
 Si è verificato che il filtro seguisse l'andamento generale previsto e che avesse guadagno $\sim 1$ a frequenza $<<f_0$, dove $f_0$ è la frequenza di taglio (in questo caso $f_0 = \unit{4.9 \pm 0.5}{\kilo\hertz}$).
 
@@ -147,7 +157,7 @@ I dati raccolti e il grafico del fit sono qui riportati:
 \end{figure}
 
 \subsection{II stadio: passa-alto}
-Per il passa alto si è proceduto nella stessa maniera. Si sono usate $R_2=\unit{3.23 \pm 0.4}{\kilo\ohm}$ e $C=\unit{100 \pm 10}{\nano\farad}$.
+Per il passa alto si è proceduto nella stessa maniera del punto precedente. Si sono usate $R_2=\unit{3.23 \pm 0.4}{\kilo\ohm}$ e $C=\unit{100 \pm 10}{\nano\farad}$.
 In questo caso i risultati delle misure sono stati:
 \begin{itemize}
 	\item $f_0 = \unit{517 \pm 10}{\kilo\hertz}$ con il primo metodo,
