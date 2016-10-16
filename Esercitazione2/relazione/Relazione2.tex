@@ -76,16 +76,17 @@ Nel nostro caso a partire dal valore misurato di $R$ e dal valore nominale del c
 
 \paragraph{} Un'altro modo per misurare la frequenza di taglio è eseguire due fit lineari a bassa ed alta frequenza (rispetto a $f_0$ attesa). Calcolando il punto di intersezione e la relativa incertezza (tenendo debitamente conto della covazianza associata alle misure prodotte dai fit) si otterrà la frequenza cercata. I risultati dei fit sono stati: 
 \begin{itemize}
-	\item prima retta (risposta a bassa frequenza):	 $a=\unit{-0.7 \pm 0.7}{\deci\bel/decade}$ e	 $b=\unit{2.1 \pm 2.3}{\deci\bel}$, rispettivamente coefficiente angolare e intercetta.
-	\item seconda retta (risposta ad alta frequenza):	 $c=\unit{-18.2 \pm 0.3}{\deci\bel/decade}$ e	 $d=\unit{93.6 \pm 2.6}{\deci\bel}$, rispettivamente coefficiente angolare e intercetta.
+	\item prima retta (risposta a bassa frequenza):	 $a=\unit{-0.7 \pm 0.7}{\deci\bel/decade}$,  $b=\unit{2.1 \pm 2.3}{\deci\bel}$ e $c_{ab} = -0.976$, rispettivamente coefficiente angolare, intercetta e coefficiente di correlazione.
+	\item seconda retta (risposta ad alta frequenza):	 $c=\unit{-18.2 \pm 0.3}{\deci\bel/decade}$ , $d=\unit{93.6 \pm 2.6}{\deci\bel}$ e $c_{cd} = -0.989$, rispettivamente coefficiente angolare, intercetta e coefficiente di correlazione.
 \end{itemize}
-Il calcolo dell'intersezione produce $f_2 =\unit{ 193 \pm 16}{\hertz}$.
+L'andamento è quello previsto: la prima retta ha coefficiente angolare e intercetta entrambi compatibili con $0$, come atteso, e la seconda retta ha un'inclinazione di $\sim \unit{-20}{\deci\bel / decade}$.
 
+Il calcolo dell'intersezione produce $f_2 =\unit{ 193 \pm 16}{\hertz}$.
 Il grafico dell'intersezione delle rette fittate è riportato di seguito.
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.8\textwidth]{../grafici/fit_rette.pdf}
-	\caption{Grafico delle misure e del fit}
+	\includegraphics[width=0.7\textwidth]{../grafici/fit_rette.pdf}
+	\caption{Grafico dell'intersezione delle rette}
 \end{figure}
 
 \paragraph{} La frequenza di taglio può anche essere ottenuta direttamente attraverso il fit della funzione di trasferimento $|A_v|$. Le misure effettuate sono riportate di seguito (insieme a quelle eseguite per il punto precedente).
