@@ -229,3 +229,17 @@ xlimp3=array([95.,105.])
 
 
 fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,fig=figura, xlimp=xlimp3)
+
+x = linspace(0.001, 4, 1000)
+
+def f(x):
+    return (sqrt((x**2+400)/(x**2 + 4)))
+    
+vf = np.vectorize(f)
+y = vf(x)
+clf()
+xlabel("Frequenza di taglio [kHz]")
+ylabel("Rapporto segnale/rumore")
+plot(x, y)
+show()
+savefig(dir+"grafici/SNratio.pdf")
