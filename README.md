@@ -7,6 +7,7 @@ Pushare non è necessario se non è di utilità condividere, perciò:
 * Si può non farlo continuamente
 * Si può anche non committare continuamente, anche se concludi una 'sessione' di lavoro
 * Però se modifichi il python committi (così c'è speranza di sbattersi un po' di meno nel debug...)
+
 ---
 
 ## 18 Oct 2016:
