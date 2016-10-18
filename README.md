@@ -1,12 +1,13 @@
 # Lab3
 Relazioni di laboratorio
 
-### Istruzioni generali
 ---
+### Istruzioni generali
 Pushare non è necessario se non è di utilità condividere, perciò:
 * Si può non farlo continuamente
 * Si può anche non committare continuamente, anche se concludi una 'sessione' di lavoro
 * Però se modifichi il python committi (così c'è speranza di sbattersi un po' di meno nel debug...)
+---
 
 ## 18 Oct 2016:
 Per quanto riguarda le mie idee sul punto 5), V_Early:
@@ -15,6 +16,13 @@ Per quanto riguarda le mie idee sul punto 5), V_Early:
 	* capire se si possono imputare a I_B diversi (la cosa più sensata, dovrebbero avere stessa intercetta)
 	* capire se cambiando i parametri del transistor (h_FE) c'è un modo facile per spiegarlo
 * giustificare ulteriormente quei 4 punti all'inizio (il salto medio è un tentativo di individuazione, ma non di giustificazione)
+
+[Storage time](http://aries.ucsd.edu/NAJMABADI/CLASS/ECE65/06-W/NOTES/BJT1.pdf "Migliore reference di internet su accumulo di carica spaziale")
+
+[Storage time 2](http://electronics.stackexchange.com/questions/23349/what-is-wrong-here-a-simple-npn-switch "L'unica in cui dice che è quello veramente rilevante")
+
+[Rise times](www.srmuniv.ac.in/downloads/transistor_as_a_switch.doc "denominazione dei vari tempi")
+
 
 Non ti preoccupare Bob, mi sarei scritto comunque queste cose su gedit, se le scrivo su README almeno le leggi anche te ^^
 
