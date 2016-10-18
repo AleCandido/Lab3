@@ -9,6 +9,14 @@ Pushare non è necessario se non è di utilità condividere, perciò:
 * Però se modifichi il python committi (così c'è speranza di sbattersi un po' di meno nel debug...)
 
 ## 18 Oct 2016:
+Per quanto riguarda le mie idee sul punto 5), V_Early:
+* analizzare i 'salti' fra i vari punti sulla base del salto medio (magari i salti si possono pesare in qualche modo con l'errore, almeno un peso relativo)
+* provare a fittare i due segmenti ben allineati; è vero che la corrispondenza è solo ad occhio, ma non possiamo sbattercene (siamo fisici o matematici?!)
+	* capire se si possono imputare a I_B diversi (la cosa più sensata, dovrebbero avere stessa intercetta)
+	* capire se cambiando i parametri del transistor (h_FE) c'è un modo facile per spiegarlo
+* giustificare ulteriormente quei 4 punti all'inizio (il salto medio è un tentativo di individuazione, ma non di giustificazione)
+
+Non ti preoccupare Bob, mi sarei scritto comunque queste cose su gedit, se le scrivo su README almeno le leggi anche te ^^
 
 ## 7 Oct 2016:
 Ho modificato leggermente il tuo analizer: per usare i vari ambienti è meglio avere solo tabular, e non anche table.
