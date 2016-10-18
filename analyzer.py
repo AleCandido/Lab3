@@ -872,11 +872,14 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 	
 	if preplot==True :
 		figure(fig+"_3")
+		title(titolo)
+		xlabel(Xlab)
+		ylabel(Ylab)
 		if Xscale=="log":
 			xscale("log")
 		if Yscale=="log":
 			yscale("log")
-		plot(X,Y,".",color="blue")
+		errorbar(X,Y,dY,dX, fmt=",",ecolor="black",capsize=0.5)
 	
 	#Fit
 	par, cov = fit_generic_xyerr2(f,X,Y,dX,dY,p0)
