@@ -5,11 +5,10 @@ path = "C:\\Users\\Studenti\\Desktop\\Lab3\\"
 sys.path = sys.path + [path]
 from analyzer import *
 import uncertainties
-dir= path + "Esercitazione3/"
+dir= path + "Esercitazione3\\"
 ###########################################################################
 
-dir=path+""
-file=""
+file="Early"
 
 def f(x, a, b):
     return a+b*x
@@ -17,9 +16,9 @@ def f(x, a, b):
 p0=[1,1]
 
 def XYfun(a):
-    return a[0],a[1]
+    return a[1],a[0]-a[1]
 
-unit=["",""]
+unit=["volt","volt"]
 
 titolo=""
 Xlab=""
@@ -27,7 +26,7 @@ Ylab=""
 
 tab=["",""]
 
-fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,preplot="true",scarti="true",tabella="true",tab=tab)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,preplot=True,scarti=True,tab=tab)
 
 ###########################################################################
 

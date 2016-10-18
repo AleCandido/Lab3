@@ -1,0 +1,109 @@
+3) identificazione terminali
+
+trimmer_tot = 101.5e3 ohm
+
+4) 
+
+5) Misure in dc sul transistor
+
+R1 = 989 ohm
+R2 = 46.4e3 ohm
+C = 10.27 nF
+
+---> c. Strisciata sulla retta di carico
+tutte le misure seguenti in volt
+lo stabilizzatore eroga 5.20V (misurato con oscilloscopio)
+tensione erogata alimentatore 9.84V (misurato con tester)
+
+V_RB		V_BE		V_CE
+1.7e-3		35.8e-3		9.76
+3.1e-3		66.8e-3		9.68
+6.6e-3		139e-3		9.68
+11.8e-3		254e-3		9.68
+22.0e-3		440e-3		9.68
+43.4e-3		532e-3		9.68
+81.9e-3		564e-3		9.68
+109.4e-3	580e-3		9.60
+170.6e-3	600e-3		9.44
+258e-3		612e-3		9.12
+327e-3		624e-3		8.96
+418e-3		628e-3		8.72
+595e-3		648e-3		8.40
+802e-3		660e-3		7.76
+1.154		680e-3		6.80
+1.311		688e-3		6.36
+1.490		696e-3		5.80
+1.848		712e-3		4.80
+2.01		720e-3		4.24
+2.19		724e-3		3.74
+2.36		736e-3		3.28
+2.50		744e-3		2.86
+2.68		784e-3		2.48
+2.92		792e-3		1.82
+3.01		808e-3		1.61
+3.10		812e-3		1.31
+3.28		828e-3		840e-3
+3.34		808e-3		720e-3
+3.52		816e-3		362e-3
+3.71		820e-3		326e-3
+4.01		820e-3		298e-3
+4.18		820e-3		290e-3
+4.33		820e-3		286e-3
+
+---> e. Strisciata orizzontale
+misure in volt entrambe con il tester
+
+V1		V_CE
+6.02		1.630
+6.58		2.02
+7.01		2.49
+7.46		2.85
+7.99		3.28
+8.48		3.77
+8.99		4.26
+9.50		4.78
+10.06		5.30
+10.50		5.74
+11.04		6.17
+11.49		6.61
+12.02		7.13
+12.54		7.63
+12.99		8.08
+13.49		8.55	---> qui consegna relazione e interruzione lavori
+14.08		9.16
+14.64		9.38
+15.14		9.88
+
+gli affari termalizzavano, quindi le misure prese dopo significative interruzioni potrebbero presentare salti.
+
+6)
+---> a. Dimensionamento
+
+R1 = 15.20e3
+R2 = 99.4e3
+RL = 2.27e3
+
+---> b. Tensioni di base e collettore
+misure con oscilloscopio in volt
+
+V_BE: 	alto = 668e-3
+	basso = 240e-6
+V_CE:	alto = 5.12
+	basso = 57.6e-3
+
+alimentatore = 5.07	misurato col tester
+
+---> c. Tempi di transizione
+misure con oscilloscopio
+
+freq = 551.7 Hz
+T_rs = 264e-9
+T_s = 328e-9
+T_rd = 10.10e-6
+T_d = 1.980e-6
+
+---> d. prove
+
+Il circuito funziona fino a circa 5-10 kHz
+
+

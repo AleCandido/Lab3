@@ -846,7 +846,7 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 		-------
 	"""
 	
-	columns = loadtxt(directory+"data/"+file+".txt", unpack = True)
+	columns = loadtxt(directory+"data\\"+file+".txt", unpack = True)
 
 	dcolumns = zeros((len(columns),len(columns[0])))
 	for i in range(len(columns)):
