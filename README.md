@@ -1,6 +1,15 @@
 # Lab3
 Relazioni di laboratorio
 
+### Istruzioni generali
+---
+Pushare non è necessario se non è di utilità condividere, perciò:
+* Si può non farlo continuamente
+* Si può anche non committare continuamente, anche se concludi una 'sessione' di lavoro
+* Però se modifichi il python committi (così c'è speranza di sbattersi un po' di meno nel debug...)
+
+## 18 Oct 2016:
+
 ## 7 Oct 2016:
 Ho modificato leggermente il tuo analizer: per usare i vari ambienti è meglio avere solo tabular, e non anche table.
 Per il momento ho lasciato lo stesso che stampasse la caption, supponendo che ogni volta che verrà incluso tabular verrà incluso in un ambiente adeguato, che quindi possa ricevere caption.
