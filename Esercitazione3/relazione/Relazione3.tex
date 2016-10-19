@@ -87,11 +87,11 @@ Di seguito riportiamo i dati raccolti e i grafici realizzati.
 	\end{minipage}
 	\begin{minipage}[d]{0.59\textwidth}
 		\centering
-		\includegraphics[width=1.1\textwidth]{../grafici/fit_Ic_Ib.pdf}
+		\includegraphics[width=1.1\textwidth]{../grafici/ic_ib.pdf}
 		\caption{Grafico corrente collettore vs corrente di base}
 		\label{ibic}
 		\centering
-		\includegraphics[width=1.1\textwidth]{../grafici/fit_Ic_Vbe.pdf}
+		\includegraphics[width=1.1\textwidth]{../grafici/ic_vbe.pdf}
 		\caption{Grafico tensione BE vs corrente collettore}
 		\label{vbeic}
 		\end{minipage}
@@ -199,7 +199,7 @@ Si è verificato che il circuito funzionasse come una porta \code{NOT}:
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.6\textwidth]{../oscilloscopio/not_tarocco.jpg}
-	\caption{}
+	\caption{Funzionamento porta NOT}
 \end{figure}
 
 \subsection{Ritardi}
@@ -235,8 +235,8 @@ Si suppone che la variazione di $I_B$, che dovrebbe essere in fase con quella di
 
 Considerando effetti di altro tipo si può però giustificare nei due casi il comportamento durante la variazione (cioè $T_s$ e $T_d$, non gli altri due). Quindi:
 \begin{description}
-\item[salita] Il transistor deve transitare dallo stato alto allo stato basso, perciò deve passare da interdizione a saturazione. In interdizione si ha che la zona di svuotamento è piuttosto ampia e la carica che si accumula ai suoi lati lo rende una specie di condensatore. Perciò il tempo di discesa è dovuto a una configurazione molto simile alla scarica di un condensatore, per cui si deve considerare il tempo caratteristico in cui avviene tale scarica $\tau = R_L \cdot C_ti$ dove $C_ti$ è la capacità del transistor in interdizione. Essendo quest'ultima dell'ordine di $\sim \unit{100}{\pico\farad}$ si avrà una costante di tempo $\tau \sim \unit{100}{\nano\second}}$
-\item[discesa] Al contrario rispetto al caso precedente si deve passare da saturazione a interdizione. In questo caso si ha invece una regione di svuotamento molto ridotta (rispetto alle dimensioni "longitudinali"\footnote{Longitudinale nel modello a bacchetta, le equivalenti nel modello planare} della giunzione), perciò nel momento in cui si cerca di passare in interdizione si deve rimuovere tutti i portatori di carica che occupano la futura zona di svuotamento, e questo processo impiega un tempo non indifferente \marginpar{Qui vorrei citare la legge di Child}, denominato "storage time", che domina sul tempo di discesa dovuto a effetti capacitivi.
+\item[salita] Il transistor deve transitare dallo stato alto allo stato basso, perciò deve passare da interdizione a saturazione. In interdizione si ha che la zona di svuotamento è piuttosto ampia e la carica che si accumula ai suoi lati lo rende una specie di condensatore. Perciò il tempo di discesa è dovuto a una configurazione molto simile alla scarica di un condensatore, per cui si deve considerare il tempo caratteristico in cui avviene tale scarica $\tau = R_L \cdot C_ti$ dove $C_ti$ è la capacità del transistor in interdizione. Essendo quest'ultima dell'ordine di $\sim \unit{100}{\pico\farad}$ si avrà una costante di tempo $\tau \sim \unit{100}{\nano\second}$
+\item[discesa] Al contrario rispetto al caso precedente si deve passare da saturazione a interdizione. In questo caso si ha invece una regione di svuotamento molto ridotta (rispetto alle dimensioni "longitudinali"\footnote{Longitudinale nel modello a bacchetta, le equivalenti nel modello planare} della giunzione), perciò nel momento in cui si cerca di passare in interdizione si deve rimuovere tutti i portatori di carica che occupano la futura zona di svuotamento, e questo processo impiega un tempo non indifferente\marginpar{Qui vorrei citare la legge di Child}, denominato "storage time", che domina sul tempo di discesa dovuto a effetti capacitivi.
 \end{description}
 
 \emph{Vorrei citare Child's Law per effetti di carica spaziale, ma non ho avuto sbatta di verificare se siamo nelle ipotesi giuste, inoltre rimane sempre il problema del delay in salita}
@@ -251,7 +251,7 @@ Si è osservato che i tempi di salita e di discesa erano influenzati dall'entit�
 Diminuendo la resistenza $R_2$ si ha che diminuisce anche la corrente $I_B$ che fluisce nella base del transistor, poiché una parte significativa della corrente proveniente da $V_{IN}$ finisce direttamente a terra tramite $R_2$. Infatti, schematizzando la giunzione BE come una resistenza costante $R_B$ (schematizzazione molto rozza, ma approssimativamente valida in regime attivo), si ha per la corrente $I_B$:
 %è l'approsimazione di cavallo cilindrico, ma a meno che non la corregga Forti non la capiscono...
 \begin{equation*}
-I_B = \frac{V_{in} R_2}{(R_1 + R_2\parallel R_B)(R_2 + R_B)}
+I_B = \frac{V_{in} R_2}{(R_1 + R_2 // R_B)(R_2 + R_B)}
 \end{equation*}
 E quindi quando $R_1$ diventa dominante rispetto al parallelo e $R_B$ dominante rispetto a $R_2$ si ha che la corrente $I_B$ diminuisce.
 
@@ -270,7 +270,7 @@ I limiti in frequenza del circuito in esame sono dunque dovuti ai tempi di laten
 \begin{figure}[h!]
 \centering
 \includegraphics{../oscilloscopio/raise_problem.jpg}
-\caption{}
+\caption{Comportamento ad alte frequenze}
 \end{figure}
 
 \end{document}
