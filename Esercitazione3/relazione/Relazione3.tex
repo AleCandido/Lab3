@@ -26,25 +26,138 @@
 %\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
 % (This matches ConTeXt defaults)
 
-% pacchetti che mi piacciono
+% pacchetti che mi fanno schifo ma uso lo stesso (Bob è scemo...)
 \usepackage[cdot, thickqspace]{SIunits}
-
 % macro che mi piacciono
 \def\code#1{\texttt{#1}}
 
-\title{Esercitazione 2: Circuito RC - Filtri passivi}
-% il titolo va cambiato, ma se lo facciamo entrambi un conflitto è inevitabile; alla fine però qualcuno deve averlo fatto
-\author{Gruppo BE \\ Alessandro Candido, Roberto Ribatti}
-\date{\today} 
+\title{Esercitazione 3: Misure DC su transistor e NOT TTL}
 
+\author{Gruppo BE \\ Alessandro Candido, Roberto Ribatti}
+\date{\today}
 \begin{document}
 \maketitle
 
 \section{Scopo e strumentazione}
 
-\section{Circuito \code{NOT}}
+\section{Misure in DC sul transistor}
+Si è proceduto alla realizzazione del circuito in figura \figurename{\ref{circuito}} e si sono utilizzate le seguenti componenti:
+\begin{figure}[h!]
+\begin{minipage}[c]{0.5\textwidth}
+\begin{align*}
+R_L &= \unit{989 \pm 9}{\ohm}\\
+R_B &= \unit{46.4 \pm 0.5}{\kilo\ohm}\\
+R_{trim} &= \unit{101.5 \pm 0.9}{\kilo \ohm}\\
+V_1 &= \unit{9.84 \pm 0.4}{\volt}\\
+\end{align*}
+	\end{minipage}
+	\begin{minipage}[c]{0.5\textwidth}
+	\centering
+	\includegraphics[width=0.8\textwidth]{../grafici/circuito.png}
+	\caption{Circuito realizzato}
+	\label{circuito}
+	\end{minipage}
+\end{figure}
+
+\subsection{Retta di carico}
+Si è tracciata la retta di carico sul grafico $I_c/V_{CE}$ fornito e si sono identificate le zone di interdizione (in basso), saturazione (a sinistra) e la zona attiva (il resto del grafico).
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.6\textwidth]{../grafici/retta_carico.png}
+	\caption{Retta di carico e zone di lavoro del transistor}
+	\label{retta_carico}
+\end{figure}
+\subsection{Variando $I_b$} %da cambiare
+Si è proceduto alla misura di 3 tensioni al variare della posizione del potenziometro:
+\begin{itemize}
+	\item tensione base/emettitore $V_{BE}$ (misurata con l'oscilloscopio)
+	\item tensione collettore emettitore $V_{CE}$ (misurata con l'oscilloscopio), a partire dalla quale, nota la tensione di alimentazione $V_1$, si è calcolata la caduta di potenziale su $R_L$ e di conseguenza la corrente di collettore $I_C$;
+	\item caduta di tensione su $R_B$ (misurata con il multimetro), con la quale si è calcolata la corrente di base $I_B$.
+\end{itemize}
+Si sono graficate la corrente di collettore $I_C$ in funzione della corrente di base $I_B$ e della tensione base/emettitore $V_{CE}$.
+Di seguito riportiamo i dati raccolti e i grafici realizzati.
+
+\begin{figure}[h!]
+	\centering
+	\begin{minipage}[h!]{0.4\textwidth}
+		\centering
+		\resizebox{1\textwidth}{!}{
+			\input{../tabelle/tab_ib_var.txt}}
+		\captionof{table}{Dati raccolti}
+	\end{minipage}
+	\begin{minipage}[d]{0.59\textwidth}
+		\centering
+		\includegraphics[width=1.1\textwidth]{../grafici/fit_Ic_Ib.pdf}
+		\caption{Grafico corrente collettore vs corrente di base}
+		\label{ibic}
+		\centering
+		\includegraphics[width=1.1\textwidth]{../grafici/fit_Ic_Vbe.pdf}
+		\caption{Grafico tensione BE vs corrente collettore}
+		\label{vbeic}
+		\end{minipage}
+\end{figure}
+
+Variare la posizione del potenziometro non cambia la retta di carico ma modifica la corrente di base, quindi cambia la curva la curva la cui intersezione con la retta di carico produce il punto di lavoro del transistor.
+Il grafico in \figurename{\ref{ibic}} può essere suddiviso in tre parti:
+\begin{itemize}
+	\item i punti addensati vicino allo $0$ sono le intersezioni della retta di carico con le curve a corrente di base $\sim \unit{ 0}{\micro\ampere}$ (zona di interdizione);
+	\item nella zona centrale è chiaro un andamento lineare, interrotto per correnti di base $>\unit{80}{\micro\ampere}$, in questa zona la retta di carico interseca le curve in zona attiva ed è verificata l'ipotesi di linearità attesa: $I_C = h_{FE}*I_B$;
+	\item per valori di corrente di base $>\unit{80}{\micro\ampere}$, il grafico abbandona l'andamento lineare della zona centrale e si stabilizza sul valore di $V_{CE}(sat)$: per grandi variazioni di corrente di base non corrispondo significative variazioni di corrente di collettore: in questa zona la retta di carico interseca le curve in zona di saturazione. Come è visibile in \figurename{\ref{retta_carico}} superati gli $\unit{80}{\micro\ampere}$ le curve intersecano la retta di carico circa nello stesso punto.
+\end{itemize}
+La massima corrente erogabile dal transistor è $I_{max}=V_1/R_L$\footnote{stiamo trascurando la resistenza del transistor poichè siamo in regime di saturazione}, con gli attuali parametri otteniamo $I_{max}=\unit{9.9 \pm 0.1}{\milli\ampere}$. 
+
+Per stimare la tensione di saturazione $V_{CE}(sat)$ faccio una media pesata dei punti presi in regime di saturazione e ottengo $V_{CE}(sat)$=\unit{298 \pm 5}{\milli\volt}.
+
+Si è eseguito un fit lineare\footnote{che tenesse conto anche dell'errore sulle ascisse, che per certi dati è paragonabile a quello sulle ordinate} della zona centrale per il calcolo del parametro $h_{FE}$, il cui risultato è stato:
+\begin{equation*}
+h_{FE} = 130.1 \pm 2.2
+\end{equation*}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\textwidth]{../grafici/fit_h_fe.pdf}
+	\caption{Grafico del fit di $h_{FE}$}
+\end{figure}
+
+Il grafico in \figurename{\ref{vbeic}} può essere diviso in due zone:
+\begin{itemize}
+	\item un plateau fino alla tensione di $\unit{600}{\milli\volt}$, in questa zona troviamo i punti che nel grafico in \figurename{\ref{vbeic}} erano addensati vicino allo $0$, ovvero quelli i punti di intersezione tra retta di carico e curve nella zona di interdizione.
+	\item una retta molto pendente (o volendo un esponenziale in base al grado di approssimazione) che parte come ci si aspetterebbe per $V_{BE} \sim \unit{0.7}{\volt}$, ovvero quando il transistor passa in zona attiva e la giunzione BE risulta polarizzata.
+\end{itemize}
+
+\subsection{Variando $V_{CE}$}
+Si fissa adesso la posizione del potenziometro in modo da avere una corrente di base di $\sim \unit{40}{\micro\ampere}$. Si procede alla misura della tensione collettore emettitore $V_{CE}$ e della tensione di alimentazione $V_1$ al variare di quest'ultima in un range tra $\unit{6}{\volt}$ e $\unit{15}{\volt}$.
+
+Di seguito il grafico della corrente di collettore $I_C$\footnote{si è calcolata la caduta di tensione sulla resistenza $R_L$ per differenza delle due tensioni misurate} in funzione della tensione collettore/emettitore $V_{CE}$.
+
+\begin{figure}[h!]
+	\centering
+	\begin{minipage}[h!]{0.3\textwidth}
+		\centering
+		\resizebox{\textwidth}{!}{
+			\input{../tabelle/tab_Early.txt}}
+		\captionof{table}{Dati raccolti}
+	\end{minipage}
+	\begin{minipage}[d]{0.69\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../grafici/fast_plot_Early.pdf}
+		\caption{Grafico effetto Early}
+		\label{early}
+	\end{minipage}
+\end{figure}
+
+Al variare della tensione di alimentazione $V_1$ la retta di carico si muove parallelamente a se stessa su grafico come in \figurename{\ref{retta_spostamento}}, quindi spostandosi la retta di carico interseca diversi punti della curva a  $\sim \unit{40}{\micro\ampere}$, il risultato e il caratteristico andamento lineare prodotto dall'effetto Early, come si nota anche dalle misure graficate in \figurename{\ref{early}}.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\textwidth]{../grafici/spostamento_retta.jpg}
+	\caption{Variazione della retta di carico}
+	\label{retta_spostamento}
+\end{figure}
+
+\section{Circuito NOT}
 
 \subsection{Dimensionamento circuito e porta \code{NOT}}
+
 % se torniamo in lab prendiamo una schermata del funzionamento come porta NOT dall'oscilloscopio
 Si è costrituito il circuito riportato sulla scheda con i seguenti valori per le resistenze:
 
@@ -84,11 +197,10 @@ Da cui si ottengono le correnti:
 Si è verificato che il circuito funzionasse come una porta \code{NOT}:
 
 \begin{figure}[h!]
-\centering
-%\includegraphics{../oscilloscopio/raise_problem.jpg}
-\caption{}
+	\centering
+	\includegraphics[width=0.6\textwidth]{../oscilloscopio/not_tarocco.jpg}
+	\caption{}
 \end{figure}
-%si include una figura finta, anzi: photoshoppata
 
 \subsection{Ritardi}
 Si è analizzato il comportamento del circuito su una scala temporale più piccola rispetto al periodo del segnale. Si nota che:

@@ -846,7 +846,7 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 		-------
 	"""
 	
-	columns = loadtxt(directory+"data\\"+file+".txt", unpack = True)
+	columns = loadtxt(directory+"data/"+file+".txt", unpack = True)
 
 	dcolumns = zeros((len(columns),len(columns[0])))
 	for i in range(len(columns)):
@@ -872,11 +872,16 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 	
 	if preplot==True :
 		figure(fig+"_3")
+		title(titolo)
+		xlabel(Xlab)
+		ylabel(Ylab)
 		if Xscale=="log":
 			xscale("log")
 		if Yscale=="log":
 			yscale("log")
-		plot(X,Y,".",color="blue")
+		errorbar(X,Y,dY,dX, fmt=",",ecolor="black",capsize=0.5)
+		savefig(directory+"grafici/fast_plot_"+fig+".pdf")
+		savefig(directory+"grafici/fast_plot_"+fig+".png")
 	
 	#Fit
 	par, cov = fit_generic_xyerr2(f,X,Y,dX,dY,p0)
