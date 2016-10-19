@@ -1,11 +1,11 @@
 from pylab import *
-path = "C:\\Users\\Roberto\\Documents\\GitHub\\Lab3\\"
+#path = "C:\\Users\\Roberto\\Documents\\GitHub\\Lab3\\"
 #path = "C:\\Users\\Studenti\\Desktop\\Lab3\\"
-#path = "/home/alessandro/Documents/Università/3°anno/Laboratorio3/Lab3/"
+path = "/home/alessandro/Documents/Università/3°anno/Laboratorio3/Lab3/"
 sys.path = sys.path + [path]
 from analyzer import *
 import uncertainties
-dir= path + "Esercitazione3\\"
+dir= path + "Esercitazione3/"
 ###########################################################################
 
 #V_EARLY#
@@ -57,7 +57,7 @@ Ylab="Corrente di collettore $I_C$ [m$A$]"
 
 tab=["$V_{RB}$ [$V$]","$V_{BE}$ [$V$]","$V_{CE}$[$V$]"]
 
-#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,preplot=True,fig=fig,table=True, tab=tab)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,preplot=True,fig=fig,table=True, tab=tab)
 
 ###########################################################################
 
@@ -83,7 +83,7 @@ titolo="$I_c$ vs $I_b$"
 Xlab="Corrente di base $I_B$ [$\mu A$]"
 Ylab="Corrente di collettore $I_C$ [m$A$]"
 
-#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,preplot=True)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,preplot=True)
 
 ###########################################################################
 
@@ -112,6 +112,6 @@ Ylab="Corrente di collettore $I_C$ [m$A$]"
 
 tab=["",""]
 
-#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,preplot=True,fig=fig)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,preplot=True,fig=fig)
 
 ###########################################################################

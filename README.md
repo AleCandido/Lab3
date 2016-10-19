@@ -10,6 +10,10 @@ Pushare non è necessario se non è di utilità condividere, perciò:
 
 ---
 
+## 19 Oct 2016:
+Una migliore ricerca rivela in internet il rallentamento delle correnti che scaricano noto come Child's Law
+
+[Child's Law](https://en.wikipedia.org/wiki/Space_charge#Child.27s_Law "rallentamento scarica per space charge")
 ## 18 Oct 2016:
 Per quanto riguarda le mie idee sul punto 5), V_Early:
 * analizzare i 'salti' fra i vari punti sulla base del salto medio (magari i salti si possono pesare in qualche modo con l'errore, almeno un peso relativo)
