@@ -42,9 +42,9 @@
 
 \section{Scopo e strumentazione}
 
-\section{Circuito NOT}
+\section{Circuito \code{NOT}}
 
-\subsection{Porta NOT}
+\subsection{Dimensionamento circuito e porta \code{NOT}}
 % se torniamo in lab prendiamo una schermata del funzionamento come porta NOT dall'oscilloscopio
 Si è costrituito il circuito riportato sulla scheda con i seguenti valori per le resistenze:
 
@@ -55,6 +55,7 @@ $R_1 = \unit{15.20 \pm 0.13}{\kilo\ohm}$ & $R_2 = \unit{99.4 \pm 0.9}{\kilo\ohm}
 \end{tabular}
 \end{table}
 
+Si aveva che l'alimentatore forniva una tensione pari a $\unit{5.07 \pm 0.04}{\volt}$.
 Si sono quindi misurati i seguenti valori per gli stati \code{alto} e \code{basso} di $V_{out}$ e $V_{in}$:
 
 \begin{table}[h!]
@@ -71,11 +72,23 @@ Da cui si ottengono le correnti:
 \begin{table}[h!]
 \centering
 \begin{tabular}{c|c|c}
- & $I_B$ [mV]& $I_C$ [V]\\
-\code{alto} & $$ & $$\\
-\code{basso} & $$ & $$
+ & $I_B$ [$\mu$A]& $I_C$ [mA]\\
+\code{alto} & $278 \pm 13$ & $2.21 \pm 0.03$\\
+\code{basso} & $0 \pm 13 $ & $-0.022 \pm 0.025$
 \end{tabular}
 \end{table}
+% come la misuro la corrente di base? l'unica cosa che mi viene in mente è usare Shockley, perché per il resto non abbiamo una vera e propria resistenza ai capi della quale conosciamo la tensione; ma neanche misurando tutte le tensioni del circuito ce l'avevamo!
+% un tentativo potrebbe essere prendere R1 e provare a trascurare R2 che tanto è grossa, ma in interdizione quella del diodo ci sta anche che sia più grossa!
+% ci riprovo, vediamo se funziona: (V_in - V_BE)/R1-V_BE/R2
+
+Si è verificato che il circuito funzionasse come una porta \code{NOT}:
+
+\begin{figure}[h!]
+\centering
+%\includegraphics{../oscilloscopio/raise_problem.jpg}
+\caption{}
+\end{figure}
+%si include una figura finta, anzi: photoshoppata
 
 \subsection{Ritardi}
 Si è analizzato il comportamento del circuito su una scala temporale più piccola rispetto al periodo del segnale. Si nota che:
@@ -92,7 +105,7 @@ Si sono misurati i tempi caratterisci, relativi ad una frequenza di input pari a
 $T_{rs} = \unit{264 \pm 5}{\nano\second}$ & $T_{s} = \unit{328 \pm 5}{\nano\second}$ & $T_{rd} = \unit{10.1 \pm 0.3}{\micro\second}$ & $T_{d} = \unit{1.98 \pm 0.03}{\micro\second}$
 % ho inserito come errori solo gli 0.1DIV, non ricordo se vogliamo inserire anche una tacca/mezza-tacca addizionale del cursore in quadratura, oppure se in qualche misura c'era un po' di errore dovuto all'oscillazione della traccia
 \end{tabular}
-\caption{Tempi caratterisci del segnale in uscita dalla porta NOT}
+\caption{Tempi caratterisci del segnale in uscita dalla porta \code{NOT}}
 \end{table}
 
 
@@ -103,17 +116,24 @@ $T_{rs} = \unit{264 \pm 5}{\nano\second}$ & $T_{s} = \unit{328 \pm 5}{\nano\seco
 \end{itemize}
 Si suppone che la variazione di $I_B$, che dovrebbe essere in fase con quella di $V_{in}$ (proveniente da \code{OUTPUT PULSE}), ma tenendo conto di ciò si giustifica una differenza di tempi fra la parte vicina al basso sia della salita che della discesa, ma non la più evidente differenza tra i due.
 
-
+% capacità per il fall time e densità di carica spaziale per storage time
 
 Nei due casi si ha che:
 \begin{description}
-\item[salita] Il transistor deve transistare dallo stato alto allo stato basso, perciò deve passare da interdizione a saturazione. Quindi...
+\item[salita] Il transistor deve transitare dallo stato alto allo stato basso, perciò deve passare da interdizione a saturazione. Quindi...
 \item[discesa] Al contrario rispetto al caso precedente si deve passare da saturazione a interdizione.
 \end{description}
 
 \subsection{Resistenza $R_2$}
+Per osservare qualitativamente il comportamento del circuito al variare della resistenza $R_2$ si è sostituita quest'ultima con il trimmer, e si è variato il trimmer visualizzando il comportamento nel dominio dei tempi sull'oscilloscopio.
+
+Si è osservato che i tempi di salita e di discesa erano influenzati dall'entità della resistenza $R_2$, mentre i ritardi non subivano grosse variazioni in entrambi i casi.
+
+Diminuendo la resistenza $R_2$ si ha che diminuisce anche la corrente $I_B$ che fluisce nella base del transistor, poiché una parte significativa della corrente proveniente da $V_{IN}$ finisce direttamente a terra tramite $R_2$. Diminuendo la massima corrente di base, diminuisce anche la massima corrento di collettore $I_C$ (la minima è già molto vicina a 0, si può considerare nulla) e il transistor rimane più lontano dalla zona di saturazione.
+%ancora un po' di spiegazioni su quanto osservato, e magari inserire i due numeri misurati
 
 \subsection{Limiti del circuito in frequenza}
+%inserire il numero trovato (5-10 kHz) e dare una spiegazione approssimativa di quanto accade
 
 \begin{figure}[h!]
 \centering
