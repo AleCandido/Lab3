@@ -97,10 +97,10 @@ alimentatore = 5.07	misurato col tester
 misure con oscilloscopio
 
 freq = 551.7 Hz
-T_rs = 264e-9
-T_s = 328e-9
-T_rd = 10.10e-6
-T_d = 1.980e-6
+T_rd = 264e-9
+T_d = 328e-9
+T_rs = 10.10e-6
+T_s = 1.980e-6
 
 ---> d. prove
 
