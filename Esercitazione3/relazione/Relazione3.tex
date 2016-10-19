@@ -229,24 +229,43 @@ $T_{rd} = \unit{264 \pm 5}{\nano\second}$ & $T_{d} = \unit{328 \pm 5}{\nano\seco
 Si suppone che la variazione di $I_B$, che dovrebbe essere in fase con quella di $V_{in}$ (proveniente da \code{OUTPUT PULSE}), ma tenendo conto di ciò si giustifica una differenza di tempi fra la parte vicina al basso sia della salita che della discesa, ma non la più evidente differenza tra i due.
 
 % capacità per il fall time e densità di carica spaziale per storage time
+% trovato qualcosa per spiegare lo storage time:
+% https://en.wikipedia.org/wiki/Space_charge#Child.27s_Law
+% https://www.researchgate.net/post/What_is_space_charge_limited_current
 
-Nei due casi si ha che:
+Considerando effetti di altro tipo si può però giustificare nei due casi il comportamento durante la variazione (cioè $T_s$ e $T_d$, non gli altri due). Quindi:
 \begin{description}
 \item[salita] Il transistor deve transitare dallo stato alto allo stato basso, perciò deve passare da interdizione a saturazione. In interdizione si ha che la zona di svuotamento è piuttosto ampia e la carica che si accumula ai suoi lati lo rende una specie di condensatore. Perciò il tempo di discesa è dovuto a una configurazione molto simile alla scarica di un condensatore, per cui si deve considerare il tempo caratteristico in cui avviene tale scarica $\tau = R_L \cdot C_ti$ dove $C_ti$ è la capacità del transistor in interdizione. Essendo quest'ultima dell'ordine di $\sim \unit{100}{\pico\farad}$ si avrà una costante di tempo $\tau \sim \unit{100}{\nano\second}}$
-\item[discesa] Al contrario rispetto al caso precedente si deve passare da saturazione a interdizione. In questo caso si ha invece una regione di svuotamento molto ridotta (quasi nulla, rispetto alle dimensioni "longitudinali" della giunzione), perciò nel momento in cui si cerca di passare in interdizione si deve rimuovere tutti i portatori di carica che occupano la futura zona di svuotamento, e questo processo impiega un tempo non indifferente, denominato "storage time", che domina sugli altri tempi caratterisci di switching nei transistor BJT.
+\item[discesa] Al contrario rispetto al caso precedente si deve passare da saturazione a interdizione. In questo caso si ha invece una regione di svuotamento molto ridotta (rispetto alle dimensioni "longitudinali"\footnote{Longitudinale nel modello a bacchetta, le equivalenti nel modello planare} della giunzione), perciò nel momento in cui si cerca di passare in interdizione si deve rimuovere tutti i portatori di carica che occupano la futura zona di svuotamento, e questo processo impiega un tempo non indifferente \marginpar{Qui vorrei citare la legge di Child}, denominato "storage time", che domina sul tempo di discesa dovuto a effetti capacitivi.
 \end{description}
+
+\emph{Vorrei citare Child's Law per effetti di carica spaziale, ma non ho avuto sbatta di verificare se siamo nelle ipotesi giuste, inoltre rimane sempre il problema del delay in salita}
+
+% manca ancora da giustificare T_rs
 
 \subsection{Resistenza $R_2$}
 Per osservare qualitativamente il comportamento del circuito al variare della resistenza $R_2$ si è sostituita quest'ultima con il trimmer, e si è variato il trimmer visualizzando il comportamento nel dominio dei tempi sull'oscilloscopio.
 
 Si è osservato che i tempi di salita e di discesa erano influenzati dall'entità della resistenza $R_2$, mentre i ritardi non subivano grosse variazioni in entrambi i casi.
 
-Diminuendo la resistenza $R_2$ si ha che diminuisce anche la corrente $I_B$ che fluisce nella base del transistor, poiché una parte significativa della corrente proveniente da $V_{IN}$ finisce direttamente a terra tramite $R_2$. Diminuendo la massima corrente di base, diminuisce anche la massima corrento di collettore $I_C$ (la minima è già molto vicina a 0, si può considerare nulla) e il transistor rimane più lontano dalla zona di saturazione.
+Diminuendo la resistenza $R_2$ si ha che diminuisce anche la corrente $I_B$ che fluisce nella base del transistor, poiché una parte significativa della corrente proveniente da $V_{IN}$ finisce direttamente a terra tramite $R_2$. Infatti, schematizzando la giunzione BE come una resistenza costante $R_B$ (schematizzazione molto rozza, ma approssimativamente valida in regime attivo), si ha per la corrente $I_B$:
+%è l'approsimazione di cavallo cilindrico, ma a meno che non la corregga Forti non la capiscono...
+\begin{equation*}
+I_B = \frac{V_{in} R_2}{(R_1 + R_2\parallel R_B)(R_2 + R_B)}
+\end{equation*}
+E quindi quando $R_1$ diventa dominante rispetto al parallelo e $R_B$ dominante rispetto a $R_2$ si ha che la corrente $I_B$ diminuisce.
+
+Diminuendo la massima corrente di base, diminuisce anche la massima corrente di collettore $I_C$ (la minima è già molto vicina a 0, si può considerare nulla) e il transistor rimane più lontano dalla zona di saturazione, cambiando significativamente il tempo di salita dovuto all'accumulo di carica spaziale.
 % il tempo di salita dovrebbe essere influenzato da questo, ma quello di discesa no!
-%ancora un po' di spiegazioni su quanto osservato, e magari inserire i due numeri misurati
+% ancora un po' di spiegazioni su quanto osservato, e magari inserire i due numeri misurati
 
 \subsection{Limiti del circuito in frequenza}
 %inserire il numero trovato (5-10 kHz) e dare una spiegazione approssimativa di quanto accade
+Si nota che il circuito funziona come porta \code{NOT} fino a una frequenza di circa $\unit{5-10}{\kilo\hertz}$. Oltre queste frequenze il segnale in uscita risulta molto deformato, al punto da non essere più identificabile con un'onda quadra.
+
+Questo sembra essere dovuto al fatto che sebbene il segnale abbia un periodo minore, i tempi di latenza in salita risultano avere lo stesso ordine di grandezza di quanto misurato a frequenza più bassa, al punto che la transizione domina temporalmente sulla permanenza nello stato alto, che per frequenze troppo alte non si riesce neanche a raggiungere.
+
+I limiti in frequenza del circuito in esame sono dunque dovuti ai tempi di latenza del transistor, nello specifico quelli in salita (da saturazione a interdizione).
 
 \begin{figure}[h!]
 \centering
