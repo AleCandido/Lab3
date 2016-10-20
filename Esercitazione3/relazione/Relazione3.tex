@@ -42,7 +42,7 @@
 Lo scopo dell'esperienza era:
 \begin{itemize}
 \item familiarizzare con il funzionamento di un transistor BJT, le sue caratteristiche tensione-corrente e i vari regimi in cui può essere utilizzato (saturazione, attivo, interdizione);
-\item costruire una porta NOT e verificarne il funzionamento, studiando il circuito, e l'effetto dei suoi componenti sul funzionamento, e osservando i suoi limiti in frequenza.
+\item costruire una porta NOT e  verificarne il funzionamento: studiare il circuito, l'effetto dei suoi componenti sul funzionamento e osservare i suoi limiti in frequenza.
 \end{itemize}
 
 Nella prima parte dell'esperienza si è inoltre osservata la dipendenza della corrente di collettore da $V_{CE}$, in regime attivo, cioè il cosiddetto Effetto Early.
@@ -51,13 +51,13 @@ La strumentazione usata è quella presente sul banco di lavoro, più:
 \begin{itemize}
 \item transistor \code{2N1711} - transistor NPN;
 \item trimmer da $\unit{\sim 100}{\kilo\ohm}$;
-\item stabilizzatore di tensione \code{7805}.
+\item stabilizzatore di tensione \code{LM7805}.
 \end{itemize}
 
 \section{Misure in DC sul transistor}
-Si è proceduto alla realizzazione del circuito in figura \figurename{\ref{circuito}} e si sono utilizzate le seguenti componenti:
+Si è proceduto alla realizzazione del circuito in figura \figurename{\ref{circuito}} con le componenti indicate.
 \begin{figure}[h!]
-\begin{minipage}[c]{0.5\textwidth}
+\begin{minipage}[c]{0.25\textwidth}
 \begin{align*}
 R_L &= \unit{989 \pm 9}{\ohm}\\
 R_B &= \unit{46.4 \pm 0.5}{\kilo\ohm}\\
@@ -65,22 +65,22 @@ R_{trim} &= \unit{101.5 \pm 0.9}{\kilo \ohm}\\
 V_1 &= \unit{9.84 \pm 0.4}{\volt}\\
 \end{align*}
 	\end{minipage}
-	\begin{minipage}[c]{0.5\textwidth}
+	\begin{minipage}[c]{0.3\textwidth}
 	\centering
-	\includegraphics[width=0.8\textwidth]{../grafici/circuito.png}
+	\includegraphics[width=1\textwidth]{../grafici/circuito.png}
 	\caption{Circuito realizzato}
 	\label{circuito}
 	\end{minipage}
+	\begin{minipage}[c]{0.45\textwidth}
+		\centering
+		\includegraphics[width=1.1\textwidth]{../grafici/retta_carico.png}
+		\caption{Retta di carico e zone di lavoro del transistor}
+		\label{retta_carico}
+	\end{minipage}
 \end{figure}
 
-\subsection{Retta di carico}
-Si è tracciata la retta di carico sul grafico $I_c/V_{CE}$ fornito e si sono identificate le zone di interdizione (in basso), saturazione (a sinistra) e la zona attiva (il resto del grafico).
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.6\textwidth]{../grafici/retta_carico.png}
-	\caption{Retta di carico e zone di lavoro del transistor}
-	\label{retta_carico}
-\end{figure}
+Si è tracciata in \figurename{\ref{retta_carico}} la retta di carico sul grafico $I_c/V_{CE}$ fornito e si sono identificate le zone di interdizione (in basso), saturazione (a sinistra) e la zona attiva (il resto del grafico).
+\\\\
 \subsection{Misura di $I_C$ in funzione di $I_B$ e $V_{BE}$}
 Si è proceduto alla misura di 3 tensioni al variare della posizione del potenziometro:
 \begin{itemize}
@@ -93,7 +93,7 @@ Di seguito riportiamo i dati raccolti e i grafici realizzati.
 
 \begin{figure}[h!]
 	\centering
-	\begin{minipage}[h!]{0.4\textwidth}
+	\begin{minipage}[h!]{0.40\textwidth}
 		\centering
 		\resizebox{1\textwidth}{!}{
 			\input{../tabelle/tab_ib_var.txt}}
@@ -101,11 +101,11 @@ Di seguito riportiamo i dati raccolti e i grafici realizzati.
 	\end{minipage}
 	\begin{minipage}[d]{0.59\textwidth}
 		\centering
-		\includegraphics[width=1.1\textwidth]{../grafici/ic_ib.pdf}
+		\includegraphics[width=1\textwidth]{../grafici/ic_ib.pdf}
 		\caption{Grafico corrente collettore vs corrente di base}
 		\label{ibic}
 		\centering
-		\includegraphics[width=1.1\textwidth]{../grafici/ic_vbe.pdf}
+		\includegraphics[width=1\textwidth]{../grafici/ic_vbe.pdf}
 		\caption{Grafico tensione BE vs corrente collettore}
 		\label{vbeic}
 		\end{minipage}
@@ -163,24 +163,32 @@ Al variare della tensione di alimentazione $V_1$ la retta di carico si muove par
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.47\textwidth]{../grafici/spostamento_retta.jpg}
+	\includegraphics[width=0.54\textwidth]{../grafici/spostamento_retta.jpg}
 	\caption{Variazione della retta di carico}
 	\label{retta_spostamento}
 \end{figure}
-
 \section{Circuito NOT}
 
 \subsection{Dimensionamento circuito e porta \code{NOT}}
 
 % se torniamo in lab prendiamo una schermata del funzionamento come porta NOT dall'oscilloscopio
 Si è costrituito il circuito riportato sulla scheda con i seguenti valori per le resistenze:
+\begin{figure}[h!]
+	\begin{minipage}[c]{0.5\textwidth}
+		\begin{align*}
+		R_1 &= \unit{15.20 \pm 0.13}{\kilo\ohm}\\
+		R_2 &= \unit{99.4 \pm 0.9}{\kilo\ohm}\\
+		R_L &= \unit{2.27 \pm 0.03}{\kilo\ohm}\\
+		\end{align*}
+	\end{minipage}
+	\begin{minipage}[c]{0.5\textwidth}
+		\centering
+		\includegraphics[width=0.8\textwidth]{../grafici/circuito_NOT.jpg}
+		\caption{Circuito realizzato}
+		\label{circuitoNOT}
+	\end{minipage}
+\end{figure}
 
-\begin{table}[h!]
-\centering
-\begin{tabular}{c|c|c}
-$R_1 = \unit{15.20 \pm 0.13}{\kilo\ohm}$ & $R_2 = \unit{99.4 \pm 0.9}{\kilo\ohm}$ & $R_L = \unit{2.27 \pm 0.03}{\kilo\ohm}$
-\end{tabular}
-\end{table}
 
 L'alimentatore forniva una tensione pari a $\unit{5.07 \pm 0.04}{\volt}$.
 Si sono quindi misurati i seguenti valori per gli stati \code{alto} e \code{basso} di $V_{out}$ e $V_{in}$:
@@ -210,10 +218,9 @@ Si è verificato che il circuito funzionasse come una porta \code{NOT}:
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.6\textwidth]{../oscilloscopio/not_tarocco.jpg}
+	\includegraphics[width=0.45\textwidth]{../oscilloscopio/not_tarocco.jpg}
 	\caption{Funzionamento porta NOT}
 \end{figure}
-
 \subsection{Ritardi}
 Si è analizzato il comportamento del circuito su una scala temporale più piccola rispetto al periodo del segnale. Si nota che:
 \begin{itemize}
@@ -252,7 +259,7 @@ Considerando effetti di altro tipo si può però giustificare nei due casi il co
 \item[discesa] Al contrario rispetto al caso precedente si deve passare da saturazione a interdizione. In questo caso si ha invece una regione di svuotamento molto ridotta (rispetto alle dimensioni "longitudinali"\footnote{Longitudinale nel modello a bacchetta, le equivalenti nel modello planare} della giunzione), perciò nel momento in cui si cerca di passare in interdizione si deve rimuovere tutti i portatori di carica che occupano la futura zona di svuotamento, e questo processo impiega un tempo non indifferente\marginpar{Qui vorrei citare la legge di Child}, denominato "storage time", che domina sul tempo di discesa dovuto a effetti capacitivi.
 \end{description}
 
-\emph{Vorrei citare Child's Law per effetti di carica spaziale, ma non ho avuto sbatta di verificare se siamo nelle ipotesi giuste, inoltre rimane sempre il problema del delay in salita}
+\marginpar{Vorrei citare Child's Law per effetti di carica spaziale, ma non ho avuto sbatta di verificare se siamo nelle ipotesi giuste, inoltre rimane sempre il problema del delay in salita}
 
 % manca ancora da giustificare T_rs
 
@@ -282,7 +289,7 @@ I limiti in frequenza del circuito in esame sono dunque dovuti ai tempi di laten
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=0.5\textwidth]{../oscilloscopio/raise_problem.jpg}
+\includegraphics[width=0.45\textwidth]{../oscilloscopio/raise_problem.jpg}
 \caption{Comportamento ad alte frequenze}
 \end{figure}
 
