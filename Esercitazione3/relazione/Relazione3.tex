@@ -275,9 +275,12 @@ I_B = \frac{V_{in} R_2}{(R_1 + R_2 // R_B)(R_2 + R_B)}
 \end{equation*}
 E quindi quando $R_1$ diventa dominante rispetto al parallelo e $R_B$ dominante rispetto a $R_2$ si ha che la corrente $I_B$ diminuisce.
 
-Diminuendo la massima corrente di base, diminuisce anche la massima corrente di collettore $I_C$ (la minima è già molto vicina a 0, si può considerare nulla) e il transistor rimane più lontano dalla zona di saturazione, cambiando significativamente il tempo di salita dovuto all'accumulo di carica spaziale.
-% il tempo di salita dovrebbe essere influenzato da questo, ma quello di discesa no!
-% ancora un po' di spiegazioni su quanto osservato, e magari inserire i due numeri misurati
+Diminuendo $I_B$ l'oscillazione dello stato del transistor si avvicina sempre di meno alla zona di saturazione, con i seguenti effetti:
+\begin{description}
+\item{Stati} Poiché la corrente di base è progressivamente più limitata dall'alto, allora la tensione $V_CE$ non riesce a raggiungere valori troppo bassi, con un conseguente innalzamento del livello dello stato basso, cosa che si osserva.
+\item{Commutazione} Inoltre, diminuendo la massima corrente di base, diminuisce anche la massima corrente di collettore $I_C$ (la minima è già molto vicina a 0, si può considerare nulla) e questo cambia significativamente anche i tempi di salita e discesa, specie quello di salita che era dovuto all'accumulo di carica spaziale in saturazione.
+\end{description}
+% magari inserire i due numeri misurati
 
 \subsection{Limiti del circuito in frequenza}
 %inserire il numero trovato (5-10 kHz) e dare una spiegazione approssimativa di quanto accade
