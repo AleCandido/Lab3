@@ -39,6 +39,20 @@
 \maketitle
 
 \section{Scopo e strumentazione}
+Lo scopo dell'esperienza era:
+\begin{itemize}
+\item familiarizzare con il funzionamento di un transistor BJT, le sue caratteristiche tensione-corrente e i vari regimi in cui può essere utilizzato (saturazione, attivo, interdizione);
+\item costruire una porta NOT e verificarne il funzionamento, studiando il circuito, e l'effetto dei suoi componenti sul funzionamento, e osservando i suoi limiti in frequenza.
+\end{itemize}
+
+Nella prima parte dell'esperienza si è inoltre osservata la dipendenza della corrente di collettore da $V_{CE}$, in regime attivo, cioè il cosiddetto Effetto Early.
+
+La strumentazione usata è quella presente sul banco di lavoro, più:
+\begin{itemize}
+\item transistor \code{2N1711} - transistor NPN;
+\item trimmer da $\unit{\sim 100}{\kilo\ohm}$;
+\item stabilizzatore di tensione \code{7805}.
+\end{itemize}
 
 \section{Misure in DC sul transistor}
 Si è proceduto alla realizzazione del circuito in figura \figurename{\ref{circuito}} e si sono utilizzate le seguenti componenti:
@@ -186,8 +200,8 @@ Da cui si ottengono le correnti:
 \centering
 \begin{tabular}{c|c|c}
  & $I_B$ [$\mu$A]& $I_C$ [mA]\\
-\code{alto} & $278 \pm 13$ & $2.21 \pm 0.03$\\
-\code{basso} & $0 \pm 13 $ & $-0.022 \pm 0.025$
+\code{alto} & $278 \pm 18$ & $2.21 \pm 0.03$\\
+\code{basso} & $0.329 \pm  0.013$ & $-0.022 \pm 0.025$
 \end{tabular}
 \end{table}
 % ci riprovo, vediamo se funziona: (V_in - V_BE)/R1-V_BE/R2
