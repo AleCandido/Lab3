@@ -159,7 +159,7 @@ Di seguito il grafico della corrente di collettore $I_C$\footnote{si è calcolat
 	\end{minipage}
 \end{figure}
 
-Al variare della tensione di alimentazione $V_1$ la retta di carico si muove parallelamente a se stessa su grafico come in \figurename{\ref{retta_spostamento}}, quindi spostandosi la retta di carico interseca diversi punti della curva a  $\sim \unit{40}{\micro\ampere}$, il risultato e il caratteristico andamento lineare prodotto dall'effetto Early, come si nota anche dalle misure graficate in \figurename{\ref{early}}.
+Al variare della tensione di alimentazione $V_1$ la retta di carico si muove parallelamente a se stessa sul grafico come in \figurename{\ref{retta_spostamento}}, quindi spostandosi la retta di carico interseca diversi punti della curva a  $\sim \unit{40}{\micro\ampere}$, il risultato e il caratteristico andamento lineare prodotto dall'effetto Early. Le misure effettuale sono rappresentate nel grafico in \figurename{\ref{early}} e sono affette da errori dovuti alla temperatura non costante del transistor che ne modificava il comportamento in maniera apprezzabile durante le misurazioni.
 
 \begin{figure}[h!]
 	\centering
@@ -213,7 +213,7 @@ Da cui si ottengono le correnti:
 \end{table}
 % ci riprovo, vediamo se funziona: (V_in - V_BE)/R1-V_BE/R2
 
-Si è verificato che il circuito funzionasse come una porta \code{NOT}:
+Dal valore di $I_B$ è chiaro che il transistor lavora in regimedi saturazione/interdizione. Si è verificato che il circuito funzionasse come una porta \code{NOT}:
 
 \begin{figure}[h!]
 	\centering
@@ -224,10 +224,10 @@ Si è verificato che il circuito funzionasse come una porta \code{NOT}:
 Si è analizzato il comportamento del circuito su una scala temporale più piccola rispetto al periodo del segnale. Si nota che:
 \begin{itemize}
 \item il circuito produce un uscita non perfettamente in fase con l'ingresso;
-\item l'onda quadra in uscita risulta non avere più un netto fronte di salita, ma impiega un tempo non indifferente per cambiare stato.
+\item l'onda quadra in uscita risulta non avere più un netto fronte di salita, ma impiega un tempo apprezzabile per cambiare stato.
 \end{itemize}
 
-Si sono misurati i tempi caratterisci, relativi ad una frequenza di input pari a $f = \unit{551.7 \pm}{\hertz}$, che vengono riportati di seguito. I nomi sono usati conformemente alla scheda relativa all'esercitazione. 
+Si sono misurati i tempi caratteristici, relativi ad una frequenza di input pari a $f = \unit{552 \pm 5}{\hertz}$, che vengono riportati di seguito. I nomi sono usati conformemente alla scheda relativa all'esercitazione. 
 
 \begin{table}[h!]
 \centering
@@ -235,11 +235,8 @@ Si sono misurati i tempi caratterisci, relativi ad una frequenza di input pari a
 $T_{rd} = \unit{264 \pm 5}{\nano\second}$ & $T_{d} = \unit{328 \pm 5}{\nano\second}$ & $T_{rs} = \unit{10.1 \pm 0.3}{\micro\second}$ & $T_{s} = \unit{1.98 \pm 0.03}{\micro\second}$
 % ho inserito come errori solo gli 0.1DIV, non ricordo se vogliamo inserire anche una tacca/mezza-tacca addizionale del cursore in quadratura, oppure se in qualche misura c'era un po' di errore dovuto all'oscillazione della traccia
 \end{tabular}
-\caption{Tempi caratterisci del segnale in uscita dalla porta \code{NOT}}
 \end{table}
-
-
-\paragraph{Discrepanza salita-discesa} Si nota che i tempi di discesa sono ordini di grandezza più grandi di quelli di salita. Si ricercano le cause di questa discrepanza nel funzionamento del transistor, e osservando il grafico $V_{CE} - I_C$ si nota che per compiere anche piccole variazioni di tensione lungo la retta di carico:
+\paragraph{Discrepanza salita-discesa} Si nota che il tempo complessivo di discesa è 2 ordini di grandezza più grande di quello di salita. Si ricercano le cause di questa discrepanza nel funzionamento del transistor, e osservando il grafico $V_{CE} - I_C$ si nota che per compiere anche piccole variazioni di tensione lungo la retta di carico:
 \begin{itemize}
 \item per grandi tensioni $V_{CE}$, cioè in interdizione, il comportamento è quasi lineare, come in regime attivo;
 \item per piccole tensioni $V_{CE}$, cioè in saturazione, per ottenere piccole variazioni sono necessarie grosse variazioni di $I_B$.
@@ -253,15 +250,15 @@ Si suppone che la variazione di $I_B$, che dovrebbe essere in fase con quella di
 
 Considerando effetti di altro tipo si può però giustificare nei due casi il comportamento durante la variazione (cioè $T_{rs}$ e $T_{rd}$, non gli altri due). Quindi:
 \begin{description}
-\item[salita] Il transistor deve transitare dallo stato alto allo stato basso, perciò deve passare da interdizione a saturazione. In interdizione si ha che la zona di svuotamento è piuttosto ampia e la carica che si accumula al suo interno lo rende una specie di condensatore. Perciò il tempo di discesa è dovuto a una configurazione molto simile alla scarica di un condensatore, per cui si deve considerare il tempo caratteristico in cui avviene tale scarica $\tau = R_L \cdot C_{ti}$ dove $C_{ti}$ è la capacità del transistor in interdizione. Essendo quest'ultima dell'ordine di $\sim \unit{100}{\pico\farad}$ \footnote{come riportato sul datasheet} si avrà una costante di tempo $\tau \sim \unit{100}{\nano\second}$.
+\item[discesa] Il transistor deve transitare dallo stato alto allo stato basso, perciò deve passare da interdizione a saturazione. In interdizione si ha che la zona di svuotamento è piuttosto ampia e la carica che si accumula al suo interno lo rende una specie di condensatore. Perciò il tempo di discesa è dovuto a una configurazione molto simile alla scarica di un condensatore, per cui si deve considerare il tempo caratteristico in cui avviene tale scarica $\tau = R_L \cdot C_{ti}$ dove $C_{ti}$ è la capacità del transistor in interdizione. Essendo quest'ultima dell'ordine di $\sim \unit{100}{\pico\farad}$ \footnote{come riportato sul datasheet} si avrà una costante di tempo $\tau \sim \unit{100}{\nano\second}$.
 
-\item[discesa] Al contrario rispetto al caso precedente si deve passare da saturazione a interdizione. In questo caso si ha invece una regione di svuotamento molto ridotta (rispetto alle dimensioni "longitudinali"\footnote{Longitudinale nel modello a bacchetta, le equivalenti nel modello planare} della giunzione), perciò nel momento in cui si cerca di passare in interdizione si deve rimuovere tutti i portatori di carica che occupano la futura zona di svuotamento, e questo processo impiega un tempo non indifferente\marginpar{Qui vorrei citare la legge di Child}, denominato "storage time", che domina sul tempo di discesa dovuto a effetti capacitivi.
+\item[salita] Al contrario rispetto al caso precedente si deve passare da saturazione a interdizione. In questo caso si ha invece una regione di svuotamento molto ridotta (rispetto alle dimensioni "longitudinali"\footnote{Longitudinale nel modello a bacchetta, le equivalenti nel modello planare} della giunzione), perciò nel momento in cui si cerca di passare in interdizione si deve rimuovere tutti i portatori di carica che occupano la futura zona di svuotamento, e questo processo impiega un tempo non indifferente, denominato "storage time", che domina sul tempo di discesa dovuto a effetti capacitivi.
 \end{description}
 
 % manca ancora da giustificare T_rs
 
 \subsection{Resistenza $R_2$}
-Per osservare qualitativamente il comportamento del circuito al variare della resistenza $R_2$ si è sostituita quest'ultima con il trimmer, e si è variato il trimmer visualizzando il comportamento nel dominio dei tempi sull'oscilloscopio.
+Per osservare qualitativamente il comportamento del circuito al variare della resistenza $R_2$ si è sostituita quest'ultima con il trimmer, e si è variata la posizione del potenziometro visualizzando il comportamento nel dominio dei tempi sull'oscilloscopio.
 
 Si è osservato che i tempi di salita e di discesa erano influenzati dall'entità della resistenza $R_2$, mentre i ritardi non subivano grosse variazioni in entrambi i casi.
 
@@ -273,10 +270,10 @@ I_B = \frac{V_{in} R_2}{(R_1 + R_2 // R_B)(R_2 + R_B)}
 E quindi quando $R_1$ diventa dominante rispetto al parallelo e $R_B$ dominante rispetto a $R_2$ si ha che la corrente $I_B$ diminuisce.
 
 Diminuendo $I_B$ l'oscillazione dello stato del transistor si avvicina sempre di meno alla zona di saturazione, con i seguenti effetti:
-\begin{description}
-\item{Stati} Poiché la corrente di base è progressivamente più limitata dall'alto, allora la tensione $V_CE$ non riesce a raggiungere valori troppo bassi, con un conseguente innalzamento del livello dello stato basso, cosa che si osserva.
-\item{Commutazione} Inoltre, diminuendo la massima corrente di base, diminuisce anche la massima corrente di collettore $I_C$ (la minima è già molto vicina a 0, si può considerare nulla) e questo cambia significativamente anche i tempi di salita e discesa, specie quello di salita che era dovuto all'accumulo di carica spaziale in saturazione.
-\end{description}
+\begin{itemize}
+\item Poiché la corrente di base è progressivamente limitata dall'alto, allora la tensione $V_{CE}$ non riesce a raggiungere valori troppo bassi, con un conseguente innalzamento del livello dello stato basso, cosa che si osserva.
+\item Inoltre, diminuendo la massima corrente di base, diminuisce anche la massima corrente di collettore $I_C$ (la minima è già molto vicina a 0, si può considerare nulla) e questo cambia significativamente anche i tempi di salita e discesa, specie quello di salita che era dovuto all'accumulo di carica spaziale in saturazione.
+\end{itemize}
 % magari inserire i due numeri misurati
 
 \subsection{Limiti del circuito in frequenza}
@@ -287,9 +284,9 @@ Questo sembra essere dovuto al fatto che sebbene il segnale abbia un periodo min
 
 I limiti in frequenza del circuito in esame sono dunque dovuti ai tempi di latenza del transistor, nello specifico quelli in salita (da saturazione a interdizione).
 
-\begin{figure}[h!]
+\begin{figure}[t]
 \centering
-\includegraphics[width=0.45\textwidth]{../oscilloscopio/raise_problem.jpg}
+\includegraphics[width=0.5\textwidth]{../oscilloscopio/raise_problem.jpg}
 \caption{Comportamento ad alte frequenze}
 \end{figure}
 
