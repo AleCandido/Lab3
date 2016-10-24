@@ -1,0 +1,143 @@
+1) Montaggio del circuito
+tester
+
+CIN = 229e-9
+COUT = 98e-9
+RC = 9.93e3
+R1 = 177.1e3
+R2 = 18.06e3
+RE = 986
+
+---> a. punto di lavoro
+tester
+
+V_CE(q) = 8.21
+I_C(q) = 1.058e-3
+VCC = 19.85
+
+
+---> b. tensioni ai terminali
+tester
+
+V_B = 1.692
+V_E = 1.070
+V_BE = 0.625
+V_C = 9.28
+
+2) Seganli sinusoidali a frequenza fissa
+
+---> a. Guadagno in tensione
+le tensioni sono prese picco picco in volt con l'oscilloscopio
+freq. = 5.00e3
+
+V_IN		V_OUT
+28.8e-3		264e-3
+36.0e-3		332e-3
+40.0e-3		376e-3
+45.6e-3		432e-3
+50.4e-3		472e-3
+60.0e-3		568e-3
+64.0e-3		680e-3
+94.0e-3		920e-3
+126e-3		1.22
+160e-3		1.56
+180e-3		1.80
+204e-3		2.00
+256e-3		2.52
+308e-3		3.00
+332e-3		3.32
+400e-3		4.00
+488e-3		4.72
+600e-3		5.76
+820e-3		7.80
+900e-3		8.60
+1.02		10.0
+1.16		11.0
+1.22		11.8
+1.32		12.6
+1.46		13.8
+1.60		14.8
+1.72		16.0 e clipping
+2.20		18.6
+3.00		18.8
+4.24		18.6
+6.32		18.8
+7.80		19.0
+
+Dati buoni con condensatore CE attaccato (senza Res)
+V_IN		V_OUT
+28.8e-3		7.80
+36.0e-3		9.60
+40.0e-3		10.6
+45.6e-3		12.2
+50.4e-3		13.2
+55.2e-3		14.6
+
+---> b. Impedenza di ingresso
+oscillocazzo
+
+RS = 14.7e3
+Vbef = 1.38
+V2 = 700e-3
+V1 = 1.36 
+
+V1 e V2 sono quelle indicate sulla scheda, mentre Vbef è quello prima della resistenza quando questa è attaccata (dovrebbe coincidere teoricamente con V1)
+
+
+---> c. Impedenza d'uscita
+oscillocazzo
+
+RL = 9.87e3
+V2 = 6.56
+V1 = 12.8
+
+V1 e V2 sono quelle sulla scheda (e anche quelle sensate)
+
+3) Risposta in frequenza
+
+---> a. presa dati
+
+V_IN = 1.00 (OSCILLOCAZZO)
+
+freq.		V_OUT
+11.30		2.08
+19.60		3.40
+37.64		5.60
+78.78		7.80
+158.3		8.80
+300.2		8.80
+628.6		8.80
+1.197e3		9.20
+2.480e3		9.00
+5.008e3		9.40
+9.836e3		9.40
+19.58e3		9.40
+38.95e3		8.80
+78.00e3		7.40
+158.9e3		4.88
+329.9e3		2.60
+632.7e3		1.40
+1.178e6		820e-3
+
+
+---> c. frequenza di taglio
+misura a -3db 91.7(pm 2)kHz e 51.0(pm 2)Hz
+
+4) Aumento del guadagno
+
+--> a. nuovo guadagno
+oscillocazzo
+
+Res = 100.7
+freq. = 5.032
+
+V_IN		V_OUT
+28.8e-3		2.28
+52.0e-3		4.16
+82.0e-3		6.32
+102e-3		8.40
+126e-3		10.0
+150e-3		12.2
+170e-3		13.6
+180e-3		13.6
+212e-3		15.8
