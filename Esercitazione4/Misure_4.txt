@@ -21,7 +21,7 @@ tester
 
 V_B = 1.692
 V_E = 1.070
-V_BE = 0.625
+V_BE = 0.625 \pm 0.004
 V_C = 9.28
 
 2) Seganli sinusoidali a frequenza fissa

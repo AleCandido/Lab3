@@ -39,10 +39,67 @@
 \maketitle
 
 \section{Scopo e strumentazione}
+Lo scopo dell'esperienza è realizzare e caratterizzare un amplificatore a transistor, usando un transistor NPN 2N1711.
+
+La strumentazione usata è quella presente sul banco di lavoro, più il suddetto transistor.
 
 \section{Montaggio del circuito e punto di lavoro}
+Il circuito è stato realizzato usando i componenti riportati in Tabella~\ref{tab:componenti}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{c|c|c}
+$R_1 = \unit{177.1 \pm 1.5}{\kilo\ohm}$ & $R_2 = \unit{18.06 \pm 0.15}{\kilo\ohm}$ & $R_C = \unit{9.93 \pm 0.09}{\kilo\ohm}$ & & $R_E = \unit{986 \pm 9}{\ohm}$ \\
+$C_{IN} = \unit{230 \pm 10}{\nano\farad}$ & $C_{OUT} = \unit{98 \pm 6}{\nano\farad}$ & $C_E = \unit{100 \pm 10\%}{\micro\farad}$\\
+\end{tabular}
+\caption{Valori dei componenti utilizzati per la realizzazione dell'amplificatore}
+\label{tab:componenti}
+\end{table}
+
+Ad eccezione dell'ultima parte dell'esperienza non è stata usata la resistenza $R_{es}$.
+
+\subsection{Punto di lavoro}
+Si sono misurate corrente e tensione di quiescenza per determinare il punto di lavoro. Si riporta anche la tensione $V_{CC}$ erogata dall'alimentatore.
+\begin{table}[h!]
+\centering
+\begin{tabular}{c|c|c}
+$V_{CE}^Q = \unit{8.21 \pm 0.05}{\volt}$ & $I_C^Q = \unit{1.058 \pm 0.009}{\milli\ampere}$ & $V_{CC} = \unit{19.85 \pm 0.11}{\volt}$
+\end{tabular}
+\end{table}
+
+Mentre i valori attesi sono\footnote{exp ad apice sta ad indicare che sono i valori attesi}:
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{c|c}
+$V_{CE}^{exp} = \unit{7.64 \pm 0.26}{\volt}$ & $I_C^{exp} = \unit{1.229 \pm 0.026}{\milli\ampere}$
+\end{tabular}
+\end{table}
+
+Per calcolarli si è usato che $V_{BE} = \unit{625 \pm 4}{\milli\volt}$, cioè quanto abbiamo misurato.
+
+\subsection{Tensioni ai terminali del transistor}
+Le tensioni misurate sui terminali del transistor sono le seguenti.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{c|c|c|c}
+$V_B = \unit{1.692 \pm 0.009}{\volt}$ & $V_E = \unit{1.070 \pm 0.006}{\volt}$ & $V_{BE} = \unit{625 \pm 4}{\milli\volt}$ & $V_{C} = \unit{9.28 \pm 0.06}{\volt}$
+\end{tabular}
+\end{table}
+
+Mentre per i valori attesi si è ottenuto:
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{c|c|c}
+$V_B^{exp} = \unit{1.837 \pm 0.022}{\volt}$ & $V_E^{exp} = \unit{1.212 \pm 0.23}{\volt}$ & $V_{C}^{exp} = \unit{ \pm }{\volt}$
+\end{tabular}
+\end{table}
 
 \section{Risposta a segnali sinusoidali a frequenza fissa}
+
+
 
 \section{Risposta in frequenza}
 
