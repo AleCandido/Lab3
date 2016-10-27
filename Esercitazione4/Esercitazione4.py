@@ -19,6 +19,6 @@ Vout = unumpy. uarray(Vout, dVout)
 index = arange(len(Vin))
 Av = Vout/Vin
 
-fit_const(unumpy.nominal_values(Av), unumpy.std_devs(Av))
+fit_const_yerr(unumpy.nominal_values(Av), unumpy.std_devs(Av))
 
 errorbar(index, unumpy.nominal_values(Av), unumpy.std_devs(Av))
