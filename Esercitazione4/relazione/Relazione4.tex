@@ -58,7 +58,9 @@ $C_{IN} = \unit{230 \pm 10}{\nano\farad}$ & $C_{OUT} = \unit{98 \pm 6}{\nano\far
 
 Ad eccezione dell'ultima parte dell'esperienza non è stata usata la resistenza $R_{es}$.
 
-\subsection{Punto di lavoro}
+\subsection{Misure e valori attesi}
+
+\paragraph{Punto di lavoro}
 Si sono misurate corrente e tensione di quiescenza per determinare il punto di lavoro. Si riporta anche la tensione $V_{CC}$ erogata dall'alimentatore.
 \begin{table}[h!]
 \centering
@@ -72,13 +74,13 @@ Mentre i valori attesi sono\footnote{exp ad apice sta ad indicare che sono i val
 \begin{table}[h!]
 \centering
 \begin{tabular}{c|c}
-$V_{CE}^{exp} = \unit{7.64 \pm 0.26}{\volt}$ & $I_C^{exp} = \unit{1.229 \pm 0.026}{\milli\ampere}$
+$V_{CE}^{exp} = \unit{8.03 \pm 0.23}{\volt}$ & $I_C^{exp} = \unit{1.082 \pm 0.022}{\milli\ampere}$
 \end{tabular}
 \end{table}
 
 Per calcolarli si è usato che $V_{BE} = \unit{625 \pm 4}{\milli\volt}$, cioè quanto abbiamo misurato.
 
-\subsection{Tensioni ai terminali del transistor}
+\paragraph{Tensioni ai terminali del transistor}
 Le tensioni misurate sui terminali del transistor sono le seguenti.
 
 \begin{table}[h!]
@@ -93,13 +95,66 @@ Mentre per i valori attesi si è ottenuto:
 \begin{table}[h!]
 \centering
 \begin{tabular}{c|c|c}
-$V_B^{exp} = \unit{1.837 \pm 0.022}{\volt}$ & $V_E^{exp} = \unit{1.212 \pm 0.23}{\volt}$ & $V_{C}^{exp} = \unit{ \pm }{\volt}$
+$V_B^{exp} = \unit{1.701 \pm 0.019}{\volt}$ & $V_E^{exp} = \unit{1.076 \pm 0.20}{\volt}$ & $V_{C}^{exp} = \unit{9.10 \pm 0.22}{\volt}$
 \end{tabular}
 \end{table}
 
+%magari qui, e al punto precedente, dovrei mettere le formule usate, che alla fine sono quelle delle dispense
+
+Non si riporta il valore atteso di $V_{BE}$ in quanto è stato usato proprio il valore misurato per ricavare gli altri. Si nota però che approssimativamente corrisponde ai valori tipici noti di $\sim \unit{0.6-0.7}{\volt}$
+% non so se ha veramente senso includere quest'ultima parte
+
+\paragraph{Compatibilità} Le misure sono tutte compatibili... %concludere leggendo da python
+
+\subsection{Partitore $R_1-R_2$}
+% scrivere Ib misurata (e attesa, ma forse non serve), confrontarla con I1 e I2 e concludere che non è stiff, ma prima di farlo rileggersi la definizione sulle dispense
+
 \section{Risposta a segnali sinusoidali a frequenza fissa}
+Si è misurato il guadagno per varie ampiezze del circuito amplificatore riportato sulla scheda, escludendo $C_E$ ed $R_E$ (cioè disconnettendoli).
 
+\paragraph{Inversione di fase} Si è osservato che il segnale in uscita risultava in opposizione di fase rispetto al segnale in ingresso, come atteso. Si riporta in \figurename{\ref{fig:sfasamento}} la relativa schermata dell'oscilloscopio.
 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.54\textwidth]{../oscilloscopio/sfasamento.jpg}
+	\caption{Sfasamento del segnale in uscita rispetto a quello in ingresso}
+	\label{fig:sfasamento}
+\end{figure}
+
+\paragraph{Guadagno e linearità del circuito}
+% fittare con una costante la parte fuori clipping, usare fitcostante di jack, e concludere
+
+\paragraph{Clipping}
+Il segnale in uscita risultava simmetrico fino ad ampiezze di $\sim \unit{1.7}{\volt}$ in ingresso.
+% forse avremmo potuto stimare un errore su quei 1.7 V, magari possiamo stimarlo "a memoria"
+Per intensità maggiori si osservava che l'uscita era tagliata dal basso. Questo taglio del segnale (riportato in \figurename{\ref{fig:clipping}}) corrisponde ad un regime di funzionamento del transistor diverso da quello attivo, in cui sarebbe preservata la linearità.
+
+Si può identificare tale regime con quello di saturazione. Infatti quando scorre una maggiore corrente nel collettore si ha una caduta di potenziale maggiore su $R_C$, e dunque una minore tensione in uscita. Arrivando in saturazione il transistor non è in grado di erogare una corrente maggiore, e quindi la caduta di potenziale si assesta su un certo valore, finché la richiesta di corrente non diminuisce e il segnale in uscita riprende a salire.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.54\textwidth]{../oscilloscopio/firstclipbasso.jpg}
+	\caption{}
+	\label{fig:clipping}
+\end{figure}
+
+Si era trovato che il punto di lavoro del transistor era fissato ad una corrente di collettore relativamente bassa, e quindi vicina al regime di interdizione. Tracciando la retta di carico si nota però che la pendenza di questa è relativamente piccola in valore assoluto, per cui, per ottenere spostamenti verticali\footnote{sul grafico delle curve caratteristiche di collettore, quindi piccole variazioni di $I_C$} anche ridotti, che porterebbero il transistor a lavorare in interdizione, si hanno notevoli spostamenti orizzontali\footnote{cioè variazioni di $V_{CE}$}, che portano dunque il transistor a lavorare in saturazione per segnali in ingresso di ampiezza minore rispetto a quelli che sarebbero necessari a portarlo in interdizione.
+% poi ci metto qualche numerello per rendere la cosa più quantitativa
+
+Per segnali in ingresso di ampiezza ancora maggiore ottengo il taglio dell'uscita anche dall'alto, arrivando a oscillare quindi tra i due regimi di saturazione e interdizione, si veda \figurename{\ref{fig:clippingdoppio}}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.54\textwidth]{../oscilloscopio/clipall.jpg}
+	\caption{}
+	\label{fig:clippingdoppio}
+\end{figure}
+
+\subsection{Impedenza d'ingresso}
+% riportare le formule della scheda e scrivere quanto atteso e quanto misurato
+
+\subsection{Impedenza d'uscita}
+% come al punto precedente
 
 \section{Risposta in frequenza}
 
