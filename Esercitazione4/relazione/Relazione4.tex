@@ -40,11 +40,10 @@
 
 \section{Scopo e strumentazione}
 Lo scopo dell'esperienza è realizzare e caratterizzare un amplificatore a transistor, usando un transistor NPN 2N1711.
-
 La strumentazione usata è quella presente sul banco di lavoro, più il suddetto transistor.
 
 \section{Montaggio del circuito e punto di lavoro}
-Il circuito è stato realizzato usando i componenti riportati in Tabella~\ref{tab:componenti}
+Il circuito è stato realizzato usando i componenti riportati riportati di seguito}
 
 \begin{table}[h!]
 \centering
@@ -52,11 +51,10 @@ Il circuito è stato realizzato usando i componenti riportati in Tabella~\ref{ta
 $R_1 = \unit{177.1 \pm 1.5}{\kilo\ohm}$ & $R_2 = \unit{18.06 \pm 0.15}{\kilo\ohm}$ & $R_C = \unit{9.93 \pm 0.09}{\kilo\ohm}$ & $R_E = \unit{986 \pm 9}{\ohm}$ \\
 $C_{IN} = \unit{230 \pm 10}{\nano\farad}$ & $C_{OUT} = \unit{98 \pm 6}{\nano\farad}$ & $C_E = \unit{100 \pm 10}{\micro\farad}$\\
 \end{tabular}
-\caption{Valori dei componenti utilizzati per la realizzazione dell'amplificatore}
+%\caption{Valori dei componenti utilizzati per la realizzazione dell'amplificatore}
 \label{tab:componenti}
 \end{table}
-
-Ad eccezione dell'ultima parte dell'esperienza non è stata usata la resistenza $R_{es}$.
+\noindent Ad eccezione dell'ultima parte dell'esperienza non è stata usata la resistenza $R_{es}$.
 
 \subsection{Misure e valori attesi}
 
@@ -81,7 +79,7 @@ $V_{CE}^{exp} = \unit{8.03 \pm 0.23}{\volt}$ & $I_C^{exp} = \unit{1.082 \pm 0.02
 Per calcolarli si è usato che $V_{BE} = \unit{625 \pm 4}{\milli\volt}$, cioè quanto abbiamo misurato.
 
 \paragraph{Tensioni ai terminali del transistor}
-Le tensioni misurate sui terminali del transistor sono le seguenti.
+Le tensioni misurate sui terminali del transistor sono le seguenti:
 
 \begin{table}[h!]
 \centering
@@ -90,7 +88,7 @@ $V_B = \unit{1.692 \pm 0.009}{\volt}$ & $V_E = \unit{1.070 \pm 0.006}{\volt}$ & 
 \end{tabular}
 \end{table}
 
-Mentre per i valori attesi si è ottenuto:
+Mentre i valori attesi sono:
 
 \begin{table}[h!]
 \centering
@@ -103,9 +101,9 @@ Non si riporta il valore atteso di $V_{BE}$ in quanto è stato usato proprio il 
 % non so se ha veramente senso includere quest'ultima parte
 % pensiamo abbia senso, stiamo a vedere come la valutano
 
-\paragraph{Compatibilità} Le misure sono tutte compatibili con i valori attesi, ad eccezione della corrente di collettore che risulta poco inferiore alla previsione (la differenza fra $I_C$ misurata e attesa è $\unit{-24 \pm 23}{\micro\ampere}$).
+\paragraph{Conclusioni}Le misure sono tutte compatibili con i valori attesi, ad eccezione della corrente di collettore che risulta poco inferiore alla previsione (la differenza fra $I_C$ misurata e attesa è $\unit{-24 \pm 23}{\micro\ampere}$).
 
-\paragraph{Formule} Si riportano le formule usate per calcolare le tensioni e le correnti attese, noti i valori delle resistenze e $V_{BE}$ e $V_{CC}$, oltre ovviamente al guadagno in corrente $h_{FE}$; in particolare si riportano quelle per $V_B$ e $I_B$, le altre seguono direttamente da queste, senza ulteriori conti.
+Si riportano le formule usate per calcolare le tensioni e le correnti attese, noti i valori delle resistenze e $V_{BE}$ e $V_{CC}$, oltre ovviamente al guadagno in corrente $h_{FE}$\footnote{nei calcoli si è usato il valore e la relativa incertezza ricavati nella esperienza precedente, ovvero $h_{FE} = 130.1 \pm 2.2$}; in particolare si riportano quelle per $V_B$ e $I_B$, le altre seguono direttamente da queste, senza ulteriori conti.
 \begin{align*}
 I_B &= \frac{\frac{R_2}{R_1 + R_2} V_{CC} - V_{BE}}{R_E (h_{FE} + 1) + R_1 // R_2} \\
 V_B &= V_{BE} + R_E (h_{FE} + 1) I_B
@@ -157,7 +155,7 @@ Si era trovato che il punto di lavoro del transistor era fissato ad una corrente
 % poi ci metto qualche numerello per rendere la cosa più quantitativa
 % come per il commento precedente non era richiesto nulla se non qualitativo, stiamo a vedere
 
-Per segnali in ingresso di ampiezza ancora maggiore ottengo il taglio dell'uscita anche dall'alto, arrivando a oscillare quindi tra i due regimi di saturazione e interdizione, si veda \figurename{\ref{fig:clippingdoppio}}
+Per segnali in ingresso di ampiezza ancora maggiore ottengo il taglio dell'uscita anche dall'alto, arrivando a oscillare quindi tra i due regimi di saturazione e interdizione, si veda \figurename{\ref{fig:clippingdoppio}}.
 
 \begin{figure}[h!]
 	\centering
@@ -180,25 +178,16 @@ Si è misurata la risposta in frequenza del circuito in esame in un range tra $\
 
 \begin{figure}[h!]
 	\centering
-	\begin{minipage}[c]{0.3\textwidth}
-		\centering
-		\resizebox{\textwidth}{!}{
-			\input{../tabelle/tab_f_domain.txt}}
-		\captionof{table}{Dati raccolti}
-	\end{minipage}
-	\begin{minipage}[c]{0.69\textwidth}
-		\centering
-		\includegraphics[width=1.1\textwidth]{../grafici/fast_plot_f_domain.pdf}
+		\includegraphics[width=0.8\textwidth]{../grafici/fast_plot_f_domain.pdf}
 		\caption{Risposta in frequenza}
 		\label{early}
-	\end{minipage}
 \end{figure}
 
 Il grafico mostra un comportamento divisibile in tre bande di risposta:
 \begin{itemize}
 	\item {basse frequenze ($\lesssim$ \unit{100}{\hertz})} Il diagramma di Bode mostra un comportamento lineare, a queste frequenze le impedenze dei condensatori $C_{OUT}$ e $C_{IN}$ nel circuito non è trascurabile e diminuisce il guadagno del circuito. 
 	
-	In particolare si comportano entrambi come passa basso, il primo condensatore $C_{IN}$ vede la resistenza di ingresso del circuito $R_{in}$ misurata precedentemente, mentre il secondo condensatore $C_{OUT}$ vede l'impedenza di ingresso dell'oscilloscopio, che è stata misurata nella prima esperienza ($R_{osc} = \unit{1.00 \pm 0.02}{\mega\ohm}$). Le frequenze di taglio attese sono $f_{in}=\unit{44.4 \pm 2.1}{\hertz}$ e $f_{out}=\unit{1.62 \pm 0.10}{\hertz}$, la frequenza di taglio del circuito complessivo può essere in questo caso ($f_{out} << f_{in}$) approssimata a $f_{low} \simeq f_{in} + f_{out} = \unit{46.0 \pm 2.1}{\hertz}$
+	In particolare si comportano entrambi come passa alto, il primo condensatore $C_{IN}$ vede la resistenza di ingresso del circuito $R_{in}$ misurata precedentemente, mentre il secondo condensatore $C_{OUT}$ vede l'impedenza di ingresso dell'oscilloscopio, che è stata misurata nella prima esperienza ($R_{osc} = \unit{1.00 \pm 0.02}{\mega\ohm}$). Le frequenze di taglio attese sono $f_{in}=\unit{44.4 \pm 2.1}{\hertz}$ e $f_{out}=\unit{1.62 \pm 0.10}{\hertz}$, la frequenza di taglio del circuito complessivo può essere in questo caso ($f_{out} << f_{in}$) approssimata a $f_{low} \simeq f_{in} + f_{out} = \unit{46.0 \pm 2.1}{\hertz}$
 	
 	
 	\item {medie frequenze ($\unit{100}{\hertz} \lesssim f \lesssim \unit{100}{\kilo\hertz}$)} In questo range di frequenze il guadagno del circuito è costante, tutte le approssimazioni che si fanno classicamente per la risoluzione del circuito sono valide e il comportamento atteso è $A_v = R_C/R_E = 10.07\pm0.13$.
@@ -206,8 +195,8 @@ Il grafico mostra un comportamento divisibile in tre bande di risposta:
 	\item {alte frequenze ($\gtrsim \unit{100}{\kilo\hertz}$)} Anche qui il diagramma di Bode mostra un comportamento lineare, la diminuzione del guadagno è dovuta alla capacità della giunzione (in particolare la giunzione CB il cui valore dal datasheet è $\sim \unit{20}{\pico\farad}$) che per effetto Miller risulta amplificata di un fattore $\sim A_v$. Una stima del valore atteso della frequenza di taglio è $f_{high} \sim \unit{70}{\kilo\hertz}$.
 \end{itemize}
 
-Si è stimata la frequenza di taglio del circuito misurando la frequenza per la quale si ha un guadagno di $\unit{-3}{\deci\bel}$ e si è stimato l'errore valutando quando, al variare della frequenza, si misurava una variazione apprezzabile della tensione di uscita.
-I risultati ottenuti sono stati: $f_1 = \unit{51 \pm 5}{\hertz}$ e $f_2= \unit{92 \pm 10}{\kilo\hertz}$.
+Si è stimata la frequenza di taglio del circuito misurando la frequenza per la quale si ha che il guadagno si riduce di un fattore $1/\sqrt{2}$ rispetto a quello misurato nella banda centrale. Si è stimato l'errore valutando quando, al variare della frequenza, si misurava una variazione apprezzabile della tensione di uscita.
+I risultati ottenuti sono stati: $f_1 = \unit{51 \pm 4}{\hertz}$ e $f_2= \unit{92 \pm 7}{\kilo\hertz}$.
 Si è quindi provato a fittare il comportamento a basse e alte frequenze nell'ipotesi fatta precedentemente che il circuito si comporti come se fosse in serie ad un filtro passa alto/basso rispettivamente.
 I risultati dei fit sono stati:
 \begin{table}[h!]
@@ -237,30 +226,37 @@ Di seguito riportiamo i grafici dei fit eseguiti.
 Tutte le misure di $f_{low}$ sono compatibili tra loro e con il valore atteso a meno di $1\sigma$, anche le misure di $f_{high}$ sono compatibili tra loro e concordano almeno in ordine di grandezza con la stima del valore atteso.
 \section{Aumento del guadagno}
 
-Si è inserita la resistenza $Res = \unit{100.7 \pm 1.1}{\ohm}$ nel circuito in \figurename{\ref{stocazzo}} e si è proceduto alla misura del guadagno al variare delle tensione di ingresso (a frequenza costante di $\unit{5.03 \pm 0.05}{\kilo\hertz}$). I dati raccolti sono riportati di seguito.
+Si è inserita la resistenza $Res = \unit{100.7 \pm 1.1}{\ohm}$ nel circuito e si è proceduto alla misura del guadagno al variare delle tensione di ingresso (a frequenza costante di $\unit{5.03 \pm 0.05}{\kilo\hertz}$). I dati raccolti sono riportati in appendice in \tablename{\ref{guadagno}}
 
 \begin{figure}[h!]
 	\centering
-	\begin{minipage}[c]{0.3\textwidth}
-		\centering
-		\resizebox{\textwidth}{!}{
-			\input{../tabelle/tab_C_E.txt}}
-		\captionof{table}{Dati raccolti}
-		\label{data}
-	\end{minipage}
-	\begin{minipage}[c]{0.69\textwidth}
-		\centering
-		\includegraphics[width=1.1\textwidth]{../grafici/fit_C_E.pdf}
+		\includegraphics[width=0.8\textwidth]{../grafici/fit_C_E.pdf}
 		\caption{Risposta in frequenza}
-	\end{minipage}
 \end{figure}
 
-In \tablename{\ref{data}} sono riportate le misure e il loro errore di lettura, ignorando l'errore di calibrazione ($\sim 3\%$) poichè 
+In \tablename{\ref{guadagno}} sono riportate le misure e il loro errore di lettura, ignorando l'errore di calibrazione ($\sim 3\%$) poichè 
 
 Il guadagno è stato valutato fittando con una retta $V_{IN}$ in funzione di $V_{OUT}$. I risultati sono stati $A_v = -80.5 \pm 2.6$, un intercetta di $\unit{0.05 \pm 0.16}{\volt}$ e un $\chi^2/ndof = 4.5/6$.  Come è chiaro $A_v$ non è compatibile con il risultato della formula $A_v = -R_C/Res = 98.6 \pm 1.4$ perché questa formula è il risultato dell'approssimazione $h_{fe}*Z_c >> h_{ie}$, che non è valida in questo caso poichè $h_{fe} * Z_c \simeq h_{fe} * Res \simeq \unit{130 * 100}{\ohm} = \unit{13}{\kilo\ohm} $ che è confrontabile a $h_{ie}$ che secondo il datasheet vale $\sim \unit{4}{\kilo\ohm}$, applicando la formula non approssimata $A_v = -h_{fe}*R_C/(h_{fe}*Z_c + h_{ie}) \simeq 77$ che è in ragionevole accordo con il valore trovato.
 
 \section{Appendice: Dati}
 Si riportano qui le tabelle di dati usati per i fit e i grafici.
 
+\begin{figure}[h!]
+	\centering
+	\begin{minipage}[c]{0.4\textwidth}
+		\centering
+		\resizebox{\textwidth}{!}{
+			\input{../tabelle/tab_f_domain.txt}}
+		\captionof{table}{Dati risposta in frequenza}
+		\label{frequenza}
+	\end{minipage}
+	\begin{minipage}[c]{0.4\textwidth}
+		\centering
+		\resizebox{\textwidth}{!}{
+			\input{../tabelle/tab_C_E.txt}}
+		\captionof{table}{Dati aumento guadagno}
+		\label{guadagno}
+	\end{minipage}
+\end{figure}
 
 \end{document}
