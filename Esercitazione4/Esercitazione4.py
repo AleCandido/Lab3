@@ -1,7 +1,7 @@
 from pylab import *
-#path = "C:\\Users\\Roberto\\Documents\\GitHub\\Lab3\\"
+path = "C:\\Users\\Roberto\\Documents\\GitHub\\Lab3\\"
 #path = "C:\\Users\\Studenti\\Desktop\\Lab3\\"
-path = "/home/alessandro/Documents/Università/3°anno/Laboratorio3/Lab3/"
+#path = "/home/alessandro/Documents/Università/3°anno/Laboratorio3/Lab3/"
 sys.path = sys.path + [path]
 from analyzer import *
 import uncertainties
@@ -12,6 +12,30 @@ dir= path + "Esercitazione4/"
 #GUADAGNO per piccoli segnali#
 
 file="guadagnopiccolisegnali"
+
+def f(x, a, b):
+    return a*x + b
+
+p0=[1,1]
+
+def XYfun(a):
+    return a[0],a[1]
+
+unit=["volt_osc_nocal","volt_osc_nocal"]
+
+titolo="Guadagno dell'amplificatore per piccoli segnali"
+Xlab="Tensione di ingresso $V_{IN}$ [$V$]"
+Ylab="Tensione di uscita $V_{OUT}$ [$V$]"
+
+tab=["$V_{IN}$ [$V$]","$V_{OUT}$ [$V$]"]
+
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,preplot=True,table=True,tab=tab,scarti=True)
+
+###########################################################################
+
+#GUADAGNO per piccoli segnali outlier#
+
+file="guadagnopiccolisegnali_ol"
 
 def f(x, a, b):
     return a*x + b
@@ -126,7 +150,7 @@ Ylab="Guadagno $A_v$ [dB]"
 
 tab=["Frequenza [Hz]","$V_{OUT}$ [$V$]"]
 
-fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,fig=fig,xlimp=[80,120])
+#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,fig=fig,xlimp=[80,120])
 
 ###########################################################################
 
@@ -153,7 +177,7 @@ Ylab="Guadagno $A_v$ [dB]"
 
 tab=["Frequenza [Hz]","$V_{OUT}$ [$V$]"]
 
-fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,fig=fig,xlimp=[70,120])
+#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,fig=fig,xlimp=[70,120])
 
 ###########################################################################
 
@@ -180,7 +204,7 @@ Ylab="Guadagno $A_v$ [dB]"
 
 tab=["Frequenza [Hz]","$V_{OUT}$ [$V$]"]
 
-fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,fig=fig,xlimp=[92,102])
+#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,fig=fig,xlimp=[92,102])
 
 ###########################################################################
 
