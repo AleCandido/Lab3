@@ -853,6 +853,8 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 	for i in range(len(columns)):
 		if units[i]=="volt_osc":
 			dcolumns[i]=columns[i]*0.035
+		elif units[i]=="volt_osc_nocal":
+			dcolumns[i]=columns[i]*0.02
 		elif units[i]=="tempo_osc":
 			dcolumns[i]=columns[i]*0.01
 		else:
@@ -880,6 +882,7 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 			xscale("log")
 		if Yscale=="log":
 			yscale("log")
+		grid()
 		errorbar(X,Y,dY,dX, fmt=",",ecolor="black",capsize=0.5)
 		savefig(directory+"grafici/fast_plot_"+fig+".pdf")
 		savefig(directory+"grafici/fast_plot_"+fig+".png")
@@ -904,6 +907,7 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 		l=logspace(log10(min(X))*xlima[0],log10(max(X)*xlima[1]),1000)
 	else:
 		l=linspace(min(X)*xlima[0],max(X)*xlima[1],1000)
+	grid()
 	plot(l,f(l,*par),"red")
 	savefig(directory+"grafici/fit_"+fig+".pdf")
 	savefig(directory+"grafici/fit_"+fig+".png")
@@ -915,6 +919,7 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 		ylabel("Scarti normalizzati")
 		if Xscale=="log":
 			xscale("log")
+		grid()
 		plot(X, (Y-f(X,*par))/dY, ".", color="blue")
 		savefig(directory+"grafici/scarti_"+fig+".pdf")
 		savefig(directory+"grafici/scarti_"+fig+".png")

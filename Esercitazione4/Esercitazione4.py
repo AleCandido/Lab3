@@ -60,10 +60,10 @@ print("chi / ndof =",chi,"/",ndof, "\n")
 
 ###########################################################################
 
-#FREQUENCY DOMAIN#
+#FREQUENCY DOMAIN _ plot#
 
 file="f_domain"
-V1 = uncertainties.ufloat(1.00,1.00*0.035)
+V1 = uncertainties.ufloat(1.00,1.00*0.015)
 
 def f(x, a, b, c):
     return c/sqrt(1+(a/x)**2)*1/sqrt(1+(x/b)**2)
@@ -71,17 +71,143 @@ def f(x, a, b, c):
 p0=[1,1,1]
 
 def XYfun(a):
-    return a[0],a[1]/V1
+    return a[0],20*unumpy.log10(a[1]/V1)
 
-unit=["tempo_osc","volt_osc"]
+unit=["tempo_osc","volt_osc_nocal"]
+
+titolo="Diagramma di Bode"
+Xlab="Frequenza [Hz]"
+Ylab="Guadagno $A_v$ [dB]"
+
+tab=["Frequenza [Hz]","$V_{OUT}$ [$V$]"]
+
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,preplot=True,table=True,tab=tab,Xscale="log")
+
+###########################################################################
+
+#FREQUENCY DOMAIN _ low_frequency #
+
+file="low_frequency"
+V1 = uncertainties.ufloat(1.00,1.00*0.015)
+
+def f(x, a, b):
+    return b/sqrt(1+(a/x)**2)
+
+p0=[48,1]
+
+def XYfun(a):
+    return a[0],(a[1]/V1)
+
+unit=["tempo_osc","volt_osc_nocal"]
 
 titolo="Diagramma di Bode"
 Xlab="Frequenza [Hz]"
 Ylab="Guadagno $A_v$"
 
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,Yscale="log",Xscale="log")
+
+###########################################################################
+
+#FREQUENCY DOMAIN _ high_frequency #
+
+file="high_frequency"
+V1 = uncertainties.ufloat(1.00,1.00*0.015)
+
+def f(x, a, b):
+    return b/sqrt(1+(x/a)**2)
+
+p0=[1,1]
+
+def XYfun(a):
+    return a[0],(a[1]/V1)
+
+unit=["tempo_osc","volt_osc_nocal"]
+
+titolo="Diagramma di Bode"
+Xlab="Frequenza [Hz]"
+Ylab="Guadagno $A_v$"
+
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,Yscale="log",Xscale="log")
+
+###########################################################################
+
+#FREQUENCY DOMAIN - retta 1#
+
+file="f_domain_retta1"
+fig="f_domain_rette"
+V1 = uncertainties.ufloat(1.00,1.00*0.015)
+
+def f(x, a, b):
+    return a*x+b
+
+p0=[1,1]
+
+def XYfun(a):
+    return unumpy.log10(a[0]),20*unumpy.log10(a[1]/V1)
+
+unit=["tempo_osc","volt_osc_nocal"]
+
+titolo="Diagramma di Bode"
+Xlab="Frequenza [decadi]"
+Ylab="Guadagno $A_v$ [dB]"
+
 tab=["Frequenza [Hz]","$V_{OUT}$ [$V$]"]
 
-fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,preplot=True,table=True,tab=tab,Xscale="log",Yscale="log")
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,fig=fig,xlimp=[80,120])
+
+###########################################################################
+
+
+#FREQUENCY DOMAIN - retta 2#
+
+file="f_domain_retta2"
+fig="f_domain_rette"
+V1 = uncertainties.ufloat(1.00,1.00*0.015)
+
+def f(x, a, b):
+    return a*x+b
+
+p0=[1,1]
+
+def XYfun(a):
+    return unumpy.log10(a[0]),20*unumpy.log10(a[1]/V1)
+
+unit=["tempo_osc","volt_osc_nocal"]
+
+titolo="Diagramma di Bode"
+Xlab="Frequenza [decadi]"
+Ylab="Guadagno $A_v$ [dB]"
+
+tab=["Frequenza [Hz]","$V_{OUT}$ [$V$]"]
+
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,fig=fig,xlimp=[70,120])
+
+###########################################################################
+
+
+#FREQUENCY DOMAIN - retta 3#
+
+file="f_domain_retta3"
+fig="f_domain_rette"
+V1 = uncertainties.ufloat(1.00,1.00*0.015)
+
+def f(x, a, b):
+    return a*x+b
+
+p0=[1,1]
+
+def XYfun(a):
+    return unumpy.log10(a[0]),20*unumpy.log10(a[1]/V1)
+
+unit=["tempo_osc","volt_osc_nocal"]
+
+titolo="Diagramma di Bode"
+Xlab="Frequenza [decadi]"
+Ylab="Guadagno $A_v$ [dB]"
+
+tab=["Frequenza [Hz]","$V_{OUT}$ [$V$]"]
+
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,fig=fig,xlimp=[92,102])
 
 ###########################################################################
 
@@ -89,21 +215,21 @@ fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,preplot=True,table=True,tab=tab,Xs
 
 file="C_E"
 
-def f(x, a):
-    return 0*x + a
+def f(x, a, b):
+    return a*x + b
 
-p0=[40]
+p0=[1,1]
 
 def XYfun(a):
-    return a[0],a[1]/a[0]
+    return a[0],a[1]
 
-unit=["volt_osc","volt_osc"]
+unit=["volt_osc_nocal","volt_osc_nocal"]
 
 titolo="Guadagno con condensatore $C_E$"
 Xlab="Tensione di ingresso $V_{IN}$ [$V$]"
 Ylab="Guadagno $A_v$"
 
-tab=["$V_{IN} [$V$]$","$V_{OUT}$ [$V$]"]
+tab=["$V_{IN}$ [$V$]","$V_{OUT}$ [$V$]"]
 
 fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,preplot=True,table=True,tab=tab)
 
