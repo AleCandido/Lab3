@@ -11,11 +11,17 @@ Pushare non è necessario se non è di utilità condividere, perciò:
 ---
 ##30 Oct 2016:
 Un po' di roba sull'effetto Miller e sul comportamento dei transistor ad alta frequenza:
+
 [Transistor ad alta frequenza](http://studenti.fisica.unifi.it/~carla/appunti/2011-12/cap.8.pdf)
+
 [effetto Miller](http://www-inst.eecs.berkeley.edu/~ee105/fa03/handouts/lectures/Lecture20.pdf)
+
 [capacità nei transistor e comportamento ad alta frequenza](http://whites.sdsmt.edu/classes/ee320/notes/320Lecture22.pdf)
+
 [altra roba che dice più o meno le stesse cose](http://www-inst.eecs.berkeley.edu/~ee105/fa03/handouts/lectures/Lecture20.pdf)
+
 [ancora altra roba](https://rammohanreddyiisc.files.wordpress.com/2016/09/ce_amp_theory.pdf)
+
 Ultmo ma non meno importante, cerca effetto Miller e teorama di Miller su wiki.
 
 ## 19 Oct 2016:
