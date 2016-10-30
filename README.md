@@ -18,9 +18,7 @@ Un po' di roba sull'effetto Miller e sul comportamento dei transistor ad alta fr
 
 [capacità nei transistor e comportamento ad alta frequenza](http://whites.sdsmt.edu/classes/ee320/notes/320Lecture22.pdf)
 
-[altra roba che dice più o meno le stesse cose](http://www-inst.eecs.berkeley.edu/~ee105/fa03/handouts/lectures/Lecture20.pdf)
-
-[ancora altra roba](https://rammohanreddyiisc.files.wordpress.com/2016/09/ce_amp_theory.pdf)
+[altra roba che dice più o meno le stesse cose](https://rammohanreddyiisc.files.wordpress.com/2016/09/ce_amp_theory.pdf)
 
 Ultmo ma non meno importante, cerca effetto Miller e teorama di Miller su wiki.
 
