@@ -101,6 +101,7 @@ $V_B^{exp} = \unit{1.701 \pm 0.019}{\volt}$ & $V_E^{exp} = \unit{1.076 \pm 0.20}
 
 Non si riporta il valore atteso di $V_{BE}$ in quanto è stato usato proprio il valore misurato per ricavare gli altri. Si nota però che approssimativamente corrisponde ai valori tipici noti di $\sim \unit{0.6-0.7}{\volt}$
 % non so se ha veramente senso includere quest'ultima parte
+% pensiamo abbia senso, stiamo a vedere come la valutano
 
 \paragraph{Compatibilità} Le misure sono tutte compatibili con i valori attesi, ad eccezione della corrente di collettore che risulta poco inferiore alla previsione (la differenza fra $I_C$ misurata e attesa è $\unit{-24 \pm 23}{\micro\ampere}$).
 
@@ -140,6 +141,7 @@ Si è fittato il guadagno in tensione del circuito $A_V$ ottenendo per esso un v
 \paragraph{Clipping}
 Il segnale in uscita risultava simmetrico fino ad ampiezze di $\sim \unit{1.7}{\volt}$ in ingresso.
 % forse avremmo potuto stimare un errore su quei 1.7 V, magari possiamo stimarlo "a memoria"
+% nessuno ci ha chiesto una misura quantitativa, era richiesto solo un resoconto qualitativo, quindi lasciamo il circa anziché l'errore, però stiamo a vedere come ce la valutano
 Per intensità maggiori si osservava che l'uscita era tagliata dal basso. Questo taglio del segnale (riportato in \figurename{\ref{fig:clipping}}) corrisponde ad un regime di funzionamento del transistor diverso da quello attivo, in cui sarebbe preservata la linearità.
 
 Si può identificare tale regime con quello di saturazione. Infatti quando scorre una maggiore corrente nel collettore si ha una caduta di potenziale maggiore su $R_C$, e dunque una minore tensione in uscita. Arrivando in saturazione il transistor non è in grado di erogare una corrente maggiore, e quindi la caduta di potenziale si assesta su un certo valore, finché la richiesta di corrente non diminuisce e il segnale in uscita riprende a salire.
@@ -153,6 +155,7 @@ Si può identificare tale regime con quello di saturazione. Infatti quando scorr
 
 Si era trovato che il punto di lavoro del transistor era fissato ad una corrente di collettore relativamente bassa, e quindi vicina al regime di interdizione. Tracciando la retta di carico si nota però che la pendenza di questa è relativamente piccola in valore assoluto, per cui, per ottenere spostamenti verticali\footnote{sul grafico delle curve caratteristiche di collettore, quindi piccole variazioni di $I_C$} anche ridotti, che porterebbero il transistor a lavorare in interdizione, si hanno notevoli spostamenti orizzontali\footnote{cioè variazioni di $V_{CE}$}, che portano dunque il transistor a lavorare in saturazione per segnali in ingresso di ampiezza minore rispetto a quelli che sarebbero necessari a portarlo in interdizione.
 % poi ci metto qualche numerello per rendere la cosa più quantitativa
+% come per il commento precedente non era richiesto nulla se non qualitativo, stiamo a vedere
 
 Per segnali in ingresso di ampiezza ancora maggiore ottengo il taglio dell'uscita anche dall'alto, arrivando a oscillare quindi tra i due regimi di saturazione e interdizione, si veda \figurename{\ref{fig:clippingdoppio}}
 
