@@ -224,7 +224,7 @@ unit=["volt_osc_nocal","volt_osc_nocal"]
 
 titolo="Guadagno con condensatore $C_E$"
 Xlab="Tensione di ingresso $V_{IN}$ [$V$]"
-Ylab="Guadagno $A_v$"
+Ylab="Tensione di ingresso $V_{OUT}$ [$V$]"
 
 tab=["$V_{IN}$ [$V$]","$V_{OUT}$ [$V$]"]
 

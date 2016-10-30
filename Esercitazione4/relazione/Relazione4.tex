@@ -155,33 +155,34 @@ Per intensità maggiori si osserva che l'uscita è tagliata dal basso. Questo ta
 
 Si può identificare tale regime con quello di saturazione. Infatti quando scorre una maggiore corrente nel collettore si ha una caduta di potenziale maggiore su $R_C$, e dunque una minore tensione in uscita. Arrivando in saturazione il transistor non è in grado di erogare una corrente maggiore, e quindi la caduta di potenziale si assesta su un certo valore, finché la richiesta di corrente non diminuisce e il segnale in uscita riprende a salire.
 
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=0.54\textwidth]{../oscilloscopio/firstclipbasso.jpg}
-	\caption{clipping in saturazione}
-	\label{fig:clipping}
-\end{figure}
-
 Si è trovato che il punto di lavoro del transistor è fissato ad una corrente di collettore relativamente bassa, e quindi vicina al regime di interdizione. Tracciando la retta di carico si nota però che la pendenza di questa è relativamente piccola in valore assoluto, per cui, per ottenere spostamenti verticali\footnote{sul grafico delle curve caratteristiche di collettore, quindi piccole variazioni di $I_C$} anche ridotti, che porterebbero il transistor a lavorare in interdizione, si hanno notevoli spostamenti orizzontali\footnote{cioè variazioni di $V_{CE}$}, che portano dunque il transistor a lavorare in saturazione per segnali in ingresso di ampiezza minore rispetto a quelli che sarebbero necessari a portarlo in interdizione.
 % poi ci metto qualche numerello per rendere la cosa più quantitativa
 % come per il commento precedente non era richiesto nulla se non qualitativo, stiamo a vedere
 
 Per segnali in ingresso di ampiezza ancora maggiore si ottiene il taglio dell'uscita anche dall'alto, arrivando a oscillare quindi tra i due regimi di saturazione e interdizione, si veda \figurename{\ref{fig:clippingdoppio}}.
-
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.54\textwidth]{../oscilloscopio/clipall.jpg}
+	\begin{minipage}[c]{0.49\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{../oscilloscopio/firstclipbasso.jpg}
+	\caption{clipping in saturazione}
+	\label{fig:clipping}
+	\end{minipage}
+	\begin{minipage}[c]{0.49\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{../oscilloscopio/clipall.jpg}
 	\caption{clipping in saturazione e interdizione}
 	\label{fig:clippingdoppio}
+	\end{minipage}
 \end{figure}
 
 \subsection{Impedenza d'ingresso}
 I valori ottenuti di $V_1$ e $V_2$, con riferimento alla scheda, sono rispettivamente $\unit{1.360 \pm 0.008}{\volt}$ e $\unit{700 \pm 4}{\milli\volt}$, e per misurarle si è usata una resistenza $R_S = \unit{14.70 \pm 0.13}{\kilo\ohm}$.
-Si è così ottenuta un'impedenza d'ingresso pari a $R_{in} = \unit{15.6 \pm 0.3}{\kilo\ohm}$ che   con il valore atteso di $R^{exp}_{in} = \unit{14.59 \pm 0.10}{k\ohm}$.
+Si è così ottenuta un'impedenza d'ingresso pari a $R_{in} = \unit{15.6 \pm 0.3}{\kilo\ohm}$ che   con il valore atteso di $R^{exp}_{in} = \unit{14.59 \pm 0.10}{k\ohm}$, tuttavia va considerato che è ignota l'incertezza sul valore della resistenza dinamica della giunzione fornita dal datasheet.
 
 \subsection{Impedenza d'uscita}
 Come nel paragrafo precedente: $V_1 = \unit{12.8 \pm 0.07}{\volt}$, $V_2 = \unit{6.56 \pm 0.04}{\volt}$, $R_L = \unit{9.87 \pm 0.09}{\kilo\ohm}$.
-Si è così ottenuta un'impedenza d'uscita pari a $R_{out} = \unit{9.39 \pm 0.19}{\kilo\ohm}$ che non concorda con il valore atteso di $R_{out}^{exp} = \unit{9.93 \pm 0.09}{\kilo\ohm}$.
+Si è così ottenuta un'impedenza d'uscita pari a $R_{out} = \unit{9.39 \pm 0.19}{\kilo\ohm}$ che concorda con il valore atteso di $R_{out}^{exp} = \unit{9.93 \pm 0.09}{\kilo\ohm}$ solo a meno di $3\sigma$.
 
 \section{Risposta in frequenza}
 
@@ -189,7 +190,7 @@ Si è misurata la risposta in frequenza del circuito in esame in un range tra $\
 
 \begin{figure}[h!]
 	\centering
-		\includegraphics[width=0.7\textwidth]{../grafici/fast_plot_f_domain.pdf}
+		\includegraphics[width=0.9\textwidth]{../grafici/fast_plot_f_domain.pdf}
 		\caption{Risposta in frequenza}
 		\label{early}
 \end{figure}
@@ -221,17 +222,15 @@ $f_{high}=\unit{100.3 \pm 1.8}{\kilo\hertz}$ & $A_v = 9.19 \pm 0.08$ & $\chi^2/n
 Di seguito riportiamo i grafici dei fit eseguiti.
 \begin{figure}[h!]
 	\centering
-	\begin{minipage}[c]{0.49\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{../grafici/fit_low_frequency.pdf}
+		\includegraphics[width=0.6\textwidth]{../grafici/fit_low_frequency.pdf}
 		\caption{Fit basse frequenze}
-	\end{minipage}
-	\begin{minipage}[c]{0.49\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{../grafici/fit_high_frequency.pdf}
-		\caption{Fit alte frequenze}
-	\end{minipage}
 \end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\textwidth]{../grafici/fit_high_frequency.pdf}
+	\caption{Fit alte frequenze}
+\end{figure}
+
 
 \paragraph{Conclusioni}
 Tutte le misure di $f_{low}$ sono compatibili tra loro e con il valore atteso a meno di $1\sigma$, anche le misure di $f_{high}$ sono compatibili tra loro e concordano almeno in ordine di grandezza con la stima del valore atteso. I valori di $A_v$ invece non concordano con quelli attesi.
@@ -242,7 +241,7 @@ Si è inserita la resistenza $R_{es} = \unit{100.7 \pm 1.1}{\ohm}$ nel circuito 
 
 \begin{figure}[h!]
 	\centering
-		\includegraphics[width=0.8\textwidth]{../grafici/fit_C_E.pdf}
+		\includegraphics[width=0.7\textwidth]{../grafici/fit_C_E.pdf}
 		\caption{Risposta in frequenza}
 \end{figure}
 
@@ -254,7 +253,7 @@ $A_v = -80.5 \pm 2.6$ & intercetta di $\unit{0.05 \pm 0.16}{\volt}$ & $\chi^2/nd
 \end{tabular}
 \end{table}
 
-Come è chiaro $A_v$ non è compatibile con il risultato della formula $A_v = -R_C/Res = -98.6 \pm 1.4$ perché questa formula è il risultato dell'approssimazione $h_{fe}*Z_c >> h_{ie}$, che non è valida in questo caso poichè $h_{fe} * Z_c \simeq h_{fe} * R_{es} \simeq \unit{130 * 100}{\ohm} = \unit{13}{\kilo\ohm} $ che è confrontabile a $h_{ie}$ che secondo il datasheet vale $\sim \unit{4.4}{\kilo\ohm}$, applicando la formula non approssimata $A_v = -h_{fe}*R_C/(h_{fe}*Z_c + h_{ie}) \simeq 77$ che è in ragionevole accordo con il valore trovato.
+Come è chiaro $A_v$ non è compatibile con il risultato della formula $A_v = -R_C/Res = -98.6 \pm 1.4$ perché questa formula è il risultato dell'approssimazione $h_{fe}*Z_c >> h_{ie}$, che non è valida in questo caso poichè $h_{fe} * Z_c \simeq h_{fe} * R_{es} \simeq \unit{130 * 100}{\ohm} = \unit{13}{\kilo\ohm} $ che è confrontabile a $h_{ie}$ che secondo il datasheet vale $\sim \unit{4}{\kilo\ohm}$, applicando la formula non approssimata $A_v = -h_{fe}*R_C/(h_{fe}*Z_c + h_{ie}) \simeq 75 \pm 1$ che è in ragionevole accordo con il valore trovato.
 \pagebreak
 \section{Appendice: Dati}
 Si riportano qui le tabelle di dati usati per i fit e i grafici.
@@ -265,7 +264,7 @@ Si riportano qui le tabelle di dati usati per i fit e i grafici.
 		\begin{minipage}[c]{0.4\textwidth}
 	\centering
 	\input{../tabelle/tab_guadagnopiccolisegnali_ol.txt}
-	\captionof{table}{Dati risposta in frequenza}
+	\captionof{table}{Dati risposta in tensione}
 	\label{tensione}
 		\end{minipage}
 	\begin{minipage}[c]{0.4\textwidth}
