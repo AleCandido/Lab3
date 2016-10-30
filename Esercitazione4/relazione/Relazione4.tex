@@ -43,7 +43,7 @@ Lo scopo dell'esperienza è realizzare e caratterizzare un amplificatore a trans
 La strumentazione usata è quella presente sul banco di lavoro, più il suddetto transistor.
 
 \section{Montaggio del circuito e punto di lavoro}
-Il circuito è stato realizzato usando i componenti riportati riportati di seguito}
+Il circuito è stato realizzato usando i componenti riportati riportati di seguito
 
 \begin{table}[h!]
 \centering
@@ -174,7 +174,7 @@ Si è così ottenuta un'impedenza d'uscita pari a $R_{out} = \unit{9.39 \pm 0.19
 
 \section{Risposta in frequenza}
 
-Si è misurata la risposta in frequenza del circuito in esame in un range tra $\unit{10}{\hertz}$ ed $\unit{1}{\mega\hertz}$ con una tensione di ingresso costante di $\unit{1.00 \pm 0.03}{\volt}$. Di seguito si riportano i dati raccolti e il diagramma di Bode da questi ricavato. In tutte le tabelle e nell'analisi dati sono state ignorate le incertezze di calibrazione, e sono stati considerati solo gli errori di lettura.
+Si è misurata la risposta in frequenza del circuito in esame in un range tra $\unit{10}{\hertz}$ ed $\unit{1}{\mega\hertz}$ con una tensione di ingresso costante di $\unit{1.00 \pm 0.03}{\volt}$. Di seguito si riportano i dati raccolti e il diagramma di Bode da questi ricavato. In tutte le tabelle e nell'analisi dati sono state ignorate le incertezze di calibrazione, e sono stati considerati solo gli errori di lettura. I dati raccolti sono elencati in \tablename{\ref{frequenza}}.
 
 \begin{figure}[h!]
 	\centering
@@ -226,7 +226,7 @@ Di seguito riportiamo i grafici dei fit eseguiti.
 Tutte le misure di $f_{low}$ sono compatibili tra loro e con il valore atteso a meno di $1\sigma$, anche le misure di $f_{high}$ sono compatibili tra loro e concordano almeno in ordine di grandezza con la stima del valore atteso.
 \section{Aumento del guadagno}
 
-Si è inserita la resistenza $Res = \unit{100.7 \pm 1.1}{\ohm}$ nel circuito e si è proceduto alla misura del guadagno al variare delle tensione di ingresso (a frequenza costante di $\unit{5.03 \pm 0.05}{\kilo\hertz}$). I dati raccolti sono riportati in appendice in \tablename{\ref{guadagno}}
+Si è inserita la resistenza $Res = \unit{100.7 \pm 1.1}{\ohm}$ nel circuito e si è proceduto alla misura del guadagno al variare delle tensione di ingresso (a frequenza costante di $\unit{5.03 \pm 0.05}{\kilo\hertz}$). I dati raccolti sono riportati in appendice in \tablename{\ref{guadagno}}.
 
 \begin{figure}[h!]
 	\centering
@@ -234,9 +234,15 @@ Si è inserita la resistenza $Res = \unit{100.7 \pm 1.1}{\ohm}$ nel circuito e s
 		\caption{Risposta in frequenza}
 \end{figure}
 
-In \tablename{\ref{guadagno}} sono riportate le misure e il loro errore di lettura, ignorando l'errore di calibrazione ($\sim 3\%$) poichè 
+Il guadagno è stato valutato fittando con una retta $V_{IN}$ in funzione di $V_{OUT}$. I risultati sono stati
+\begin{table}[h!]
+\centering 
+\begin{tabular}{ccc}
+$A_v = -80.5 \pm 2.6$ & intercetta di $\unit{0.05 \pm 0.16}{\volt}$ & $\chi^2/ndof = 4.5/6$
+\end{tabular}
+\end{table}
 
-Il guadagno è stato valutato fittando con una retta $V_{IN}$ in funzione di $V_{OUT}$. I risultati sono stati $A_v = -80.5 \pm 2.6$, un intercetta di $\unit{0.05 \pm 0.16}{\volt}$ e un $\chi^2/ndof = 4.5/6$.  Come è chiaro $A_v$ non è compatibile con il risultato della formula $A_v = -R_C/Res = 98.6 \pm 1.4$ perché questa formula è il risultato dell'approssimazione $h_{fe}*Z_c >> h_{ie}$, che non è valida in questo caso poichè $h_{fe} * Z_c \simeq h_{fe} * Res \simeq \unit{130 * 100}{\ohm} = \unit{13}{\kilo\ohm} $ che è confrontabile a $h_{ie}$ che secondo il datasheet vale $\sim \unit{4}{\kilo\ohm}$, applicando la formula non approssimata $A_v = -h_{fe}*R_C/(h_{fe}*Z_c + h_{ie}) \simeq 77$ che è in ragionevole accordo con il valore trovato.
+Come è chiaro $A_v$ non è compatibile con il risultato della formula $A_v = -R_C/Res = 98.6 \pm 1.4$ perché questa formula è il risultato dell'approssimazione $h_{fe}*Z_c >> h_{ie}$, che non è valida in questo caso poichè $h_{fe} * Z_c \simeq h_{fe} * Res \simeq \unit{130 * 100}{\ohm} = \unit{13}{\kilo\ohm} $ che è confrontabile a $h_{ie}$ che secondo il datasheet vale $\sim \unit{4}{\kilo\ohm}$, applicando la formula non approssimata $A_v = -h_{fe}*R_C/(h_{fe}*Z_c + h_{ie}) \simeq 77$ che è in ragionevole accordo con il valore trovato.
 
 \section{Appendice: Dati}
 Si riportano qui le tabelle di dati usati per i fit e i grafici.
