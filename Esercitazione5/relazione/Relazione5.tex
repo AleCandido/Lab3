@@ -1,3 +1,4 @@
+% !TeX spellcheck = en_US
 \documentclass[10pt,a4paper]{article}
 
 \usepackage[utf8]{inputenc}
@@ -25,13 +26,14 @@
 \usepackage{sectsty}
 %\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
 % (This matches ConTeXt defaults)
+
 % pacchetti che mi fanno schifo ma uso lo stesso (Bob è scemo...)
 \usepackage[cdot, thickqspace]{SIunits}
 % macro che mi piacciono
 \def\code#1{\texttt{#1}}
 
 
-\title{Esercitazione 5:}
+\title{Esercitazione 5: Transistor JFET}
 
 \author{Gruppo BE \\ Alessandro Candido, Roberto Ribatti}
 \date{\today}
@@ -39,5 +41,20 @@
 \maketitle
 
 \section{Scopo e strumentazione}
+Studiare le caratteristiche e realizzare un amplificatore con il JFET a canale N 2N3819.
+La strumentazione usata è quella presente sul banco di lavoro, più il suddetto transistor.
+
+\section{Studio del funzionamento del JFET}
+
+\paragraph{LED} Il LED si accende e si spegne alla tensione $V_{GS} \sim \unit{1.89}{\volt}$. Infatti al di sopra di una certa tensione gate-source ($V_{GS}$) il canale è da considerarsi chiuso (pinch-off) e il transistor va in interdizione. Al di sotto della tensione di pinch-off a corrente inizia a scorrere nel canale, portando in conduzione anche il LED.S
+
+\section{Montaggio amplificatore}
+
+\section{Misure a frequenza fissa}
+
+\section{Impedenza d'ingresso}
+
+\section{Aumento del guadagno}
+
 
 \end{document}
