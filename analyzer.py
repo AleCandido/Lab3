@@ -855,7 +855,7 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 		if units[i]=="volt_osc":
 			dcolumns[i]=columns[i]*0.035
 		elif units[i]=="volt_osc_nocal":
-			dcolumns[i]=columns[i]*0.02
+			dcolumns[i]=columns[i]*0.025
 		elif units[i]=="tempo_osc":
 			dcolumns[i]=columns[i]*0.01
 		else:

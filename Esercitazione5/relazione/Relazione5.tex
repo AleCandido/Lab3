@@ -1,4 +1,4 @@
-% !TeX spellcheck = en_US
+% !TeX spellcheck = it_IT
 \documentclass[10pt,a4paper]{article}
 
 \usepackage[utf8]{inputenc}
@@ -82,6 +82,82 @@ Si è trovato per la tensione di pinch-off il valore di $ $, mentre per la massi
 
 
 \section{Misure a frequenza fissa}
+
+Si è misurato il guadagno in risposta a segnali sinusoidali di frequenza fissa pari a $\unit{1.011 \pm 0.010}{k\hertz}$ nella configurazione di common source e source follower
+
+\paragraph{Fase relativa tra ingresso e uscita} Si è osservato che il segnale in uscita risultava in opposizione di fase rispetto al segnale in ingresso nel caso della configurazione common source e in fase nel caso della configurazione follower source, come atteso. Si riporta in \figurename{\ref{fig:controfase}} e \figurename{\ref{infase}} le relative schermate dell'oscilloscopio.
+
+\begin{figure}[h!]
+	\centering
+	\begin{minipage}[h!]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../oscilloscopio/inversione_fase.jpg}
+		\caption{common source}
+			\label{fig:controfase}
+	\end{minipage}
+	\begin{minipage}[h!]{0.49\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../oscilloscopio/fase.jpg}
+		\caption{source follower}
+			\label{infase}
+	\end{minipage}
+
+\end{figure}
+
+\paragraph{Guadagno e linearità del circuito} Si è fittato il guadagno in tensione del circuito $|A_V|$ ottenendo i seguenti risultati:
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{cccc}
+		common source & $|A_v| = 1.996 \pm 0.019$ & intercetta: $\unit{0.005 \pm 0.008}{\volt}$ & $\chi^2 / ndof = 25.5 / 22$\\
+		source follower &	$|A_v| = 0.467 \pm 0.004$ & intercetta: $\unit{0.0025 \pm 0.0012}{\volt}$ & $\chi^2 / ndof = 21.3 / 23$
+	\end{tabular}
+\end{table}
+
+Il valore atteso dalla teoria è di
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{cc}
+		common source & $|A_v| =g_mR_D/(1+g_mR_S) =$ \\
+		source follower &	$|A_v| =g_mR_S/(1+g_mR_S) = $
+	\end{tabular}
+\end{table}
+
+Sono entrambi compatibili con quelli misurati entro $\sigma$.
+I grafici dei fit sono riportati di seguito, mentre i dati raccolti sono in appendice in \tablename{\ref{commonsource}} e \tablename{\ref{sourcefollower}}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{../grafici/fit_guadagnovstensione.pdf}
+	\caption{Grafico del fit del guadagno del circuito common source}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{../grafici/fit_guadagnovstensione2.pdf}
+	\caption{Grafico del fit del guadagno del circuito source follower}
+\end{figure}
+
+ Si può affermare che la linearità è preservata per le tensioni d'ingresso che non portano il transistor in clipping.
+  
+ \paragraph{Clipping}
+Il segnale in uscita risulta sinusoidale fino ad ampiezze di $\sim \unit{4.4}{\volt}$ in ingresso per entrambe le configurazioni.
+Per intensità maggiori si osserva che l'uscita è tagliata dall'alto nel common source e dal basso nel source follower. Questo taglio del segnale (riportato in \figurename{\ref{fig:clippingalto}} e \figurename{\ref{fig:clippingbasso}}) corrisponde ad un regime di funzionamento del transistor diverso da quello attivo, in cui sarebbe preservata la linearità.
+
+\begin{figure}[h!]
+	\centering
+	\begin{minipage}{0.49\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../oscilloscopio/clipalto.jpg}
+		\caption{Clipping common source}
+			\label{fig:clippingalto}
+	\end{minipage}
+	\begin{minipage}{0.49\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../oscilloscopio/clipping basso.jpg}
+		\caption{Clipping source follower}	
+			\label{fig:clippingbasso}	
+	\end{minipage}
+\end{figure}
 
 \section{Impedenza d'ingresso}
 
