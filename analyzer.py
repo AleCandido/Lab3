@@ -428,26 +428,24 @@ _util_mm_esr_data = dict(
 			scales=[2 * 10**z for z in range(2, 8)],
 			perc=[0.8] * 5 + [1, 5], #200MOhm 5%*(lettura-10digit) to do
 			digit=[3, 1, 1, 1, 1, 2, 10]
-		)
-	),
-	analog=dict(
-		volt=dict(
+		),
+		volt_anal=dict(
 			scales=[0.1, 2, 10, 50, 200, 500, 1000],
 			relres=[50] * 7,
 			valg=[1] * 7
 		),
-		volt_ac=dict(
+		volt_ac_anal=dict(
 			scales=[10, 50, 250, 750],
 			relres=[50] * 3 + [37.5],
 			valg=[2] * 3 + [100.0 / 37.5]
 		),
-		ampere=dict(
+		ampere_anal=dict(
 			scales=[50e-6, 500e-6, 5e-3, 50e-3, 500e-3, 5],
-			relres=[50] * 6,
+			relres=[1e-6, 1e-5, 1e-4, 1e-3, 1e-2, 1e-1],
 			valg=[1] * 6,
 			cdt=[0.1, 0.294, 0.318] + [0.320] * 3
 		),
-		ampere_ac=dict(
+		ampere_ac_anal=dict(
 			scales=[250e-6, 2.5e-3, 25e-3, 250e-3, 2.5],
 			relres=[50] * 5,
 			valg=[2] * 5,
@@ -492,17 +490,25 @@ def util_mm_er(x, scale, metertype='digital', unit='volt'):
 	r = None
 	
 	if metertype == 'digital':
-		e = x * info['perc'][idx] / 100.0 + info['digit'][idx] * 10**(idx + log10(info['scales'][0] / 2.0) - 3)
-		if unit == 'volt' or unit == 'volt_ac':
-			r = 10e+6
-		elif unit == 'ampere' or unit == 'ampere_ac':
-			r = 0.2 / s
-	elif metertype == 'analog':
-		e = x * sqrt((0.5 / info['relres'][idx])**2 + (info['valg'][idx] / 100.0 * s)**2)
-		if unit == 'volt' or unit == 'volt_ac':
-			r = 20000 * s
-		elif unit == 'ampere' or unit == 'ampere_ac':
-			r = info['cdt'][idx] / s
+		if unit == 'volt' or unit == 'volt_ac' or unit == 'ampere' or unit == 'ampere_ac':
+			e = x * info['perc'][idx] / 100.0 + info['digit'][idx] * 10**(idx + log10(info['scales'][0] / 2.0) - 3)
+			if unit == 'volt' or unit == 'volt_ac':
+				r = 10e+6
+			elif unit == 'ampere' or unit == 'ampere_ac':
+				r = 0.2 / s
+		elif unit == 'volt_anal' or unit == 'volt_ac_anal' or unit == 'ampere_anal' or unit == 'ampere_ac_anal':
+			e = x * sqrt((0.5 * info['relres'][idx]/x)**2 + (info['valg'][idx] / 100.0 )**2)
+			if unit == 'volt' or unit == 'volt_ac':
+				r = 20000 * s
+			elif unit == 'ampere' or unit == 'ampere_ac':
+				r = info['cdt'][idx] / s
+			
+	# elif metertype == 'analog':
+	# 	e = x * sqrt((0.5 / info['relres'][idx])**2 + (info['valg'][idx] / 100.0 * s)**2)
+	# 	if unit == 'volt' or unit == 'volt_ac':
+	# 		r = 20000 * s
+	# 	elif unit == 'ampere' or unit == 'ampere_ac':
+	# 		r = info['cdt'][idx] / s
 	
 	return e, r
 

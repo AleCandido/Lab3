@@ -80,6 +80,43 @@ Si è trovato per la tensione di pinch-off il valore di $ $, mentre per la massi
 
 \section{Montaggio amplificatore}
 
+\subsection{Dimensionamento}
+
+I valori dei componenti usati nel circuito in \figurename{\ref{fig:amplificatore}} sono:
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{cccc}
+$R_1 = \unit{985 \pm 9}{\ohm}$ & $R_3 = \unit{4.65 \pm 0.07}{\mega\ohm}$ & $R_{trim} = \unit{244 \pm 3}{\ohm}$ & $ C_1 = \unit{101 \pm 5}{\nano\farad}$
+\end{tabular}
+\end{table}
+
+Si è indicato con $R_{trim}$ la resistenza del trimmer al punto di lavoro fissato (si veda paragrafo seguente).
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.5\textwidth]{../grafici/amplificatore.png}
+	\caption{Schema del circuito dell'amplificatore a JFET (common source o source follower)}
+	\label{fig:amplificatore}
+\end{figure}
+
+\paragraph{Punto di lavoro} Si è montato l'amplificatore, rappresentato in \figurename{\ref{fig:amplificatore}}, imponendo il punto di lavoro in modo tale che la corrente di drain $I_D$ fosse $\sim I_{DSS}/2$. Il valore misurato è $I_D = \unit{3.05 \pm 0.03}{\milli\ampere}$.
+
+%I valori misurati per tensione drain-source e corrente di drain sono riportati di seguito.
+%\begin{table}[h!]
+%\centering
+%\begin{tabular}{cc}
+%$V_{DS} = \unit{650 \pm 4}{\volt}$ & $I_{DS} = \unit{3.05 \pm 0.03}{\milli\ampere}$
+%\end{tabular}
+%\end{table}
+
+\paragraph{Verifica del punto di lavoro} Si è misurato inoltre $V_{GS} = \unit{650 \pm 4}{\volt}$ e si è calcolato il valore atteso per la corrente di drain $I_D$ secondo la formula:
+\begin{equation*}
+I_D = \frac{I_{DSS}}{V_P^2}(V_{GS} - V_P)^2
+\end{equation*}
+
+Ottenendo quindi $I_D^{exp} = \unit{3.07 \pm 0.04}{\milli\ampere}$. Si ottiene inoltre per la transconduttanza il valore di $g_m = \unit{4.00 \pm 0.05}{\milli\Siemens}$
+%i valori sono ottenuti con Vp e Idss presi a spanne con errori dal multimetro, poi lo aggiorno, comunque sono già compatibili
 
 \section{Misure a frequenza fissa}
 
