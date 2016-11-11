@@ -1,7 +1,7 @@
 from pylab import *
-path = "C:\\Users\\Roberto\\Documents\\GitHub\\Lab3\\"
+#path = "C:\\Users\\Roberto\\Documents\\GitHub\\Lab3\\"
 #path = "C:\\Users\\Studenti\\Desktop\\Lab3\\"
-#path = "/home/alessandro/Documents/Università/3°anno/Laboratorio3/Lab3/"
+path = "/home/alessandro/Documents/Università/3°anno/Laboratorio3/Lab3/"
 sys.path = sys.path + [path]
 from analyzer import *
 import uncertainties
@@ -28,7 +28,7 @@ Ylab="Tensione in uscita $V_{OUT}$ [$V$]"
 
 tab=["$V_{IN}$","$V_{OUT}$"]
 
-#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun)
 
 ###########################################################################
 
@@ -52,7 +52,7 @@ Ylab="Tensione in uscita $V_{OUT}$ [$V$]"
 
 tab=["$V_{IN}$","$V_{OUT}$"]
 
-#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,table=True,tab=tab)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,table=True,tab=tab)
 
 ###########################################################################
 
@@ -76,7 +76,7 @@ Ylab="Tensione in uscita $V_{OUT}$ [$V$]"
 
 tab=["$V_{IN}$","$V_{OUT}$"]
 
-#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,table=True,tab=tab)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,table=True,tab=tab)
 
 ###########################################################################
 
@@ -100,7 +100,7 @@ Ylab="Tensione in uscita $V_{OUT}$ [$V$]"
 
 tab=["$V_{IN}$","$V_{OUT}$"]
 
-#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,table=True,tab=tab)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,table=True,tab=tab)
 
 ###########################################################################
 
@@ -113,7 +113,7 @@ p0=[1,1]
 
 unit=["volt","ampere_anal"]
 
-titolo="Curva caratteristica di gate del JFET"
+titolo=""
 Xlab="$V_{GS}$"
 Ylab="$I_D$"
 
@@ -156,14 +156,14 @@ p0=[1,1]
 def XYfun(a):
     return a[0],a[1]
 
-unit=["volt","ampere_anal"]
+unit=["volt","ampere"]
 
 titolo="Curva caratteristica di gate del JFET"
 Xlab="$V_{GS}$"
 Ylab="$I_D$"
 
-tab=["",""]
+tab=["$V_{GS}$","$I_D$"]
 
-#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,preplot=True,scarti=True,tab=tab)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,preplot=True,scarti=True,tab=tab, table=True)
 
 ###########################################################################
