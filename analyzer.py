@@ -490,7 +490,7 @@ def util_mm_er(x, scale, metertype='digital', unit='volt'):
 	r = None
 	
 	if metertype == 'digital':
-		if unit == 'volt' or unit == 'volt_ac' or unit == 'ampere' or unit == 'ampere_ac':
+		if unit == 'volt' or unit == 'volt_ac' or unit == 'ampere' or unit == 'ampere_ac' or unit == 'ohm':
 			e = x * info['perc'][idx] / 100.0 + info['digit'][idx] * 10**(idx + log10(info['scales'][0] / 2.0) - 3)
 			if unit == 'volt' or unit == 'volt_ac':
 				r = 10e+6
