@@ -85,10 +85,17 @@ Per misurare il valore della tensione di pinch-off si è applicata la definizion
 
 Si è notato però che, oltre all'incertezza di lettura del multimetro su tale tensione, era da propagare anche l'incertezza con cui era noto che il valore della corrente fosse nullo.
 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\textwidth]{../grafici/fit_carattx2.pdf}
+	\caption{Grafico del fit usato per ricavare $V_P$}
+	\label{fig:vpfit}
+\end{figure}
+
 Per propagare tale valore si è cercato di approssimare la curva che descrivevano i dati con la sua espansione di Taylor, dato che non era nota la curva teorica (la conosceremmo se sapessimo di essere in saturazione).
 Dall'osservazione del grafico si deduce però che la curva ha una concavità abbastanza accentuata, per cui la tangente alla curva è sempre più orizzontale. A questo punto si ha che il termine dominante nell'espansione potrebbe non essere l'ordine lineare, come confermato in prima battuta dall'osservazione dei punti, si è dunque approssimata la curva con un espansione al second'ordine, imponendo che raggiungesse il suo minimo per una corrente di drain nulla.
 
-Infine il valore di $V_P$ è stato ottenuto dal fit dei punti più prossimi (5 in particolare) al minimo con una funzione della forma $I_D(V_{GS}) = a(V_{GS} - V_P)^2$, ottenendo per $V_P$ il valore riportato e un $\chi^2 / ndof = 2.16 / 3$.
+Infine il valore di $V_P$ è stato ottenuto dal fit dei punti più prossimi (5 in particolare) al minimo con una funzione della forma $I_D(V_{GS}) = a(V_{GS} - V_P)^2$, ottenendo per $V_P$ il valore riportato e un $\chi^2 / ndof = 2.16 / 3$, il grafico è riportato in figura \figurename{\ref{fig:vpfit}}
 
 Va notato che, ipotizzando di essere veramente in saturazione, la formula utilizzata per il fit è esattamente la curva attesa, con $a = k_P$.
 
@@ -169,8 +176,8 @@ Il valore atteso dalla teoria è di
 \begin{table}[h!]
 	\centering
 	\begin{tabular}{cc}
-		common source & $|A_v|^{exp} =g_mR_D/(1+g_mR_S) = 1.989 \pm 0.027$ \\
-		source follower &	$|A_v|^{exp} =g_mR_S/(1+g_mR_S) = 0.493 \pm 0.005
+		common source & $|A_v|^{exp} =g_mR_1/(1+g_mR_2) = 1.989 \pm 0.027$ \\
+		source follower &	$|A_v|^{exp} =g_mR_2/(1+g_mR_2) = 0.493 \pm 0.005
 		 $
 	\end{tabular}
 \end{table}
@@ -213,7 +220,7 @@ Per intensità maggiori si osserva che l'uscita è tagliata dall'alto nel common
 
 \section{Impedenza d'ingresso}
 
-\paragraph{Impedenza a $\unit{1}{\kilo\hertz}$} Si è misurata la caduta di potenziale su una resistenza $R_S = \unit{677 \pm 6}{\kilo\ohm}$ in serie al circuito, misurando il potenziale riferito a terra prima e dopo la resistenza.
+\paragraph{Impedenza a $\unit{1}{\kilo\hertz}$} Si è misurata la caduta di potenziale su una resistenza $R_2 = \unit{677 \pm 6}{\kilo\ohm}$ in serie al circuito, misurando il potenziale riferito a terra prima e dopo la resistenza.
 I due potenziali sono:
 \begin{table}[h!]
 	\centering
@@ -224,7 +231,7 @@ I due potenziali sono:
 
 Si ottiene infine per l'impedenza d'ingresso del circuito $R_{in}^{1kHz} = \unit{697 \pm 16}{\kilo\ohm}$, misurata alla stessa frequenza dei punti precedenti.
 
-\paragraph{Impedenza a $\unit{10}{\kilo\hertz}$}  Si è effettuata la misura come nel caso precedente, sostituendo però la resistenza in serie di $R_S$ con $R_S' = \unit{178.1 \pm 2.7}{\kilo\ohm}$.
+\paragraph{Impedenza a $\unit{10}{\kilo\hertz}$}  Si è effettuata la misura come nel caso precedente, sostituendo però la resistenza in serie di $R_2$ con $R_2' = \unit{178.1 \pm 2.7}{\kilo\ohm}$.
 I due potenziali sono:
 \begin{table}[h!]
 	\centering
@@ -237,12 +244,12 @@ Si ottiene infine per l'impedenza d'ingresso alla frequenza di $\unit{10.04 \pm 
 
 \section{Aumento del guadagno}
 
-Si è proceduto alla ricerca della massima amplificazione modificando il punto di lavoro attraverso la rotazione del potenziometro, nel farlo si è usata una tensione di ingresso abbastanza bassa per non avere clipping su tutto il range.
+Si è proceduto alla ricerca della massima amplificazione modificando il punto di lavoro attraverso la rotazione del potenziometro.
 
-Teoricamente ci aspettiamo che il massimo sia raggiunto per il valore minimo della resistenza del potenziometro.
-Il guadagno è infatti dato da $|A_v| =g_mR_D/(1+g_mR_S)$: per $R_S\sim\unit{0}{\ohm}$ ho il valore massimo di corrente di drain e conseguentemente il massimo valore di $g_m = 2 \sqrt{(I_{DSS}*I_D)}/|V_P|$, inoltre ho il minimo del denominatore per cui il guadagno diventa:
+\'E atteso che il massimo sia raggiunto per il valore minimo della resistenza del potenziometro, cioé la resistenza di source.
+Il guadagno è infatti dato da $|A_v| =R_1/(1/g_m + R_2)$: per $R_2\sim\unit{0}{\ohm}$ si ottiene il valore massimo di corrente di drain (di polarizzazione) e conseguentemente il massimo valore di $g_m = 2 \sqrt{(I_{DSS} I_D)}/|V_P|$, da cui si ricava il minimo del denominatore per cui il guadagno diventa:
 \begin{equation*}
-|A_v|^{exp} = \frac{2 I_{DSS}*R_D}{|V_P|} = 5.59 \pm 0.08 
+|A_v|^{exp} = g_m R_1 = \frac{2 I_{DSS} R_1}{|V_P|} = 5.59 \pm 0.08 
 \end{equation*}
 I risultati delle misure sono stati:
 \begin{table}[h!]
@@ -251,6 +258,8 @@ I risultati delle misure sono stati:
 		$V_{IN}=\unit{740 \pm 20}{m\volt}$ & $V_{OUT} = \unit{3.60 \pm 0.09}{\volt}$ & $|A_v| = 4.86 \pm 0.18$\\
 	\end{tabular}
 \end{table}
+
+I valori misurati si discostano da quelli attesi perché, per $R_S \sim 0$, il segnale in uscita andava in clipping, e dunque riduceva necessariamente il valore del guadagno rispetto a quello atteso.
 
 \pagebreak
 \section{Appendice: Dati}

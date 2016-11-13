@@ -142,34 +142,34 @@ p0=[1,1]
 unit=["volt","ampere_anal"]
 
 titolo=""
-Xlab="$V_{GS}$"
-Ylab="$I_D$"
+Xlab="$V_{GS}$~[$V$]"
+Ylab="$I_D$~[$A$]"
 
 tab=["",""]
 
-#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,preplot=True,tab=tab)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,preplot=True,tab=tab)
 
 ###########################################################################
 
 file="carattx2"
 
 def f(x, a, x0):
-    return a*(x - x0)**2
+    return a*(x - x0)**2/1000
 
 p0=[1,1]
 
 def XYfun(a):
-    return a[0],a[1]
+    return a[0],a[1]/1000
 
 unit=["volt","ampere_anal"]
 
 titolo="Curva caratteristica di gate del JFET"
-Xlab="$V_{GS}$"
-Ylab="$I_D$"
+Xlab="$V_{GS}$ [$V$]"
+Ylab="$I_D$ [$mA$]"
 xlimp=[99,101]
 tab=["",""]
 
-#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,preplot=True,tab=tab,xlimp=xlimp)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,preplot=True,tab=tab,xlimp=xlimp)
 
 ###########################################################################
 
