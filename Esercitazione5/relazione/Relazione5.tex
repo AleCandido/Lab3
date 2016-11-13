@@ -69,14 +69,28 @@ I valori dei componenti usati sono stati misurati con il multimetro.
 \paragraph{LED} Il LED si accende e si spegne alla tensione $V_{GS} \sim \unit{1.89}{\volt}$. Infatti al di sopra di una certa tensione gate-source ($V_{GS}$) il canale è da considerarsi chiuso (pinch-off) e il transistor va in interdizione. Al di sotto della tensione di pinch-off a corrente inizia a scorrere nel canale, portando in conduzione anche il LED.
 
 \subsection{Tensione di pinch-off $V_P$ e massima corrente di drain $I_{DSS}$}
-I dati relativi alla curva $I_D - V_{GS}$ sono riportati in appendice in \tablename{\ref{njfet}}, il grafico relativo è invece riportato di seguito (\ref{fig:njfet}).
+I dati relativi alla curva $I_D - V_{GS}$ sono riportati in appendice in \tablename{\ref{njfet}}, il grafico relativo è invece riportato di seguito in \figurename{\ref{fig:njfet}}.
 
-Si è trovato per la tensione di pinch-off il valore di $ $, mentre per la massima corrente di drain $ $.
-% il valore sarà quello relativo alla corrente di 0.5uA; va notato che non c'è solo un errore sulla misura relativa alla tensione, ma c'è anche un errore dovuto a quanto è 0 la corrente di 0.5uA (entro l'errore lo è, ma magari con una misura più precisa quella corrente non sarebbe stata nulla e quindi anche la tensione sarebbe diversa, mantenendo il suo errore), andrebbe propagato anche quest'errore.
-%stessa cosa per idss
-%queste considerazioni espresse meglio andrebbero poi scritte nella relazione
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{../grafici/fast_plot_caratterizzazioneJFET.pdf}
+	\caption{Curva caratteristica di gate del JFET}
+	\label{fig:njfet}
+\end{figure}
 
-%includere il grafico
+Si è trovato per la tensione di pinch-off il valore di $V_P = \unit{2.198 \pm 0.025}{\volt} $, mentre per la massima corrente di drain $I_{DSS} = {6.24 \pm 0.06}{\milli\ampere} $.
+
+\subsection{Nota sulla stima di $V_P$}
+Per misurare il valore della tensione di pinch-off si è applicata la definizione, cioé la tensione a cui il canale si chiude completamente. Si è interpretata in questo caso come il valore della tensione a cui la corrente di drain si annulla (infatti a canale chiuso rimane solo il semiconduttore drogato, che ha una conducibilità nettamente inferiore al conduttore ohmico in cui avviene il trasporto di carica a canale aperto).
+
+Si è notato però che, oltre all'incertezza di lettura del multimetro su tale tensione, era da propagare anche l'incertezza con cui era noto che il valore della corrente fosse nullo.
+
+Per propagare tale valore si è cercato di approssimare la curva che descrivevano i dati con la sua espansione di Taylor, dato che non era nota la curva teorica (la conosceremmo se sapessimo di essere in saturazione).
+Dall'osservazione del grafico si deduce però che la curva ha una concavità abbastanza accentuata, per cui la tangente alla curva è sempre più orizzontale. A questo punto si ha che il termine leading nell'espansione potrebbe non essere l'ordine lineare, come confermato in prima battuta dall'osservazione dei punti, si è dunque approssimata la curva con un espansione al second'ordine, imponendo che raggiungesse il suo minimo per una corrente di drain nulla.
+
+Infine il valore di $V_P$ è stato ottenuto dal fit dei punti più prossimi (5 in particolare) al minimo con una funzione della forma $I_D(V_{GS}) = a(V_{GS} - V_P)^2$, ottenendo per $V_P$ il valore riportato e un $\chi^2 / ndof = 2.16 / 3$.
+
+Va notato che, ipotizzando di essere veramente in saturazione, la formula utilizzata per il fit è esattamente la curva attesa, con $a = k_P$.
 
 \section{Montaggio amplificatore}
 
@@ -110,12 +124,12 @@ Si è indicato con $R_{trim}$ la resistenza del trimmer al punto di lavoro fissa
 %\end{tabular}
 %\end{table}
 
-\paragraph{Verifica del punto di lavoro} Si è misurato inoltre $V_{GS} = \unit{650 \pm 4}{\volt}$ e si è calcolato il valore atteso per la corrente di drain $I_D$ secondo la formula:
+\paragraph{Verifica del punto di lavoro} Si è misurato inoltre $V_{GS} = \unit{650 \pm 4}{\milli\volt}$ e si è calcolato il valore atteso per la corrente di drain $I_D$ secondo la formula:
 \begin{equation*}
 I_D = \frac{I_{DSS}}{V_P^2}(V_{GS} - V_P)^2
 \end{equation*}
 
-Ottenendo quindi $I_D^{exp} = \unit{3.07 \pm 0.04}{\milli\ampere}$. Si ottiene inoltre per la transconduttanza il valore di $g_m = \unit{4.00 \pm 0.05}{\milli\siemens}$
+Ottenendo quindi $I_D^{exp} = \unit{3.10 \pm 0.04}{\milli\ampere}$. Si ottiene inoltre per la transconduttanza il valore di $g_m = \unit{3.98 \pm 0.06}{\milli\siemens}$
 %i valori sono ottenuti con Vp e Idss presi a spanne con errori dal multimetro, poi lo aggiorno, comunque sono già compatibili
 
 \section{Misure a frequenza fissa}
@@ -126,13 +140,13 @@ Si è misurato il guadagno in risposta a segnali sinusoidali di frequenza fissa 
 
 \begin{figure}[h!]
 	\centering
-	\begin{minipage}[h!]{0.5\textwidth}
+	\begin{minipage}[h!]{0.45\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../oscilloscopio/inversione_fase.jpg}
 		\caption{common source}
 			\label{fig:controfase}
 	\end{minipage}
-	\begin{minipage}[h!]{0.49\textwidth}
+	\begin{minipage}[h!]{0.45\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../oscilloscopio/fase.jpg}
 		\caption{source follower}
@@ -199,6 +213,28 @@ Per intensità maggiori si osserva che l'uscita è tagliata dall'alto nel common
 
 \section{Impedenza d'ingresso}
 
+\paragraph{Impedenza a $\unit{1}{\kilo\hertz}$} Si è misurata la caduta di potenziale su una resistenza $R_S = \unit{677 \pm 6}{\kilo\ohm}$ in serie al circuito, misurando il potenziale riferito a terra prima e dopo la resistenza.
+I due potenziali sono:
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{cc}
+		$V_1 = \unit{2.80 \pm 0.03}{\volt}$  & $V_2 = \unit{1.420 \pm 0.008}{\volt}$
+	\end{tabular}
+\end{table}
+
+Si ottiene infine per l'impedenza d'ingresso del circuito $R_{in\_ 1kHz} = \unit{697 \pm 16}{\kilo\ohm}$, misurata alla stessa frequenza dei punti precedenti.
+
+\paragraph{Impedenza a $\unit{10}{\kilo\hertz}$}  Si è effettuata la misura come nel caso precedente, sostituendo però la resistenza in serie di $R_S$ con $R_S' = \unit{677 \pm 6}{\kilo\ohm}$.
+I due potenziali sono:
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{cc}
+		$V_1 = \unit{2.80 \pm 0.03}{\volt}$  & $V_2 = \unit{1.420 \pm 0.008}{\volt}$
+	\end{tabular}
+\end{table}
+
+Si ottiene infine per l'impedenza d'ingresso alla frequenza di $\unit{10.04 \pm 0.01}{\kilo\hertz}$ $R_{in\_ 10kHz} = \unit{150 \pm 3}{\kilo\ohm}$.
+
 \section{Aumento del guadagno}
 
 \pagebreak
@@ -209,7 +245,7 @@ Si riportano qui le tabelle di dati usati per i fit e i grafici.
 	\centering
 	\begin{minipage}[c]{0.4\textwidth}
 		\centering
-		%\input{../tabelle/tab_guadagnopiccolisegnali_ol.txt}
+		\input{../tabelle/tab_caratterizzazioneJFET.txt}
 		\captionof{table}{Curva $I_D - V_{GS}$}
 		\label{njfet}
 	\end{minipage}
