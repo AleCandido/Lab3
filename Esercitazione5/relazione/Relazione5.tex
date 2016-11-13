@@ -92,6 +92,8 @@ Infine il valore di $V_P$ è stato ottenuto dal fit dei punti più prossimi (5 i
 
 Va notato che, ipotizzando di essere veramente in saturazione, la formula utilizzata per il fit è esattamente la curva attesa, con $a = k_P$.
 
+%aggiungere grafico fit
+
 \section{Montaggio amplificatore}
 
 \subsection{Dimensionamento}
@@ -129,14 +131,14 @@ Si è indicato con $R_{trim}$ la resistenza del trimmer al punto di lavoro fissa
 I_D = \frac{I_{DSS}}{V_P^2}(V_{GS} - V_P)^2
 \end{equation*}
 
-Ottenendo quindi $I_D^{exp} = \unit{3.10 \pm 0.04}{\milli\ampere}$. Si ottiene inoltre per la transconduttanza il valore di $g_m = \unit{3.98 \pm 0.06}{\milli\siemens}$.
+Ottenendo quindi $I_D^{exp} = \unit{3.10 \pm 0.04}{\milli\ampere}$ che è in accordo con quello misurato. Si ottiene inoltre per la transconduttanza il valore di $g_m = \unit{3.98 \pm 0.06}{\milli\siemens}$.
 %i valori sono ottenuti con Vp e Idss presi a spanne con errori dal multimetro, poi lo aggiorno, comunque sono già compatibili
 
 \section{Misure a frequenza fissa}
 
 Si è misurato il guadagno in risposta a segnali sinusoidali di frequenza fissa pari a $\unit{1.011 \pm 0.010}{k\hertz}$ nella configurazione di common source e source follower.
 
-\paragraph{Fase relativa tra ingresso e uscita} Si è osservato che il segnale in uscita risultava in opposizione di fase rispetto al segnale in ingresso nel caso della configurazione common source e in fase nel caso della configurazione follower source, come atteso. Si riporta in \figurename{\ref{fig:controfase}} e \figurename{\ref{infase}} le relative schermate dell'oscilloscopio.
+\paragraph{Fase relativa tra ingresso e uscita} Si è osservato che il segnale in uscita risultava in opposizione di fase rispetto al segnale in ingresso nel caso della configurazione common source e in fase nel caso della configurazione source follower, come atteso. Si riporta in \figurename{\ref{fig:controfase}} e \figurename{\ref{infase}} le relative schermate dell'oscilloscopio.
 
 \begin{figure}[h!]
 	\centering
@@ -170,12 +172,12 @@ Il valore atteso dalla teoria è di
 	\centering
 	\begin{tabular}{cc}
 		common source & $|A_v|^{exp} =g_mR_D/(1+g_mR_S) = 1.989 \pm 0.027$ \\
-		source follower &	$|A_v|^{exp} =g_mR_S/(1+g_mR_S) = 0.493 \pm 0.005
-		 $
+		source follower &	$|A_v|^{exp} =g_mR_S/(1+g_mR_S) = 0.493 \pm 0.005$
 	\end{tabular}
 \end{table}
 
-???
+Il primo è in accordo con il valore misurato, mentre non lo è il secondo. Sospettiamo che possa essere imputato a piccole variazioni del valore della resistenza del trimmer che è stata misurata nel corso della presa dati.
+
 I grafici dei fit sono riportati di seguito, mentre i dati raccolti sono in appendice in \tablename{\ref{tab:commonsource}} e \tablename{\ref{tab:sourcefollower}}
 
 \begin{figure}[h!]
@@ -193,7 +195,7 @@ I grafici dei fit sono riportati di seguito, mentre i dati raccolti sono in appe
   
  \paragraph{Clipping}
 Il segnale in uscita risulta sinusoidale fino ad ampiezze di $\sim \unit{4.4}{\volt}$ in ingresso per entrambe le configurazioni.
-Per intensità maggiori si osserva che l'uscita è tagliata dall'alto nel common source e dal basso nel source follower. Questo taglio del segnale (riportato in \figurename{\ref{fig:clippingalto}} e \figurename{\ref{fig:clippingbasso}}) corrisponde ad un regime di funzionamento del transistor diverso da quello attivo, in cui sarebbe preservata la linearità.
+Per intensità maggiori si osserva che l'uscita è tagliata dall'alto nel common source e dal basso nel source follower. Questo taglio del segnale (riportato in \figurename{\ref{fig:clippingalto}} e \figurename{\ref{fig:clippingbasso}}) corrisponde ad un regime di funzionamento del transistor diverso da quello attivo (interdizione), in cui sarebbe preservata la linearità.
 
 \begin{figure}[h!]
 	\centering
@@ -222,14 +224,14 @@ I due potenziali sono:
 	\end{tabular}
 \end{table}
 
-Si ottiene infine per l'impedenza d'ingresso del circuito $R_{in}^{1kHz} = \unit{697 \pm 16}{\kilo\ohm}$, misurata alla stessa frequenza dei punti precedenti.
+Si ottiene infine per il parallelo tra l'impedenza d'ingresso del circuito e l'impedenza di ingresso dell'oscilloscopio un valore di $R_{//}^{1kHz} = \unit{7.0 \pm 0.7}{\kilo\ohm}$, misurata alla stessa frequenza dei punti precedenti, per cui la resistenza di ingresso sarà: 
 
 \paragraph{Impedenza a $\unit{10}{\kilo\hertz}$}  Si è effettuata la misura come nel caso precedente, sostituendo però la resistenza in serie di $R_S$ con $R_S' = \unit{178.1 \pm 2.7}{\kilo\ohm}$.
 I due potenziali sono:
 \begin{table}[h!]
 	\centering
 	\begin{tabular}{cc}
-		$V_1 = \unit{2.80 \pm 0.03}{\volt}$  & $V_2 = \unit{1.420 \pm 0.008}{\volt}$
+		$V_1 = \unit{2.80 \pm 0.10}{\volt}$  & $V_2 = \unit{1.420 \pm 0.05}{\volt}$
 	\end{tabular}
 \end{table}
 
@@ -238,7 +240,7 @@ Si ottiene infine per l'impedenza d'ingresso alla frequenza di $\unit{10.04 \pm 
 \section{Aumento del guadagno}
 
 Si è proceduto alla ricerca della massima amplificazione modificando il punto di lavoro attraverso la rotazione del potenziometro, nel farlo si è usata una tensione di ingresso abbastanza bassa per non avere clipping su tutto il range.
-
+    
 Teoricamente ci aspettiamo che il massimo sia raggiunto per il valore minimo della resistenza del potenziometro.
 Il guadagno è infatti dato da $|A_v| =g_mR_D/(1+g_mR_S)$: per $R_S\sim\unit{0}{\ohm}$ ho il valore massimo di corrente di drain e conseguentemente il massimo valore di $g_m = 2 \sqrt{(I_{DSS}*I_D)}/|V_P|$, inoltre ho il minimo del denominatore per cui il guadagno diventa:
 \begin{equation*}
@@ -279,13 +281,5 @@ Si riportano qui le tabelle di dati usati per i fit e i grafici.
 		\label{tab:sourcefollower}
 	\end{minipage}
 \end{figure}
-
-	\begin{minipage}[c]{0.33\textwidth}
-		\centering
-		\resizebox{1\textwidth}{!}{
-			\input{../tabelle/tab_guadagnovsid.txt}}
-		\captionof{table}{Gaino vs $I_D$}
-		\label{tab:iddependance}
-	\end{minipage}
 
 \end{document}
