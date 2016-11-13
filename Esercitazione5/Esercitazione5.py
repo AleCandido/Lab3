@@ -104,6 +104,34 @@ tab=["$V_{IN}$","$V_{OUT}$"]
 
 ###########################################################################
 
+#GUADAGNO VS Id#
+
+file="guadagnovsid"
+
+VIN=uncertainties.ufloat(740e-3,740e-3*0.025)
+RS = uncertainties.ufloat(244 , 3)
+RD = uncertainties.ufloat(985, 9)
+
+def f(x, a, b): 
+    return a/b*(1-1/(1+b*x**0.5))
+
+p0=[1,1]
+
+def XYfun(a):
+    return a[1],a[0]/VIN
+
+unit=["volt_osc_nocal","ampere"]
+
+titolo="$V_{OUT}$ vs $V_{IN}$"
+Xlab="Corrente di Drain $I_D$ [$A$]"
+Ylab="Guadagno $|A_v|$"
+
+tab=["$V_{IN}$","$I_D$"]
+
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,table=True,tab=tab)
+
+###########################################################################
+
 file="carattx"
 
 def f(x, a,x0):
@@ -119,7 +147,7 @@ Ylab="$I_D$"
 
 tab=["",""]
 
-fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,preplot=True,tab=tab)
+#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,preplot=True,tab=tab)
 
 ###########################################################################
 
@@ -141,7 +169,7 @@ Ylab="$I_D$"
 xlimp=[99,101]
 tab=["",""]
 
-fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,preplot=True,tab=tab,xlimp=xlimp)
+#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,preplot=True,tab=tab,xlimp=xlimp)
 
 ###########################################################################
 
