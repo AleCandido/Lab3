@@ -1,7 +1,7 @@
 from analyzer import *
 from uncertainties import *
 
-gm = ufloat(4e-3, 0.05e-3)
+#gm = ufloat(4e-3, 0.05e-3)
 RS = ufloat(244 , 3)
 RD = ufloat(985, 9)
 
