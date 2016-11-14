@@ -65,14 +65,14 @@ I valori dei componenti usati sono stati misurati con il multimetro digitale.
 	\end{tabular}
 \end{table}
 
-\paragraph{LED} Il LED si accende e si spegne alla tensione $V_{GS} \sim \unit{1.9}{\volt}$. Infatti al di sopra di una certa tensione gate-source ($V_{GS}$) il canale è da considerarsi chiuso (pinch-off) e il transistor va in interdizione. Al di sotto della tensione di pinch-off la corrente inizia a scorrere nel canale, portando in conduzione anche il LED.
+\paragraph{LED} Il LED si accende e si spegne alla tensione $V_{GS} \sim \unit{-1.9}{\volt}$. Infatti al di sopra di una certa tensione gate-source ($V_{GS}$) il canale è da considerarsi chiuso (pinch-off) e il transistor va in interdizione. Al di sotto della tensione di pinch-off la corrente inizia a scorrere nel canale, portando in conduzione anche il LED.
 
 \subsection{Tensione di pinch-off $V_P$ e massima corrente di drain $I_{DSS}$}
 I dati relativi alla curva $I_D - V_{GS}$ sono riportati in appendice in \tablename{\ref{njfet}}, il grafico relativo è invece riportato di seguito in \figurename{\ref{fig:njfet}}.
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.8\textwidth]{../grafici/fast_plot_caratterizzazioneJFET.pdf}
+	\includegraphics[width=0.81\textwidth]{../grafici/fast_plot_caratterizzazioneJFET.pdf}
 	\caption{Curva caratteristica di gate del JFET}
 	\label{fig:njfet}
 \end{figure}
@@ -86,7 +86,7 @@ Si è notato però che, oltre all'incertezza di lettura del multimetro su tale t
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.6\textwidth]{../grafici/fit_carattx2.pdf}
+	\includegraphics[width=0.65\textwidth]{../grafici/fit_carattx2.pdf}
 	\caption{Grafico del fit usato per ricavare $V_P$}
 	\label{fig:vpfit}
 \end{figure}
@@ -186,13 +186,13 @@ I grafici dei fit sono riportati di seguito, mentre i dati raccolti sono in appe
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.75\textwidth]{../grafici/fit_guadagnovstensione.pdf}
+	\includegraphics[width=0.80\textwidth]{../grafici/fit_guadagnovstensione.pdf}
 	\caption{Grafico del fit del guadagno del circuito common source}
 \end{figure}
-\pagebreak
+
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.75\textwidth]{../grafici/fit_guadagnovstensione2.pdf}
+	\includegraphics[width=0.80\textwidth]{../grafici/fit_guadagnovstensione2.pdf}
 	\caption{Grafico del fit del guadagno del circuito source follower}
 \end{figure}
  Si può affermare che la linearità è preservata per le tensioni d'ingresso che non portano il transistor in clipping.
@@ -216,7 +216,7 @@ Per intensità maggiori si osserva che l'uscita è tagliata dall'alto nel common
 			\label{fig:clippingbasso}	
 	\end{minipage}
 \end{figure}
-
+\pagebreak
 \section{Impedenza d'ingresso}                                                                                                                                 
 Si è cercato di misurare l'impedenza di ingresso del circuito per segnali a frequenza
 $f_1 = \unit{1.011 \pm 0.010}{k\hertz}$ e $f_2= \unit{10.04 \pm 0.10}{k\hertz}$.
@@ -232,7 +232,7 @@ I due potenziali sono:
 	\end{tabular}
 \end{table}
 
-Per ottenere l'impedenza di ingresso bisognerà tenere conto che $V_2$ è la tensione sul parallelo tra questa e l'impedenza di ingresso dell'oscilloscopio che dalle esperienze precedenti è nota essere pari a $R_O=\unit{1.00 \pm 0.02}{\mega\ohm}$\footnote{Si potrebbe fare a meno di conoscere l'impedenza di ingresso se si fosse misurata la tensione all'output, questo perchè }. Per le impedenze di ingresso si ottiene quindi:
+Per ottenere l'impedenza di ingresso bisognerà tenere conto che $V_2$ è la tensione sul parallelo tra questa e l'impedenza di ingresso dell'oscilloscopio che dalle esperienze precedenti è nota essere pari a $R_O=\unit{1.00 \pm 0.02}{\mega\ohm}$\footnote{Si potrebbe fare a meno di conoscere l'impedenza di ingresso se si fosse misurata la tensione all'output, questo perché il circuito disaccoppia l'entrata dall'uscita e l'output è proporzionale all'input, non è neanche necessario sapere il guadagno poiché quello che interessa è il rapporto tra le due tensioni.}. Per le impedenze di ingresso si ottiene quindi:
 \begin{table}[h!]
 	\centering
 	\begin{tabular}{cc}

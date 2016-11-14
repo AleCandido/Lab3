@@ -164,7 +164,7 @@ def XYfun(a):
 unit=["volt","ampere_anal"]
 
 titolo="Curva caratteristica di gate del JFET"
-Xlab="Tensione Gate-SOurce $V_{GS}$ [$V$]"
+Xlab="Tensione Gate-Source $V_{GS}$ [$V$]"
 Ylab="Corrente di Drain $I_D$ [$mA$]"
 xlimp=[101,99]
 tab=["",""]
@@ -187,8 +187,8 @@ def XYfun(a):
 unit=["volt","ampere"]
 
 titolo="Curva caratteristica di gate del JFET"
-Xlab="$Tensione Gate-Source V_{GS} [$V$]$"
-Ylab="$Corrente di Drain I_D [$A$]$"
+Xlab="Tensione Gate-Source V_{GS} [$V$]"
+Ylab="Corrente di Drain I_D [$A$]"
 
 tab=["-$V_{GS}$ [$V$]","$I_D$ [$A$]"]
 

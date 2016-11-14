@@ -46,8 +46,4 @@ print(REQ2)
 RIN10k = REQ2*RO/(RO-REQ2)
 print(RIN10k)
 
-C1 = (1/(2*pi*f1))*((1/(RIN1k**2) - 1/(RG**2)))**0.5
-C2 = (1/(2*pi*f10))*((1/(RIN10k**2) - 1/(RG**2)))**0.5
 
-print(C1)
-print(C2)
