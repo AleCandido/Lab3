@@ -1,5 +1,5 @@
 \begin{tabular}{c|c} 
-$V_{GS}$ [$V$] & $I_D$ [$A$]\\
+$-V_{GS}$ [$V$] & $I_D$ [$A$]\\
 \hline
 0.00330 $\pm$ 0.00012 & 0.00624 $\pm$ 6.e-05\\
 0.00750 $\pm$ 0.00014 & 0.00619 $\pm$ 6.e-05\\
@@ -31,7 +31,7 @@ $V_{GS}$ [$V$] & $I_D$ [$A$]\\
 1.899 $\pm$ 0.010 & 0.0001100 $\pm$ 1.9e-06\\
 1.955 $\pm$ 0.011 & 6.20e-05 $\pm$ 1.5e-06\\
 1.966 $\pm$ 0.011 & 4.75e-05 $\pm$ 1.4e-06\\
-1.987 $\pm$ 0.011 & 3.70e-05 $\pm$ 6.e-07\\
+1.987 $\pm$ 0.011 & 3.70e-05 $\pm$ 6.e-07\footnote{per avere maggiore precisione da questo punto in poi è stato usato il multimetro analogico che fornisce migliori misure di basse correnti}\\
 2.000 $\pm$ 0.020 & 3.00e-05 $\pm$ 6.e-07\\
 2.010 $\pm$ 0.020 & 2.20e-05 $\pm$ 5.e-07\\
 2.020 $\pm$ 0.020 & 1.90e-05 $\pm$ 5.e-07\\

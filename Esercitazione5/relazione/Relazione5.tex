@@ -27,8 +27,7 @@
 %\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
 % (This matches ConTeXt defaults)
 
-% pacchetti che mi fanno schifo ma uso lo stesso (Bob è scemo...)
-\renewcommand{\square}{ciao}
+% pacchetti che mi fanno schifo ma uso lo stesso (Bob è scemo, ma anche Ale...)
 \usepackage[cdot, thickqspace, squaren]{SIunits}
 % macro che mi piacciono
 \def\code#1{\texttt{#1}}
@@ -78,17 +77,24 @@ I dati relativi alla curva $I_D - V_{GS}$ sono riportati in appendice in \tablen
 	\label{fig:njfet}
 \end{figure}
 
-Si è trovato per la tensione di pinch-off il valore di $V_P = \unit{2.198 \pm 0.025}{\volt} $, mentre per la massima corrente di drain $I_{DSS} = {6.24 \pm 0.06}{\milli\ampere} $.
+Si è trovato per la tensione di pinch-off il valore di $V_P = \unit{-2.198 \pm 0.025}{\volt} $, mentre per la massima corrente di drain $I_{DSS} = {6.24 \pm 0.06 }{\milli\ampere} $.
 
 \subsection{Nota sulla stima di $V_P$}
 Per misurare il valore della tensione di pinch-off si è applicata la definizione, cioé la tensione a cui il canale si chiude completamente. Si è interpretata in questo caso come il valore della tensione a cui la corrente di drain si annulla (infatti a canale chiuso rimane solo il semiconduttore drogato, che ha una conducibilità nettamente inferiore al conduttore ohmico in cui avviene il trasporto di carica a canale aperto).
 
 Si è notato però che, oltre all'incertezza di lettura del multimetro su tale tensione, era da propagare anche l'incertezza con cui era noto che il valore della corrente fosse nullo.
 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\textwidth]{../grafici/fit_carattx2.pdf}
+	\caption{Grafico del fit usato per ricavare $V_P$}
+	\label{fig:vpfit}
+\end{figure}
+
 Per propagare tale valore si è cercato di approssimare la curva che descrivevano i dati con la sua espansione di Taylor, dato che non era nota la curva teorica (la conosceremmo se sapessimo di essere in saturazione).
 Dall'osservazione del grafico si deduce però che la curva ha una concavità abbastanza accentuata, per cui la tangente alla curva è sempre più orizzontale. A questo punto si ha che il termine dominante nell'espansione potrebbe non essere l'ordine lineare, come confermato in prima battuta dall'osservazione dei punti, si è dunque approssimata la curva con un espansione al second'ordine, imponendo che raggiungesse il suo minimo per una corrente di drain nulla.
 
-Infine il valore di $V_P$ è stato ottenuto dal fit dei punti più prossimi (5 in particolare) al minimo con una funzione della forma $I_D(V_{GS}) = a(V_{GS} - V_P)^2$, ottenendo per $V_P$ il valore riportato e un $\chi^2 / ndof = 2.16 / 3$.
+Infine il valore di $V_P$ è stato ottenuto dal fit dei punti più prossimi (5 in particolare) al minimo con una funzione della forma $I_D(V_{GS}) = a(V_{GS} - V_P)^2$, ottenendo per $V_P$ il valore riportato e un $\chi^2 / ndof = 2.16 / 3$, il grafico è riportato in figura \figurename{\ref{fig:vpfit}}.
 
 Va notato che, ipotizzando di essere veramente in saturazione, la formula utilizzata per il fit è esattamente la curva attesa, con $a = k_P$.
 
@@ -107,7 +113,7 @@ $R_1 = \unit{985 \pm 9}{\ohm}$ & $R_3 = \unit{4.65 \pm 0.07}{\mega\ohm}$ & $R_{t
 \end{tabular}
 \end{table}
 
-Si è indicato con $R_{trim}$ la resistenza del trimmer al punto di lavoro fissato (si veda paragrafo seguente).
+Si è indicato con $R_{trim}$ la resistenza del potenziometro al punto di lavoro fissato (si veda paragrafo seguente).
 
 \begin{figure}[h!]
 	\centering
@@ -126,7 +132,7 @@ Si è indicato con $R_{trim}$ la resistenza del trimmer al punto di lavoro fissa
 %\end{tabular}
 %\end{table}
 
-\paragraph{Verifica del punto di lavoro} Si è misurato inoltre $V_{GS} = \unit{650 \pm 4}{\milli\volt}$ e si è calcolato il valore atteso per la corrente di drain $I_D$ secondo la formula:
+Si è misurato inoltre $V_{GS} = \unit{650 \pm 4}{\milli\volt}$ e si è calcolato il valore atteso per la corrente di drain $I_D$ secondo la formula:
 \begin{equation*}
 I_D = \frac{I_{DSS}}{V_P^2}(V_{GS} - V_P)^2
 \end{equation*}
@@ -154,43 +160,41 @@ Si è misurato il guadagno in risposta a segnali sinusoidali di frequenza fissa 
 		\caption{source follower}
 			\label{infase}
 	\end{minipage}
-
 \end{figure}
 
 \paragraph{Guadagno e linearità del circuito} Si è fittato il guadagno in tensione del circuito $|A_V|$ ottenendo i seguenti risultati:
+
 \begin{table}[h!]
 	\centering
-	\begin{tabular}{cccc}
+	\begin{tabular}{c|ccc}
 		common source & $|A_v| = 1.996 \pm 0.019$ & intercetta: $\unit{0.005 \pm 0.008}{\volt}$ & $\chi^2 / ndof = 25.5 / 22$\\
 		source follower &	$|A_v| = 0.470 \pm 0.005$ & intercetta: $\unit{0.0025 \pm 0.0012}{\volt}$ & $\chi^2 / ndof = 21.3 / 23$
 	\end{tabular}
 \end{table}
 
 Il valore atteso dalla teoria è di
-
 \begin{table}[h!]
 	\centering
-	\begin{tabular}{cc}
-		common source & $|A_v|^{exp} =g_mR_D/(1+g_mR_S) = 1.989 \pm 0.027$ \\
-		source follower &	$|A_v|^{exp} =g_mR_S/(1+g_mR_S) = 0.493 \pm 0.005$
+	\begin{tabular}{c|c}
+		common source & $|A_v|^{exp} =g_mR_1/(1+g_mR_{trim}) = 1.989 \pm 0.027$ \\
+		source follower &	$|A_v|^{exp} =g_mR_1/(1+g_mR_{trim}) = 0.493 \pm 0.005$
 	\end{tabular}
 \end{table}
 
 Il primo è in accordo con il valore misurato, mentre non lo è il secondo. Sospettiamo che possa essere imputato a piccole variazioni del valore della resistenza del trimmer che è stata misurata nel corso della presa dati.
-
-I grafici dei fit sono riportati di seguito, mentre i dati raccolti sono in appendice in \tablename{\ref{tab:commonsource}} e \tablename{\ref{tab:sourcefollower}}
+I grafici dei fit sono riportati di seguito, mentre i dati raccolti sono in appendice in \tablename{\ref{tab:commonsource}} e \tablename{\ref{tab:sourcefollower}}.
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.8\textwidth]{../grafici/fit_guadagnovstensione.pdf}
+	\includegraphics[width=0.75\textwidth]{../grafici/fit_guadagnovstensione.pdf}
 	\caption{Grafico del fit del guadagno del circuito common source}
 \end{figure}
+\pagebreak
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.8\textwidth]{../grafici/fit_guadagnovstensione2.pdf}
+	\includegraphics[width=0.75\textwidth]{../grafici/fit_guadagnovstensione2.pdf}
 	\caption{Grafico del fit del guadagno del circuito source follower}
 \end{figure}
-
  Si può affermare che la linearità è preservata per le tensioni d'ingresso che non portano il transistor in clipping.
   
  \paragraph{Clipping}
@@ -202,7 +206,7 @@ Per intensità maggiori si osserva che l'uscita è tagliata dall'alto nel common
 	\begin{minipage}{0.49\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../oscilloscopio/clipalto.jpg}
-		\caption{Clipping common source}
+		\caption{Clipping common source}                                                                          
 			\label{fig:clippingalto}
 	\end{minipage}
 	\begin{minipage}{0.49\textwidth}
@@ -213,33 +217,42 @@ Per intensità maggiori si osserva che l'uscita è tagliata dall'alto nel common
 	\end{minipage}
 \end{figure}
 
-\section{Impedenza d'ingresso}
+\section{Impedenza d'ingresso}                                                                                                                                 
+Si è cercato di misurare l'impedenza di ingresso del circuito per segnali a frequenza
+$f_1 = \unit{1.011 \pm 0.010}{k\hertz}$ e $f_2= \unit{10.04 \pm 0.10}{k\hertz}$.
 
-\paragraph{Impedenza a $\unit{1}{\kilo\hertz}$} Si è misurata la caduta di potenziale su una resistenza $R_S = \unit{677 \pm 6}{\kilo\ohm}$ in serie al circuito, misurando il potenziale riferito a terra prima e dopo la resistenza.
+A questo scopo si è misurata la caduta di potenziale su una resistenza $R_S = \unit{677 \pm 6}{\kilo\ohm}$ (nel caso dei segnali a $\unit{1}{k\hertz}$) e $R_S' = \unit{178.1 \pm 2.7}{\kilo\ohm}$ (per i segnali a $\unit{10}{k\hertz}$) in serie al circuito, misurando il potenziale riferito a terra prima e dopo la resistenza.
+
 I due potenziali sono:
 \begin{table}[h!]
 	\centering
-	\begin{tabular}{cc}
-		$V_1 = \unit{2.80 \pm 0.10}{\volt}$  & $V_2 = \unit{1.42 \pm 0.05}{\volt}$
+	\begin{tabular}{c|cc}
+		$\unit{1}{k\hertz}$ & $V_1 = \unit{2.80 \pm 0.10}{\volt}$  & $V_2 = \unit{1.42 \pm 0.05}{\volt}$\\
+		$\unit{10}{k\hertz}$ & $V'_1 = \unit{2.84 \pm 0.10}{\volt}$  & $V'_2 = \unit{1.30 \pm 0.05}{\volt}$
 	\end{tabular}
 \end{table}
 
-Si ottiene infine per il parallelo tra l'impedenza d'ingresso del circuito e l'impedenza di ingresso dell'oscilloscopio un valore di $R_{//}^{1kHz} = \unit{7.0 \pm 0.7}{\kilo\ohm}$, misurata alla stessa frequenza dei punti precedenti, per cui la resistenza di ingresso sarà: 
-
-\paragraph{Impedenza a $\unit{10}{\kilo\hertz}$}  Si è effettuata la misura come nel caso precedente, sostituendo però la resistenza in serie di $R_S$ con $R_S' = \unit{178.1 \pm 2.7}{\kilo\ohm}$.
-I due potenziali sono:
+Per ottenere l'impedenza di ingresso bisognerà tenere conto che $V_2$ è la tensione sul parallelo tra questa e l'impedenza di ingresso dell'oscilloscopio che dalle esperienze precedenti è nota essere pari a $R_O=\unit{1.00 \pm 0.02}{\mega\ohm}$\footnote{Si potrebbe fare a meno di conoscere l'impedenza di ingresso se si fosse misurata la tensione all'output, questo perchè }. Per le impedenze di ingresso si ottiene quindi:
 \begin{table}[h!]
 	\centering
 	\begin{tabular}{cc}
-		$V_1 = \unit{2.80 \pm 0.10}{\volt}$  & $V_2 = \unit{1.420 \pm 0.05}{\volt}$
+	$R_{IN}^{1k} = \unit{2.3 \pm 0.8}{\mega\ohm}$ & $R_{IN}^{10k} = \unit{177 \pm 19}{k\ohm}$
 	\end{tabular}
 \end{table}
 
-Si ottiene infine per l'impedenza d'ingresso alla frequenza di $\unit{10.04 \pm 0.01}{\kilo\hertz}$ $R_{in}^{10kHz} = \unit{150 \pm 3}{\kilo\ohm}$.
+Nel caso teorico ideale l'impedenza di ingresso del transistor è infinita e l'impedenza del circuito dovrebbe essere pari a $R_G$ cioè $\sim\unit{4.7}{\mega\ohm}$, è evidente però che in questo caso questa approssimazione non è applicabile e che l'impedenza di ingresso del transistor è complessa, dovuta evidentemente alla capacità delle giunzioni. Nell'ipotesi che l'impedenza del transistor sia totalmente dovuta ad una capacità e che la resistenza di source $R_{trim}$ in serie sia trascurabile, si ottiene una stima della capacità di:
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{cc}
+		$C^{1k} = \unit{6.0 \pm 2.7}{\pico\farad}$ & $C^{10k} = \unit{9.0 \pm 1.0}{\pico\farad}$
+	\end{tabular}
+\end{table}
+
+Questi valori sono compatibili fra loro entro $\sim 1\sigma$ e sono comparabili alla capacità totale del transistor dichiarata sul datasheet (valore tipico di $\sim \unit{3}{\pico\farad}$ e massimo di $\sim \unit{12}{\pico\farad}$).
 
 \section{Aumento del guadagno}
 
-Si è proceduto alla ricerca della massima amplificazione modificando il punto di lavoro attraverso la rotazione del potenziometro, nel farlo si è usata una tensione di ingresso abbastanza bassa per non avere clipping su tutto il range.
+Si è proceduto alla ricerca della massima amplificazione modificando il punto di lavoro attraverso la rotazione del potenziometro.
     
 Teoricamente ci aspettiamo che il massimo sia raggiunto per il valore minimo della resistenza del potenziometro.
 Il guadagno è infatti dato da $|A_v| =g_mR_D/(1+g_mR_S)$: per $R_S\sim\unit{0}{\ohm}$ ho il valore massimo di corrente di drain e conseguentemente il massimo valore di $g_m = 2 \sqrt{(I_{DSS}*I_D)}/|V_P|$, inoltre ho il minimo del denominatore per cui il guadagno diventa:
@@ -253,6 +266,8 @@ I risultati delle misure sono stati:
 		$V_{IN}=\unit{740 \pm 20}{m\volt}$ & $V_{OUT} = \unit{3.60 \pm 0.09}{\volt}$ & $|A_v| = 4.86 \pm 0.18$\\
 	\end{tabular}
 \end{table}
+
+I valori misurati si discostano da quelli attesi perché, per $R_S \sim 0$, il segnale in uscita andava in clipping, e dunque riduceva necessariamente il valore del guadagno rispetto a quello atteso, in questo regime infatti la formula usata per la transconduttanza non è più valida.
 
 \pagebreak
 \section{Appendice: Dati}

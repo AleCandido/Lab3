@@ -1,7 +1,7 @@
 from pylab import *
-#path = "C:\\Users\\Roberto\\Documents\\GitHub\\Lab3\\"
+path = "C:\\Users\\Roberto\\Documents\\GitHub\\Lab3\\"
 #path = "C:\\Users\\Studenti\\Desktop\\Lab3\\"
-path = "/home/alessandro/Documents/Università/3°anno/Laboratorio3/Lab3/"
+#path = "/home/alessandro/Documents/Università/3°anno/Laboratorio3/Lab3/"
 sys.path = sys.path + [path]
 from analyzer import *
 import uncertainties
@@ -50,7 +50,7 @@ titolo="$V_{OUT}$ vs $V_{IN}$"
 Xlab="Tensione in ingresso $V_{IN}$ [$V$]"
 Ylab="Tensione in uscita $V_{OUT}$ [$V$]"
 
-tab=["$V_{IN}$","$V_{OUT}$"]
+tab=["$V_{IN} [$V$]$","$V_{OUT}$ [$V$]"]
 
 fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,table=True,tab=tab)
 
@@ -98,7 +98,7 @@ titolo="$V_{OUT}$ vs $V_{IN}$"
 Xlab="Tensione in ingresso $V_{IN}$ [$V$]"
 Ylab="Tensione in uscita $V_{OUT}$ [$V$]"
 
-tab=["$V_{IN}$","$V_{OUT}$"]
+tab=["$V_{IN}$ [$V$]","$V_{OUT}$ [$V$]"]
 
 fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,table=True,tab=tab)
 
@@ -142,34 +142,34 @@ p0=[1,1]
 unit=["volt","ampere_anal"]
 
 titolo=""
-Xlab="$V_{GS}$"
-Ylab="$I_D$"
+Xlab="$V_{GS}$~[$V$]"
+Ylab="$I_D$~[$A$]"
 
 tab=["",""]
 
-#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,preplot=True,tab=tab)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,preplot=True,tab=tab)
 
 ###########################################################################
 
 file="carattx2"
 
 def f(x, a, x0):
-    return a*(x - x0)**2
+    return a*(x - x0)**2/1000
 
 p0=[1,1]
 
 def XYfun(a):
-    return a[0],a[1]
+    return -a[0],a[1]/1000
 
 unit=["volt","ampere_anal"]
 
 titolo="Curva caratteristica di gate del JFET"
-Xlab="$V_{GS}$"
-Ylab="$I_D$"
-xlimp=[99,101]
+Xlab="Tensione Gate-SOurce $V_{GS}$ [$V$]"
+Ylab="Corrente di Drain $I_D$ [$mA$]"
+xlimp=[101,99]
 tab=["",""]
 
-#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,preplot=True,tab=tab,xlimp=xlimp)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,preplot=True,tab=tab,xlimp=xlimp)
 
 ###########################################################################
 
@@ -182,15 +182,15 @@ def f(x, a, b):
 p0=[1,1]
 
 def XYfun(a):
-    return a[0],a[1]
+    return -a[0],a[1]
 
 unit=["volt","ampere"]
 
 titolo="Curva caratteristica di gate del JFET"
-Xlab="$V_{GS}$"
-Ylab="$I_D$"
+Xlab="$Tensione Gate-Source V_{GS} [$V$]$"
+Ylab="$Corrente di Drain I_D [$A$]$"
 
-tab=["$V_{GS}$","$I_D$"]
+tab=["-$V_{GS}$ [$V$]","$I_D$ [$A$]"]
 
 fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,preplot=True,scarti=True,tab=tab, table=True)
 
