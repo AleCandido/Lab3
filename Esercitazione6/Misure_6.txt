@@ -106,7 +106,6 @@ R2 = 9.95e3
 R1 = 984
 
 ---> a.
- = 976e-3
 
 freq.		sfasamento	vout	vin
 11.50		41.4e-3		9.84	976e-3
