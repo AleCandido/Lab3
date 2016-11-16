@@ -1,11 +1,11 @@
 from pylab import *
-path = "C:\\Users\\Roberto\\Documents\\GitHub\\Lab3\\"
+#path = "C:\\Users\\Roberto\\Documents\\GitHub\\Lab3\\"
 #path = "C:\\Users\\Studenti\\Desktop\\Lab3\\"
-#path = "/home/alessandro/Documents/Università/3°anno/Laboratorio3/Lab3/"
+path = "/home/alessandro/Documents/Università/3°anno/Laboratorio3/Lab3/"
 sys.path = sys.path + [path]
 from analyzer import *
 import uncertainties
-dir= path + "Esercitazione6\\"
+dir= path + "Esercitazione6/"
 ###########################################################################
 
 #GUADAGNO AMPLIFICATORE INVERTENTE#
@@ -84,21 +84,21 @@ tab=["$V_{OUT}$ [$V$]","Freq. di taglio [Hz]"]
 
 ###########################################################################
 
-#PASSA BASSO MODULO#
+#INTEGRATORE MODULO#
 
 file="low_pass"
 fig = "module_low_pass"
-def f(x, a , b, c):
-    return a*1/(1+(x/b)**c)
+def f(x, a , b):
+    return a*1/(1+x/b)
 
-p0=[1,1,1]
+p0=[1,1]
 
 def XYfun(a):
     return a[0],a[2]/a[3]
 
 unit=["tempo_osc","tempo_osc","volt_osc","volt_osc"]
 
-titolo="Diagramma di bode - passa basso"
+titolo="Diagramma di bode - integratore"
 Xlab="Frequenza [Hz]"
 Ylab="Guadagno"
 
@@ -108,21 +108,22 @@ tab=["Frequenza [Hz]","Sfasamento [s]","$V_{OUT}$ [$V$]","$V_{IN}$ [$V$]"]
 
 ###########################################################################
 
-#PASSA BASSO FASE#
+#INTEGRATORE FASE#
 
 file="low_pass"
 fig = "phase_low_pass"
 def f(x, a,b):
-    return arctan(a*x)+b
+    return arctan(x/a) + b
+
 
 p0=[1,1]
 
 def XYfun(a):
-    return a[0],pi*a[1]*a[0]
+    return a[0],2*pi*(a[1]*a[0] - 1/2)
 
 unit=["tempo_osc","tempo_osc","volt_osc","volt_osc"]
 
-titolo="Diagramma di bode - passa basso"
+titolo="Diagramma di bode - integratore"
 Xlab="Frequenza [Hz]"
 Ylab="Fase [rad]"
 
@@ -130,7 +131,7 @@ Ylab="Fase [rad]"
 
 ###########################################################################
 
-#PASSA ALTO MODULO#
+#DERIVATORE MODULO#
 
 file="high_pass"
 fig="module_high_pass"
@@ -144,7 +145,7 @@ def XYfun(a):
 
 unit=["tempo_osc","volt_osc","volt_osc","tempo_osc"]
 
-titolo="Diagramma di bode - passa alto"
+titolo="Diagramma di bode - derivatore"
 Xlab="Frequenza [Hz]"
 Ylab="Guadagno"
 
@@ -154,24 +155,24 @@ tab=["Frequenza [Hz]","$V_{IN}$ [$V$]","$V_{OUT}$ [$V$]","Sfasamento [s]"]
 
 ###########################################################################
 
-#PASSA ALTO FASE#
+#DERIVATORE FASE#
 
 file="high_pass"
 fig="phase_high_pass"
-def f(x, a,b):
-    return arctan(a*x)+b
+def f(x, a, b, c):
+    return arctan((a/x - x)/b) + c
 
-p0=[1,1]
+p0=[2.18e5, 3e3,0]
 
 def XYfun(a):
-    return a[0],a[3]*a[0]
+    return a[0], pi/2*(1-a[3]*a[0])
 
 unit=["tempo_osc","volt_osc","volt_osc","tempo_osc"]
 
-titolo="Diagramma di bode - passa alto"
+titolo="Diagramma di bode - derivatore"
 Xlab="Frequenza [Hz]"
 Ylab="Fase [rad]"
 
-#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun, preplot = True, Xscale="log",fig=fig)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun, Xscale="log", preplot = True,fig=fig, scarti=True)
 
 ###########################################################################
