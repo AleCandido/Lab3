@@ -54,11 +54,11 @@ Ylab="Guadagno"
 
 tab=["Frequenza [Hz]","$V_{OUT}$ [$V$]"]
 xlimp=[100,110]
-#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,table=True,tab=tab, Xscale="log",Yscale="log",xlimp=xlimp)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,table=True,tab=tab, Xscale="log",Yscale="log",xlimp=xlimp)
 
 ###########################################################################
 
-#40 Db ??#
+#20 Db ??#
 
 file="30db"
 fig="rette"
@@ -80,11 +80,11 @@ Ylab="Guadagno $A_v$ [dB]"
 
 tab=["Frequenza [Hz]","$V_{OUT}$ [$V$]"]
 
-#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,xlimp=[98,101],fig=fig)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,xlimp=[98,101],fig=fig)
 
 ###########################################################################
 
-#20 Db ??#
+#20 Db !?!? - LA VENDETTA#
 
 file="20db"
 fig="rette"
@@ -132,10 +132,10 @@ Ylab="Guadagno [dB]"
 
 tab=["$V_{OUT}$ [$V$]","Freq. di taglio [Hz]"]
 
-#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun, table=True,tab=tab)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun, table=True,tab=tab)
 a = uncertainties.ufloat(-20.49 , 0.21)
 b = uncertainties.ufloat(128.8 , 0.9)
-#print ("Prodotto gain-bandwidth =", 10**(-b/a))
+print ("Prodotto gain-bandwidth =", 10**(-b/a))
 ###########################################################################
 
 #INTEGRATORE MODULO#
@@ -227,6 +227,6 @@ titolo="Diagramma di bode - derivatore"
 Xlab="Frequenza [Hz]"
 Ylab="Fase [rad]"
 
-fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun, Xscale="log", fig=fig)
+#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun, Xscale="log", fig=fig)
 
 ###########################################################################
