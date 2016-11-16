@@ -1,7 +1,7 @@
 #vout		freq.taglio
 #76e-3		898e3		#\pm 3% sulla frequenza di taglio
 336e-3		261e3		
-544e-3		161e3
+544e-3		151e3
 740e-3		114e3
 1.12		79.5e3
 1.64		57.1e3
