@@ -900,14 +900,16 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 	#Plotto il grafico con il fit e gli scarti
 	
 	figure(fig+"_1")
-	
+	if scarti==True:
+		subplot(211)
 	title(titolo)
 	if Xscale=="log":
 		xscale("log")
 	if Yscale=="log":
 		yscale("log")
 	errorbar(X,Y,dY,dX, fmt=",",ecolor="black",capsize=0.5)
-	xlabel(Xlab)
+	if scarti==False :
+		xlabel(Xlab)
 	ylabel(Ylab)
 	xlima = array(xlimp)/100
 	if Xscale=="log":
@@ -920,8 +922,8 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 	savefig(directory+"grafici/fit_"+fig+".png")
 	
 	if scarti==True:
-		figure(fig+"_2")
-		title("Scarti normalizzati")
+		subplot(212)
+		#title("Scarti normalizzati")
 		xlabel(Xlab) #
 		ylabel("Scarti normalizzati")
 		if Xscale=="log":
