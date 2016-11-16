@@ -89,14 +89,14 @@ tab=["$V_{OUT}$ [$V$]","Freq. di taglio [Hz]"]
 file="low_pass"
 fig = "module_low_pass"
 def f(x, a , b):
-    return a*1/(1+x/b)
+    return a*1/(1+(x/b)**2)**0.5
 
 p0=[1,1]
 
 def XYfun(a):
     return a[0],a[2]/a[3]
 
-unit=["tempo_osc","tempo_osc","volt_osc","volt_osc"]
+unit=["tempo_osc","volt_osc_nocal","volt_osc","volt_osc"]
 
 titolo="Diagramma di bode - integratore"
 Xlab="Frequenza [Hz]"
@@ -104,7 +104,7 @@ Ylab="Guadagno"
 
 tab=["Frequenza [Hz]","Sfasamento [s]","$V_{OUT}$ [$V$]","$V_{IN}$ [$V$]"]
 
-#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,table=True,tab=tab, Xscale="log",Yscale="log",fig=fig)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,table=True,tab=tab, Xscale="log",Yscale="log",fig=fig)
 
 ###########################################################################
 
@@ -135,10 +135,10 @@ Ylab="Fase [rad]"
 
 file="high_pass"
 fig="module_high_pass"
-def f(x, a, b, c, d, e):
-    return a*1/(1+(b/x)**d)*1/(1+(x/c)**e)
+def f(x, a, b, c):
+    return a*(1/(1+(b/x)**2)*1/(1+(x/c)**2))**0.5
 
-p0=[10,2e2,2e5,2,2]
+p0=[10,2e2,1.89e5]
 
 def XYfun(a):
     return a[0],a[2]/a[1]
@@ -151,7 +151,7 @@ Ylab="Guadagno"
 
 tab=["Frequenza [Hz]","$V_{IN}$ [$V$]","$V_{OUT}$ [$V$]","Sfasamento [s]"]
 
-#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,table=True,tab=tab, Xscale="log",Yscale="log",fig=fig)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,table=True,tab=tab, Xscale="log",Yscale="log",fig=fig)
 
 ###########################################################################
 
@@ -167,7 +167,7 @@ p0=[2.18e5, 3e3,0]
 def XYfun(a):
     return a[0], pi/2*(1-a[3]*a[0])
 
-unit=["tempo_osc","volt_osc","volt_osc","tempo_osc"]
+unit=["tempo_osc","volt_osc","volt_osc","volt_osc_nocal"]
 
 titolo="Diagramma di bode - derivatore"
 Xlab="Frequenza [Hz]"
