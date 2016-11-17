@@ -28,7 +28,7 @@ Ylab="Tensione di output $V_{OUT}$ [$V$]"
 
 tab=["$V_{IN}$ [$V$]","$V_{OUT}$ [$V$]"]
 
-#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,table=True,tab=tab)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,table=True,tab=tab)
 
 ###########################################################################
 
@@ -106,7 +106,7 @@ Ylab="Guadagno $A_v$ [dB]"
 
 tab=["Frequenza [Hz]","$V_{OUT}$ [$V$]"]
 
-#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,xlimp=[99,102],fig=fig)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,xlimp=[99,102],fig=fig)
 
 ###########################################################################
 
@@ -181,7 +181,7 @@ titolo="Diagramma di bode - integratore"
 Xlab="Frequenza [Hz]"
 Ylab="Fase [rad]"
 
-#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun, Xscale="log",fig=fig)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun, Xscale="log",fig=fig)
 
 ###########################################################################
 
@@ -227,6 +227,6 @@ titolo="Diagramma di bode - derivatore"
 Xlab="Frequenza [Hz]"
 Ylab="Fase [rad]"
 
-#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun, Xscale="log", fig=fig)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun, Xscale="log", fig=fig)
 
 ###########################################################################

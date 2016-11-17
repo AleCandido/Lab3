@@ -26,6 +26,6 @@ Ylab=""
 
 tab=["",""]
 
-fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,preplot="true",scarti="true",tabella="true",tab=tab)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun)
 
 ###########################################################################
