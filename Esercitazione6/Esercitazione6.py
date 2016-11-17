@@ -1,7 +1,7 @@
 from pylab import *
-path = "C:\\Users\\Roberto\\Documents\\GitHub\\Lab3\\"
+#path = "C:\\Users\\Roberto\\Documents\\GitHub\\Lab3\\"
 #path = "C:\\Users\\Studenti\\Desktop\\Lab3\\"
-#path = "/home/alessandro/Documents/Università/3°anno/Laboratorio3/Lab3/"
+path = "/home/alessandro/Documents/Università/3°anno/Laboratorio3/Lab3/"
 sys.path = sys.path + [path]
 from analyzer import *
 import uncertainties
@@ -28,7 +28,7 @@ Ylab="Tensione di output $V_{OUT}$ [$V$]"
 
 tab=["$V_{IN}$ [$V$]","$V_{OUT}$ [$V$]"]
 
-#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,table=True,tab=tab)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,table=True,tab=tab)
 
 ###########################################################################
 
@@ -54,7 +54,7 @@ Ylab="Guadagno"
 
 tab=["Frequenza [Hz]","$V_{OUT}$ [$V$]"]
 xlimp=[100,110]
-#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,table=True,tab=tab, Xscale="log",Yscale="log",xlimp=xlimp)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,table=True,tab=tab, Xscale="log",Yscale="log",xlimp=xlimp)
 
 ###########################################################################
 
@@ -80,7 +80,7 @@ Ylab="Guadagno $A_v$ [dB]"
 
 tab=["Frequenza [Hz]","$V_{OUT}$ [$V$]"]
 
-#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,xlimp=[98,101],fig=fig)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,xlimp=[98,101],fig=fig)
 
 ###########################################################################
 
@@ -106,7 +106,7 @@ Ylab="Guadagno $A_v$ [dB]"
 
 tab=["Frequenza [Hz]","$V_{OUT}$ [$V$]"]
 
-#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,xlimp=[99,102],fig=fig)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,xlimp=[99,102],fig=fig)
 
 ###########################################################################
 
