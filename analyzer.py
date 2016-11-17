@@ -784,78 +784,74 @@ def xep(x, e, pm='+-'):
 	"""
 	return _util_format_vect(x, e, pm, True)
 
-####################################################################################################################################
-####################################################################################################################################
+#########################################################################################################
+#########################################################################################################
 
 def XYfunction(a): #formula per il calcolo della X dalle colonne del file in input
 	return a[0], a[1]
 
+def fast_plot(directory, file, units, titolo="", Xlab="", Ylab="", XYfun=XYfunction,Xscale="linear",Yscale="linear", fig="^^", out=False):
+	if out==True :
+		file = file +"_ol"
+	columns = loadtxt(directory+"data/"+file+".txt", unpack = True)
+	if type(columns[0]) is numpy.float64:
+		columns=array(transpose(matrix(columns)))
+		
+	dcolumns = zeros((len(columns),len(columns[0])))	
+	for i in range(len(columns)):
+		if units[i]=="volt_osc":
+			dcolumns[i]=columns[i]*0.035
+		elif units[i]=="volt_osc_nocal":
+			dcolumns[i]=columns[i]*0.025
+		elif units[i]=="tempo_osc":
+			dcolumns[i]=columns[i]*0.01
+		else:
+			dcolumns[i]=mme(columns[i],units[i])
+	
+	entries = unumpy.uarray(columns,dcolumns)
+	
+	X_err = XYfun(entries)[0]
+	Y_err = XYfun(entries)[1]
+	
+	X=unumpy.nominal_values(X_err)
+	Y=unumpy.nominal_values(Y_err)
+	dX=unumpy.std_devs(X_err)
+	dY=unumpy.std_devs(Y_err)
+
+	if fig=="^^":
+		fig=file
+	if out==True:
+		figure(fig+"_1")
+	else:
+		figure(fig+"_2")
+	if (fig == file or out != True):
+		clf()
+		grid(b=True)
+	if out==False:
+		title(titolo)
+		xlabel(Xlab)
+		ylabel(Ylab)
+	if Xscale=="log":
+		xscale("log")
+	if Yscale=="log":
+		yscale("log")
+	grid(b=True)
+	if out ==True:
+		
+		outlier = errorbar(X,Y,dY,dX, fmt="gx",ecolor="black",capsize=0.5)
+		plt.legend([outlier], ['outlier'], loc="best")
+	else:
+		errorbar(X,Y,dY,dX, fmt=",",ecolor="black",capsize=0.5)
+	if out!=True:
+		savefig(directory+"grafici/fast_plot_"+fig+".pdf")
+		savefig(directory+"grafici/fast_plot_"+fig+".png")
+
 #Load txt
-def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunction, preplot=False, Xscale="linear",Yscale="linear", xlimp = array([100.,100.]),scarti=False,table=False,tab=[""], fig="^^"):
-	
-	"""
-	Ho modificato la funzione ma non mi va di modificare l'help
-	Esegue fit dei dati grezzi, plotta il grafico relativo, restituisce i risultati del fit.
-	Optional: plotta scarti, salva codice tabella
-	
-		Parameters
-		----------
-		directory : stringa
-			La directory della cartella dell'esercitazione
-		file : stringa
-			Il nome del file .txt (senza il .txt) dei dati grezzi
-		a_unit : stringa
-			L'unità di misura della prima colonna del file dei dati grezzi (unità usate in mme())
-		b_unit : stringa
-			L'unità di misura della seconda colonna del file dei dati grezzi (unità usate in mme())
-		f : funzione
-			la funzione da fittare
-		p0 : array di n elementi (dove n è il numero di parametri di f)
-			parametri iniziali per il fit
-		titolo : stringa
-			Titolo del plot
-		Xlab : stringa
-			etichetta asse X
-		Ylab : stringa
-			etichetta asse Y
-		Xfun : funzione di due parametri (a, b), optional
-			funzione di due parametri (a, b), rispettivamente prima e seconda colonna dei dati grezzi, 
-			esprime la relazione tra le X e i dati grezzi (di default è la prima colonna)
-		Yfun : funzione di due parametri (a, b), optional
-			funzione di due parametri (a, b), rispettivamente prima e seconda colonna dei dati grezzi, 
-			esprime la relazione tra le Y e i dati grezzi (di default è la seconda colonna)
-		Xerr : funzione di 4 parametri (a, b, da, db), optional
-			funzione di 4 parametri (a, b, da, db), rispettivamente prima e seconda colonna dei dati grezzi, e rispettivi errori, 
-			esprime la propagazione dell'errore sul calcolo delle X (di default è l'errore sulla prima colonna)
-		Yerr : funzione di 4 parametri (a, b, da, db), optional
-			funzione di 4 parametri (a, b, da, db), rispettivamente prima e seconda colonna dei dati grezzi, e rispettivi errori, 
-			esprime la propagazione dell'errore sul calcolo delle Y (di default è l'errore sulla seconda colonna)
-		preplot : boolean, optional
-			serve a stampare un fast_plot dei dati grezzi in caso di necessità (ex il fit non funge), di default false
-		Xscale : linear / log, optional
-			cambia la scala dell'asse X nei plot, di default linear
-		Yscale : linear / log, optional
-			cambia la scala dell'asse Y nei plot, di default linear
-		xlimp : array di 2 elementi
-			cambia l'estensione della curva di fit in percentuale, rispetto all'estensione dei punti misurati
-		scarti : boolean, optional
-			stampa e salva il plot degli scarti normalizzati
-		table : boolean, optional
-			salva txt del codice latex per la tabella dei dati grezzi, di default false
-		Xtab : stringa, optional
-			Intestazione della prima colonna della tabella, di default è l'etichetta dell'asse X del plot
-		Ytab : stringa, optional
-			Intestazione della seconda colonna della tabella, di default è l'etichetta dell'asse Y del plot
-		fig : stringa, optional
-			nome della figura, utile per sovrapporre grafici di fit diversi
-			
-		Returns
-		-------
-	"""
+def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunction, preplot=False, Xscale="linear",Yscale="linear", xlimp = array([100.,100.]),scarti=False,table=False,tab=[""], fig="^^",out=False):
 	
 	columns = loadtxt(directory+"data/"+file+".txt", unpack = True)
-#	ol = loadtxt(directory+"data/"+file+"_ol.txt", unpack = True)
-
+	if type(columns[0]) is numpy.float64:
+		columns=array(transpose(matrix(columns)))
 	dcolumns = zeros((len(columns),len(columns[0])))
 	for i in range(len(columns)):
 		if units[i]=="volt_osc":
@@ -881,7 +877,10 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 		fig=file
 	
 	if preplot==True :
-		figure(fig+"_3")
+		figure(fig+"_2")
+		if (fig == file):
+			clf()
+			grid(b=True)
 		title(titolo)
 		xlabel(Xlab)
 		ylabel(Ylab)
@@ -889,7 +888,7 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 			xscale("log")
 		if Yscale=="log":
 			yscale("log")
-		grid()
+		grid(b=True)
 		errorbar(X,Y,dY,dX, fmt=",",ecolor="black",capsize=0.5)
 		savefig(directory+"grafici/fast_plot_"+fig+".pdf")
 		savefig(directory+"grafici/fast_plot_"+fig+".png")
@@ -898,10 +897,17 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 	par, cov = fit_generic_xyerr2(f,X,Y,dX,dY,p0)
 
 	#Plotto il grafico con il fit e gli scarti
-	
-	figure(fig+"_1")
+	from matplotlib import gridspec
+	from matplotlib import pyplot
+	gs = gridspec.GridSpec(4, 1)
+	gne=figure(fig+"_1")
+	if (fig == file):
+		clf()
+		grid(b=True)
 	if scarti==True:
-		subplot(211)
+		ax1 = gne.add_subplot(gs[:-1,:])
+		pyplot.setp(ax1.get_xticklabels(), visible=False)
+		#subplot(211)
 	title(titolo)
 	if Xscale=="log":
 		xscale("log")
@@ -912,27 +918,68 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 		xlabel(Xlab)
 	ylabel(Ylab)
 	xlima = array(xlimp)/100
-	if Xscale=="log":
-		l=logspace(log10(min(X))*xlima[0],log10(max(X)*xlima[1]),1000)
+	
+	#Perdonatemi per la schifezza che sto per scrivere#
+	
+	if out ==True:
+		olcolumns = loadtxt(directory+"data/"+file+"_ol.txt", unpack = True)
+		if type(olcolumns[0]) is numpy.float64:
+			olcolumns=array(transpose(matrix(olcolumns)))
+		oldcolumns = zeros((len(olcolumns),len(olcolumns[0])))
+		for i in range(len(olcolumns)):
+			if units[i]=="volt_osc":
+				oldcolumns[i]=olcolumns[i]*0.035
+			elif units[i]=="volt_osc_nocal":
+				oldcolumns[i]=olcolumns[i]*0.025
+			elif units[i]=="tempo_osc":
+				oldcolumns[i]=olcolumns[i]*0.01
+			else:
+				oldcolumns[i]=mme(olcolumns[i],units[i])
+		
+		olentries = unumpy.uarray(olcolumns,oldcolumns)
+		
+		olX_err = XYfun(olentries)[0]
+		olY_err = XYfun(olentries)[1]
+		
+		X_ol=unumpy.nominal_values(olX_err)
+		Y_ol=unumpy.nominal_values(olY_err)
+		dX_ol=unumpy.std_devs(olX_err)
+		dY_ol=unumpy.std_devs(olY_err)
+	
+		smin=min(min(X_ol),min(X))
+		smax=max(max(X_ol),max(X))
 	else:
-		l=linspace(min(X)*xlima[0],max(X)*xlima[1],1000)
-	grid()
+		smin = min(X)
+		smax = max(X)
+		
+	#
+	
+	if Xscale=="log":
+		l=logspace(log10(smin)*xlima[0],log10(smax*xlima[1]),1000)
+	else:
+		l=linspace(smin*xlima[0],smax*xlima[1],1000)
+	grid(b=True)
 	plot(l,f(l,*par),"red")
 	savefig(directory+"grafici/fit_"+fig+".pdf")
 	savefig(directory+"grafici/fit_"+fig+".png")
+	if out==True:
+		fast_plot(directory, file, units, titolo, Xlab, Ylab, XYfun, Xscale=Xscale,Yscale=Yscale, fig=fig, out=True)
 	
 	if scarti==True:
-		subplot(212)
+		#subplot(212)
+		ax2 = gne.add_subplot(gs[3,:], sharex=ax1)
+		pyplot.rc('ytick', labelsize=12)
 		#title("Scarti normalizzati")
 		xlabel(Xlab) #
-		ylabel("Scarti normalizzati")
+		ylabel("Scarti")
 		if Xscale=="log":
 			xscale("log")
-		grid()
 		plot(X, (Y-f(X,*par))/dY, ".", color="blue")
+
+		if out ==True:
+			plot(X_ol, (Y_ol-f(X_ol,*par))/dY_ol, ".", color="blue")
 		savefig(directory+"grafici/scarti_"+fig+".pdf")
 		savefig(directory+"grafici/scarti_"+fig+".png")
-	
 	
 	#Calcolo chi, errori e normalizzo la matrice di cov
 	
@@ -947,6 +994,7 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 			normcov[i,j]=cov[i, j]/(sigma[i]*sigma[j])
 			
 	#Stampo i risultati, il chi e la matrice di cov
+	print("_________________________________________________________")
 	print("\nFIT RESULT %s\n" % file)
 	for i in range(len(par)):
 		print("p%s = %s" % (i,xep(par[i],sigma[i],",")))
@@ -974,4 +1022,3 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 				text_file.write("\\\\\n")
 			text_file.write("\\end{tabular}")
 			text_file.close()
-	print("_________________________________________________________")

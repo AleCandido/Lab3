@@ -28,7 +28,7 @@ Ylab="Tensione di output $V_{OUT}$ [$V$]"
 
 tab=["$V_{IN}$ [$V$]","$V_{OUT}$ [$V$]"]
 
-fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,table=True,tab=tab)
+#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,table=True,tab=tab, out=True)
 
 ###########################################################################
 
@@ -54,7 +54,7 @@ Ylab="Guadagno"
 
 tab=["Frequenza [Hz]","$V_{OUT}$ [$V$]"]
 xlimp=[100,110]
-fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,table=True,tab=tab, Xscale="log",Yscale="log",xlimp=xlimp)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,table=True,tab=tab, Xscale="log",Yscale="log",xlimp=xlimp,out=True)
 
 ###########################################################################
 
@@ -124,7 +124,7 @@ p0=[1,1]
 def XYfun(a):
     return unumpy.log10(a[1]),20*unumpy.log10(a[0]/VIN2)
 
-unit=["volt_osc_nocal","volt_osc"]
+unit=["volt_osc_nocal","volt_osc_nocal"]
 
 titolo="Grafico gain-bandwidth"
 Xlab="Frequenza di taglio [decadi]"
@@ -132,10 +132,10 @@ Ylab="Guadagno [dB]"
 
 tab=["$V_{OUT}$ [$V$]","Freq. di taglio [Hz]"]
 
-fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun, table=True,tab=tab)
-a = uncertainties.ufloat(-20.49 , 0.21)
-b = uncertainties.ufloat(128.8 , 0.9)
-print ("Prodotto gain-bandwidth =", 10**(-b/a))
+#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun, table=True,tab=tab, out=True)
+
+(a,b)=uncertainties.correlated_values_norm([(-20.49 , 0.21),(128.8 , 0.8)],  [[ 1. ,-0.99279257],[-0.99279257, 1. ]])
+#print ("Prodotto gain-bandwidth =", 10**(-b/a))
 ###########################################################################
 
 #INTEGRATORE MODULO#
@@ -158,7 +158,7 @@ Ylab="Guadagno"
 
 tab=["Frequenza [Hz]","Sfasamento [s]","$V_{OUT}$ [$V$]","$V_{IN}$ [$V$]"]
 
-fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,table=True,tab=tab, Xscale="log",Yscale="log",fig=fig)
+#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,table=True,tab=tab, Xscale="log",Yscale="log",fig=fig)
 
 ###########################################################################
 
@@ -181,7 +181,7 @@ titolo="Diagramma di bode - integratore"
 Xlab="Frequenza [Hz]"
 Ylab="Fase [rad]"
 
-fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun, Xscale="log",fig=fig)
+#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun, Xscale="log",fig=fig)
 
 ###########################################################################
 
@@ -205,7 +205,7 @@ Ylab="Guadagno"
 
 tab=["Frequenza [Hz]","$V_{IN}$ [$V$]","$V_{OUT}$ [$V$]","Sfasamento [s]"]
 
-fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,table=True,tab=tab, Xscale="log",Yscale="log",fig=fig)
+#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,table=True,tab=tab, Xscale="log",Yscale="log",fig=fig)
 
 ###########################################################################
 
@@ -227,6 +227,6 @@ titolo="Diagramma di bode - derivatore"
 Xlab="Frequenza [Hz]"
 Ylab="Fase [rad]"
 
-fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun, Xscale="log", fig=fig)
+#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun, Xscale="log", fig=fig,out=True)
 
 ###########################################################################
