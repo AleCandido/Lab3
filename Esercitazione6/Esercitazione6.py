@@ -28,7 +28,7 @@ Ylab="Tensione di output $V_{OUT}$ [$V$]"
 
 tab=["$V_{IN}$ [$V$]","$V_{OUT}$ [$V$]"]
 
-#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,table=True,tab=tab, out=True)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,table=True,tab=tab, out=True)
 
 ###########################################################################
 
@@ -54,7 +54,8 @@ Ylab="Guadagno"
 
 tab=["Frequenza [Hz]","$V_{OUT}$ [$V$]"]
 xlimp=[100,110]
-fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,table=True,tab=tab, Xscale="log",Yscale="log",xlimp=xlimp,out=True)
+
+#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,table=True,tab=tab, Xscale="log",Yscale="log",xlimp=xlimp,out=True)
 
 ###########################################################################
 
@@ -80,7 +81,7 @@ Ylab="Guadagno $A_v$ [dB]"
 
 tab=["Frequenza [Hz]","$V_{OUT}$ [$V$]"]
 
-fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,xlimp=[98,101],fig=fig)
+#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,xlimp=[98,101],fig=fig)
 
 ###########################################################################
 
@@ -106,7 +107,7 @@ Ylab="Guadagno $A_v$ [dB]"
 
 tab=["Frequenza [Hz]","$V_{OUT}$ [$V$]"]
 
-fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,xlimp=[99,102],fig=fig)
+#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,xlimp=[99,102],fig=fig)
 
 ###########################################################################
 

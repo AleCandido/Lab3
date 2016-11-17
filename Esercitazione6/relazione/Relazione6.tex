@@ -124,6 +124,28 @@ Cambiando la frequenza del segnale di input si osserva che per frequenze maggior
 \section{Appendice: Dati}
 Si riportano qui le tabelle di dati usati per i fit e i grafici.
 
+\centering
+\begin{figure}[h!]
+	\begin{minipage}[c]{0.33\textwidth}
+		\resizebox{1\textwidth}{!}{
+		\input{../tabelle/tab_inv_amp_gain.txt}}
+		\captionof{table}{Guadagnio amplificatore invertente}
+		\label{tab:inv_amp_gain}
+	\end{minipage}
+	\begin{minipage}[c]{0.33\textwidth}
+		\resizebox{1\textwidth}{!}{
+		\input{../tabelle/tab_inv_amp_f_domain.txt}}
+		\captionof{table}{Risposta in frequenza amplificatore invertente}
+		\label{tab:inv_amp_f_domain}
+	\end{minipage}
+	\begin{minipage}[c]{0.33\textwidth}
+		\resizebox{1\textwidth}{!}{
+			\input{../tabelle/tab_gain_bandwidth.txt}}
+		\captionof{table}{Banda/Guadagno}
+		\label{tab:inv_amp_f_domain}
+	\end{minipage}
+\end{figure}
+
 \begin{figure}[h!]
 	\centering
 	\resizebox{0.7\textwidth}{!}{
@@ -140,21 +162,6 @@ Si riportano qui le tabelle di dati usati per i fit e i grafici.
 	\label{tab:highpass}
 \end{figure}
 
-%\centering
-%\begin{figure}[h!]
-%	\begin{minipage}[t]{0.5\textwidth}
-%		\centering
-%		\resizebox{1\textwidth}{!}{
-%		\input{../tabelle/tab_low_pass.txt}}
-%		\captionof{table}{Dati relativi al circuito integratore}
-%		\label{tab:lowpass}
-%	\end{minipage}
-%	\begin{minipage}[t]{0.5\textwidth}
-%		\resizebox{1\textwidth}{!}{
-%		\input{../tabelle/tab_high_pass.txt}}
-%		\captionof{table}{Dati relativi al circuito integratore}
-%		\label{tab:highpass}
-%	\end{minipage}
-%\end{figure}
+
 
 \end{document}
