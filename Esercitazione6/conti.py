@@ -19,12 +19,26 @@ RS=ufloat(9.96e3,0.09e3)
 
 RIN = (V1-V2)*RS/V2
 
+fsq = ufloat(9.722e3, 97.22)
+Vsqin = ufloat(1.26, 1.26*0.025)
+Vsqom = ufloat(936e-3, 936e-3*0.025)
+
+Vsqo = Vsqin*2*pi/(2*fsq*R2*C)
+Vsqe = Vsqin*(1-e**(-2*pi/(2*fsq*R2*C)))
+
+DVsl = ufloat(22.6, 22.6*0.025)
+Dtsl = ufloat(2.06e-6, 2.06e-8)
+
+maxv = DVsl/Dtsl
+
 f1 = (2*pi*C*R2)**(-1)
 f2 = (2*pi*C*R1)**(-1)
 
 print("\n")
 print("DV = ", DV,"\nDt =", Dt,"\nslew rate:", slew, "\n")
 print("R1 =", R1,"\nR2 =", R2,"\nC =", C)
+print("\nVsq output =", Vsqo, "\nVsqe =", Vsqe)
+print("\nmassima pendenza in uscita =", maxv)
 print("\nfrequenza di taglio integratore:", f1)
 print("frequenza di taglio derivatore:", f2) 
 print("\n")
