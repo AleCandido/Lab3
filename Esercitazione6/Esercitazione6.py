@@ -55,7 +55,7 @@ Ylab="Guadagno"
 tab=["Frequenza [Hz]","$V_{OUT}$ [$V$]"]
 xlimp=[100,110]
 
-fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,table=True,tab=tab, Xscale="log",Yscale="log",xlimp=xlimp,out=True)
+#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,table=True,tab=tab, Xscale="log",Yscale="log",xlimp=xlimp,out=True)
 
 ###########################################################################
 
@@ -81,7 +81,7 @@ Ylab="Guadagno $A_v$ [dB]"
 
 tab=["Frequenza [Hz]","$V_{OUT}$ [$V$]"]
 
-fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,xlimp=[98,101],fig=fig)
+#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,xlimp=[98,101],fig=fig)
 
 ###########################################################################
 
@@ -107,7 +107,7 @@ Ylab="Guadagno $A_v$ [dB]"
 
 tab=["Frequenza [Hz]","$V_{OUT}$ [$V$]"]
 
-fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,xlimp=[99,102],fig=fig)
+#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,xlimp=[99,102],fig=fig)
 
 ###########################################################################
 
@@ -159,7 +159,7 @@ Ylab="Guadagno"
 
 tab=["Frequenza [Hz]","Sfasamento [s]","$V_{OUT}$ [$V$]","$V_{IN}$ [$V$]"]
 
-#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,table=True,tab=tab, Xscale="log",Yscale="log",fig=fig)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,table=True,tab=tab, Xscale="log",Yscale="log",fig=fig)
 
 ###########################################################################
 
@@ -168,13 +168,12 @@ tab=["Frequenza [Hz]","Sfasamento [s]","$V_{OUT}$ [$V$]","$V_{IN}$ [$V$]"]
 file="low_pass"
 fig = "phase_low_pass"
 def f(x, a):
-    return arctan(x/a)
-
+    return arctan(x/a) + pi
 
 p0=[404]
 
 def XYfun(a):
-    return a[0], 2*pi*(a[1]*a[0]-0.5)
+    return a[0], 2*pi*a[1]*a[0]
 
 unit=["tempo_osc","volt_osc_nocal","volt_osc","volt_osc"]
 
@@ -182,7 +181,7 @@ titolo="Diagramma di bode - integratore"
 Xlab="Frequenza [Hz]"
 Ylab="Fase [rad]"
 
-#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun, Xscale="log",fig=fig)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun, Xscale="log",fig=fig)
 
 ###########################################################################
 
@@ -206,7 +205,7 @@ Ylab="Guadagno"
 
 tab=["Frequenza [Hz]","$V_{IN}$ [$V$]","$V_{OUT}$ [$V$]","Sfasamento [s]"]
 
-#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,table=True,tab=tab, Xscale="log",Yscale="log",fig=fig)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,table=True,tab=tab, Xscale="log",Yscale="log",fig=fig)
 
 ###########################################################################
 
@@ -215,12 +214,12 @@ tab=["Frequenza [Hz]","$V_{IN}$ [$V$]","$V_{OUT}$ [$V$]","Sfasamento [s]"]
 file="high_pass_phase"
 fig="phase_high_pass"
 def f(x, a, b):
-    return (-arctan(a/x)-arctan(b/x)+pi/2)
+    return (-arctan(a/x)-arctan(b/x)+pi/2) + pi
 
 p0=[3.56e+03, 2e+05]
 
 def XYfun(a):
-    return a[0], 2*pi*(a[3]*a[0]-1/2)
+    return a[0], 2*pi*a[3]*a[0]
 
 unit=["tempo_osc","volt_osc","volt_osc","volt_osc_nocal"]
 
@@ -228,6 +227,6 @@ titolo="Diagramma di bode - derivatore"
 Xlab="Frequenza [Hz]"
 Ylab="Fase [rad]"
 
-#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun, Xscale="log", fig=fig,out=True)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun, Xscale="log", fig=fig,out=True)
 
 ###########################################################################
