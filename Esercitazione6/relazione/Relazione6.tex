@@ -51,8 +51,21 @@ La strumentazione usata è quella presente sul banco di lavoro, più il suddetto
 \subsection{Impedenza d'ingresso}
 
 \subsection{Risposta in frequenza}
+Si è fittata la risposta in frequenza dell'amplificatore invertente. Si riportano i dati relativi in \tablename{\ref{tab:inv_amp_f_domain}}, in appendice, e il grafico relativo in \figurename{\ref{fig:invamp}}, mostrato di seguito:
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.5\textwidth]{../grafici/fit_inv_amp_f_domain.pdf}
+	\caption{Grafico del fit }
+	\label{fig:invamp}
+\end{figure}
 
 \subsection{Slew rate}
+Si è misurato lo slew rate dell'opamp inviando in ingresso un'onda quadra di frequenza $\unit{1000 \pm 10}{\hertz}$, ottenendo una discesa pari a  $\Delta V = \unit{9.44 \pm 0.24}$ in un tempo $\Delta t = \unit{740 \pm 7}{\nano\second}$.
+
+Lo slew rate misurato è quindi pari a $\unit{12.8 \pm 0.3}{\volt/\micro\second}$, mentre il datasheet riporta un valore tipico di $\unit{13}{\volt/\micro\second}$.
+
+%gli errori sulle frequenze li abbiamo messi sempre all'1%?
 
 \section{Amplificatore non invertente}
 
@@ -200,6 +213,28 @@ Anche in questo caso il guadagno massimo del circuito è moltiplicato per un val
 \section{Appendice: Dati}
 Si riportano qui le tabelle di dati usati per i fit e i grafici.
 
+\centering
+\begin{figure}[h!]
+	\begin{minipage}[c]{0.33\textwidth}
+		\resizebox{1\textwidth}{!}{
+		\input{../tabelle/tab_inv_amp_gain.txt}}
+		\captionof{table}{Guadagnio amplificatore invertente}
+		\label{tab:inv_amp_gain}
+	\end{minipage}
+	\begin{minipage}[c]{0.33\textwidth}
+		\resizebox{1\textwidth}{!}{
+		\input{../tabelle/tab_inv_amp_f_domain.txt}}
+		\captionof{table}{Risposta in frequenza amplificatore invertente}
+		\label{tab:inv_amp_f_domain}
+	\end{minipage}
+	\begin{minipage}[c]{0.33\textwidth}
+		\resizebox{1\textwidth}{!}{
+			\input{../tabelle/tab_gain_bandwidth.txt}}
+		\captionof{table}{Banda/Guadagno}
+		\label{tab:inv_amp_f_domain}
+	\end{minipage}
+\end{figure}
+
 \begin{figure}[h!]
 	\centering
 	\resizebox{0.7\textwidth}{!}{
@@ -216,21 +251,6 @@ Si riportano qui le tabelle di dati usati per i fit e i grafici.
 	\label{tab:highpass}
 \end{figure}
 
-%\centering
-%\begin{figure}[h!]
-%	\begin{minipage}[t]{0.5\textwidth}
-%		\centering
-%		\resizebox{1\textwidth}{!}{
-%		\input{../tabelle/tab_low_pass.txt}}
-%		\captionof{table}{Dati relativi al circuito integratore}
-%		\label{tab:lowpass}
-%	\end{minipage}
-%	\begin{minipage}[t]{0.5\textwidth}
-%		\resizebox{1\textwidth}{!}{
-%		\input{../tabelle/tab_high_pass.txt}}
-%		\captionof{table}{Dati relativi al circuito integratore}
-%		\label{tab:highpass}
-%	\end{minipage}
-%\end{figure}
+
 
 \end{document}

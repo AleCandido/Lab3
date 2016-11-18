@@ -1,10 +1,10 @@
 from pylab import *
-#path = "C:\\Users\\Roberto\\Documents\\GitHub\\Lab3\\"
+path = "C:\\Users\\Roberto\\Documents\\GitHub\\Lab3\\"
 #path = "C:\\Users\\Studenti\\Desktop\\Lab3\\"
-path = "/home/alessandro/Documents/Università/3°anno/Laboratorio3/Lab3/"
+#path = "/home/alessandro/Documents/Università/3°anno/Laboratorio3/Lab3/"
 sys.path = sys.path + [path]
 from analyzer import *
-import uncertainties
+#import uncertainties
 dir= path + "Esercitazione6/"
 ###########################################################################
 
@@ -28,7 +28,7 @@ Ylab="Tensione di output $V_{OUT}$ [$V$]"
 
 tab=["$V_{IN}$ [$V$]","$V_{OUT}$ [$V$]"]
 
-#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,table=True,tab=tab, out=True)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,table=True,tab=tab, out=True)
 
 ###########################################################################
 
@@ -133,10 +133,10 @@ Ylab="Guadagno [dB]"
 
 tab=["$V_{OUT}$ [$V$]","Freq. di taglio [Hz]"]
 
-#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun, table=True,tab=tab, out=True)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun, table=True,tab=tab, out=True)
 
 (a,b)=uncertainties.correlated_values_norm([(-20.49 , 0.21),(128.8 , 0.8)],  [[ 1. ,-0.99279257],[-0.99279257, 1. ]])
-#print ("Prodotto gain-bandwidth =", 10**(-b/a))
+print ("Prodotto gain-bandwidth =", 10**(-b/a))
 ###########################################################################
 
 #INTEGRATORE MODULO#

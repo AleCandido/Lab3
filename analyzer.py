@@ -1,18 +1,19 @@
 import numpy
 from pylab import *
-from scipy.optimize import curve_fit
-import math
-import scipy.stats
-from scipy.stats import distributions
+#from scipy.optimize import curve_fit
+#import math
+#import scipy.stats
+#from scipy.stats import distributions
 import uncertainties
 from uncertainties import unumpy
+from matplotlib import gridspec, pyplot
 
 # ********************** IMPORTS ***************************
 
 from math import log10, fsum, floor
-from inspect import getargspec
+#from inspect import getargspec
 from numpy import array, asarray, isfinite, sqrt, diag, vectorize, number, isscalar
-import time as _time
+#import time as _time
 
 # ************************** FIT ***************************
 
@@ -790,9 +791,7 @@ def xep(x, e, pm='+-'):
 def XYfunction(a): #formula per il calcolo della X dalle colonne del file in input
 	return a[0], a[1]
 
-def fast_plot(directory, file, units, titolo="", Xlab="", Ylab="", XYfun=XYfunction,Xscale="linear",Yscale="linear", fig="^^", out=False):
-	if out==True :
-		file = file +"_ol"
+def fast_plot(directory, file, units, titolo="", Xlab="", Ylab="", XYfun=XYfunction,Xscale="linear",Yscale="linear", fig="^^"):
 	columns = loadtxt(directory+"data/"+file+".txt", unpack = True)
 	if type(columns[0]) is numpy.float64:
 		columns=array(transpose(matrix(columns)))
@@ -820,36 +819,26 @@ def fast_plot(directory, file, units, titolo="", Xlab="", Ylab="", XYfun=XYfunct
 
 	if fig=="^^":
 		fig=file
-	if out==True:
-		figure(fig+"_1")
-	else:
-		figure(fig+"_2")
+	figure(fig+"_2")
 	if (fig == file or out != True):
 		clf()
-		grid(b=True)
-	if out==False:
-		title(titolo)
-		xlabel(Xlab)
-		ylabel(Ylab)
+	title(titolo)
+	xlabel(Xlab)
+	ylabel(Ylab)
 	if Xscale=="log":
 		xscale("log")
 	if Yscale=="log":
 		yscale("log")
 	grid(b=True)
-	if out ==True:
-		
-		outlier = errorbar(X,Y,dY,dX, fmt="gx",ecolor="black",capsize=0.5)
-		plt.legend([outlier], ['outlier'], loc="best")
-	else:
-		errorbar(X,Y,dY,dX, fmt=",",ecolor="black",capsize=0.5)
-	if out!=True:
-		savefig(directory+"grafici/fast_plot_"+fig+".pdf")
-		savefig(directory+"grafici/fast_plot_"+fig+".png")
+	errorbar(X,Y,dY,dX, fmt=",",ecolor="black",capsize=0.5)
+	savefig(directory+"grafici/fast_plot_"+fig+".pdf")
+	savefig(directory+"grafici/fast_plot_"+fig+".png")
 
 #Load txt
 def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunction, preplot=False, Xscale="linear",Yscale="linear", xlimp = array([100.,100.]),scarti=False,table=False,tab=[""], fig="^^",out=False):
 	
 	columns = loadtxt(directory+"data/"+file+".txt", unpack = True)
+	
 	if type(columns[0]) is numpy.float64:
 		columns=array(transpose(matrix(columns)))
 	dcolumns = zeros((len(columns),len(columns[0])))
@@ -880,7 +869,6 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 		figure(fig+"_2")
 		if (fig == file):
 			clf()
-			grid(b=True)
 		title(titolo)
 		xlabel(Xlab)
 		ylabel(Ylab)
@@ -895,25 +883,26 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 	
 	#Fit
 	par, cov = fit_generic_xyerr2(f,X,Y,dX,dY,p0)
-
+	
 	#Plotto il grafico con il fit e gli scarti
-	from matplotlib import gridspec
-	from matplotlib import pyplot
+
 	gs = gridspec.GridSpec(4, 1)
 	gne=figure(fig+"_1")
 	if (fig == file):
 		clf()
-		grid(b=True)
 	if scarti==True:
 		ax1 = gne.add_subplot(gs[:-1,:])
 		pyplot.setp(ax1.get_xticklabels(), visible=False)
+		
 		#subplot(211)
 	title(titolo)
 	if Xscale=="log":
 		xscale("log")
 	if Yscale=="log":
 		yscale("log")
+
 	errorbar(X,Y,dY,dX, fmt=",",ecolor="black",capsize=0.5)
+
 	if scarti==False :
 		xlabel(Xlab)
 	ylabel(Ylab)
@@ -953,7 +942,6 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 		smax = max(X)
 		
 	#
-	
 	if Xscale=="log":
 		l=logspace(log10(smin)*xlima[0],log10(smax*xlima[1]),1000)
 	else:
@@ -963,8 +951,8 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 	savefig(directory+"grafici/fit_"+fig+".pdf")
 	savefig(directory+"grafici/fit_"+fig+".png")
 	if out==True:
-		fast_plot(directory, file, units, titolo, Xlab, Ylab, XYfun, Xscale=Xscale,Yscale=Yscale, fig=fig, out=True)
-	
+		outlier = errorbar(X_ol,Y_ol,dY_ol,dX_ol, fmt="g^",ecolor="black",capsize=0.5)
+		plt.legend([outlier], ['outlier'], loc="best")
 	if scarti==True:
 		#subplot(212)
 		ax2 = gne.add_subplot(gs[3,:], sharex=ax1)
@@ -974,12 +962,11 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 		ylabel("Scarti")
 		if Xscale=="log":
 			xscale("log")
-		plot(X, (Y-f(X,*par))/dY, ".", color="blue")
+		grid(b=True)
+		plot(X, (Y-f(X,*par))/dY, ".", color="black")
 
 		if out ==True:
-			plot(X_ol, (Y_ol-f(X_ol,*par))/dY_ol, ".", color="blue")
-		savefig(directory+"grafici/scarti_"+fig+".pdf")
-		savefig(directory+"grafici/scarti_"+fig+".png")
+			plot(X_ol, (Y_ol-f(X_ol,*par))/dY_ol, "^", color="green")
 	
 	#Calcolo chi, errori e normalizzo la matrice di cov
 	
@@ -992,7 +979,7 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 	for i in range(len(par)):
 		for j in range(len(par)):
 			normcov[i,j]=cov[i, j]/(sigma[i]*sigma[j])
-			
+
 	#Stampo i risultati, il chi e la matrice di cov
 	print("_________________________________________________________")
 	print("\nFIT RESULT %s\n" % file)
@@ -1002,7 +989,6 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 	print("\nchi / ndof =",chi,"/",len(X)-len(par))
 	if len(par)>1 :
 		print("covarianza normalizzata=\n",normcov)
-	
 	#Salvo la tabella formattata latex
 	if table==True:
 		with open(directory+"tabelle/tab_"+file+".txt", "w") as text_file:
