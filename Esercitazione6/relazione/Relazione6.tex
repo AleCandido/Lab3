@@ -45,16 +45,70 @@ Misurare le caratteristiche di amplificatori invertenti e non invertenti realizz
 La strumentazione usata è quella presente sul banco di lavoro, più il suddetto transistor.
 
 \section{Amplificatore invertente}
+Si è realizzato l'amplificatore invertente mostrato in \figurename{\ref{circuito_amp_inv}} e si sono scelte le resistenze $R_1$ e $R_2$ rispettivamente di $\unit{10}{k\ohm}$ e $\unit{100}{k\ohm}$ in modo da avere un impedenza di ingresso pari a $R_1$, maggiore di $\unit{1}{k\ohm}$ e un guadagno pari a $R_2/R_1 \sim 10$, come richiesto. Di seguito i valori misurati delle resistenze:
 
-\subsection{$V_{out}$ in funzione di $V_{in}$}
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{cc}
+		$R_1 = \unit{9.89 \pm 0.09}{k\ohm}$  & $R_2 = \unit{98.5 \pm 0.9}{k\ohm}$
+	\end{tabular}
+\end{table}
 
+\subsection{Guadagno e linearità}
+Si è misurata quindi la risposta del circuito ad un segnale sinusoidale di frequenza fissata $f = \unit{4.62 \pm 0.05}{k\hertz}$ al variare della tensione picco-picco del segnale in ingresso. I dati raccolti sono elencati in appendice in \tablename{\ref{tab:inv_amp_gain}}.
+
+Dall'analisi del segnale all'oscilloscopio (vedi \figurename{\ref{fig:inv_amp}}) è visibile lo sfasamento di mezzo periodo tra i segnali, come atteso.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.5\textwidth]{../oscilloscopio/dinverting.jpg}
+	\caption{Inversione di fase nell'amplificatore invertente}
+	\label{fig:inv_amp}
+\end{figure}
+
+I dati mostrano un chiaro comportamento lineare fino a tensioni in ingresso di $\sim \unit{2.9}{\volt}$ cioè per tensioni di uscita vicine a $\unit{30}{\volt}$, in pratica il regime in cui l'op-amp è lineare. Si è fittato il guadagno nella zona lineare, i risultati e grafici del fit sono riportati di seguito:
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{ccc}
+		$|A_v| = 9.72 \pm 0.08$  & intercetta: $\unit{0.04 \pm 0.03}{\volt}$ & $\chi^2/ndof= 8.5 / 23$
+	\end{tabular}
+\end{table}
+Il guadagno misurato è compatibile con quello atteso dalla teoria ($|A_v|^{exp} = 9.96 \pm 0.13$) a meno di $2\sigma$.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{../grafici/fit_inv_amp_gain.pdf}
+	\caption{Guadagno amplificatore invertente}
+	\label{fig:inv_amp_gain}
+\end{figure}
+ 
 \subsection{Impedenza d'ingresso}
+Si è proceduto alla misura della resistenza di ingresso, per farlo si è posta una resistenza $R* = \unit{9.96 \pm 0.09}{k\ohm}$ in serie all'ingresso del circuito e si è misurata la caduta di potenziale ai capi della stesso ottenendo:
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{cc}
+		$V_1 = \unit{2.88 \pm 0.10}{\volt}$  &  $V_2\unit{1.44 \pm 0.05}{\volt}$
+	\end{tabular}
+\end{table}
+
+L'impedenza di ingresso misurata è quindi $R_{IN}=\unit{10.0 \pm 1.0}{k\ohm}$, ampiamente compatibile con quella attesa pari a $R_1$.
 
 \subsection{Risposta in frequenza}
 
 \subsection{Slew rate}
 
 \section{Amplificatore non invertente}
+Si è montato l'amplificatore non invertente in \figurename{\ref{circuito_non_inv}} con i seguenti valori dei componenti:
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{cc}
+		$R_1 = \unit{218 \pm 3}{\ohm}$  & $P_1 = \unit{100}{k\ohm}$
+	\end{tabular}
+\end{table}
+
+Si sono misurati al variare della posizione del potenziometro il guadagno (a basse frequenze $f < \unit{100}{\hertz}$, dove sicuramente l'amplificatore è in regime lineare) e la frequenza di taglio superiore. I dati acquisiti sono riportati in appendice in \tablename{\ref{tab:gain_bandwidth}}
 
 \section{Circuito integratore}
 
@@ -142,7 +196,7 @@ Si riportano qui le tabelle di dati usati per i fit e i grafici.
 		\resizebox{1\textwidth}{!}{
 			\input{../tabelle/tab_gain_bandwidth.txt}}
 		\captionof{table}{Banda/Guadagno}
-		\label{tab:inv_amp_f_domain}
+		\label{tab:gain_bandwidth}
 	\end{minipage}
 \end{figure}
 
