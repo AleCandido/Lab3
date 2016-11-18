@@ -3,7 +3,7 @@ from pylab import *
 #from scipy.optimize import curve_fit
 #import math
 #import scipy.stats
-from scipy.stats import distributions
+#from scipy.stats import distributions
 import uncertainties
 from uncertainties import unumpy
 from matplotlib import gridspec, pyplot
@@ -822,7 +822,6 @@ def fast_plot(directory, file, units, titolo="", Xlab="", Ylab="", XYfun=XYfunct
 	figure(fig+"_2")
 	if (fig == file or out != True):
 		clf()
-		grid(b=True)
 	title(titolo)
 	xlabel(Xlab)
 	ylabel(Ylab)
@@ -870,7 +869,6 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 		figure(fig+"_2")
 		if (fig == file):
 			clf()
-			grid(b=True)
 		title(titolo)
 		xlabel(Xlab)
 		ylabel(Ylab)
@@ -892,7 +890,6 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 	gne=figure(fig+"_1")
 	if (fig == file):
 		clf()
-		grid(b=True)
 	if scarti==True:
 		ax1 = gne.add_subplot(gs[:-1,:])
 		pyplot.setp(ax1.get_xticklabels(), visible=False)
@@ -954,7 +951,7 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 	savefig(directory+"grafici/fit_"+fig+".pdf")
 	savefig(directory+"grafici/fit_"+fig+".png")
 	if out==True:
-		outlier = errorbar(X_ol,Y_ol,dY_ol,dX_ol, fmt="gx",ecolor="black",capsize=0.5)
+		outlier = errorbar(X_ol,Y_ol,dY_ol,dX_ol, fmt="g^",ecolor="black",capsize=0.5)
 		plt.legend([outlier], ['outlier'], loc="best")
 	if scarti==True:
 		#subplot(212)
@@ -965,12 +962,11 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 		ylabel("Scarti")
 		if Xscale=="log":
 			xscale("log")
-		plot(X, (Y-f(X,*par))/dY, ".", color="blue")
+		grid(b=True)
+		plot(X, (Y-f(X,*par))/dY, ".", color="black")
 
 		if out ==True:
-			plot(X_ol, (Y_ol-f(X_ol,*par))/dY_ol, ".", color="blue")
-		savefig(directory+"grafici/scarti_"+fig+".pdf")
-		savefig(directory+"grafici/scarti_"+fig+".png")
+			plot(X_ol, (Y_ol-f(X_ol,*par))/dY_ol, "^", color="green")
 	
 	#Calcolo chi, errori e normalizzo la matrice di cov
 	
