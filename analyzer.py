@@ -948,8 +948,7 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 		l=linspace(smin*xlima[0],smax*xlima[1],1000)
 	grid(b=True)
 	plot(l,f(l,*par),"red")
-	savefig(directory+"grafici/fit_"+fig+".pdf")
-	savefig(directory+"grafici/fit_"+fig+".png")
+	
 	if out==True:
 		outlier = errorbar(X_ol,Y_ol,dY_ol,dX_ol, fmt="g^",ecolor="black",capsize=0.5)
 		plt.legend([outlier], ['outlier'], loc="best")
@@ -967,7 +966,9 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 
 		if out ==True:
 			plot(X_ol, (Y_ol-f(X_ol,*par))/dY_ol, "^", color="green")
-	
+			
+	savefig(directory+"grafici/fit_"+fig+".pdf")
+	savefig(directory+"grafici/fit_"+fig+".png")
 	#Calcolo chi, errori e normalizzo la matrice di cov
 	
 	chi = sum((Y-f(X,*par))**2/dY**2)
