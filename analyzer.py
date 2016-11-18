@@ -940,7 +940,6 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 	else:
 		smin = min(X)
 		smax = max(X)
-		
 	#
 	if Xscale=="log":
 		l=logspace(log10(smin)*xlima[0],log10(smax*xlima[1]),1000)
@@ -966,7 +965,7 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 
 		if out ==True:
 			plot(X_ol, (Y_ol-f(X_ol,*par))/dY_ol, "^", color="green")
-			
+		
 	savefig(directory+"grafici/fit_"+fig+".pdf")
 	savefig(directory+"grafici/fit_"+fig+".png")
 	#Calcolo chi, errori e normalizzo la matrice di cov

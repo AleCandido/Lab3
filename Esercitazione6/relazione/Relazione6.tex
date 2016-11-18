@@ -77,7 +77,7 @@ I dati mostrano un chiaro comportamento lineare fino a tensioni in ingresso di $
 Il guadagno misurato è compatibile con quello atteso dalla teoria ($|A_v|^{exp} = 9.96 \pm 0.13$) a meno di $2\sigma$.
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.8\textwidth]{../grafici/fit_inv_amp_gain.pdf}
+	\includegraphics[width=0.85\textwidth]{../grafici/fit_inv_amp_gain.pdf}
 	\caption{Guadagno amplificatore invertente}
 	\label{fig:inv_amp_gain}
 \end{figure}
@@ -95,23 +95,47 @@ Si è proceduto alla misura della resistenza di ingresso, per farlo si è posta 
 L'impedenza di ingresso misurata è quindi $R_{IN}=\unit{10.0 \pm 1.0}{k\ohm}$, ampiamente compatibile con quella attesa pari a $R_1$.
 
 \subsection{Risposta in frequenza}
-Si è fittata la risposta in frequenza dell'amplificatore invertente. Si riportano i dati relativi in \tablename{\ref{tab:inv_amp_f_domain}}, in appendice, e il grafico relativo in \figurename{\ref{fig:invamp}}, mostrato di seguito:
+Si è studiata quindi la risposta in frequenza del circuito, per una tensione picco-picco in ingresso pari a $V = \unit{496 \pm 12}{\milli\volt}$. I dati acquisiti sono riportati in appendice in \tablename{\ref{tab:inv_amp_f_domain}}.
+
+Dal grafico in \figurename{\ref{palle}} è chiaro che il guadagno è costante fino ad un frequenza di $\sim \unit{200}{k\hertz}$, da questo punto in poi il guadagno sembra calare linearmente con un tasso di $\sim \unit{20}{\deci\bel /decade}$ per un primo tratto fino a $f \sim {600}{k\hertz}$, per frequenze superiori la pendenza sembra aumentare.
+
+Si è provato a fittare questo comportamento (il grafico del fit è riportato in \figurename{\ref{rette}}), le pendenze fittate sono state $p_1 = \unit{-20.1 \pm 1.8}{\deci\bel/decade}$ per il primo tratto e $p_2 =\unit{-33.3 \pm 1.2}{\deci\bel/decade}$ per il secondo tratto.
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.5\textwidth]{../grafici/fit_inv_amp_f_domain.pdf}
-	\caption{Grafico del fit }
-	\label{fig:invamp}
+	\includegraphics[width=0.8\textwidth]{../grafici/fit_rette.pdf}
+	\caption{fit del guadagno per alte frequenze}
+	\label{rette}
 \end{figure}
 
+Si è deciso quindi di fittare la risposta in frequenza dell'amplificatore invertente con il modello di un filtro passa basso escludendo i dati presi a frequenze sopra $\sim \unit{600}{k\hertz}$ che come visto prima non rispettano la legge di decrescita attesa.  Si riportano di seguito i risultati del fit e il grafico.
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{ccc}
+	$|A_v| = 10.15 \pm 0.13$	&	$f_0 = \unit{214 \pm 6}{k\hertz}$	&	$\chi^2/ndof = 23 / 20$\\
+	\end{tabular}
+\end{table}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{../grafici/fit_inv_amp_f_domain.pdf}
+	\caption{Grafico dei dati e del fit}
+	\label{palle}
+\end{figure}
+
+Il guadagno di centro banda fittato è compatibile con quello atteso dalla teoria e con quello misurato al punto precedente.
+L'andamento ad alte frequenze è probabilmente influenzato dallo slew rate che in questo range distorce significativamente il segnale.
+\pagebreak
 \subsection{Slew rate}
-Si è misurato lo slew rate dell'opamp inviando in ingresso un'onda quadra di frequenza $\unit{1000 \pm 10}{\hertz}$, ottenendo una discesa pari a  $\Delta V = \unit{9.44 \pm 0.24}$ in un tempo $\Delta t = \unit{740 \pm 7}{\nano\second}$.
+Si è misurato lo slew rate dell'op-amp inviando in ingresso un'onda quadra di frequenza $\unit{1000 \pm 10}{\hertz}$, ottenendo una discesa pari a  $\Delta V = \unit{9.44 \pm 0.24}{\volt}$ in un tempo $\Delta t = \unit{740 \pm 7}{\nano\second}$.
 
 Lo slew rate misurato è quindi pari a $\unit{12.8 \pm 0.3}{\volt/\micro\second}$, mentre il datasheet riporta un valore tipico di $\unit{13}{\volt/\micro\second}$.
 
 %gli errori sulle frequenze li abbiamo messi sempre all'1%?
 
 \section{Amplificatore non invertente}
+
 Si è montato l'amplificatore non invertente in \figurename{\ref{circuito_non_inv}} con i seguenti valori dei componenti:
 
 \begin{table}[h!]
@@ -121,7 +145,29 @@ Si è montato l'amplificatore non invertente in \figurename{\ref{circuito_non_in
 	\end{tabular}
 \end{table}
 
-Si sono misurati al variare della posizione del potenziometro il guadagno (a basse frequenze $f < \unit{100}{\hertz}$, dove sicuramente l'amplificatore è in regime lineare) e la frequenza di taglio superiore. I dati acquisiti sono riportati in appendice in \tablename{\ref{tab:gain_bandwidth}}
+Si sono misurati al variare della posizione del potenziometro il guadagno (misurato a basse frequenze $f < \unit{100}{\hertz}$, dove sicuramente l'amplificatore è in regime lineare) e la frequenza di taglio superiore. I dati acquisiti sono riportati in appendice in \tablename{\ref{tab:gain_bandwidth}}. Per verificare che il prodotto banda-guadagno rimanesse costante si è fittato con una retta il guadagno (in decibel) in funzione del logaritmo della frequenza. I risultati e i grafici del fit sono riportati di seguito (a è il coefficiente angolare e b l'intercetta):
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{ccc}
+		$a = \unit{-20.49 \pm 0.18}{\deci\bel /decade}$  &  $b = \unit{128.8 \pm 0.8}{\deci\bel}$ & $\chi^2/ndof= 14.8 / 13$
+	\end{tabular}
+\end{table}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{../grafici/fit_gain_bandwidth.pdf}
+	\caption{Grafico e fit banda-guadagno}
+\end{figure}
+
+Il prodotto banda guadagno, ovvero l'intersezione della retta fittata con l'asse a $\unit{0}{\deci\bel}$ varrà perciò\footnote{propagando l'errore tenendo conto della covarianza}: $Af_h=\unit{1.93\pm0.12}{\mega\hertz}$, che è compatibile con il grafico presente nel datasheet riportato in \figurename{\ref{fig:open_loop_stocazzo}}.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.4\textwidth]{../grafici/open_loop_frequency.jpg}
+	\caption{Grafico guadagno-banda dal datasheet}
+	\label{fig:open_loop_stocazzo}
+\end{figure}
 
 \section{Circuito integratore}
 
@@ -159,7 +205,7 @@ Si riportano nella tabella di seguito i risultati del fit:
 \centering
 \begin{tabular}{c|ccc}
 amplitude	&	$A_0 = 9.71 \pm 0.22$	&	$f_0 = \unit{404 \pm 12}{\hertz}$	&	$\chi^2/ndof = 15.6 / 12$\\
-phase		& &	$f_0 = \unit{350 \pm 40}{\hertz}$	&	$\chi^2/ndof = 10.7 / 12$
+phase		& &	$f_0 = \unit{350 \pm 40}{\hertz}$	&	$\chi^2/ndof = 10.7 / 13$
 \end{tabular}
 \end{table}
 
@@ -170,7 +216,7 @@ phase		& &	$f_0 = \unit{350 \pm 40}{\hertz}$	&	$\chi^2/ndof = 10.7 / 12$
 \item $f_0$ è la frequenza di taglio dell'integratore.
 \end{itemize}
 
-Si nota dunque che le due misure della frequenza di taglio sono compatibili, a meno di poco più di $1\sigma$.
+Si nota dunque che le due misure della frequenza di taglio sono compatibili, a meno di $\sim 1\sigma$.
 
 \subsection{Risposta all'onda quadra}
 
