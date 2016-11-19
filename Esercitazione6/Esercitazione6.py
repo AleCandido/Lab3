@@ -1,7 +1,7 @@
 from pylab import *
-#path = "C:\\Users\\Roberto\\Documents\\GitHub\\Lab3\\"
+path = "C:\\Users\\Roberto\\Documents\\GitHub\\Lab3\\"
 #path = "C:\\Users\\Studenti\\Desktop\\Lab3\\"
-path = "/home/alessandro/Documents/Università/3°anno/Laboratorio3/Lab3/"
+#path = "/home/alessandro/Documents/Università/3°anno/Laboratorio3/Lab3/"
 sys.path = sys.path + [path]
 from analyzer import *
 #import uncertainties
@@ -28,7 +28,7 @@ Ylab="Tensione di output $V_{OUT}$ [$V$]"
 
 tab=["$V_{IN}$ [$V$]","$V_{OUT}$ [$V$]"]
 
-#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,table=True,tab=tab, out=True)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun,table=True,tab=tab, out=True)
 
 ###########################################################################
 

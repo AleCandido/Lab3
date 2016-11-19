@@ -830,7 +830,7 @@ def fast_plot(directory, file, units, titolo="", Xlab="", Ylab="", XYfun=XYfunct
 	if Yscale=="log":
 		yscale("log")
 	grid(b=True)
-	errorbar(X,Y,dY,dX, fmt=",",ecolor="black",capsize=0.5)
+	errorbar(X,Y,dY,dX, fmt="k,",ecolor="black",capsize=0.5)
 	savefig(directory+"grafici/fast_plot_"+fig+".pdf")
 	savefig(directory+"grafici/fast_plot_"+fig+".png")
 
@@ -877,7 +877,7 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 		if Yscale=="log":
 			yscale("log")
 		grid(b=True)
-		errorbar(X,Y,dY,dX, fmt=",",ecolor="black",capsize=0.5)
+		errorbar(X,Y,dY,dX, fmt="k,",ecolor="black",capsize=0.5)
 		savefig(directory+"grafici/fast_plot_"+fig+".pdf")
 		savefig(directory+"grafici/fast_plot_"+fig+".png")
 	
@@ -901,7 +901,7 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 	if Yscale=="log":
 		yscale("log")
 
-	errorbar(X,Y,dY,dX, fmt=",",ecolor="black",capsize=0.5)
+	errorbar(X,Y,dY,dX, fmt="k,",ecolor="black",capsize=0.5)
 
 	if scarti==False :
 		xlabel(Xlab)
