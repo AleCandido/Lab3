@@ -75,7 +75,7 @@ def XYfun(a):
 
 unit=["tempo_osc","volt_osc_nocal"]
 
-titolo="Diagramma di Bode"
+titolo="Andamento ad alte frequenze"
 Xlab="Frequenza [decadi]"
 Ylab="Guadagno $A_v$ [dB]"
 
@@ -101,7 +101,7 @@ def XYfun(a):
 
 unit=["tempo_osc","volt_osc_nocal"]
 
-titolo="Diagramma di Bode"
+titolo="Andamento ad alte frequenze"
 Xlab="Frequenza [decadi]"
 Ylab="Guadagno $A_v$ [dB]"
 
@@ -216,7 +216,7 @@ fig="phase_high_pass"
 def f(x, a, b):
     return (-arctan(a/x)-arctan(b/x)+pi/2) + pi
 
-p0=[3.56e+03, 2e+05]
+p0=[4e+03, 3e+05]
 
 def XYfun(a):
     return a[0], 2*pi*a[3]*a[0]

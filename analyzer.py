@@ -830,7 +830,7 @@ def fast_plot(directory, file, units, titolo="", Xlab="", Ylab="", XYfun=XYfunct
 	if Yscale=="log":
 		yscale("log")
 	grid(b=True)
-	errorbar(X,Y,dY,dX, fmt=",",ecolor="black",capsize=0.5)
+	errorbar(X,Y,dY,dX, fmt="k,",ecolor="black",capsize=0.5)
 	savefig(directory+"grafici/fast_plot_"+fig+".pdf")
 	savefig(directory+"grafici/fast_plot_"+fig+".png")
 
@@ -877,7 +877,7 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 		if Yscale=="log":
 			yscale("log")
 		grid(b=True)
-		errorbar(X,Y,dY,dX, fmt=",",ecolor="black",capsize=0.5)
+		errorbar(X,Y,dY,dX, fmt="k,",ecolor="black",capsize=0.5)
 		savefig(directory+"grafici/fast_plot_"+fig+".pdf")
 		savefig(directory+"grafici/fast_plot_"+fig+".png")
 	
@@ -901,7 +901,7 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 	if Yscale=="log":
 		yscale("log")
 
-	errorbar(X,Y,dY,dX, fmt=",",ecolor="black",capsize=0.5)
+	errorbar(X,Y,dY,dX, fmt="k,",ecolor="black",capsize=0.5)
 
 	if scarti==False :
 		xlabel(Xlab)
@@ -940,7 +940,6 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 	else:
 		smin = min(X)
 		smax = max(X)
-		
 	#
 	if Xscale=="log":
 		l=logspace(log10(smin)*xlima[0],log10(smax*xlima[1]),1000)
@@ -966,7 +965,7 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 
 		if out ==True:
 			plot(X_ol, (Y_ol-f(X_ol,*par))/dY_ol, "^", color="green")
-			
+		
 	savefig(directory+"grafici/fit_"+fig+".pdf")
 	savefig(directory+"grafici/fit_"+fig+".png")
 	#Calcolo chi, errori e normalizzo la matrice di cov
