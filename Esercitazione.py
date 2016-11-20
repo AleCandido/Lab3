@@ -1,9 +1,9 @@
 from pylab import *
 
 import sys
-if sys.argv[0] == ale
+if sys.argv[0] == "ale"
     path = "/home/alessandro/Documents/Università/3°anno/Laboratorio3/Lab3/"
-elif sys.argv[0] == lab
+elif sys.argv[0] == "lab"
     path = "C:\\Users\\Studenti\\Desktop\\Lab3\\"
 else
     path = "C:\\Users\\Roberto\\Documents\\GitHub\\Lab3\\"
