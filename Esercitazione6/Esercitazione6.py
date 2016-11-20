@@ -1,10 +1,11 @@
 from pylab import *
-#path = "C:\\Users\\Roberto\\Documents\\GitHub\\Lab3\\"
+path = "C:\\Users\\Roberto\\Documents\\GitHub\\Lab3\\"
 #path = "C:\\Users\\Studenti\\Desktop\\Lab3\\"
-path = "/home/alessandro/Documents/Università/3°anno/Laboratorio3/Lab3/"
+#path = "/home/alessandro/Documents/Università/3°anno/Laboratorio3/Lab3/"
 sys.path = sys.path + [path]
-from BuzzLightyear import *
-import uncertainties
+#from BuzzLightyear import *
+from analyzer import *
+#import uncertainties
 dir= path + "Esercitazione6/"
 ###########################################################################
 
@@ -20,7 +21,8 @@ p0=[0,10]
 def XYfun(a):
     return a[0],a[1]
 
-unit=[("volt","dig"),("volt","dig")]
+#unit=[("volt","osc"),("volt","osc")]
+unit=["volt_osc_nocal","volt_osc_nocal"]
 
 titolo="$V_{OUT}$ vs $V_{IN}$"
 Xlab="Tensione di input $V_{IN}$ [$V$]"
@@ -136,7 +138,7 @@ tab=["$V_{OUT}$ [$V$]","Freq. di taglio [Hz]"]
 #fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun, table=True,tab=tab, out=True)
 
 (a,b)=uncertainties.correlated_values_norm([(-20.49 , 0.21),(128.8 , 0.8)],  [[ 1. ,-0.99279257],[-0.99279257, 1. ]])
-print ("Prodotto gain-bandwidth =", 10**(-b/a))
+#print ("Prodotto gain-bandwidth =", 10**(-b/a))
 ###########################################################################
 
 #INTEGRATORE MODULO#
@@ -153,7 +155,7 @@ def XYfun(a):
 
 unit=["tempo_osc","volt_osc_nocal","volt_osc","volt_osc"]
 
-titolo="Diagramma di bode - integratore"
+titolo="Diagramma di bode (modulo) - integratore"
 Xlab="Frequenza [Hz]"
 Ylab="Guadagno"
 
@@ -177,7 +179,7 @@ def XYfun(a):
 
 unit=["tempo_osc","volt_osc_nocal","volt_osc","volt_osc"]
 
-titolo="Diagramma di bode - integratore"
+titolo="Diagramma di bode (fase) - integratore"
 Xlab="Frequenza [Hz]"
 Ylab="Fase [rad]"
 
@@ -199,7 +201,7 @@ def XYfun(a):
 
 unit=["tempo_osc","volt_osc_nocal","volt_osc_nocal","volt_osc_nocal"]
 
-titolo="Diagramma di bode - derivatore"
+titolo="Diagramma di bode (modulo)- derivatore"
 Xlab="Frequenza [Hz]"
 Ylab="Guadagno"
 
@@ -214,7 +216,7 @@ tab=["Frequenza [Hz]","$V_{IN}$ [$V$]","$V_{OUT}$ [$V$]","Sfasamento [s]"]
 file="high_pass_phase"
 fig="phase_high_pass"
 def f(x, a, b):
-    return (-arctan(a/x)-arctan(b/x)+pi/2) + pi
+    return (-arctan(a/x)+arctan(x/b)+pi)
 
 p0=[4e+03, 3e+05]
 
@@ -223,10 +225,10 @@ def XYfun(a):
 
 unit=["tempo_osc","volt_osc","volt_osc","volt_osc_nocal"]
 
-titolo="Diagramma di bode - derivatore"
+titolo="Diagramma di bode (fase) - derivatore"
 Xlab="Frequenza [Hz]"
 Ylab="Fase [rad]"
 
-#fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun, Xscale="log", fig=fig,out=True)
+fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun, Xscale="log", fig=fig,out=True)
 
 ###########################################################################

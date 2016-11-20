@@ -1243,7 +1243,7 @@ def _outlier_(directory, file_, units, X, XYfun):
 			sup limit of the x-values
 
 	"""
-	data_ol = _load_data(directory,file_)
+	data_ol = _load_data(directory,file_+"_ol")
 	X_ol, Y_ol, dX_ol, dY_ol, data_ol_err = _errors(data_ol, units, XYfun)
 
 	smin=min(min(X_ol),min(X))

@@ -1006,5 +1006,11 @@ def fit(directory, file, units, f, p0, titolo="", Xlab="", Ylab="", XYfun=XYfunc
 				for j in range (1,len(columns)):
 					text_file.write(" & %s" % xe(columns[j][i], dcolumns[j][i], "$\pm$"))
 				text_file.write("\\\\\n")
+			if out==True:
+				for i in range (len(olcolumns[0])):
+					text_file.write("%s" % xe(olcolumns[0][i], oldcolumns[0][i], "$\pm$"))
+					for j in range (1,len(olcolumns)):
+						text_file.write(" & %s" % xe(olcolumns[j][i], oldcolumns[j][i], "$\pm$"))
+					text_file.write("\\\\\n")
 			text_file.write("\\end{tabular}")
 			text_file.close()
