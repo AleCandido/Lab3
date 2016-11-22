@@ -1,0 +1,75 @@
+VCC = 14.95
+VEE = -15.05
+
+A)
+---> 1.a
+Vos = -150mV +-2
+
+---> 1.b gain-bandwidth
+Vin = 156e-3
+Vout		band
+3.52		99.85e3
+2.24		162.8e3
+1.84		207.9e3
+1.44		266.7e3
+560e-3		660e3
+220e-3		1.281e6
+
+--->1.c
+DV = 22.4 , 0.2 V
+Dt = 1.670e-6, 0.010e-6
+
+B)
+C1 = 21.0e-9
+CF = 0.993e-9
+CT = 1.005e-9
+R1 = 99.1e3
+R2 = 98.8
+
+--->2
+Vth = 171.5 +- 1
+
+--->3
+f=99.29
+V = 6.00
+Vdiscr = 28.6
+dt1 = 312r-6
+dt2 = 36e-6	dV=27.6
+Vsh = 5.84
+
+--->4
+VIN	dt
+1.06	134e-6
+2.04	202e-6
+2.88	237e-6
+4.04	270e-6
+5.08	292e-6
+6.16	310e-6
+7.20	326e-6
+8.00	338e-6
+9.12	350e-6
+10.2	358e-6
+11.2	370e-6
+12.2	380e-6
+13.0	386e-6
+
+Vdiscrlim = 396e-3 non lineare
+Vdiscrlim2 = 288e-3
+
+C)
+R2 = 2.31e3
+R1 = 9.88e3
+
+Vs1 = 2.72
+Vs2 = -2.56
+
+oscilla tra 14.0 e -13.4 (VOUT)
+ limite in ampiezza 5.76V
+
+dV = 20.6 dt=1.8e-6 salita
+dV = 7.4 dt = 0.5e-6 discesa forte (vedi oscilloscreen)
+dV = 13 dt = 1e-6 discesa (vedi oscilloscreen)
+
+
+
+
