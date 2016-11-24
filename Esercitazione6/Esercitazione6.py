@@ -1,11 +1,11 @@
 from pylab import *
-path = "C:\\Users\\Roberto\\Documents\\GitHub\\Lab3\\"
+#path = "C:\\Users\\Roberto\\Documents\\GitHub\\Lab3\\"
 #path = "C:\\Users\\Studenti\\Desktop\\Lab3\\"
-#path = "/home/alessandro/Documents/Università/3°anno/Laboratorio3/Lab3/"
+path = "/home/alessandro/Documents/Università/3°anno/Laboratorio3/Lab3/"
 sys.path = sys.path + [path]
-#from BuzzLightyear import *
-from analyzer import *
-#import uncertainties
+from BuzzLightyear import *
+#from analyzer import *
+import uncertainties
 dir= path + "Esercitazione6/"
 ###########################################################################
 
@@ -21,8 +21,8 @@ p0=[0,10]
 def XYfun(a):
     return a[0],a[1]
 
-#unit=[("volt","osc"),("volt","osc")]
-unit=["volt_osc_nocal","volt_osc_nocal"]
+unit=[("volt","osc"),("volt","osc")]
+#unit=["volt_osc_nocal","volt_osc_nocal"]
 
 titolo="$V_{OUT}$ vs $V_{IN}$"
 Xlab="Tensione di input $V_{IN}$ [$V$]"
@@ -48,7 +48,8 @@ p0=[9.8,1.9*1e5]
 def XYfun(a):
     return a[0],a[1]/VIN
 
-unit=["tempo_osc","volt_osc"]
+unit=[("tempo","osc"),("volt","osc")]
+#unit=["tempo_osc","volt_osc"]
 
 titolo="Diagramma di bode - amplificatore invertente"
 Xlab="Frequenza [Hz]"
@@ -75,7 +76,8 @@ p0=[1,1]
 def XYfun(a):
     return unumpy.log10(a[0]),20*unumpy.log10(a[1]/VIN)
 
-unit=["tempo_osc","volt_osc_nocal"]
+unit=[("tempo","osc"),("volt","osc")]
+#unit=["tempo_osc","volt_osc_nocal"]
 
 titolo="Andamento ad alte frequenze"
 Xlab="Frequenza [decadi]"
@@ -223,7 +225,8 @@ p0=[4e+03, 3e+05]
 def XYfun(a):
     return a[0], 2*pi*a[3]*a[0]
 
-unit=["tempo_osc","volt_osc","volt_osc","volt_osc_nocal"]
+unit=[("time","osc"),("volt","osc"),("volt","osc"),("volt","osc")]
+#unit=["tempo_osc","volt_osc","volt_osc","volt_osc_nocal"]
 
 titolo="Diagramma di bode (fase) - derivatore"
 Xlab="Frequenza [Hz]"
