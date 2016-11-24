@@ -14,6 +14,7 @@ from matplotlib import gridspec, pyplot
 
 from scipy import odr
 from scipy.optimize import curve_fit
+from scipy.stats import chisqprob
 #import scipy.stats
 #from scipy.stats import distributions
 
@@ -622,16 +623,33 @@ _util_mm_esr_data = dict(
         desc='oscilloscope from lab III course',
         type='osc',
         volt=dict(
-            scales=[ (8*d*10**s) for s in range(-3, 1) for d in [1, 2, 5] ],
-            perc=[4] * 2 + [3] * 10,
-            div=[ (d*10**s) for s in range(-3, 1) for d in [1, 2, 5] ]
+            scales=[8*2e-3]+[8*5e-3]+[ (8*d*10**s) for s in range(-2, 1) for d in [1, 2, 5] ],
+            perc=[4] * 2 + [3] * 9,
+            div=[1e-3]*2+[ (d*10**s) for s in range(-2, 1) for d in [1, 2, 5] ]
+        ),
+        volt_ar=dict(
+            scales=[4*2e-3]+[4*5e-3]+[ (4*d*10**s) for s in range(-2, 1) for d in [1, 2, 5] ],
+            perc=[4] * 2 + [3] * 9,
+            div=[1e-3]*2+[ (d*10**s) for s in range(-2, 1) for d in [1, 2, 5] ]
+        ),
+        volt_nc=dict(
+            scales=[8*2e-3]+[8*5e-3]+[ (8*d*10**s) for s in range(-2, 1) for d in [1, 2, 5] ],
+            perc=[0] * 11,
+            div=[1e-3]*2+[ (d*10**s) for s in range(-2, 1) for d in [1, 2, 5] ]
+        ),
+        volt_ar_nc=dict(
+            scales=[4*2e-3]+[4*5e-3]+[ (4*d*10**s) for s in range(-2, 1) for d in [1, 2, 5] ],
+            perc=[0] * 11,
+            div=[1e-3]*2+[ (d*10**s) for s in range(-2, 1) for d in [1, 2, 5] ]
         ),
         time=dict(
             scales=[5e-09] + [ (10*d*10**s) for s in range(-9, 2) for d in [1, 2.5, 5] ]
-
+            
         ),
         freq=dict(
-            scales=[1e9]
+            scales=[1e9],
+            perc=[1],
+            div = [0]
         ),
         generic=dict(
         )
@@ -702,7 +720,7 @@ def util_mm_er(x, scale, metertype='dig', unit='volt', sqerr=False):
         elif unit == 'ampere' or unit == 'ampere_ac':
             r = info['cdt'][idx] / s
     elif typ == 'osc':
-        e = info['div'][idx] / 25
+        e = errsum(x*info['perc'][idx]/100.0, info['div'][idx] / 25)
         r = 10e6
     else:
         raise KeyError(typ)
@@ -1044,7 +1062,7 @@ def num2si(x, format='%.16g', si=True, space=' '):
 
 # ************************ SHORTCUTS ******************************
 
-def mme(x, unit, metertype='lab3', sqerr=False):
+def mme(x, unit, metertype='dig', sqerr=True):
     """
     determines the fullscale used to measure x with a multimeter,
     supposing the lowest possible fullscale was used, and returns the
@@ -1175,7 +1193,7 @@ def _outlier_(directory, file_, units, X, XYfun):
 
     return X_ol, Y_ol, dX_ol, dY_ol, smin, smax
 
-def _residuals(gne, gs, ax1, f, par, out, X, Xlab, Xscale, Y, dY, X_ol, Y_ol, dY_ol):
+def _residuals(fig, gne, gs, ax1, f, par, out, X, dX, Xlab, Xscale, Y, dY, X_ol=[], Y_ol=[], dY_ol=[]):
     # performs the calculation of residuals and plot it in a fashion way
 
     figure(fig+"_1")
@@ -1189,7 +1207,8 @@ def _residuals(gne, gs, ax1, f, par, out, X, Xlab, Xscale, Y, dY, X_ol, Y_ol, dY
     if Xscale=="log":
         xscale("log")
     grid(b=True)
-    plot(X, (Y-f(X,*par))/dY, ".", color="black")
+    df = (f(X+dX/1e6,*par)-f(X,*par)) /(dX/1e6)
+    plot(X, (Y-f(X,*par))/sqrt(dY**2+(df*dX)**2), ".", color="black")
 
     if out ==True:
         plot(X_ol, (Y_ol-f(X_ol,*par))/dY_ol, "^", color="green")
@@ -1243,12 +1262,14 @@ def plot_fit(directory, file_, title_, units, f, par, out, fig, residuals, xlimp
         outlier = errorbar(X_ol,Y_ol,dY_ol,dX_ol, fmt="g^",ecolor="black",capsize=0.5)
         plt.legend([outlier], ['outlier'], loc="best")
     if residuals==True:
-        _residuals(gne, gs, ax1, f, par, out, X, Xlab, Xscale, Y, dY, X_ol, Y_ol, dY_ol)
+        if out==True:
+            _residuals(fig, gne, gs, ax1, f, par, out, X, dX, Xlab, Xscale, Y, dY, X_ol, Y_ol, dY_ol)
+        _residuals(fig, gne, gs, ax1, f, par, out, X, dX, Xlab, Xscale, Y, dY)
             
     savefig(directory+"grafici/fit_"+fig+".pdf")
     savefig(directory+"grafici/fit_"+fig+".png")
 
-def chi2_calc(f, par, X, Y, dY, cov):
+def chi2_calc(f, par, X, Y, dY, dX, cov):
     """
         Parameters
         ----------    
@@ -1256,9 +1277,11 @@ def chi2_calc(f, par, X, Y, dY, cov):
         Returns
         -------
 
-    """        
-    chi = sum((Y-f(X,*par))**2/dY**2)
+    """  
+    df = (f(X+dX/1e6,*par)-f(X,*par)) /(dX/1e6)
+    chi = sum((Y-f(X,*par))**2/(dY**2+(df*dX)**2))
     
+    p = chisqprob(chi, len(X)-len(par))
     sigma = sqrt(diag(cov))
     
     normcov = zeros((len(par),len(par)))
@@ -1267,9 +1290,9 @@ def chi2_calc(f, par, X, Y, dY, cov):
         for j in range(len(par)):
             normcov[i,j]=cov[i, j]/(sigma[i]*sigma[j])
 
-    return chi, sigma, normcov
+    return chi, sigma, normcov, p
 
-def pretty_print_chi2(file_, par, sigma, chi, X, normcov):
+def pretty_print_chi2(file_, par, sigma, chi, X, normcov, p):
     """
         Parameters
         ----------    
@@ -1278,30 +1301,32 @@ def pretty_print_chi2(file_, par, sigma, chi, X, normcov):
         -------
 
     """    
-    print("_________________________________________________________")
+    print("________________________________")
     print("\nFIT RESULT %s\n" % file_)
     for i in range(len(par)):
         print("p%s = %s" % (i,xep(par[i],sigma[i],",")))
     
-    print("\nchi / ndof =",chi,"/",len(X)-len(par))
+    print("\nchi / ndof = %.1f / %s" %(chi,len(X)-len(par)))
+    print("p_value = %.2f %%" %(p*100))
     if len(par)>1 :
-        print("covarianza normalizzata=\n",normcov)
+        print("covarianza normalizzata=\n", normcov)
 
-def latex_table(directory, file_, data, data_err, tab):
+def latex_table(directory, file_, data, data_err, tab, out, data_ol=[], data_err_ol=[]):
     """
         Parameters
         ----------    
 
         Returns
         -------
-
+    
     """
+
+
     with open(directory+"tabelle/tab_"+file_+".txt", "w") as text_file:
         text_file.write("\\begin{tabular}{c")
         for z in range (1,len(data)):
             text_file.write("|c")
         text_file.write("} \n")
-        print()
         text_file.write("%s" % tab[0])
         for z in range (1,len(data)):
             text_file.write(" & %s" % tab[z])
@@ -1311,8 +1336,15 @@ def latex_table(directory, file_, data, data_err, tab):
             for j in range (1,len(data)):
                 text_file.write(" & %s" % xe(data[j][i], data_err[j][i], "$\pm$"))
             text_file.write("\\\\\n")
+        if out==True:
+            for i in range (len(data_ol[0])):
+                text_file.write("%s" % xe(data_ol[0][i], data_err_ol[0][i], "$\pm$"))
+                for j in range (1,len(data_ol)):
+                    text_file.write(" & %s" % xe(data_ol[j][i], data_err_ol[j][i], "$\pm$"))
+                text_file.write("\\\\\n")
         text_file.write("\\end{tabular}")
         text_file.close()
+        
 
 def fit(directory, file_, units, f, p0, 
         title_="", Xlab="", Ylab="", XYfun=_XYfunction, 
@@ -1366,14 +1398,20 @@ def fit(directory, file_, units, f, p0,
     plot_fit(directory, file_, title_, units, f, par, out, fig, residuals, xlimp, XYfun, Xscale, Yscale, Xlab, Ylab, X, Y, dX, dY)
 
     #Calcolo chi, errori e normalizzo la matrice di cov
-    chi, sigma, normcov = chi2_calc(f, par, X, Y, dY, cov)
+    chi, sigma, normcov, p = chi2_calc(f, par, X, Y, dY, dX, cov)
 
     #Stampo i risultati, il chi e la matrice di cov
-    pretty_print_chi2(file_, par, sigma, chi, X, normcov)
+    pretty_print_chi2(file_, par, sigma, chi, X, normcov, p)
 
+    if out ==True:
+        data_ol = _load_data(directory,file_+"_ol")
+        X_ol, Y_ol, dX_ol, dY_ol, data_err_ol = _errors(data_ol, units, XYfun)
+    else:
+        data_ol=[]
+        data_err_ol=[]
     #Salvo la tabella formattata latex
     if table==True:
-        latex_table(directory, file_, data, data_err, tab)
+        latex_table(directory, file_, data, data_err, tab, out, data_ol, data_err_ol)
 
     return 1
 
@@ -1415,3 +1453,7 @@ def fast_plot(directory, file_, units, XYfun=_XYfunction, title_="",
         _preplot(directory, file_, title_, fig, X, Y, dX, dY, Xscale, Yscale, Xlab, Ylab)
 
     return 1
+    
+def umme(value, unit="volt_ar", instrument="osc"):
+    #Shortcut to generate an ufloat type with the error given by the mme function.
+    return uncertainties.ufloat(value,mme(value,unit,instrument))
