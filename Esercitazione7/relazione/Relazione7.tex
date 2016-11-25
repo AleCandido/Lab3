@@ -45,8 +45,23 @@
 \section{Scopo e strumentazione}
 
 \section{Discriminatore}
+Si è montato il circuito in \figurename{~\ref{circuito_discriminatore}} e se ne è studiata la risposta a segnali sinusoidali di frequenza e intensità variabili. In \figurename{~\ref{fig:discriminator}} è mostrato il comportamento ad una frequenza di $\sim \unit{1}{k\hertz}$ ed una tensione di ingresso di $\sim\unit{4}{\volt}$, è visibile l'onda sinusoidale in ingresso e l'onda quadra generata in uscita dall' op-amp. Poiché l'op-amp è usato in modalità invertente il comportamento è paragonabile ad un circuito logico NOT.
+
+\subsection{Misura della tensione di offset}
+Si è proceduto a studiare in maggior dettaglio il punto di zero-crossing e a misurare la tensione di offset $V_{OS}$, ovvero la tensione del segnale sinusoidale $V_{IN}$ nell'istante in cui il segnale in output attraversa lo zero ($V_{OUT}=0$). In figura \figurename{~\ref{fig:vos}} è visibile il punto di zero crossing. La misura ha restituito il valore di $V_{OS} = \unit{150 \pm 5}{\milli\volt}$
+
+\subsection{Conservazione GBW}
+Per elevate frequenze è atteso, per la conservazione del prodotto guadagno-banda che i guadagno dell'op-amp diminuisca. Per piccoli segnali in ingresso e alte frequenze è atteso che il segnale in output non arrivi a saturazione e sia visibile quindi come un onda sinusoidale.
+In \figurename{~\ref{fig:GMW}} è visibile la risposta del circuito ad un segnale di $\sim\unit{100}{k\hertz}$ e un'intensità $V_{IN}= \unit{156 \pm 5}{\milli\volt}$ e come atteso il segnale è sinusoidale.
+Si è misurata la risposta a varie frequenze a parità di tensione di input, i dati raccolti sono riportati in appendice in \tablename{~\ref{tab:GBW}}. Si è fittata la conservazione della prodotto banda guadagno, i grafici e i risultati del fit sono riportati di seguito:
+
+
+\subsection{Slew rate}
+Per frequenze medio/alte e grandi segnali lo slew-rate produce una notevole distorsione dell'onda quadra limitanto la velocità di salita/discesa del segnale. Glie effetti dello slew-rate sulla risposta del circuito sono chiari in \figurename{~\ref{fig:slewrate_razzista}}
+
 
 \section{Amplificatore di carica}
+
 
 \section{Trigger di Schmitt}
 
