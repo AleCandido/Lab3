@@ -14,7 +14,7 @@ else:
     raise Error("unknown user, please specify it and the path in the file Esercitazione*.py")
 sys.path = sys.path + [path]
 
-from BuzzLightyear import *
+from BobLightyear import *
 
 dir= path + "Esercitazione7/"
 ###########################################################################
@@ -48,20 +48,19 @@ tab=["$V_{OUT}$ [$V$]","Freq. di taglio [Hz]"]
 ##
 
 file="V_t"
-
 def f(x, a, b):
-    return a*np.log10(b*x)
+    return a*np.log10(x*b)
 
 p0=[1,1]
 
 def XYfun(a):
     return a[0], a[1]
 
-unit=[("volt_ar","osc"),("freq","osc")]
+unit=[("volt_ar_nc","osc"),("time","osc")]
 
 titolo="Grafico gain-bandwidth"
-Xlab="Frequenza di taglio [decadi]"
-Ylab="Guadagno [dB]"
+Xlab="Tensione di soglia"
+Ylab="Tempo"
 
 tab=["$V_{OUT}$ [$V$]","Freq. di taglio [Hz]"]
 
