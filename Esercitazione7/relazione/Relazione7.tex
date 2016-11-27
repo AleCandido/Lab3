@@ -190,13 +190,21 @@ I valori misurati per gli stati alto e basso dell'output e di $V_+$ sono:
 	\end{tabular}
 \end{table}
 
-Che è consistente con quanto atteso. Infatti gli Zener hanno una tensione di breakdown pari a $\sim \unit{6.2}{\volt}$, aggiungendo $V_\gamma$ (cioè la tensione a cui il diodo passa in conduzione, o forward voltage), che da datasheet è al più $\unit{1.5}{\volt}$, si ha effettivamente la consistenza del valore misurato.
+\paragraph{$V_{out}} Che è consistente con quanto atteso. Infatti gli Zener hanno una tensione di breakdown pari a $\sim \unit{6.2}{\volt}$, aggiungendo $V_\gamma$ (cioè la tensione a cui il diodo passa in conduzione, o forward voltage), che da datasheet è al più $\unit{1.5}{\volt}$, si ha effettivamente la consistenza del valore misurato.
 
 \paragraph{Zener e $R_3$} Quello che succede è che la tensione al terminale di output dell'OpAmp, dovuta all'alimentazione, è maggiore della massima caduta di tensione fissata dagli Zener. Per questo ai capi della resistenza $R_3$ si ha una data caduta di potenziale (che corrisponde a $V_{CC}-V_Z$), che porta ad una corrente che fluisce nella resistenza. In questo modo è possibile fissare il valore dei due stati di $V_{out}$ coi soli Zener, rendendo tali valori indipendenti dal valore dell'amplificazione dell'OpAmp e dall'alimentazione.
 
-Riguardo $V_+$ si ha che questo è determinato da $V_{out}$ e dal rapporto di partizione $R_1 - R_2$, che in questo caso, poiché $R_1 \sim R_2$ è circa la metà. Per l'esattezza il rapporto di partizione atteso è pari a $\unit{}$ mentre il rapporto fra le due tensioni misurate è pari a $\unit{}$, e quindi i due valori sono compatibili.
+\paragraph{$V_+} Riguardo $V_+$ si ha che questo è determinato da $V_{out}$ e dal rapporto di partizione $R_1 - R_2$, che in questo caso, poiché $R_1 \sim R_2$ è circa la metà. Per l'esattezza il rapporto di partizione atteso è pari a $\unit{0.5000 \pm 0.0028}$ mentre il rapporto fra le due tensioni misurate è pari a $\unit{0.510 \pm 0.022}$, e quindi i due valori sono compatibili.
+Per l'esattezza l'espressione che si ottiene dalla teoria per i due punti di inversione è $V_Z R_2/(R_1 + R_2)$.
 
-Si discute infine del segnale $V_-$. Questa segnale, come già detto e come si può osservare dalla \figurename{~}.
+\paragraph{$V_-} Si discute infine del segnale $V_-$.
+Questa segnale, come già detto e come si può osservare dalla \figurename{~\ref{fig:multivibratore-}, è una tipica onda a \emph{pinna di squalo}, cioè la successione di esponenziali crescenti e decrescenti, dovuti alle cariche e scariche del condensatore $C$. I valori misurati per le tensioni nei punti d'inversione sono $\pm \unit{3.52 \pm 0.11}{\volt}$.
+La tensione nei punti di inversione è dunque esattamente la stessa che si ha per $V_+$, come atteso dato l'altissimo valore di amplificazione dell'OpAmp.
+
+\subsection{Dipendenza del periodo di $V_{out}$ dalla tensione di alimentazione}
+
+\subsection{Limiti in frequenza dell'onda quadra generata}
+
 
 \pagebreak
 \section{Appendice: Dati acquisiti}
