@@ -14,17 +14,26 @@ from matplotlib import gridspec, pyplot
 
 from scipy import odr
 from scipy.optimize import curve_fit
-from scipy.stats import chisqprob
+from scipy.stats import chisqprob   # giusto perché tu lo sappia, Jack mi pare avesse detto che è deprecata
+                                    # in distributions c'è quella buona, dovrebbe essere scipy.stats.chi2.sf
+                                    # in distributions ci sono le varie distribuzioni come classi, sf è un metodo comune
 #import scipy.stats
 #from scipy.stats import distributions
 
 # lab flavour
 from pylab import *
 #from pylab import loadtxt, transpose, matrix, zeros, figure, title, xlabel, ylabel, xscale, yscale, grid, errorbar, savefig, plot, clf, logspace, linspace, legend, rc
+
 from uncertainties import unumpy, ufloat
 #from lab import mme, fit_generic_xyerr2, xep, xe
 
 __all__ = [ # things imported when you do "from lab import *"
+    'xep',
+    'xe',
+    'mme',
+    'etastart',
+    'etastr',
+    'num2si',
     'plot_fit',
     'chi2_calc',
     'pretty_print_chi2',
@@ -33,6 +42,7 @@ __all__ = [ # things imported when you do "from lab import *"
     'fast_plot',
     'umme',
     'mme'
+
 ]
 
 __version__ = 'Bob.0'
@@ -489,156 +499,156 @@ def _find_scale_idx(scale, scales):
     return -1
 
 _util_mm_esr_data = dict(
-    dm3900=dict(
-        desc='multimeter Digimaster DM 3900 plus',
-        type='digital',
-        volt=dict(
-            scales=[0.2, 2, 20, 200, 1000],
-            perc=[0.5] * 4 + [0.8],
-            digit=[1, 1, 1, 1, 2]
+    dm3900 = dict(
+        desc = 'multimeter Digimaster DM 3900 plus',
+        type = 'digital',
+        volt = dict(
+            scales = [0.2, 2, 20, 200, 1000],
+            perc = [0.5] * 4 + [0.8],
+            digit = [1, 1, 1, 1, 2]
         ),
-        volt_ac=dict(
-            scales=[0.2, 2, 20, 200, 700],
-            perc=[1.2, 0.8, 0.8, 0.8, 1.2],
-            digit=[3] * 5
+        volt_ac = dict(
+            scales = [0.2, 2, 20, 200, 700],
+            perc = [1.2, 0.8, 0.8, 0.8, 1.2],
+            digit = [3] * 5
         ),
-        ampere=dict(
-            scales=[2 * 10**z for z in range(-5, 2)],
-            perc=[2, 0.5, 0.5, 0.5, 1.2, 1.2, 2],
-            digit=[5, 1, 1, 1, 1, 1, 5]
+        ampere = dict(
+            scales = [2 * 10**z for z in range(-5, 2)],
+            perc = [2, 0.5, 0.5, 0.5, 1.2, 1.2, 2],
+            digit = [5, 1, 1, 1, 1, 1, 5]
         ),
-        ampere_ac=dict(
-            scales=[2 * 10**z for z in range(-5, 2)],
-            perc=[3, 1.8, 1, 1, 1.8, 1.8, 3],
-            digit=[7, 3, 3, 3, 3, 3, 7]
+        ampere_ac = dict(
+            scales = [2 * 10**z for z in range(-5, 2)],
+            perc = [3, 1.8, 1, 1, 1.8, 1.8, 3],
+            digit = [7, 3, 3, 3, 3, 3, 7]
         ),
-        ohm=dict(
-            scales=[2 * 10**z for z in range(2, 8)],
-            perc=[0.8] * 5 + [1],
-            digit=[3, 1, 1, 1, 1, 2]
+        ohm = dict(
+            scales = [2 * 10**z for z in range(2, 8)],
+            perc = [0.8] * 5 + [1],
+            digit = [3, 1, 1, 1, 1, 2]
         )
     ),
-    dig=dict(
-        desc='multimeter from lab III course',
-        type='digital',
-        volt=dict(
-            scales=[0.2, 2, 20, 200, 1000],
-            perc=[0.5] * 4 + [0.8],
-            digit=[1, 1, 1, 1, 2]
+    dig = dict(
+        desc = 'multimeter from lab III course',
+        type = 'digital',
+        volt = dict(
+            scales = [0.2, 2, 20, 200, 1000],
+            perc = [0.5] * 4 + [0.8],
+            digit = [1, 1, 1, 1, 2]
         ),
-        volt_ac=dict(
-            scales=[0.2, 2, 20, 200, 700],
-            perc=[1.2, 0.8, 0.8, 0.8, 1.2],
-            digit=[3] * 5
+        volt_ac = dict(
+            scales = [0.2, 2, 20, 200, 700],
+            perc = [1.2, 0.8, 0.8, 0.8, 1.2],
+            digit = [3] * 5
         ),
-        ampere=dict(
-            scales=[2e-3, 20e-3, 0.2, 10],
-            perc=[0.8, 0.8, 1.5, 2.0],
-            digit=[1, 1, 1, 5]
+        ampere = dict(
+            scales = [2e-3, 20e-3, 0.2, 10],
+            perc = [0.8, 0.8, 1.5, 2.0],
+            digit = [1, 1, 1, 5]
         ),
-        ampere_ac=dict(
-            scales=[2e-3, 20e-3, 0.2, 10],
-            perc=[1, 1, 1.8, 3],
-            digit=[3, 3, 3, 7]
+        ampere_ac = dict(
+            scales = [2e-3, 20e-3, 0.2, 10],
+            perc = [1, 1, 1.8, 3],
+            digit = [3, 3, 3, 7]
         ),
-        ohm=dict(
-            scales=[2 * 10**z for z in range(2, 9)],
-            perc=[0.8] * 5 + [1, 5],
-            digit=[3, 1, 1, 1, 1, 2, 10]
+        ohm = dict(
+            scales = [2 * 10**z for z in range(2, 9)],
+            perc = [0.8] * 5 + [1, 5],
+            digit = [3, 1, 1, 1, 1, 2, 10]
         ),
-        farad=dict(
-            scales=[2e-9 * 10**z for z in range(1, 6)],
-            perc=[4] * 5,
-            digit=[3] * 5
+        farad = dict(
+            scales = [2e-9 * 10**z for z in range(1, 6)],
+            perc = [4] * 5,
+            digit = [3] * 5
         )
     ),
-    kdm700=dict(
-        desc='multimeter GBC Mod. KDM-700NCV',
-        type='digital',
-        volt=dict(
-            scales=[0.2, 2, 20, 200, 1000],
-            perc=[0.5] * 4 + [0.8],
-            digit=[1, 1, 1, 1, 2]
+    kdm700 = dict(
+        desc = 'multimeter GBC Mod. KDM-700NCV',
+        type = 'digital',
+        volt = dict(
+            scales = [0.2, 2, 20, 200, 1000],
+            perc = [0.5] * 4 + [0.8],
+            digit = [1, 1, 1, 1, 2]
         ),
-        volt_ac=dict(
-            scales=[0.2, 2, 20, 200, 700],
-            perc=[1.2, 0.8, 0.8, 0.8, 1.2],
-            digit=[3] * 5
+        volt_ac = dict(
+            scales = [0.2, 2, 20, 200, 700],
+            perc = [1.2, 0.8, 0.8, 0.8, 1.2],
+            digit = [3] * 5
         ),
-        ampere=dict(
-            scales=[2 * 10**z for z in range(-5, 0)] + [10],
-            perc=[2, 0.8, 0.8, 0.8, 1.5, 2],
-            digit=[5, 1, 1, 1, 1, 5]
+        ampere = dict(
+            scales = [2 * 10**z for z in range(-5, 0)] + [10],
+            perc = [2, 0.8, 0.8, 0.8, 1.5, 2],
+            digit = [5, 1, 1, 1, 1, 5]
         ),
-        ampere_ac=dict(
-            scales=[2 * 10**z for z in range(-5, 0)] + [10],
-            perc=[2, 1, 1, 1, 1.8, 3],
-            digit=[5] * 5 + [7]
+        ampere_ac = dict(
+            scales = [2 * 10**z for z in range(-5, 0)] + [10],
+            perc = [2, 1, 1, 1, 1.8, 3],
+            digit = [5] * 5 + [7]
         ),
-        ohm=dict(
-            scales=[2 * 10**z for z in range(2, 9)],
-            perc=[0.8] * 5 + [1, 5],
-            digit=[3, 1, 1, 1, 1, 2, 10]
+        ohm = dict(
+            scales = [2 * 10**z for z in range(2, 9)],
+            perc = [0.8] * 5 + [1, 5],
+            digit = [3, 1, 1, 1, 1, 2, 10]
         )
     ),
-    ice680=dict(
-        desc='multimeter ICE SuperTester 680R VII serie',
-        type='analog',
-        volt=dict(
-            scales=[0.1, 2, 10, 50, 200, 500, 1000],
-            relres=[50] * 7,
-            valg=[1] * 7
+    ice680 = dict(
+        desc = 'multimeter ICE SuperTester 680R VII serie',
+        type = 'analog',
+        volt = dict(
+            scales = [0.1, 2, 10, 50, 200, 500, 1000],
+            relres = [50] * 7,
+            valg = [1] * 7
         ),
-        volt_ac=dict(
-            scales=[10, 50, 250, 750],
-            relres=[50] * 3 + [37.5],
-            valg=[2] * 3 + [100.0 / 37.5]
+        volt_ac = dict(
+            scales = [10, 50, 250, 750],
+            relres = [50] * 3 + [37.5],
+            valg = [2] * 3 + [100.0 / 37.5]
         ),
-        ampere=dict(
-            scales=[50e-6, 500e-6, 5e-3, 50e-3, 500e-3, 5],
-            relres=[50] * 6,
-            valg=[1] * 6,
-            cdt=[0.1, 0.294, 0.318] + [0.320] * 3
+        ampere = dict(
+            scales = [50e-6, 500e-6, 5e-3, 50e-3, 500e-3, 5],
+            relres = [50] * 6,
+            valg = [1] * 6,
+            cdt = [0.1, 0.294, 0.318] + [0.320] * 3
         ),
-        ampere_ac=dict(
-            scales=[250e-6, 2.5e-3, 25e-3, 250e-3, 2.5],
-            relres=[50] * 5,
-            valg=[2] * 5,
-            cdt=[2, 1.5, 1.6, 1.6, 1.9]
+        ampere_ac = dict(
+            scales = [250e-6, 2.5e-3, 25e-3, 250e-3, 2.5],
+            relres = [50] * 5,
+            valg = [2] * 5,
+            cdt = [2, 1.5, 1.6, 1.6, 1.9]
         )
     ),
-    osc=dict(
-        desc='oscilloscope from lab III course',
-        type='osc',
-        volt=dict(
-            scales=[8*2e-3]+[8*5e-3]+[ (8*d*10**s) for s in range(-2, 1) for d in [1, 2, 5] ],
-            perc=[4] * 2 + [3] * 9,
-            div=[1e-3]*2+[ (d*10**s) for s in range(-2, 1) for d in [1, 2, 5] ]
+    osc = dict(
+        desc = 'oscilloscope from lab III course',
+        type = 'osc',
+        volt = dict(
+            scales  =  [8*2e-3] + [8*5e-3] + [(8*d*10**s) for s in range(-2, 1) for d in [1, 2, 5]],
+            perc  =  [4]*2 + [3]*9,
+            div  =  [1e-3]*2 + [(d*10**s) for s in range(-2, 1) for d in [1, 2, 5]]
         ),
-        volt_ar=dict(
-            scales=[4*2e-3]+[4*5e-3]+[ (4*d*10**s) for s in range(-2, 1) for d in [1, 2, 5] ],
-            perc=[4] * 2 + [3] * 9,
-            div=[1e-3]*2+[ (d*10**s) for s in range(-2, 1) for d in [1, 2, 5] ]
+        volt_ar = dict(
+            scales = [4*2e-3] + [4*5e-3] + [(4*d*10**s) for s in range(-2, 1) for d in [1, 2, 5]],
+            perc = [4]*2 + [3]*9,
+            div = [1e-3]*2 + [(d*10**s) for s in range(-2, 1) for d in [1, 2, 5]]
         ),
-        volt_nc=dict(
-            scales=[8*2e-3]+[8*5e-3]+[ (8*d*10**s) for s in range(-2, 1) for d in [1, 2, 5] ],
-            perc=[0] * 11,
-            div=[1e-3]*2+[ (d*10**s) for s in range(-2, 1) for d in [1, 2, 5] ]
+        volt_nc = dict(
+            scales = [8*2e-3] + [8*5e-3] + [(8*d*10**s) for s in range(-2, 1) for d in [1, 2, 5]],
+            perc = [0]*11,
+            div = [1e-3]*2 + [(d*10**s) for s in range(-2, 1) for d in [1, 2, 5]]
         ),
-        volt_ar_nc=dict(
-            scales=[4*2e-3]+[4*5e-3]+[ (4*d*10**s) for s in range(-2, 1) for d in [1, 2, 5] ],
-            perc=[0] * 11,
-            div=[1e-3]*2+[ (d*10**s) for s in range(-2, 1) for d in [1, 2, 5] ]
+        volt_ar_nc = dict(
+            scales = [4*2e-3] + [4*5e-3] + [(4*d*10**s) for s in range(-2, 1) for d in [1, 2, 5]],
+            perc = [0]*11,
+            div = [1e-3]*2 + [(d*10**s) for s in range(-2, 1) for d in [1, 2, 5]]
         ),
         time=dict(
             scales=[5e-09] + [ (10*d*10**s) for s in range(-9, 2) for d in [1, 2.5, 5] ],
             perc=[0]*37,
             div=[1e-09] + [ (1*d*10**s) for s in range(-9, 2) for d in [1, 2.5, 5] ]  
         ),
-        freq=dict(
-            scales=[1e9],
-            perc=[1],
-            div = [0]
+        freq = dict(
+            scales = [1e9], 
+            perc = [1]*11,
+            div = [0]*11
         ),
         generic=dict(
         )
