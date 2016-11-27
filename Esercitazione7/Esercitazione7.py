@@ -1,6 +1,7 @@
 import getpass
 import sys
 from uncertainties import unumpy
+import numpy as np
 
 if getpass.getuser() == "alessandro":
     path = "/home/alessandro/Documents/Università/3°anno/Laboratorio3/Lab3/"
