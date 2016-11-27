@@ -21,8 +21,9 @@ from scipy.stats import chisqprob   # giusto perché tu lo sappia, Jack mi pare 
 #from scipy.stats import distributions
 
 # lab flavour
+from pylab import *
+#from pylab import loadtxt, transpose, matrix, zeros, figure, title, xlabel, ylabel, xscale, yscale, grid, errorbar, savefig, plot, clf, logspace, linspace, legend, rc
 
-from pylab import loadtxt, transpose, matrix, zeros, figure, title, xlabel, ylabel, xscale, yscale, grid, errorbar, savefig, plot, clf, logspace, linspace, legend, rc
 from uncertainties import unumpy, ufloat
 #from lab import mme, fit_generic_xyerr2, xep, xe
 
@@ -39,7 +40,9 @@ __all__ = [ # things imported when you do "from lab import *"
     'latex_table',
     'fit',
     'fast_plot',
-    'umme'
+    'umme',
+    'mme'
+
 ]
 
 __version__ = 'Bob.0'
@@ -637,10 +640,10 @@ _util_mm_esr_data = dict(
             perc = [0]*11,
             div = [1e-3]*2 + [(d*10**s) for s in range(-2, 1) for d in [1, 2, 5]]
         ),
-        time = dict(
-            scales = [5e-09] + [(10*d*10**s) for s in range(-9, 2) for d in [1, 2.5, 5]],
-            perc = [1]*11,
-            div = [5e-10] + [(d*10**s) for s in range(-9, 2) for d in [1, 2.5, 5]]
+        time=dict(
+            scales=[5e-09] + [ (10*d*10**s) for s in range(-9, 2) for d in [1, 2.5, 5] ],
+            perc=[0]*37,
+            div=[1e-09] + [ (1*d*10**s) for s in range(-9, 2) for d in [1, 2.5, 5] ]  
         ),
         freq = dict(
             scales = [1e9], 
@@ -1133,7 +1136,7 @@ def _load_data(directory,file_):
     # load the data matrix from the data file 
     
     data = loadtxt(directory+"data/"+file_+".txt", unpack = True)    
-    if type(data[0]) is float64:    # check if the first column is a column 
+    if type(data[0]) is np.float64:    # check if the first column is a column 
         data=array(transpose(matrix(data)))
 
     return data
