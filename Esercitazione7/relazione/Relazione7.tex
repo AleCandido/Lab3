@@ -121,7 +121,7 @@ Mentre i valori fra cui oscilla $V_{out}$ sono:
 	\label{fig:slew_rate}
 \end{figure}
 
-%Si ha perciò che il comportamento del circuito è ideale per frequenze al di sotto di $\sim boh, non c'è scritto su misure$
+Si ha perciò che il comportamento del circuito è ideale per frequenze tali per cui lo slew rate non porta ad un tempo di \emph{switching} comparabile al semiperiodo dell'onda quadra. Perciò, dato il valore dello slew rate in salita, si può affermare che il circuito abbia un comportamento ideale per frequenze fino a $\sim \unit{6}{\kilo\hertz}$, per cui il tempo di \emph{switching} è $\sim 1\%$ del semiperiodo.
 
 % Problema: come diamine si giustifica la discesa più rapida dello slew_rate? Io ce la scriverei, ma due righe di ipotesi andrebbero scritte.
 
@@ -143,6 +143,8 @@ T = 2 \tau \text{ln}(1 + 2 R_2/R_1)
 ed è indipendente dalla tensione di breakdown degli Zener $V_Z$.
 
 Si sono scelti di conseguenza dei valori di $R$ e $C$ tali che il periodo fosse $\sim \unit{2}{\milli\second}$ come ricavato. I valori misurati, di questi e degli altri componenti, sono riportati di seguito.
+
+\emph{Si è scelto $C$ in modo che sia piuttosto grande rispetto alle capacità parassite della basetta, che sono attese dell'ordine delle decine di pF}
 
 \begin{table}[H]
 	\centering
@@ -208,6 +210,8 @@ La tensione nei punti di inversione è dunque esattamente la stessa che si ha pe
 
 \subsection{Dipendenza del periodo di $V_{out}$ dalla tensione di alimentazione}
 
+
+
 \subsection{Limiti in frequenza dell'onda quadra generata}
 Si è provato a sostituire il condensatore $C$ e la resistenza $R$ in modo da aumentare la frequenza dell'oscillazione. Per frequenze troppo alte si ha che il segnale in uscita approssima sempre peggio un'onda quadra, fino ad essere molto deformato (si veda \figurename{~\ref{fig:scazzo}}).
 
@@ -217,6 +221,8 @@ Si è provato a sostituire il condensatore $C$ e la resistenza $R$ in modo da au
         \caption{Multivibratore oscillante ad una frequenza di $\sim \unit{53}{\kilo\hertz}$}
         \label{fig:scazzo}
 \end{figure}
+
+Si è trovato che il circuito approssimativamente genera in output un'onda quadra fino alla frequenza di $\sim \unit{10}{\kilo\hertz}$.
 
 \pagebreak
 \section{Appendice: Dati acquisiti}
