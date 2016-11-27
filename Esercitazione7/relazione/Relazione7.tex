@@ -209,8 +209,28 @@ La tensione nei punti di inversione è dunque esattamente la stessa che si ha pe
 \paragraph{Periodo del segnale} La frequenza del segnale, determinata dalla legge \eqref{periodo}, è pari a $\unit{510 \pm 40}{\hertz}$, mentre quella misurata è $\unit{513 \pm 5}{\hertz}$, perciò evidentemente compatibili.
 
 \subsection{Dipendenza del periodo di $V_{out}$ dalla tensione di alimentazione}
+Ci si aspetta che il periodo sia indipendente dalla tensione di alimentazione, fintanto che questa mantenga un'uscita al di sopra della tensione di breakdown degli Zener (in realtà breakdown più la tensione di conduzione, cioè quei $\sim \unit{6.9}{\volt}$ misurati precedentemente).
+Al di sotto di questa tensione non è più fissato il valore di $V_{out}$, e di conseguenza neanche i valori delle soglie (cioè $V_+$), che determinano infine il tempo di crescita dell'esponenziale, dovuto alla carica del condensatore $C$.
 
+Per questo, quando si diminuisce il valore della tensione di alimentazione diminuisce il periodo, o meglio la durata della semionda. Si può infatti diminuire anche una sola delle due tensioni di alimentazione, ottenendo così un segnale in output sempre a due stati, ma due stati con tensioni diverse anche in modulo, e soprattutto di durata differente; in sostanza si arriva a cambiare sia la media che il duty cycle del treno d'impulsi, in modo non indipendente.
 
+Si riporta in \figurename{~\ref{fig:fig1}} e \figurename{~\ref{fig:fig2}} due esempi di quanto descritto, il primo con una tensione sopra il livello degli Zener e il secondo sotto tale livello, entrambi però con alimentazioni approsimativamente simmetriche.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.49\textwidth}
+        \centering
+        \includegraphics[width = \textwidth]{../oscilloscopio/fig1.jpg}
+        \caption{Segnale in uscita modulato dai diodi Zener}
+        \label{fig:fig1}
+    \end{minipage}
+    \begin{minipage}{0.49\textwidth}
+        \centering
+        \includegraphics[width = \textwidth]{../oscilloscopio/fig2.jpg}
+        \caption{Segnale in uscita modulato dalle tensioni di alimentazione dell'OpAmp}
+        \label{fig:fig2}
+    \end{minipage}
+\end{figure}
 
 \subsection{Limiti in frequenza dell'onda quadra generata}
 Si è provato a sostituire il condensatore $C$ e la resistenza $R$ in modo da aumentare la frequenza dell'oscillazione. Per frequenze troppo alte si ha che il segnale in uscita approssima sempre peggio un'onda quadra, fino ad essere molto deformato (si veda \figurename{~\ref{fig:scazzo}}).
