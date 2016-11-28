@@ -18,26 +18,26 @@ from BobLightyear import *
 dir= path + "Esercitazione8/"
 ###########################################################################
 
-#GRAFICO GAIN-BANDWIDTH#
+#LOOP GAIN MODULI#
 
-file=""
+file="loopgain"
 
-def f(x, ):
-    return 
+def f(x, a, b):
+    return a*x +b
 
 p0=[1,1]
 
 def XYfun(a):
-    return , 
+    return unumpy.log10(a[0]), 20*unumpy.log10(a[1]/a[3] )
 
-unit=[(),()]
+unit = [("freq", "osc"),("volt", "osc"), ("time", "osc"), ("volt", "osc")]
 
-titolo=
-Xlab=
-Ylab=
+titolo = "Loop gain - Bode plot"
+Xlab = "freq. [decades]"
+Ylab = "gain [dB]"
 
-tab=[]
+tab = ["frequency [Hz]", "$V_A$ [V]", "$\\varphi$", "$V_A$ [V]"]
 
-fit(dir,file,unit,f,p0,titolo,Xlab,Ylab,XYfun, table=True, tab=tab, out=True)
+fit(dir, file, unit, f, p0, titolo, Xlab, Ylab, XYfun, table=True, tab=tab, out=False)
 ###########################################################################
 
