@@ -44,13 +44,7 @@
 
 \section{Scopo e strumentazione}
 
-Studiare il funzionamento dell’ OpAmp TL081 in circuiti non lineari, in particolare:
-\begin{itemize}
-\item un discriminatore,
-\item un amplificatore di carica,
-\item un trigger di Schmitt,
-\item un multivibratore astabile.
-\end{itemize}
+Studiare il funzionamento dell’ OpAmp TL081 in circuiti non lineari, in particolare: un discriminatore, un amplificatore di carica, un trigger di Schmitt e un multivibratore astabile.
 
 La strumentazione usata è quella presente sul banco di lavoro, più il suddetto OpAmp e due diodi Zener 1N753A da $\unit{6.2}{\volt}$.
 
@@ -66,7 +60,7 @@ Si è montato il circuito in \figurename{~\ref{circuito_discriminatore}} e se ne
 	\end{minipage}
 	\begin{minipage}{0.49\textwidth}
 		\centering
-		\includegraphics[width=0.9\textwidth]{../oscilloscopio/discriminator.jpg}
+		\includegraphics[width=0.8\textwidth]{../oscilloscopio/discriminator.jpg}
 		\caption{Risposta del circuito discriminatore}
 		\label{fig:discriminator}
 	\end{minipage}
@@ -77,7 +71,7 @@ Si è proceduto a studiare in maggior dettaglio il punto di zero-crossing e a mi
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.45\textwidth]{../oscilloscopio/Vos.jpg}
+	\includegraphics[width=0.4\textwidth]{../oscilloscopio/Vos.jpg}
 	\caption{Zoom sul punto di zero-crossing e misura di $V_{OS}$}
 	\label{fig:vos}
 \end{figure}
@@ -97,7 +91,7 @@ Si è misurata la risposta a varie frequenze a parità di tensione di input (sem
 			$b = \unit{125 \pm 4}{\deci \bel}$ \\
 			$\chi^2 / ndof = 1.9/3$\\
 			$corr(a,b) = -0.9987$\\
-			$Af_h = \unit{2.57+/-0.16}{\mega\hertz}$
+			$Af_h = \unit{2.57 \pm 0.16}{\mega\hertz}$
 		\end{tabular}
 	\end{minipage}
 	\begin{minipage}{0.75\textwidth}
@@ -135,7 +129,7 @@ Si è montato il circuito in \figurename{~\ref{circuio_ampli}} con i seguenti va
 		\centering
 		\begin{tabular}{l}
 			$C_1 = \unit{21.0 \pm 0.9}{\nano\farad}$  \\ 
-			$C_T = \unit{1.00 \pm 0.05}{\nano\farad}$ \\
+			$C_T = \unit{0.99 \pm 0.05}{\nano\farad}$ \\
 			$C_F = \unit{1.00 \pm 0.05}{\nano\farad}$ \\
 			$R_1 = \unit{99.1 \pm 0.9}{k\ohm}$  \\
 			$R_2 = \unit{98.8 \pm 0.9}{\ohm}$
@@ -150,15 +144,22 @@ Si è montato il circuito in \figurename{~\ref{circuio_ampli}} con i seguenti va
 \end{figure}
  Si è quindi fissato il valore di soglia del discriminatore a $V_0 = \unit{271 \pm 2}{\milli\volt}$.
 \subsection{Risposta in condizioni ideali}
-Il circuito di iniezione di carica è costituito dal generatore di onde quadre e dal condensatore $C_T$. Il condensatore è messo a terra attraverso l'OpAmp formando quindi un circuito derivatore. Avendo in ingresso un onda quadra il derivatore restituisce degli impulsi che per un generatore di onde quadre ideale sarebbero delle delta, queste vanno a caricare il condensatore $C_F$, la tensione ai cui capi sarà pari alla tensione di alimentazione nell'ipotesi che le capacità $C_F$ e $C_T$ siano uguali.
+Il circuito di iniezione di carica è costituito dal generatore di onde quadre e dal condensatore $C_T$. Il condensatore è messo a terra attraverso l'OpAmp formando quindi un circuito derivatore. Avendo in ingresso un onda quadra il derivatore restituisce degli impulsi che per un generatore di onde quadre ideale sarebbero delle delta, queste vanno a caricare il condensatore $C_F$, la tensione ai cui capi sarà pari a $V_{IN}\cdot(C_T/C_F)$.
 
 Il condensatore $C_F$ inizierà quindi a scaricarsi attraverso la resistenza $R_1$ con un tempo caratteristico $\tau = R_1 \cdot C_F$. Quando la tensione sul condensatore scenderà sotto la tensione di soglia fissata attraverso il potenziometro $R_3$, il discriminatore cambierà stato.
 
 L'andamento teorico è stato verificato per una frequenza di $\sim \unit{100}{\hertz}$, che garantisce un'onda quadra ben formata, e un tensione di input di $\unit{6.00 \pm 0.20}{\volt}$, come visibile in \figurename{~\ref{ampli_carica}}. 
 
-La tensione misurata all'inizio della scarica all'output del primo OpAmp è $\unit{5.84 \pm 0.20}{\volt}$, compatibile con quanto atteso e la durata dell'impulso in output è $\unit{312 \pm 2}{\micro\second}$, anch'essa compatibile con il valore atteso $t^{exp} = \tau \cdot \text{ln}(V_{IN}/V_0) = \unit{304 \pm 16}{\micro\second}$.
+La tensione misurata all'inizio della scarica all'output del primo OpAmp è $\unit{5.84 \pm 0.20}{\volt}$, compatibile con quanto atteso (ovvero $V_{Sh}^{exp} = \unit{5.9 \pm 0.5}{\volt}$) e la durata dell'impulso in output è $\unit{312 \pm 2}{\micro\second}$, anch'essa compatibile con il valore atteso $t^{exp} = \tau \cdot \text{ln}(V_{IN}\cdot(C_T/C_F)/V_0) = \unit{303 \pm 17}{\micro\second}$.
 
-\subsection{}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.40\textwidth]{../oscilloscopio/vsh_vdiscr.jpg}
+	\caption{Risposta dell'amplificatore di carica}
+	\label{ampli_carica}
+\end{figure}
+
+\subsection{Risposta in ampiezza}
 Si è misurata la durata del segnale in uscita al variare dell'intensità del segnale in ingresso, i dati raccolti sono riportati in appendice in \tablename{~\ref{tab:V_t}}.
 Dalla teoria sappiamo che $t = \tau \cdot \text{ln}(V_{IN}/V_0)$, dove $V_0$ è la tensione di soglia fissata nel discriminatore e $\tau = R_1 \cdot C_F$.
 
@@ -181,6 +182,8 @@ Si sono fittate le misure eseguite, i grafici e i risultati del fit sono di segu
 		\label{}
 	\end{minipage}
 \end{figure}
+
+Nel misurare la durata del segnale in output si è fatta attenzione a misurare il momento in cui il segnale inizia a calare piuttosto che il punto in cui attraversa lo zero, in modo da eliminare gli effetti dovuti a tensioni di offset misurate nel circuito discriminatore al punto precedente.
 
 I risultati trovati sono in ottimo accordo con quelli attesi, cioè $\tau^{exp} = \unit{98 \pm 5}{\micro\second}$ e $V_0^{exp} = \unit{271 \pm 2}{\milli\volt}$, la tensione di soglia scelta all'inizio.
 
@@ -344,7 +347,7 @@ Che è consistente con quanto atteso. Infatti gli Zener hanno una tensione di br
 
 \paragraph{Zener e $R_3$} Quello che succede è che la tensione al terminale di output dell'OpAmp, dovuta all'alimentazione, è maggiore della massima caduta di tensione fissata dagli Zener. Per questo ai capi della resistenza $R_3$ si ha una data caduta di potenziale (che corrisponde a $V_{CC}-V_Z$), che porta ad una corrente che fluisce nella resistenza. In questo modo è possibile fissare il valore dei due stati di $V_{out}$ coi soli Zener, rendendo tali valori indipendenti dal valore dell'amplificazione dell'OpAmp e dall'alimentazione.
 
-\paragraph{Tensione $V_+$} Riguardo $V_+$ si ha che questa è determinato da $V_{out}$ e dal rapporto di partizione $R_1 - R_2$, che in questo caso, poiché $R_1 \sim R_2$ è circa la metà. Per l'esattezza il rapporto di partizione atteso è pari a $V_Z R_2/(R_1 + R_2) = \unit{0.5000 \pm 0.0028}$ mentre il rapporto fra le due tensioni misurate è pari a $\unit{0.510 \pm 0.022}$, e quindi i due valori sono compatibili.
+\paragraph{Tensione $V_+$} Riguardo $V_+$ si ha che questa è determinato da $V_{out}$ e dal rapporto di partizione $R_1 - R_2$, che in questo caso, poiché $R_1 \sim R_2$ è circa la metà. Per l'esattezza il rapporto di partizione atteso è pari a $V_Z R_2/(R_1 + R_2) = 0.5000 \pm 0.0028$ mentre il rapporto fra le due tensioni misurate è pari a $0.510 \pm 0.022$, e quindi i due valori sono compatibili.
 
 \paragraph{Tensione $V_-$} Questo segnale, come già detto e come si può osservare dalla \figurename{~\ref{fig:multivibratore-}, è una tipica onda a \emph{pinna di squalo}, cioè la successione di esponenziali crescenti e decrescenti, dovuti alle cariche e scariche del condensatore $C$. I valori misurati per le tensioni nei punti d'inversione sono $\pm \unit{3.52 \pm 0.11}{\volt}$.
 	
@@ -381,19 +384,17 @@ Si è provato a sostituire il condensatore $C$ e la resistenza $R$ in modo da au
 
 \begin{figure}[H]
         \centering
-        \includegraphics[width = 0.49\textwidth]{../oscilloscopio/multivibratore_scazzo.jpg}
+        \includegraphics[width = 0.45\textwidth]{../oscilloscopio/multivibratore_scazzo.jpg}
         \caption{Multivibratore oscillante ad una frequenza di $\sim \unit{53}{\kilo\hertz}$}
         \label{fig:scazzo}
 \end{figure}
 
 Si è trovato che il circuito approssimativamente genera in output un'onda quadra fino alla frequenza di $\sim \unit{10}{\kilo\hertz}$.
-
 \pagebreak
 \section{Appendice: Dati acquisiti}
 Si riportano qui le tabelle dei dati usati per i fit e i grafici.
-
 \centering
-\begin{figure}[h!]
+\begin{figure}[H]
 	\begin{minipage}[t]{0.49\textwidth}
 		\centering
 		\resizebox{0.7\textwidth}{!}{

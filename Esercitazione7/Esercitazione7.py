@@ -58,7 +58,7 @@ def XYfun(a):
 
 unit=[("volt_nc","osc"),("time","osc")]
 
-titolo="Grafico gain-bandwidth"
+titolo="$V_{IN}$ vs TOT"
 Xlab="Tensione in ingresso [$V$]"
 Ylab="Durata segnale in uscita [s]"
 
