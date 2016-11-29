@@ -34,6 +34,8 @@ __all__ = [ # things imported when you do "from lab import *"
     'etastart',
     'etastr',
     'num2si',
+    'load_data',
+    'errors',
     'plot_fit',
     'chi2_calc',
     'pretty_print_chi2',
@@ -642,7 +644,7 @@ _util_mm_esr_data = dict(
         ),
         time=dict(
             scales=[5e-09] + [ (10*d*10**s) for s in range(-9, 2) for d in [1, 2.5, 5] ],
-            perc=[0]*37,
+            perc=[5]*37,
             div=[1e-09] + [ (1*d*10**s) for s in range(-9, 2) for d in [1, 2.5, 5] ]  
         ),
         freq = dict(
@@ -1132,7 +1134,7 @@ def xep(x, e, pm=None, comexp=True):
 def _XYfunction(a): # default for the x-y columns from the file entries
     return a[0], a[1]
 
-def _load_data(directory,file_):
+def load_data(directory,file_):
     # load the data matrix from the data file 
     
     data = loadtxt(directory+"data/"+file_+".txt", unpack = True)    
@@ -1141,7 +1143,7 @@ def _load_data(directory,file_):
 
     return data
 
-def _errors(data, units, XYfun):
+def errors(data, units, XYfun):
     # performs the error calculation, using mme
 
     # calculate data error with mme
@@ -1184,8 +1186,8 @@ def _preplot(directory, file_, X, Y, dX, dY, title_="", fig="^^",
 def _outlier_(directory, file_, units, X, XYfun):
     # mark the outlier on the data plot, read them from a specific file
 
-    data_ol = _load_data(directory,file_+"_ol")
-    X_ol, Y_ol, dX_ol, dY_ol, data_ol_err = _errors(data_ol, units, XYfun)
+    data_ol = load_data(directory,file_+"_ol")
+    X_ol, Y_ol, dX_ol, dY_ol, data_ol_err = errors(data_ol, units, XYfun)
 
     smin=min(min(X_ol),min(X))
     smax=max(max(X_ol),max(X))
@@ -1212,7 +1214,10 @@ def _residuals(fig, gne, gs, ax1, f, par, out, X, dX, Xlab, Xscale, Y, dY, X_ol=
     if out ==True:
         plot(X_ol, (Y_ol-f(X_ol,*par))/dY_ol, "^", color="green")
 
-def plot_fit(directory, file_, title_, units, f, par, out, fig, residuals, xlimp, XYfun, Xscale, Yscale, Xlab, Ylab, X, Y, dX, dY):
+def plot_fit(directory, file_, title_, units, f, par, X, Y, dX, dY, 
+             out=False, fig="^^", residuals=False,
+             xlimp=[100,100], XYfun=_XYfunction,
+             Xscale="linear", Yscale="linear", Xlab="", Ylab=""):
     """
         Parameters
         ----------    
@@ -1221,6 +1226,9 @@ def plot_fit(directory, file_, title_, units, f, par, out, fig, residuals, xlimp
         -------
 
     """    
+    if (fig == "^^"):
+        fig == file_
+
     gs = gridspec.GridSpec(4, 1)
     gne = figure(fig+"_1")
     if (fig == file_):
@@ -1379,8 +1387,8 @@ def fit(directory, file_, units, f, p0,
         -----
         
     """
-    data = _load_data(directory,file_)
-    X, Y, dX, dY, data_err = _errors(data, units, XYfun)
+    data = load_data(directory,file_)
+    X, Y, dX, dY, data_err = errors(data, units, XYfun)
 
     # define a default for the figure name
     if fig=="^^":
@@ -1394,7 +1402,10 @@ def fit(directory, file_, units, f, p0,
     par, cov = fit_generic_xyerr2(f,X,Y,dX,dY,p0)
     
     #Plotto il grafico con il fit e gli scarti
-    plot_fit(directory, file_, title_, units, f, par, out, fig, residuals, xlimp, XYfun, Xscale, Yscale, Xlab, Ylab, X, Y, dX, dY)
+    plot_fit(directory, file_, title_, units, f, par,
+             X, Y, dX, dY,
+             out, fig, residuals, xlimp, XYfun,
+             Xscale, Yscale, Xlab, Ylab)
 
     #Calcolo chi, errori e normalizzo la matrice di cov
     chi, sigma, normcov, p = chi2_calc(f, par, X, Y, dY, dX, cov)
@@ -1403,8 +1414,8 @@ def fit(directory, file_, units, f, p0,
     pretty_print_chi2(file_, par, sigma, chi, X, normcov, p)
 
     if out ==True:
-        data_ol = _load_data(directory,file_+"_ol")
-        X_ol, Y_ol, dX_ol, dY_ol, data_err_ol = _errors(data_ol, units, XYfun)
+        data_ol = load_data(directory,file_+"_ol")
+        X_ol, Y_ol, dX_ol, dY_ol, data_err_ol = errors(data_ol, units, XYfun)
     else:
         data_ol=[]
         data_err_ol=[]
@@ -1442,8 +1453,8 @@ def fast_plot(directory, file_, units, XYfun=_XYfunction, title_="",
         1, if all goes well
 
     """    
-    data = _load_data(directory,file_)
-    X, Y, dX, dY, data_err = _errors(data, units, XYfun)
+    data = load_data(directory,file_)
+    X, Y, dX, dY, data_err = errors(data, units, XYfun)
 
     # define a default for the figure name
     if fig=="^^":

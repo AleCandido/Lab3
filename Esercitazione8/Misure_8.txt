@@ -1,0 +1,74 @@
+R1 = 9.95e3
+R2 = 9.86e3
+R3 = 9.73e3
+R4 = 9.78e3
+R5 = 9.84e3
+C1 = 10.12e-9
+C2 = 10.51e-9
+P1 = 10.15e3
+
+V+ = 15.01
+V- = 15.02
+
+1) comportamento 
+tutto con oscillocazzo
+
+freq		VA		V+
+508.5		188e-3		260e-3
+552.7		196e-3		260e-3
+596.0		204e-3		260e-3
+634.6		212e-3		260e-3
+666.4		216e-3		260e-3
+729.0		224e-3		260e-3
+794.3		236e-3		260e-3
+879.5		240e-3		260e-3
+974.0		244e-3		260e-3
+1.096e3		248e-3		260e-3
+1.166e3		248e-3		260e-3
+1.291e3		256e-3		260e-3
+1.402e3		256e-3		260e-3
+1.578e3		260e-3		260e-3
+
+freq		VA		phi		V+
+505.0		184e-3		282e-6		254e-3
+569.1		194e-3		224e-6		254e-3
+644.2		208e-3		172e-6		256e-3
+729.3		216e-3		141e-6		256e-3
+834.9		228e-3		107e-6		256e-3
+948.4		236e-3		65.6e-6		256e-3
+1070		240e-3		54.8e-6		256e-3
+1228		252e-3		38.4e-6		260e-3
+1400		256e-3		19.4e-6		260e-3
+1587		260e-3		10.1e-6		264e-3
+1805		256e-3		80e-9		260e-3	#+-500e-9
+2000		256e-3		-4.6e-6		260e-3
+2333		248e-3		-10.5e-6	260e-3
+2633		240e-3		-14.3e-6	260e-3
+3029		232e-3		-18e-6		260e-3
+3564		220e-3		-19.2e-6	260e-3
+
+68 92 132 pm 4
+tensione in funzione della posizione del potenziometro (0, 1/2, 1)
+la dipendenza è quindi monotona e apparentemente lineare
+
+2)
+per la maggior parte dei valori del potenziometro in uscita si osserva solo rumore.
+solo vicino ad uno dei due estremi si vedono sinusoidi, e per alti valori dell'uscita, peossimi a 30V, scazza
+le sinusoidi giá prima di essere tagliate sull'out sembrano un po'deformate
+
+3)
+1570 
+misurato con l'oscillocazzo con errore solito
+la variazione in funzione della posizione del potenziometro sta sotto questo errore
+	(l'errore sulle freq. è l'1%, mentre il potenziometro fa variare il valore alla 4^ cifra)
+
+per tensioni di alimentazione che non portano il segnale di out in clipping non c'è dipendenza della frequenza
+	(le variazioni osservate della freq. stanno alla 5^ cifra, ben sotto ogni errore)
+
+4)
+V+ = 256e-3
+Vout = 820e-3
+
+5)
+in assenza di diodi l'oscillatore, non forzato con il generatore ma il puro circuito mostrato in scheda, riesce a essere stabile solo fintanto che manda in saturazione l'output
+non appena non satura più non si osserva nessuna oscillazione
