@@ -45,16 +45,24 @@
 \section{Scopo e strumentazione}
 Lo scopo dell'esperienza è realizzare un oscillatore ad onda sinusoidale a ponte di Wien utilizzando un OpAmp.
 
-La strumentazione usata è quella presente sul banco di lavoro, più l'OpAmp
+La strumentazione usata è quella presente sul banco di lavoro, più l'OpAmp TL081 e i diodi 1N1711.
+%in realtà sia per l'OpAmp che per i diodi non abbiamo controllato che modello fossero, ce lo scriviamo comunque?
 
-Si monti il circuito di figura, che è costituito da
-a. un OpAmp montato come amplificatore non
-invertente con guadagno A V con la rete di
-feedback costituita da R3/R4/POT1/R5.
-b. un feedback a ponte di Wien dipendente dalla
-frequenza costituito da R1C1 e R2C2.
+\section{Loop gain del circuito}
+Si è disconnesso il circuito nel punto A, connettendo l'ingresso non-invertente dell'OpAmp al generatore di funzioni e osservando con l'oscilloscopio il segnale all'altro estremo rimasto disconnesso.
+Si è in questo modo misurato il loop gain (modulo e fase) per varie frequenze immesse dal generatore di funzioni. Si riportano i grafici in \figurename{~\ref{fig:Bode}} e \figurename{~\ref{fig:fasi}}.
 
-\section{}
+\section{Comportamento dell'output in funzione della posizione del potenziometro}
+
+\section{Frequenza di oscillazione}
+
+\subsection{Dipendenza dalla posizione del potenziometro}
+
+\subsection{Dipendenza dalla tensione di alimentazione}
+
+\section{Guadagno all'innesco dell'oscillazione}
+
+\section{Scopo dei diodi}
 
 \pagebreak
 \section{Appendice: Dati acquisiti}
