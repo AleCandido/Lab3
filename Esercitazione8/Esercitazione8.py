@@ -14,7 +14,7 @@ else:
 sys.path = sys.path + [path]
 
 from BobLightyear import *
-from pylab import log10
+from pylab import log10, arctan, pi
 
 dir= path + "Esercitazione8/"
 ###########################################################################
@@ -40,11 +40,9 @@ Xlab = "freq. [Hz]"
 Ylab = "gain"
 xlimp = [90, 110]
 
-tab = ["frequency [Hz]", "$V_A$ [V]", "$\\varphi$", "$V_A$ [V]"]
+tab = ["frequency [Hz]", "$V_A$ [V]", "$\\varphi$ [s]", "$V_A$ [V]"]
 
 fit(dir, file, unit, f, p0, titolo, Xlab, Ylab, XYfun, table=True, tab=tab, out=False, xlimp=xlimp)
-#devo ancora fargli fare il bode-plot, per il momento è su scala lineare
-
 ###########################################################################
 
 #LOOP GAIN MODULI_plot#
@@ -72,5 +70,30 @@ Ylab = "gain [dB]"
 xlimp = [99.5, 101]
 
 plot_fit(dir, file, titolo, unit, f, p0, X, Y, dX, dY, fig=fig, xlimp=xlimp, XYfun=XYfun, Xlab=Xlab, Ylab=Ylab)
+###########################################################################
 
+#LOOP GAIN FASI#
+
+file = "loopgain"
+
+fig = "loopgain_ph"
+
+def f(x, a, b, c):
+    return c*(arctan(a/x) - arctan(x/b))/pi
+
+p0=[607, 4.20e3, 1]
+
+def XYfun(a):
+    return a[0], a[2]*a[0]
+
+unit = [("freq", "osc"), ("volt_nc", "osc"), ("time", "osc"), ("volt_nc", "osc")]
+# c'è un arbitrario 5% di errore su time osc in BobLightyear
+#in realtà un bel po' di errore c'era per davvero a causa del rumore
+
+titolo = "Loop gain, fasi"
+Xlab = "freq. [Hz]"
+Ylab = "phase [$\pi$ rad]"
+xlimp = [99, 102]
+
+fit(dir, file, unit, f, p0, titolo, Xlab, Ylab, XYfun, residuals=True, xlimp=xlimp, fig=fig, Xscale="log")
 ###########################################################################

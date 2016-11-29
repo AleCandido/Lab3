@@ -35,7 +35,7 @@
 \def\code#1{\texttt{#1}}
 
 
-\title{Esercitazione 7: Amplificatore operazionale, usi non lineari}
+\title{Esercitazione 8: Oscillatore sinusoidale a ponte di Wien con OpAmp}
 
 \author{Gruppo BE \\ Alessandro Candido, Roberto Ribatti}
 \date{\today}
@@ -50,19 +50,37 @@ La strumentazione usata è quella presente sul banco di lavoro, più l'OpAmp TL0
 
 \section{Loop gain del circuito}
 Si è disconnesso il circuito nel punto A, connettendo l'ingresso non-invertente dell'OpAmp al generatore di funzioni e osservando con l'oscilloscopio il segnale all'altro estremo rimasto disconnesso.
-Si è in questo modo misurato il loop gain (modulo e fase) per varie frequenze immesse dal generatore di funzioni. Si riportano i grafici in \figurename{~\ref{fig:Bode}} e \figurename{~\ref{fig:fasi}}.
+Si è in questo modo misurato il loop gain (modulo e fase) per varie frequenze immesse dal generatore di funzioni. Si riportano i grafici in \figurename{~\ref{fig:Bode}} e \figurename{~\ref{fig:fasi}}, e la tabella con i dati in appendice (\tablename{~\ref{tab:loop}}).
+
+\begin{figure}[H]
+	\begin{minipage}{\textwidth}
+		\centering
+		\includegraphics[width=0.8\textwidth]{../grafici/fit_loopgain_bode.pdf}
+		\caption{Bode plot del guadagno di loop}
+		\label{fig:Bode}
+	\end{minipage}
+\end{figure}
+
+La frequenza a cui lo sfasamento si annulla è stata misurata e il valore è $f_0 = \unit{1.80 \pm 0.05}{\kilo\hertz}$.
+
+Si è osservato che l'ampiezza del segnale di output dipende in modo monotono dalla posizione del potenziometro. In particolare la dipendenza osservata appariva lineare (affine). 
 
 \section{Comportamento dell'output in funzione della posizione del potenziometro}
+Si è riconnesso il circuito nel punto A e si è osservata la dipendenza del segnale in uscita in funzione della posizione del potenziometro.
 
 \section{Frequenza di oscillazione}
 
 \subsection{Dipendenza dalla posizione del potenziometro}
+La frequenza di oscillazione è indipendente dalla posizione del potenziometro.
 
 \subsection{Dipendenza dalla tensione di alimentazione}
+La frequenza di oscillazione risulta indipendente dalla tensione di alimentazione, fintanto che questa non diventi abbastanza elevata da portare il segnale di output in clipping.
 
 \section{Guadagno all'innesco dell'oscillazione}
 
 \section{Scopo dei diodi}
+Lo scopo dei diodi è di stabilizzare la tensione sull'output, in modo tale 
+% chi è che lo mandava in saturazione, l'alimentazione o il potenziometro?
 
 \pagebreak
 \section{Appendice: Dati acquisiti}
