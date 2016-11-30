@@ -47,6 +47,7 @@ Lo scopo dell'esperienza è realizzare un oscillatore ad onda sinusoidale a pont
 
 La strumentazione usata è quella presente sul banco di lavoro, più l'OpAmp TL081 e i diodi 1N1711.
 %in realtà sia per l'OpAmp che per i diodi non abbiamo controllato che modello fossero, ce lo scriviamo comunque?
+%c'è da inserire lo schema del circuito (si può anche copiare dalle slides)
 
 \section{Loop gain del circuito}
 Si è disconnesso il circuito nel punto A, connettendo l'ingresso non-invertente dell'OpAmp al generatore di funzioni e osservando con l'oscilloscopio il segnale all'altro estremo rimasto disconnesso.
@@ -61,9 +62,17 @@ Si è in questo modo misurato il loop gain (modulo e fase) per varie frequenze i
 	\end{minipage}
 \end{figure}
 
+%inserire risultati dei fit
+
 La frequenza a cui lo sfasamento si annulla è stata misurata e il valore è $f_0 = \unit{1.80 \pm 0.05}{\kilo\hertz}$.
 
-Si è osservato che l'ampiezza del segnale di output dipende in modo monotono dalla posizione del potenziometro. In particolare la dipendenza osservata appariva lineare (affine). 
+Si è osservato che l'ampiezza del segnale di output dipende in modo monotono dalla posizione del potenziometro. Questo è coerente con il comportamento atteso:
+\begin{equation}
+A = 1 + \frac{(1-f)POT_1 + R_4 + (R_3//R_{diodi})}{R_5 + f POT_1}
+\label{eq:pot}
+\end{equation}
+
+In cui $f$ è la frazione di potenziometro che va verso $R_5$.
 
 \section{Comportamento dell'output in funzione della posizione del potenziometro}
 Si è riconnesso il circuito nel punto A e si è osservata la dipendenza del segnale in uscita in funzione della posizione del potenziometro.
@@ -79,8 +88,12 @@ La frequenza di oscillazione risulta indipendente dalla tensione di alimentazion
 \section{Guadagno all'innesco dell'oscillazione}
 
 \section{Scopo dei diodi}
-Lo scopo dei diodi è di stabilizzare la tensione sull'output, in modo tale 
-% chi è che lo mandava in saturazione, l'alimentazione o il potenziometro?
+Lo scopo dei diodi è di inserire un elemento non lineare nella rete di amplificazione, in modo da stabilizzare la tensione sull'output.
+
+Infatti quando la tensione aumenta uno dei due diodi passa in conduzione, diminuendo la resistenza fra l'output e l'ingresso invertente dell'OpAmp, e dunque diminuendo l'amplificazione $A$, come risulta dall'equazione \eqref{eq:pot}.
+
+In assenza di diodi infatti
+% chi è che lo mandava in saturazione, l'alimentazione o il potenziometro? (cioè cosa stavamo variando?)
 
 \pagebreak
 \section{Appendice: Dati acquisiti}
