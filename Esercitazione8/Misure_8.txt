@@ -53,7 +53,7 @@ la dipendenza è quindi monotona e apparentemente lineare
 
 2)
 per la maggior parte dei valori del potenziometro in uscita si osserva solo rumore.
-solo vicino ad uno dei due estremi si vedono sinusoidi, e per alti valori dell'uscita, peossimi a 30V, scazza
+solo vicino ad uno dei due estremi si vedono sinusoidi, e per alti valori dell'uscita, prossimi a 30V, scazza
 le sinusoidi giá prima di essere tagliate sull'out sembrano un po'deformate
 
 3)
