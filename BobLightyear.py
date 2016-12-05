@@ -635,17 +635,17 @@ _util_mm_esr_data = dict(
         volt_nc = dict(
             scales = [8*2e-3] + [8*5e-3] + [(8*d*10**s) for s in range(-2, 1) for d in [1, 2, 5]],
             perc = [0]*11,
-            div = [1e-3]*2 + [(d*10**s) for s in range(-2, 1) for d in [1, 2, 5]]
+            div = [0.5e-3]*2 + [(0.5*d*10**s) for s in range(-2, 1) for d in [1, 2, 5]]
         ),
         volt_ar_nc = dict(
             scales = [4*2e-3] + [4*5e-3] + [(4*d*10**s) for s in range(-2, 1) for d in [1, 2, 5]],
             perc = [0]*11,
-            div = [1e-3]*2 + [(d*10**s) for s in range(-2, 1) for d in [1, 2, 5]]
+            div = [0.5e-3]*2 + [(0.5*d*10**s) for s in range(-2, 1) for d in [1, 2, 5]]
         ),
         time=dict(
             scales=[5e-09] + [ (10*d*10**s) for s in range(-9, 2) for d in [1, 2.5, 5] ],
-            perc=[5]*37,
-            div=[1e-09] + [ (1*d*10**s) for s in range(-9, 2) for d in [1, 2.5, 5] ]  
+            perc=[0.01]*37,
+            div=[3e-09] + [ (3*d*10**s) for s in range(-9, 2) for d in [1, 2.5, 5] ]  
         ),
         freq = dict(
             scales = [1e9], 
@@ -723,6 +723,8 @@ def util_mm_er(x, scale, metertype='dig', unit='volt', sqerr=False):
     elif typ == 'osc':
         e = errsum(x*info['perc'][idx]/100.0, info['div'][idx] / 25)
         r = 10e6
+        if unit=='time':
+            e=errsum(700e-9,e)
     else:
         raise KeyError(typ)
 
@@ -1312,7 +1314,7 @@ def pretty_print_chi2(file_, par, sigma, chi, X, normcov, p):
     print("\nFIT RESULT %s\n" % file_)
     for i in range(len(par)):
         print("p%s = %s" % (i,xep(par[i],sigma[i],",")))
-    
+        #print("p%s = %s" % (i,par))
     print("\nchi / ndof = %.1f / %s" %(chi,len(X)-len(par)))
     print("p_value = %.2f %%" %(p*100))
     if len(par)>1 :
@@ -1423,7 +1425,6 @@ def fit(directory, file_, units, f, p0,
     if table==True:
         latex_table(directory, file_, data, data_err, tab, out, data_ol, data_err_ol)
 
-    print("%s win\n" %file_)
 
     return 1
 

@@ -21,13 +21,14 @@ dir= path + "Esercitazione8/"
 
 #LOOP GAIN MODULI#
 
-file="loopgain"
+file="loopgain1"
 
-def f(x, a, b, c):
+def f(x, a, b):
 #    return log10(a*(1/(1+(b/(10**x))**2)*1/(1+((10**x)/c)**2))**0.5)
-    return a*(1/(1+(b/x)**2)*1/(1+(x/c)**2))**0.5
+#    return b/np.sqrt(1+(a/x)**2)*1/np.sqrt(1+(x/a)**2)*1/(1+(1/np.sqrt(1+(a/x)**2)*1/np.sqrt(1+(x/a)**2)))
+    return b*((x/a)**2/((1-(x/a)**2)**2+(3*x/a)**2))**0.5
 
-p0=[7.8,4.20e3,607]
+p0=[1550,3]
 
 def XYfun(a):
 #    return unumpy.log10(a[0]), 20*unumpy.log10(a[1]/a[3])
@@ -38,19 +39,16 @@ unit = [("freq", "osc"),("volt_nc", "osc"), ("time", "osc"), ("volt_nc", "osc")]
 titolo = "Loop gain"
 Xlab = "freq. [Hz]"
 Ylab = "gain"
-xlimp = [90, 110]
 
 tab = ["frequency [Hz]", "$V_A$ [V]", "$\\varphi$ [s]", "$V_A$ [V]"]
 
-fit(dir, file, unit, f, p0, titolo, Xlab, Ylab, XYfun, table=True, tab=tab, out=False, xlimp=xlimp)
+#fit(dir, file, unit, f, p0, titolo, Xlab, Ylab, XYfun, Xscale="log", Yscale="log", out=False)
 ###########################################################################
 
 #LOOP GAIN MODULI_plot#
 
-file="loopgain"
-
-fig = "loopgain_bode"
-
+file="loopgain1"
+fig="loopgain_modulo"
 def XYfun(a):
     return unumpy.log10(a[0]), 20*unumpy.log10(a[1]/a[3])
 
@@ -59,41 +57,65 @@ unit = [("freq", "osc"),("volt_nc", "osc"), ("time", "osc"), ("volt_nc", "osc")]
 data = load_data(dir,file)
 X, Y, dX, dY, data_err = errors(data, unit, XYfun)
 
-def f(x, a, b, c):
-    return 20*log10(a*(1/(1+(b/(10**x))**2)*1/(1+((10**x)/c)**2))**0.5)
+def f(x, a, b):
+#    return log10(a*(1/(1+(b/(10**x))**2)*1/(1+((10**x)/c)**2))**0.5)
+#    return b/np.sqrt(1+(a/x)**2)*1/np.sqrt(1+(x/a)**2)*1/(1+(1/np.sqrt(1+(a/x)**2)*1/np.sqrt(1+(x/a)**2)))
+    return 20*log10(b*((10**x/a)**2/((1-(10**x/a)**2)**2+(3*10**x/a)**2))**0.5)
 
-p0=[1.126,607,4.2e3]
+p0=[1597,2.953]
 
-titolo = "Loop gain - Bode plot"
-Xlab = "freq. [decades]"
-Ylab = "gain [dB]"
+titolo = "Bode plot - modulo"
+Xlab = "Frequenza [decadi]"
+Ylab = "Gaudagno [dB]"
 xlimp = [99.5, 101]
 
-plot_fit(dir, file, titolo, unit, f, p0, X, Y, dX, dY, fig=fig, xlimp=xlimp, XYfun=XYfun, Xlab=Xlab, Ylab=Ylab)
+#plot_fit(dir, file, titolo, unit, f, p0, X, Y, dX, dY, fig=fig, xlimp=xlimp, XYfun=XYfun, Xlab=Xlab, Ylab=Ylab)
 ###########################################################################
 
 #LOOP GAIN FASI#
 
 file = "loopgain"
 
-fig = "loopgain_ph"
 
-def f(x, a, b, c):
-    return c*(arctan(a/x) - arctan(x/b))/pi
-
-p0=[607, 4.20e3, 1]
+def f(x, a):
+    return arctan((1-(x/a)**2)/(3*x/a))
+p0=[1500]
 
 def XYfun(a):
-    return a[0], a[2]*a[0]
+    return a[0], a[2]*a[0]*2*pi
 
 unit = [("freq", "osc"), ("volt_nc", "osc"), ("time", "osc"), ("volt_nc", "osc")]
-# c'è un arbitrario 5% di errore su time osc in BobLightyear
-#in realtà un bel po' di errore c'era per davvero a causa del rumore
 
-titolo = "Loop gain, fasi"
-Xlab = "freq. [Hz]"
-Ylab = "phase [$\pi$ rad]"
-xlimp = [99, 102]
+titolo = "Bode plot - fasi"
+Xlab = "Frequenza [decadi]"
+Ylab = "Fase [rad]]"
 
-fit(dir, file, unit, f, p0, titolo, Xlab, Ylab, XYfun, residuals=True, xlimp=xlimp, fig=fig, Xscale="log")
+tab = ["frequency [Hz]", "$V_A$ [V]", "$\\varphi$ [s]", "$V_A$ [V]"]
+
+fit(dir, file, unit, f, p0, titolo, Xlab, Ylab, XYfun, Xscale="log",  out=True)
 ###########################################################################
+
+
+#LOOP GAIN MODULI_plot#
+
+file="loopgain"
+fig="loopgain_fase"
+def XYfun(a):
+    return unumpy.log10(a[0]), a[2]*a[0]*2*pi
+
+unit = [("freq", "osc"),("volt_nc", "osc"), ("time", "osc"), ("volt_nc", "osc")]
+
+data = load_data(dir,file)
+X, Y, dX, dY, data_err = errors(data, unit, XYfun)
+
+def f(x, a):
+    return arctan((1-(10**x/a)**2)/(3*10**x/a))
+
+p0=[1856]
+
+titolo = "Bode plot - fasi"
+Xlab = "Frequenza [decadi]"
+Ylab = "Fase [rad]"
+xlimp = [99.5, 101]
+
+plot_fit(dir, file, titolo, unit, f, p0, X, Y, dX, dY, fig=fig, xlimp=xlimp, XYfun=XYfun, Xlab=Xlab, Ylab=Ylab, out=True)
